@@ -14,7 +14,7 @@ export default function Footer() {
             <div className="row g-5 align-items-center">
               <div className="col-xl-3 col-lg-3">
                 <div className="rs-subscribe-logo">
-                  <img src="/assets/images/logo/logo-green.png" alt="image" />
+                  <img src="/assets/images/logo/logo-real.avif" alt="image" />
                 </div>
               </div>
               <div className="col-xl-9 col-lg-9">

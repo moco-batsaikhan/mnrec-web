@@ -19,7 +19,7 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
             <div className="rs-header-left">
               <div className="rs-header-logo">
                 <Link href={`/${lang}`}>
-                  <img src="/assets/images/logo/logo-blue.png" alt="logo" />
+                  <img src="/assets/images/logo/logo-real.avif" alt="logo" />
                 </Link>
               </div>
             </div>
