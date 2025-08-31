@@ -70,8 +70,8 @@ export default function HomeBlog() {
                     </a>
                   </h3>
                   <p className="rs-blog-description has-white">
-                    Industry's standard dummy text ever since the 1500s, when an unknown printer
-                    took a galley of type and...
+                    Industry&apos;s standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and...
                   </p>
                   <div className="rs-blog-tag has-white">
                     <a href="blog-details.html">Company</a>
@@ -102,7 +102,9 @@ export default function HomeBlog() {
                         {" "}
                         <a href="blog-details.html">Building resilient supply chains for</a>
                       </h5>
-                      <p className="rs-blog-description">Industry's standard dummy text ever....</p>
+                      <p className="rs-blog-description">
+                        Industry&apos;s standard dummy text ever....
+                      </p>
                       <div className="rs-blog-tag">
                         <a href="blog-details.html">Oil Factory</a>
                       </div>
@@ -135,7 +137,9 @@ export default function HomeBlog() {
                         {" "}
                         <a href="blog-details.html">Factories technologies in interactive and</a>
                       </h5>
-                      <p className="rs-blog-description">Industry's standard dummy text ever....</p>
+                      <p className="rs-blog-description">
+                        Industry&apos;s standard dummy text ever....
+                      </p>
                       <div className="rs-blog-tag">
                         <a href="blog-details.html">Manufacture</a>
                       </div>

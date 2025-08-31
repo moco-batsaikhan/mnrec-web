@@ -1,6 +1,8 @@
 "use client";
 import { useEffect } from "react";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export default function ClientScripts() {
   useEffect(() => {
     // Only import and initialize scripts on the client side
@@ -77,6 +79,12 @@ export default function ClientScripts() {
         const Chart = (await import("chart.js/auto")).default;
         const noUiSlider = (await import("nouislider")).default;
         const Odometer = (await import("odometer")).default;
+
+        // Make these libraries globally available for main.js
+        (window as any).gsap = gsap;
+        (window as any).Chart = Chart;
+        (window as any).noUiSlider = noUiSlider;
+        (window as any).Odometer = Odometer;
 
         // NiceSelect is now loaded via script tag as jQuery plugin
 

@@ -64,8 +64,8 @@ export default function HomeFeature() {
               <h5 className="rs-feature-title">Worldwide Manufacturing</h5>
               <div className="rs-feature-descrip">
                 <p>
-                  Industry's standard dummy text ever since the when an printer took a galley of
-                  type and scrambled
+                  Industry&apos;s standard dummy text ever since the when an printer took a galley
+                  of type and scrambled
                 </p>
               </div>
             </div>
