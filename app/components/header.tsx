@@ -19,7 +19,7 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
             <div className="rs-header-left">
               <div className="rs-header-logo">
                 <Link href={`/${lang}`}>
-                  <img src="/assets/images/logo/logo-real.avif" alt="logo" />
+                  <img src="/assets/images/logo/logo-mn.png" alt="logo" />
                 </Link>
               </div>
             </div>
@@ -30,10 +30,10 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                     <a href="#">{t.menu.about}</a>
                     <ul className="submenu last-children">
                       <li>
-                        <Link href="/about-intro">{t.menu.about_intro}</Link>
+                        <Link href={`/${lang}/about-intro`}>{t.menu.about_intro}</Link>
                       </li>
                       <li>
-                        <Link href="/about-team">{t.menu.about_team}</Link>
+                        <Link href={`/${lang}/about-team`}>{t.menu.about_team}</Link>
                       </li>
                     </ul>
                   </li>
@@ -42,16 +42,16 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                     <a href="#">{t.menu.kb_project}</a>
                     <ul className="submenu last-children">
                       <li>
-                        <Link href="/news-detail">{t.menu.kb_overview}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.kb_overview}</Link>
                       </li>
                       <li>
-                        <Link href="/news-detail">{t.menu.kb_history}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.kb_history}</Link>
                       </li>
                       <li>
-                        <Link href="/news-detail">{t.menu.kb_highlight}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.kb_highlight}</Link>
                       </li>
                       <li>
-                        <Link href="/news-detail">{t.menu.kb_geology}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.kb_geology}</Link>
                       </li>
                       <li>
                         <a href="#kb-achievements">{t.menu.kb_achievements}</a>
@@ -63,16 +63,16 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                     <a href="#">{t.menu.rare_earth}</a>
                     <ul className="submenu last-children">
                       <li>
-                        <Link href="/news-detail">{t.menu.ree_what}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.ree_what}</Link>
                       </li>
                       <li>
-                        <Link href="/news-detail">{t.menu.ree_uses}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.ree_uses}</Link>
                       </li>
                       <li>
-                        <Link href="/news-detail">{t.menu.ree_market}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.ree_market}</Link>
                       </li>
                       <li>
-                        <Link href="/news-detail">{t.menu.ree_mongolia}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.ree_mongolia}</Link>
                       </li>
                     </ul>
                   </li>
@@ -81,16 +81,16 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                     <a href="#">{t.menu.sustainability}</a>
                     <ul className="submenu last-children">
                       <li>
-                        <Link href="/news-detail">{t.menu.community}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.community}</Link>
                       </li>
                       <li>
-                        <Link href="/news-detail">{t.menu.environment}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.environment}</Link>
                       </li>
                       <li>
-                        <Link href="/news-detail">{t.menu.social}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.social}</Link>
                       </li>
                       <li>
-                        <Link href="/news-detail">{t.menu.development_fund}</Link>
+                        <Link href={`/${lang}/news-detail`}>{t.menu.development_fund}</Link>
                       </li>
                     </ul>
                   </li>
@@ -99,22 +99,22 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                     <a href="#">{t.menu.news_media}</a>
                     <ul className="submenu last-children">
                       <li>
-                        <Link href="/news">{t.menu.latest_news}</Link>
+                        <Link href={`/${lang}/news`}>{t.menu.latest_news}</Link>
                       </li>
                       <li>
-                        <Link href="/videos">{t.menu.video}</Link>
+                        <Link href={`/${lang}/videos`}>{t.menu.video}</Link>
                       </li>
                       <li>
-                        <Link href="/videos">{t.menu.gallery}</Link>
+                        <Link href={`/${lang}/videos`}>{t.menu.gallery}</Link>
                       </li>
                       <li>
-                        <Link href="/news">{t.menu.report}</Link>
+                        <Link href={`/${lang}/news`}>{t.menu.report}</Link>
                       </li>
                     </ul>
                   </li>
                   {/* Contact */}
                   <li className="menu-item-has-children">
-                    <Link href="/contact">{t.menu.contact}</Link>
+                    <Link href={`/${lang}/contact`}>{t.menu.contact}</Link>
                     {/* <ul className="submenu last-children">
                       <li>
                         <a href="#address">{t.menu.address}</a>
@@ -167,7 +167,7 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
         </div>
       </div>
       <div className="fix">
-        <Sidebar />
+        <Sidebar locale={locale} alt={alt} />
       </div>
       <div className="offcanvas-overlay"></div>
       <div className="offcanvas-overlay-white"></div>

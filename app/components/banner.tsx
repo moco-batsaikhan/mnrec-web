@@ -6,7 +6,6 @@ export default function Banner() {
       className="rs-banner-area rs-banner-two p-relative"
       style={{ position: "relative", overflow: "hidden" }}
     >
-      {/* Video background */}
       <video
         src="/assets/mp4/home.mp4"
         autoPlay
@@ -23,6 +22,7 @@ export default function Banner() {
           zIndex: 0,
         }}
       />
+      <div className="rs-video-overlay"></div>
       <div className="rs-banner-bg-thumb" style={{ position: "relative", zIndex: 1 }}></div>
       <div className="container" style={{ position: "relative", zIndex: 2 }}>
         <div className="row">

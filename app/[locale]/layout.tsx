@@ -35,7 +35,7 @@ export default async function LocaleLayout({
       <Header locale={locale} alt={alt} />
 
       {children}
-      <Footer />
+      <Footer locale={locale} alt={alt} />
 
       {/* Load jQuery first via script tag to ensure it's available globally */}
       <Script src="/assets/js/vendor/jquery-3.7.1.min.js" strategy="beforeInteractive" />

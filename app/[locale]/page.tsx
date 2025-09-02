@@ -21,9 +21,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <>
       <Banner />
       <HomeAbout />
-      <HomeVideo />
-      <HomeBlog />
-      <HomePartner />
+      {/* <HomeVideo /> */}
+      {/* <HomeBlog /> */}
+      {/* <HomePartner /> */}
     </>
   );
 }
