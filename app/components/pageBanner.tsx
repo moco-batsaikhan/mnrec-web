@@ -7,6 +7,7 @@ export default function PageBanner() {
         className="rs-breadcrumb-bg"
         style={{ backgroundImage: "url('/assets/images/bg/page-banner.jpg')" }}
       ></div>
+      <div className="rs-video-overlay"></div>
       <div className="container">
         <div className="row">
           <div className="col-xxl-6 col-xl-8 col-lg-8">

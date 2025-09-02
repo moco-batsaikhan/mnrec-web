@@ -1,7 +1,7 @@
 export type Locale = "en" | "mn";
 
 export const locales: Locale[] = ["en", "mn"];
-export const defaultLocale: Locale = "en";
+export const defaultLocale: Locale = "mn";
 
 export type Dictionary = {
   home: {
@@ -47,6 +47,9 @@ export type Dictionary = {
     address: string;
     email_phone: string;
     feedback: string;
+  };
+  footer: {
+    copyRight: string;
   };
 };
 
@@ -98,6 +101,9 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           email_phone: "И-мэйл, утас",
           feedback: "Онлайн санал хүсэлт",
         },
+        footer: {
+          copyRight: "© 2025 MNREC. All rights reserved.",
+        },
       };
     case "en":
     default:
@@ -145,6 +151,9 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           address: "Address",
           email_phone: "Email & Phone",
           feedback: "Online Feedback",
+        },
+        footer: {
+          copyRight: "© 2025 MNREC. All rights reserved.",
         },
       };
   }

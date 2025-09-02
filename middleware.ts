@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 const PUBLIC_FILE = /\.(.*)$/;
 const locales = ["en", "mn"] as const;
-const defaultLocale = "en" as const;
+const defaultLocale = "mn" as const;
 
 function getLocale(request: NextRequest) {
   const acceptLang = request.headers.get("accept-language") || "";
