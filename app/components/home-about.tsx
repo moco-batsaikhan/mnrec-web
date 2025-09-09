@@ -50,8 +50,8 @@ export default function HomeAbout() {
                   <div className="rs-work-step-descrip">
                     <p>
                       {" "}
-                      Together, we identify the industrial data automation project&apos;s general scope
-                      and the components needed to produce.{" "}
+                      Together, we identify the industrial data automation project&apos;s general
+                      scope and the components needed to produce.{" "}
                     </p>
                   </div>
                   <div className="rs-work-step-icon">

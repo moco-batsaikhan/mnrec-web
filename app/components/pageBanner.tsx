@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PageBanner() {
+export default function PageBanner({ pageName }: { pageName: string }) {
   return (
     <section className="rs-breadcrumb-area rs-breadcrumb-one p-relative">
       <div
@@ -13,7 +13,7 @@ export default function PageBanner() {
           <div className="col-xxl-6 col-xl-8 col-lg-8">
             <div className="rs-breadcrumb-content-wrapper">
               <div className="rs-breadcrumb-title-wrapper">
-                <h1 className="rs-breadcrumb-title">About Us</h1>
+                <h1 className="rs-breadcrumb-title">{pageName}</h1>
               </div>
               {/* <div className="rs-breadcrumb-menu">
                   <nav>

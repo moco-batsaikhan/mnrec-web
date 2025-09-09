@@ -1,14 +1,22 @@
 import PageBanner from "@/app/components/pageBanner";
 import React from "react";
+import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
+import Link from "next/link";
 
-export default function AboutIntro() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function AboutIntro(props: any) {
+  // `params` may be a plain object or a Promise depending on Next.js version/mode.
+  const params = props?.params instanceof Promise ? await props.params : props?.params;
+  const langParam = params?.locale ?? defaultLocale;
+  const lang = (locales as string[]).includes(langParam) ? (langParam as Locale) : defaultLocale;
+  const t = await getDictionary(lang);
   return (
     <div>
-      <PageBanner />
+      <PageBanner pageName={t.about.aboutUs} />
 
       <section className="rs-about-area section-space rs-about-twelve">
         <div className="container">
-          <div className="row  g-5 justify-content-center section-title-space align-items-center">
+          {/* <div className="row  g-5 justify-content-center section-title-space align-items-center">
             <div className="col-xxl-8 col-xl-9 col-lg-9">
               <div className="rs-section-title-wrapper text-center">
                 <span className="rs-section-subtitle has-theme-orange">
@@ -35,7 +43,7 @@ export default function AboutIntro() {
                 </h2>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="row g-5">
             <div className="col-xl-6 col-lg-6">
               <div className="rs-about-wrapper">
@@ -63,11 +71,8 @@ export default function AboutIntro() {
                   <img src="/assets/images/about/about-thumb-19.png" alt="image" />
                 </div>
                 <div className="rs-about-content">
-                  <h6 className="rs-about-title">Our Vision</h6>
-                  <p>
-                    We have been empowering industries and driving progress for over 30 years. Our
-                    diverse team of experts brings together.
-                  </p>
+                  <h6 className="rs-about-title">{t.about.visionTitle}</h6>
+                  <p>{t.about.visionText}</p>
                 </div>
               </div>
             </div>
@@ -79,7 +84,7 @@ export default function AboutIntro() {
           <div className="row  g-5">
             <div className="col-xl-7 col-lg-7">
               <div className="rs-section-title-wrapper">
-                <span className="rs-section-subtitle has-theme-orange justify-content-start">
+                {/* <span className="rs-section-subtitle has-theme-orange justify-content-start">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="11"
@@ -96,10 +101,10 @@ export default function AboutIntro() {
                     ></path>
                   </svg>
                   About Us
-                </span>
+                </span> */}
                 <h2 className="rs-section-title rs-split-text-enable split-in-fade">
-                  We work for you <span className="rs-theme-orange">since 1989.</span>
-                  Industrial around the world
+                  Бид <span className="rs-theme-orange">2010</span> онд үүсгэн байгуулагдсанаасаа
+                  хойш геологи, хайгуул уул уурхайн чиглэлээр үйл ажиллагаагаа явуулж байна.
                 </h2>
               </div>
             </div>
@@ -107,18 +112,18 @@ export default function AboutIntro() {
               <div className="rs-about-content">
                 <div className="rs-about-description">
                   <p className="descrip-1">
-                    Welcome to Industrie, a leading industry innovator with a rich history of
-                    excellence.
+                    Монголиан Нэшнл Рийр Ийрт Корп ХХК (МНРИК) нь дотоодын 100% хөрөнгө оруулалттай
+                    үндэсний уул уурхайн компани юм.
                   </p>
                   <p className="descrip-2">
-                    At the heart of the global landscape, the industry stands as a multidimensional
-                    force of progress, driving economies.{" "}
+                    Ховд аймгийн Мянгад сумын нутагт орших газрын ховор элементийн “Халзан бүрэгтэй”
+                    төсөл дээр төвлөрөн ажиллаж байна.
                   </p>
                 </div>
                 <div className="rs-about-btn">
                   <a className="rs-btn has-theme-orange has-icon has-bg" href="about.html">
                     Discover
-                    {/* <span className="icon-box">
+                    <span className="icon-box">
                       <svg
                         className="icon-first"
                         xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +138,7 @@ export default function AboutIntro() {
                       >
                         <path d="M31.71,15.29l-10-10L20.29,6.71,28.59,15H0v2H28.59l-8.29,8.29,1.41,1.41,10-10A1,1,0,0,0,31.71,15.29Z"></path>
                       </svg>
-                    </span> */}
+                    </span>
                   </a>
                 </div>
               </div>
@@ -155,7 +160,7 @@ export default function AboutIntro() {
           </div>
         </div>
       </section>
-      <section className="rs-history-area section-space rs-history-one">
+      {/* <section className="rs-history-area section-space rs-history-one">
         <div
           className="rs-history-bg-thumb"
           style={{ backgroundImage: "url('/assets/images/bg/history.jpg')" }}
@@ -414,7 +419,7 @@ export default function AboutIntro() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* <div className="rs-video-area rs-video-one has-theme-orange">
         <div className="container">
           <div className="rs-video-wrapper jarallax">

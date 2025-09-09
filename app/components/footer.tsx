@@ -48,7 +48,9 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
               <div className="col-md-12">
                 <ul className="footer-bottom-items float-left">
                   <li className="nav-item">
-                    <div className="nav-item-inner">{t.footer.copyRight}</div>
+                    <div className="nav-item-inner">
+                      {t.footer.copyRight} {new Date().getFullYear()}
+                    </div>
                   </li>
                 </ul>
               </div>
