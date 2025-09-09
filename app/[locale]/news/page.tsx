@@ -1,10 +1,17 @@
 import PageBanner from "@/app/components/pageBanner";
 import React from "react";
+import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
 
-export default function NewsPage() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function NewsPage(props: any) {
+  const params = props?.params instanceof Promise ? await props.params : props?.params;
+  const langParam = params?.locale ?? defaultLocale;
+  const lang = (locales as string[]).includes(langParam) ? (langParam as Locale) : defaultLocale;
+  const t = await getDictionary(lang);
+
   return (
     <div>
-      <PageBanner />
+      <PageBanner pageName={t.menu.latest_news ?? "News"} />
       <section className="rs-postbox-area section-space">
         <div className="container">
           <div className="row g-5">

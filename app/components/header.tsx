@@ -5,7 +5,7 @@ import HamburgerButton from "./hamburger-button";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
 
 export default async function Header({ locale, alt }: { locale: string; alt: string }) {
-  const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "en";
+  const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "mn";
   const t = await getDictionary(lang);
 
   return (

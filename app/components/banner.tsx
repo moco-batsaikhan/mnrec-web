@@ -46,7 +46,7 @@ export default function Banner() {
                     within budget.{" "}
                   </p>
                 </div>
-                <div
+                {/* <div
                   className="rs-banner-btn wow fadeInUp"
                   data-wow-delay=".7s"
                   data-wow-duration="1.1s"
@@ -70,7 +70,7 @@ export default function Banner() {
                       </svg>
                     </span>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
