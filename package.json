@@ -9,6 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "serve": "npx serve@latest out -p 3000",
     "lint": "eslint"
   },
   "dependencies": {

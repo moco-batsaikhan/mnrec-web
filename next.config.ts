@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+module.exports = {
   output: "export",
+  redirects: async () => [
+    {
+      source: "/",
+      destination: "/mn",
+      permanent: false,
+    },
+  ],
 };
-
-export default nextConfig;
