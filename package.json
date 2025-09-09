@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+  "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -12,6 +12,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.8",
     "chart.js": "^4.5.0",
+    "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
