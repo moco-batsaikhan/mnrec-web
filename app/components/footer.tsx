@@ -18,10 +18,7 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
             <div className="row g-5 align-items-center">
               <div className="col-xl-3 col-lg-3">
                 <div className="rs-subscribe-logo">
-                  <img
-                    src={`/assets/images/logo/logo-${lang === "en" ? "en" : "mn"}.png`}
-                    alt="logo"
-                  />
+                  <img src={`/assets/images/logo/logo.png`} alt="logo" />
                 </div>
               </div>
               <div className="col-xl-9 col-lg-9">
@@ -49,7 +46,7 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
                 <ul className="footer-bottom-items float-left">
                   <li className="nav-item">
                     <div className="nav-item-inner">
-                      {t.footer.copyRight} {new Date().getFullYear()}
+                      © {new Date().getFullYear()} {t.footer.copyRight}
                     </div>
                   </li>
                 </ul>

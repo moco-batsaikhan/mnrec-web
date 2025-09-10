@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
+import LanguageSwitcher from "./language-switcher";
 
-export default async function Sidebar({ locale, alt }: { locale?: string; alt?: string }) {
-  const lang = locale && (locales as string[]).includes(locale) ? (locale as Locale) : "en";
+export default async function Sidebar({ locale, alt }: { locale: string; alt: string }) {
+  const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "mn";
   const t = await getDictionary(lang);
   return (
     <>
@@ -13,9 +14,10 @@ export default async function Sidebar({ locale, alt }: { locale?: string; alt?: 
             <div className="offcanvas-top d-flex justify-content-between align-items-center mb-25">
               <div className="offcanvas-logo">
                 <a href="index.html">
-                  <img src="/assets/images/logo/logo-mn.png" alt="logo" />
+                  <img src="/assets/images/logo/logo.png" alt="logo" />
                 </a>
               </div>
+
               <div className="offcanvas-close">
                 <button className="offcanvas-close-icon animation--flip">
                   <span className="offcanvas-m-lines">
@@ -150,6 +152,7 @@ export default async function Sidebar({ locale, alt }: { locale?: string; alt?: 
                 </li>
               </ul>
             </div>
+
             <div className="offcanvas-social">
               <h4 className="offcanvas-title-meta">Subscribe & Follow</h4>
               <ul>
@@ -182,6 +185,13 @@ export default async function Sidebar({ locale, alt }: { locale?: string; alt?: 
                   </a>
                 </li>
               </ul>
+            </div>
+            <div className="bg-black p-4">
+              <div className="offcanvas-language ">
+                <div className="d-flex">
+                  <LanguageSwitcher alt={alt} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

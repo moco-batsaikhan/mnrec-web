@@ -3,6 +3,7 @@ import Link from "next/link";
 import Sidebar from "./sidebar";
 import HamburgerButton from "./hamburger-button";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
+import LanguageSwitcher from "./language-switcher";
 
 export default async function Header({ locale, alt }: { locale: string; alt: string }) {
   const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "mn";
@@ -19,7 +20,7 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
             <div className="rs-header-left">
               <div className="rs-header-logo">
                 <Link href={`/${lang}`}>
-                  <img src="/assets/images/logo/logo-mn.png" alt="logo" />
+                  <img src="/assets/images/logo/logo.png" alt="logo" />
                 </Link>
               </div>
             </div>
@@ -41,21 +42,21 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                   <li className="menu-item-has-children">
                     <a href="#">{t.menu.kb_project}</a>
                     <ul className="submenu last-children">
-                      <li>
+                      {/* <li>
                         <Link href={`/${lang}/news-detail`}>{t.menu.kb_overview}</Link>
+                      </li> */}
+                      <li>
+                        <Link href={`/${lang}/project-timeline`}>{t.menu.kb_history}</Link>
                       </li>
                       <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.kb_history}</Link>
+                        <Link href={`/${lang}/geology-deposit`}>{t.menu.kb_geology}</Link>
                       </li>
                       <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.kb_highlight}</Link>
+                        <Link href={`/${lang}/project-highlights`}>{t.menu.kb_highlight}</Link>
                       </li>
-                      <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.kb_geology}</Link>
-                      </li>
-                      <li>
+                      {/* <li>
                         <a href="#kb-achievements">{t.menu.kb_achievements}</a>
-                      </li>
+                      </li> */}
                     </ul>
                   </li>
                   {/* Rare Earth */}
@@ -63,16 +64,16 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                     <a href="#">{t.menu.rare_earth}</a>
                     <ul className="submenu last-children">
                       <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.ree_what}</Link>
+                        <Link href={`/${lang}/rare-earth-elements`}>{t.menu.ree_what}</Link>
                       </li>
                       <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.ree_uses}</Link>
+                        <Link href={`/${lang}/application-rare-elements`}>{t.menu.ree_uses}</Link>
                       </li>
                       <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.ree_market}</Link>
+                        <Link href={`/${lang}/market-trends`}>{t.menu.ree_market}</Link>
                       </li>
                       <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.ree_mongolia}</Link>
+                        <Link href={`/${lang}/mongolian-ree`}>{t.menu.ree_mongolia}</Link>
                       </li>
                     </ul>
                   </li>
@@ -84,7 +85,7 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                         <Link href={`/${lang}/news-detail`}>{t.menu.community}</Link>
                       </li>
                       <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.environment}</Link>
+                        <Link href={`/${lang}/enviroment`}>{t.menu.environment}</Link>
                       </li>
                       <li>
                         <Link href={`/${lang}/news-detail`}>{t.menu.social}</Link>
@@ -134,33 +135,10 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
               <div className="rs-header-call">
                 <div className="row-start-1 flex gap-2 items-center justify-end w-full max-w-2xl">
                   <div className="flex items-center gap-2 ml-4">
-                    <Link
-                      href={`/${alt}`}
-                      className="text-white px-4 py-1.5 text-[16px] border border-gray-200 "
-                    >
-                      {alt.toUpperCase()}
-                    </Link>
+                    <LanguageSwitcher alt={alt} />
                   </div>
                 </div>
               </div>
-              {/* <div className="rs-header-search-wrapper">
-                <div className="rs-header-search-icon has-theme-red">
-                  <i className="ri-close-fill has-close"></i>
-                  <i className="ri-search-line has-search"></i>
-                </div>
-                <form
-                  className="rs-header-search-inner rs-stickys-form"
-                  action="assets/mailer.php"
-                  method="POST"
-                >
-                  <div className="rs-header-search">
-                    <input type="text" placeholder="Searching..." />
-                    <button type="submit">
-                      <i className="ri-search-line"></i>
-                    </button>
-                  </div>
-                </form>
-              </div> */}
               <HamburgerButton />
             </div>
           </div>

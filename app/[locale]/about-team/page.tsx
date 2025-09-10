@@ -33,7 +33,7 @@ export default async function AboutTeam(props: any) {
                 data-wow-duration="1s"
               >
                 <div className="rs-team-thumb">
-                  <img src="/assets/images/team/team-thumb-05.png" alt="image" />
+                  <img src="/assets/images/team/munkhjargal.avif" alt="image" />
                 </div>
                 <div className="rs-team-content">
                   <div className="rs-team-inner">
@@ -63,7 +63,7 @@ export default async function AboutTeam(props: any) {
                 data-wow-duration="1s"
               >
                 <div className="rs-team-thumb">
-                  <img src="/assets/images/team/team-thumb-06.png" alt="image" />
+                  <img src="/assets/images/team/odgerel.avif" alt="image" />
                 </div>
                 <div className="rs-team-content">
                   <div className="rs-team-inner">

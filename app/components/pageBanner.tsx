@@ -7,8 +7,19 @@ export default function PageBanner({ pageName }: { pageName: string }) {
         className="rs-breadcrumb-bg"
         style={{ backgroundImage: "url('/assets/images/bg/page-banner.jpg')" }}
       ></div>
-      <div className="rs-video-overlay"></div>
-      <div className="container">
+      <div
+        className="rs-breadcrumb-overlay"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          zIndex: 1,
+        }}
+      ></div>
+      <div className="container" style={{ position: "relative", zIndex: 2 }}>
         <div className="row">
           <div className="col-xxl-6 col-xl-8 col-lg-8">
             <div className="rs-breadcrumb-content-wrapper">

@@ -17,7 +17,7 @@ export default async function AboutTeamDetail(props: any) {
           <div className="row g-5">
             <div className="col-xl-6 col-lg-6">
               <div className="rs-team-details-thumb">
-                <img src="/assets/images/team/details/team-details-thumb-01.png" alt="image" />
+                <img src="/assets/images/team/munkhjargal.avif" alt="image" />
               </div>
             </div>
             <div className="col-xl-6 col-lg-6">
