@@ -1,0 +1,72 @@
+.section-space {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.counter-space {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.ti-flag:before {
+  color: #fff;
+}
+
+.ti-eye:before {
+  color: #fff;
+}
+
+.about-box .feature-icon span {
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background: #d99029;
+  cursor: pointer;
+}
+
+.feature-box-wrap.about-box {
+  -webkit-box-shadow: 8px 8px 20px 0px rgb(0 0 0 / 5%);
+  -moz-box-shadow: 8px 8px 20px 0px rgb(0 0 0 / 5%);
+  -ms-box-shadow: 8px 8px 20px 0px rgb(0 0 0 / 5%);
+  -o-box-shadow: 8px 8px 20px 0px rgb(0 0 0 / 5%);
+  box-shadow: 8px 8px 20px 0px rgb(0 0 0 / 5%);
+  background: #fff;
+  margin-bottom: 30px;
+  border-radius: 10px 10px 10px 10px;
+  padding: 50px 30px 45px 30px;
+}
+
+.feature-title > h4 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0em;
+}
+.feature-content > p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #586772;
+}
+
+.ti-flag:before {
+  color: #fff;
+}
+
+.ti-eye:before {
+  color: #fff;
+}
+
+.box-size {
+  max-height: 110px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 0;
+}
+
+.box-size::-webkit-scrollbar {
+  display: none;
+}

@@ -11,7 +11,7 @@ export default async function Contact(props: any) {
   const t = await getDictionary(lang);
   return (
     <>
-      <PageBanner pageName={t.about.team} />
+      <PageBanner pageName={t.contact.contactUs} />
 
       <section className="rs-contact-area section-space rs-contact-nine">
         <div className="container">
@@ -34,8 +34,8 @@ export default async function Contact(props: any) {
                     </svg>
                   </div>
                   <div className="rs-contact-content">
-                    <h5 className="rs-contact-title">Our Location </h5>
-                    <a href="#">5214F Diamond Heights Blvd, San Franceisco, USA</a>
+                    <h5 className="rs-contact-title">{t.contact.address} </h5>
+                    <a href="#">{t.contact.fullAddress}</a>
                   </div>
                 </div>
 
@@ -53,11 +53,9 @@ export default async function Contact(props: any) {
                     </svg>
                   </div>
                   <div className="rs-contact-content">
-                    <h5 className="rs-contact-title">Opening Hour </h5>
+                    <h5 className="rs-contact-title">{t.contact.openingHour} </h5>
                     <p>
-                      {" "}
-                      Mon - Sat 10.00 - 18.00 <br />
-                      Friday - Closed{" "}
+                      {t.contact.workingHours} <br />
                     </p>
                   </div>
                 </div>
@@ -78,9 +76,8 @@ export default async function Contact(props: any) {
                     </svg>
                   </div>
                   <div className="rs-contact-content">
-                    <h5 className="rs-contact-title">Chat to Support</h5>
-                    <a href="mailto:support.industrie@gmail.com">support.industrie@gmail.com</a>
-                    <a href="mailto:demo.industrie@gmail.com">demo.industrie@gmail.com</a>
+                    <h5 className="rs-contact-title">{t.contact.email}</h5>
+                    <a href="mailto:support.info@mnrec.mn">info@mnrec.mn</a>
                   </div>
                 </div>
 
@@ -108,9 +105,8 @@ export default async function Contact(props: any) {
                     </svg>
                   </div>
                   <div className="rs-contact-content">
-                    <h5 className="rs-contact-title">Call Us </h5>
-                    <a href="tel:971551579261">+971 551 579 261</a>
-                    <a href="tel:971551579261">+97 155 596 1659</a>
+                    <h5 className="rs-contact-title">{t.contact.phone}</h5>
+                    <a href="tel:971551579261">+976-7505-1801</a>
                   </div>
                 </div>
               </div>
@@ -150,14 +146,14 @@ export default async function Contact(props: any) {
                     ></path>
                   </svg>
                 </div>
-                <h3 className="rs-contact-title">Main Offices</h3>
-                <span className="rs-contact-meta">Mon - Sat 10.00 - 18.00 </span>
+                <h3 className="rs-contact-title">{t.contact.mainOffices}</h3>
+                <span className="rs-contact-meta">{t.contact.fullAddress} </span>
                 <div className="rs-contact-btn">
                   <a
                     className="rs-btn has-icon w-100"
                     href="https://maps.app.goo.gl/4CyH82tFmf6L8H1TA"
                   >
-                    View Location
+                    {t.contact.viewLocation}
                     <span className="icon-box">
                       <svg
                         className="icon-first"
@@ -193,7 +189,7 @@ export default async function Contact(props: any) {
                       </svg>
                     </div>
                     <h6>
-                      <a href="tel:+32(0)73240396">+32 (0) 73 240 396</a>
+                      <a href="tel:+976-7505-1801">+976-7505-1801</a>
                     </h6>
                   </div>
                   <div className="rs-contact-item">
@@ -212,7 +208,7 @@ export default async function Contact(props: any) {
                       </svg>
                     </div>
                     <h6>
-                      <a href="mailto:industrie.info@gmail.com">industrie.info@gmail.com</a>
+                      <a href="mailto:info@mnrec.mn">info@mnrec.mn</a>
                     </h6>
                   </div>
                   <div className="rs-contact-item">
@@ -231,7 +227,7 @@ export default async function Contact(props: any) {
                       </svg>
                     </div>
                     <h6>
-                      <a href="#"> 42 Mamnoun Street, Saba Carpet and Antiques Store, UK</a>
+                      <a href="#"> {t.contact.location}</a>
                     </h6>
                   </div>
                 </div>
@@ -271,26 +267,36 @@ export default async function Contact(props: any) {
           <div className="row justify-content-center">
             <div className="col-xl-12">
               <div className="rs-contact-form">
-                <h3 className="rs-contact-form-title">Get in Touch</h3>
-                <p className="descrip">
-                  The point of using Lorem Ipsum is that it has more-or-less packages normal make a
-                  type specimen book it has survived
-                </p>
                 <form id="contact-form" action="assets/mailer.php" method="POST">
                   <div className="row g-5">
                     <div className="col-md-4">
                       <div className="rs-contact-input">
-                        <input id="name" name="name" type="text" placeholder="Full Name" />
+                        <input
+                          id="name"
+                          name="name"
+                          type="text"
+                          placeholder={`${t.contact.name}`}
+                        />
                       </div>
                     </div>
                     <div className="col-md-4">
                       <div className="rs-contact-input">
-                        <input id="email" name="email" type="email" placeholder="Email Address" />
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder={`${t.contact.email}`}
+                        />
                       </div>
                     </div>
                     <div className="col-md-4">
                       <div className="rs-contact-input">
-                        <input id="phone" name="phone" type="text" placeholder="Phone Number" />
+                        <input
+                          id="phone"
+                          name="phone"
+                          type="text"
+                          placeholder={`${t.contact.phone}`}
+                        />
                       </div>
                     </div>
                     <div className="col-md-12">
@@ -298,14 +304,14 @@ export default async function Contact(props: any) {
                         <textarea
                           id="message"
                           name="message"
-                          placeholder="Write Your Message"
+                          placeholder={t.contact.writeMessage}
                         ></textarea>
                       </div>
                     </div>
                     <div className="col-md-12">
                       <div className="rs-contact-btn">
                         <button type="submit" className="rs-btn has-theme-orange">
-                          Send Message
+                          {t.contact.submit}
                         </button>
                       </div>
                     </div>

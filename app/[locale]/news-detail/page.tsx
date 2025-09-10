@@ -1,7 +1,6 @@
 import PageBanner from "@/app/components/pageBanner";
 import React from "react";
 import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function NewsDetailPage(props: any) {
   const params = props?.params instanceof Promise ? await props.params : props?.params;
