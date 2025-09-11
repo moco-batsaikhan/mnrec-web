@@ -1,7 +1,7 @@
 import PageBanner from "@/app/components/pageBanner";
 import React from "react";
 import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
-import Link from "next/link";
+// import Link from "next/link";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Contact(props: any) {

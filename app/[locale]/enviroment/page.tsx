@@ -2,6 +2,8 @@ import PageBanner from "@/app/components/pageBanner";
 import React from "react";
 import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
 import Link from "next/link";
+import "./style.css";
+import ModernSlider from "@/app/components/ModernSlider";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Environment(props: any) {
@@ -9,6 +11,27 @@ export default async function Environment(props: any) {
   const langParam = params?.locale ?? defaultLocale;
   const lang = (locales as string[]).includes(langParam) ? (langParam as Locale) : defaultLocale;
   const t = await getDictionary(lang);
+
+  // Define slider images for environment page
+  const environmentImages = [
+    '/assets/images/gallery/sustainable/cover2.jpg',
+    '/assets/images/gallery/sustainable/cover3.jpg',
+    '/assets/images/gallery/sustainable/cover4.jpg',
+    '/assets/images/gallery/sustainable/cover5.jpg',
+    '/assets/images/gallery/sustainable/cover6.jpg',
+    '/assets/images/gallery/sustainable/cover7.jpg',
+    '/assets/images/gallery/sustainable/cover8.jpg',
+  ];
+
+  const environmentTitles = [
+    t.sustainable.enviroment.tabTitle1,
+    t.sustainable.enviroment.tabTitle2,
+    t.sustainable.enviroment.tabTitle3,
+    t.sustainable.enviroment.tabTitle4,
+    t.sustainable.enviroment.tabTitle5,
+    t.sustainable.enviroment.tabTitle6,
+    t.sustainable.enviroment.newsTitle,
+  ];
 
   return (
     <div>
@@ -22,40 +45,134 @@ export default async function Environment(props: any) {
                   <img src="/assets/images/gallery/sustainable/cover1.jpg" alt="image" />
                 </div>
                 <div className="rs-postbox-content">
-                  <h3 className="rs-postbox-details-title">{t.medee6.newsTitle1}</h3>
+                  <h3 className="rs-postbox-details-title">{t.sustainable.enviroment.newsTitle}</h3>
                 </div>
                 <div className="rs-postbox-details-content">
-                  <p>{t.medee6.newsDescription11}</p>
-                  <div className="rs-postbox-details-thumb">
-                    <img src="/assets/images/gallery/khb/project2.avif" alt="image" />
-                  </div>
-                  <h3 className="rs-postbox-details-feature-title mb-20">{t.medee6.newsTitle2}</h3>
-                  <p>{t.medee6.newsDescription21}</p>
-                  <h3 className="rs-postbox-details-feature-title mb-20">{t.medee6.newsTitle3}</h3>
-                  <p>{t.medee6.newsDescription31}</p>
-                  <h3 className="rs-postbox-details-feature-title mb-20">{t.medee6.newsTitle4}</h3>
-                  <p>{t.medee6.newsDescription41}</p>
-                  <div className="rs-postbox-details-thumb-wrapper mb-30">
-                    <div className="row g-5">
-                      <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <div className="rs-postbox-details-thumb">
-                          <img src="/assets/images/gallery/khb/cover3.avif" alt="image" />
-                        </div>
-                      </div>
-                      <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                        <div className="rs-postbox-details-thumb">
-                          <img src="/assets/images/gallery/khb/7.png" alt="image" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <h3 className="rs-postbox-details-feature-title mb-20">{t.medee6.newsTitle5}</h3>
-                  <p>{t.medee6.newsDescription51}</p>
-                  <p>{t.medee6.newsDescription52}</p>
-                  <p>{t.medee6.newsDescription53}</p>
-                  <p>{t.medee6.newsDescription54}</p>
-                  <p>{t.medee6.newsDescription55}</p>
+                  <p>{t.sustainable.enviroment.newsDescription}</p>
+                  <p>{t.sustainable.enviroment.newsDescription1}</p>
                 </div>
+                
+                {/* Modern Swiper Slider */}
+                <ModernSlider 
+                  images={environmentImages}
+                  titles={environmentTitles}
+                  height="450px"
+                  autoplay={true}
+                  effect="fade"
+                />
+                
+                <h3 className="rs-postbox-details-feature-title mb-20">
+                  {t.sustainable.enviroment.tabMainTitle1}
+                </h3>
+                <div className="environment-section">
+                  <div className="vertical-title">
+                    <span>{t.sustainable.enviroment.tabTitle1}</span>
+                  </div>
+                  <div className="description-list">
+                    <ul>
+                      <li>{t.sustainable.enviroment.tabDescription11}</li>
+                      <li>{t.sustainable.enviroment.tabDescription12}</li>
+                      <li>{t.sustainable.enviroment.tabDescription13}</li>
+                      <li>{t.sustainable.enviroment.tabDescription14}</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Social Section - Short Term */}
+                <div className="environment-section">
+                  <div className="vertical-title">
+                    <span>{t.sustainable.enviroment.tabTitle2}</span>
+                  </div>
+                  <div className="description-list">
+                    <ul>
+                      <li>{t.sustainable.enviroment.tabDescription21}</li>
+                      <li>{t.sustainable.enviroment.tabDescription22}</li>
+                      <li>{t.sustainable.enviroment.tabDescription23}</li>
+                      <li>{t.sustainable.enviroment.tabDescription24}</li>
+                      <li>{t.sustainable.enviroment.tabDescription25}</li>
+                      <li>{t.sustainable.enviroment.tabDescription26}</li>
+                      <li>{t.sustainable.enviroment.tabDescription27}</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Governance Section - Short Term */}
+                <div className="environment-section">
+                  <div className="vertical-title">
+                    <span>{t.sustainable.enviroment.tabTitle3}</span>
+                  </div>
+                  <div className="description-list">
+                    <ul>
+                      <li>{t.sustainable.enviroment.tabDescription31}</li>
+                      <li>{t.sustainable.enviroment.tabDescription32}</li>
+                      <li>{t.sustainable.enviroment.tabDescription33}</li>
+                      <li>{t.sustainable.enviroment.tabDescription34}</li>
+                    </ul>
+                  </div>
+                </div>
+                <h3 className="rs-postbox-details-feature-title mb-20">
+                  {t.sustainable.enviroment.tabMainTitle2}
+                </h3>
+
+                {/* Environmental Section */}
+                <div className="environment-section">
+                  <div className="vertical-title">
+                    <span>{t.sustainable.enviroment.tabTitle4}</span>
+                  </div>
+                  <div className="description-list">
+                    <ul>
+                      <li>{t.sustainable.enviroment.tabDescription41}</li>
+                      <li>{t.sustainable.enviroment.tabDescription42}</li>
+                      <li>{t.sustainable.enviroment.tabDescription43}</li>
+                      <li>{t.sustainable.enviroment.tabDescription44}</li>
+                      <li>{t.sustainable.enviroment.tabDescription45}</li>
+                      <li>{t.sustainable.enviroment.tabDescription46}</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Social Section */}
+                <div className="environment-section">
+                  <div className="vertical-title">
+                    <span>{t.sustainable.enviroment.tabTitle5}</span>
+                  </div>
+                  <div className="description-list">
+                    <ul>
+                      <li>{t.sustainable.enviroment.tabDescription51}</li>
+                      <li>{t.sustainable.enviroment.tabDescription52}</li>
+                      <li>{t.sustainable.enviroment.tabDescription53}</li>
+                      <li>{t.sustainable.enviroment.tabDescription54}</li>
+                      <li>{t.sustainable.enviroment.tabDescription55}</li>
+                      <li>{t.sustainable.enviroment.tabDescription56}</li>
+                      <li>{t.sustainable.enviroment.tabDescription57}</li>
+                      <li>{t.sustainable.enviroment.tabDescription58}</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Governance Section */}
+                <div className="environment-section">
+                  <div className="vertical-title">
+                    <span>{t.sustainable.enviroment.tabTitle6}</span>
+                  </div>
+                  <div className="description-list">
+                    <ul>
+                      <li>{t.sustainable.enviroment.tabDescription61}</li>
+                      <li>{t.sustainable.enviroment.tabDescription62}</li>
+                      <li>{t.sustainable.enviroment.tabDescription63}</li>
+                      <li>{t.sustainable.enviroment.tabDescription64}</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Modern Swiper Slider */}
+                <ModernSlider 
+                  images={environmentImages}
+                  titles={environmentTitles}
+                  height="450px"
+                  autoplay={true}
+                  effect="fade"
+                />
               </div>
             </div>
             <div className="col-xl-4 col-lg-4">

@@ -1,10 +1,12 @@
 import React from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
 import LanguageSwitcher from "./language-switcher";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Sidebar({ locale, alt }: { locale: string; alt: string }) {
   const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "mn";
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const t = await getDictionary(lang);
   return (
     <>

@@ -1,6 +1,7 @@
 import React from "react";
 
-export default function HomeAbout() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+export default function HomeAbout({ t }: { t: any }) {
   return (
     <>
       <section className="rs-work-step-area rs-work-step-one section-space-bottom primary-bg">

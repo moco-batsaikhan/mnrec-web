@@ -1,6 +1,7 @@
 "use client";
 
-export default function Banner() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function Banner({ t }: { t: any }) {
   return (
     <section
       className="rs-banner-area rs-banner-two p-relative"
@@ -34,17 +35,14 @@ export default function Banner() {
                   data-wow-delay=".3s"
                   data-wow-duration=".7s"
                 >
-                  Delivering superior solutions to complex engineering.
+                  {t.home?.keyWord}
                 </h1>
                 <div
                   className="rs-banner-descrip wow fadeInUp"
                   data-wow-delay=".5s"
                   data-wow-duration=".9s"
                 >
-                  <p>
-                    Since 1989 we are serving customer successfully complete projects on time and
-                    within budget.{" "}
-                  </p>
+                  <p>{t.home?.keyNote} </p>
                 </div>
                 {/* <div
                   className="rs-banner-btn wow fadeInUp"
