@@ -82,16 +82,16 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                     <a href="#">{t.menu.sustainability}</a>
                     <ul className="submenu last-children">
                       <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.community}</Link>
+                        <Link href={`/${lang}/local`}>{t.menu.community}</Link>
                       </li>
                       <li>
                         <Link href={`/${lang}/enviroment`}>{t.menu.environment}</Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link href={`/${lang}/news-detail`}>{t.menu.social}</Link>
-                      </li>
+                      </li> */}
                       <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.development_fund}</Link>
+                        <Link href={`/${lang}/fund`}>{t.menu.development_fund}</Link>
                       </li>
                     </ul>
                   </li>
@@ -105,12 +105,12 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                       <li>
                         <Link href={`/${lang}/videos`}>{t.menu.video}</Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link href={`/${lang}/videos`}>{t.menu.gallery}</Link>
-                      </li>
-                      <li>
+                      </li> */}
+                      {/* <li>
                         <Link href={`/${lang}/news`}>{t.menu.report}</Link>
-                      </li>
+                      </li> */}
                     </ul>
                   </li>
                   {/* Contact */}

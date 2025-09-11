@@ -1281,7 +1281,7 @@ textarea:focus {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgb(255, 92, 0);
+  background-color: #003d3d;
   transition: all 0.5s ease;
   transform: translateX(-100%);
   border-radius: 2px;
@@ -1343,7 +1343,7 @@ textarea:focus {
 }
 .rs-btn.has-theme-red.has-bg::before {
   content: "";
-  background-color: #d40a06;
+  background-color: #023b4a;
 }
 .rs-btn.has-theme-red.has-bg:hover {
   filter: unset;

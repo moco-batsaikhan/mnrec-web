@@ -13,11 +13,14 @@ import Header from "../components/header";
 import ClientScripts from "../components/client-scripts";
 import Script from "next/script";
 import Footer from "../components/footer";
-import favicon from "@/public/assets/images/logo/favicon.png";
 
 export const metadata: Metadata = {
   title: "MNREC",
-  icons: favicon.src,
+  icons: {
+    icon: ["/favicon.ico", "/assets/images/logo/favicon.png"],
+    shortcut: "/favicon.ico",
+    apple: "/assets/images/logo/favicon.png",
+  },
   description:
     "Монголын Үндэсний Газрын Ховор Элемент Корпораци ХХК (МНГХЭК) - Албан ёсны вэб сайт",
 };

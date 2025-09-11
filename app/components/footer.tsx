@@ -1,6 +1,7 @@
 import React from "react";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Footer({ locale, alt }: { locale: string; alt: string }) {
   const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "en";
   const t = await getDictionary(lang);
