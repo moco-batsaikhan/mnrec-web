@@ -2,12 +2,38 @@ import React from "react";
 import Link from "next/link";
 import Sidebar from "./sidebar";
 import HamburgerButton from "./hamburger-button";
-import { getDictionary, locales, type Locale } from "@/lib/i18n";
+import { locales, type Locale } from "@/lib/i18n";
 import LanguageSwitcher from "./language-switcher";
 
-export default async function Header({ locale, alt }: { locale: string; alt: string }) {
+interface HeaderProps {
+  locale: string;
+  alt: string;
+  currentPath?: string;
+  translations: {
+    menu: {
+      about: string;
+      kb_project: string;
+      rare_earth: string;
+      sustainability: string;
+      community: string;
+      environment: string;
+      development_fund: string;
+      news_media: string;
+      latest_news: string;
+      video: string;
+      contact: string;
+    };
+  };
+}
+
+export default function Header({ locale, alt, currentPath, translations }: HeaderProps) {
   const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "mn";
-  const t = await getDictionary(lang);
+
+  // Helper function to check if menu item is active
+  const isActive = (path: string) => {
+    if (!currentPath) return false;
+    return currentPath.includes(path);
+  };
 
   return (
     <header>
@@ -27,44 +53,60 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
             <div className="rs-header-menu">
               <nav id="mobile-menu" className="main-menu">
                 <ul className="multipage-menu">
-                  <li className="menu-item-has-children">
-                    <a href={`/${lang}/about`}>{t.menu.about}</a>
+                  <li className={`menu-item-has-children ${isActive("/about") ? "active" : ""}`}>
+                    <a href={`/${lang}/about`}>{translations.menu.about}</a>
                   </li>
-                  <li className="menu-item-has-children">
-                    <a href={`/${lang}/kb-project`}>{t.menu.kb_project}</a>
+                  <li
+                    className={`menu-item-has-children ${isActive("/kb-project") ? "active" : ""}`}
+                  >
+                    <a href={`/${lang}/kb-project`}>{translations.menu.kb_project}</a>
                   </li>
-                  <li className="menu-item-has-children">
-                    <a href={`/${lang}/rare-earth-elements`}>{t.menu.rare_earth}</a>
+                  <li
+                    className={`menu-item-has-children ${
+                      isActive("/rare-earth-elements") ? "active" : ""
+                    }`}
+                  >
+                    <a href={`/${lang}/rare-earth-elements`}>{translations.menu.rare_earth}</a>
                   </li>
-                  <li className="menu-item-has-children">
-                    <a href="#">{t.menu.sustainability}</a>
+                  <li
+                    className={`menu-item-has-children ${
+                      isActive("/local") || isActive("/enviroment") || isActive("/fund")
+                        ? "active"
+                        : ""
+                    }`}
+                  >
+                    <a href="#">{translations.menu.sustainability}</a>
                     <ul className="submenu last-children">
                       <li>
-                        <Link href={`/${lang}/local`}>{t.menu.community}</Link>
+                        <Link href={`/${lang}/local`}>{translations.menu.community}</Link>
                       </li>
                       <li>
-                        <Link href={`/${lang}/enviroment`}>{t.menu.environment}</Link>
+                        <Link href={`/${lang}/enviroment`}>{translations.menu.environment}</Link>
                       </li>
                       <li>
-                        <Link href={`/${lang}/fund`}>{t.menu.development_fund}</Link>
+                        <Link href={`/${lang}/fund`}>{translations.menu.development_fund}</Link>
                       </li>
                     </ul>
                   </li>
                   {/* News & Media */}
-                  <li className="menu-item-has-children">
-                    <a href="#">{t.menu.news_media}</a>
+                  <li
+                    className={`menu-item-has-children ${
+                      isActive("/news") || isActive("/videos") ? "active" : ""
+                    }`}
+                  >
+                    <a href="#">{translations.menu.news_media}</a>
                     <ul className="submenu last-children">
                       <li>
-                        <Link href={`/${lang}/news`}>{t.menu.latest_news}</Link>
+                        <Link href={`/${lang}/news`}>{translations.menu.latest_news}</Link>
                       </li>
                       <li>
-                        <Link href={`/${lang}/videos`}>{t.menu.video}</Link>
+                        <Link href={`/${lang}/videos`}>{translations.menu.video}</Link>
                       </li>
                     </ul>
                   </li>
                   {/* Contact */}
-                  <li className="menu-item-has-children">
-                    <Link href={`/${lang}/contact`}>{t.menu.contact}</Link>
+                  <li className={`menu-item-has-children ${isActive("/contact") ? "active" : ""}`}>
+                    <Link href={`/${lang}/contact`}>{translations.menu.contact}</Link>
                     {/* <ul className="submenu last-children">
                       <li>
                         <a href="#address">{t.menu.address}</a>
@@ -94,7 +136,7 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
         </div>
       </div>
       <div className="fix">
-        <Sidebar locale={locale} alt={alt} />
+        <Sidebar locale={locale} alt={alt} translations={translations} />
       </div>
       <div className="offcanvas-overlay"></div>
       <div className="offcanvas-overlay-white"></div>

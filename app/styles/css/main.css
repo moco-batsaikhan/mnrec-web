@@ -1309,7 +1309,7 @@ textarea:focus {
   color: var(--rs-white);
 }
 .rs-btn.blue-bg {
-  background: linear-gradient(to right, #00b0b0, #24ff92);;
+  background: linear-gradient(to right, #00b0b0, #24ff92);
 }
 .rs-btn.blue-bg:hover {
   background-color: linear-gradient(to right, #00b0b0, #24ff92);
@@ -8902,10 +8902,24 @@ html.lenis body {
 /* Menu index */
 .main-menu ul li.active > a {
   color: var(--rs-theme-orange);
+  position: relative;
+}
+
+.main-menu ul li.active > a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, #00b0b0, #24ff92);
+  border-radius: 1px;
 }
 .main-menu ul li a.active {
   color: var(--rs-theme-orange);
+  position: relative;
 }
+
 .main-menu > ul {
   display: inline-flex;
 }

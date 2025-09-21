@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../globals.css";
 import { locales } from "@/lib/i18n";
-import Header from "../components/header";
+import HeaderWrapper from "../components/header-wrapper";
 import ClientScripts from "../components/client-scripts";
 import Script from "next/script";
 import Footer from "../components/footer";
@@ -38,7 +38,7 @@ export default async function LocaleLayout({
 
   return (
     <>
-      <Header locale={locale} alt={alt} />
+      <HeaderWrapper locale={locale} alt={alt} />
 
       {children}
       <Footer locale={locale} alt={alt} />

@@ -1,13 +1,19 @@
 import React from "react";
 // import Link from "next/link";
-import { getDictionary, locales, type Locale } from "@/lib/i18n";
+import { locales, type Locale } from "@/lib/i18n";
 import LanguageSwitcher from "./language-switcher";
 
+interface SidebarProps {
+  locale: string;
+  alt: string;
+  translations: any;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default async function Sidebar({ locale, alt }: { locale: string; alt: string }) {
+export default function Sidebar({ locale, alt, translations }: SidebarProps) {
   const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "mn";
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const t = await getDictionary(lang);
+  const t = translations;
   return (
     <>
       <div className="offcanvas-area has-theme-red" data-lenis-prevent>

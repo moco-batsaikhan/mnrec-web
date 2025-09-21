@@ -210,6 +210,21 @@ header p {
   padding: 1em;
   z-index: 15;
 }
+.rs-header-two .rs-header-call::before {
+  display: block;
+}
+.rs-header-hamburger {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .rs-header-hamburger {
+    display: none;
+  }
+  .rs-header-two .rs-header-call::before {
+    display: none;
+  }
+}
 
 @media (min-width: 768px) {
   .timeline {
