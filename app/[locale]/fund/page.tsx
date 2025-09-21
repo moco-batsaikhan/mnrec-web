@@ -20,7 +20,10 @@ export default async function Fund(props: any) {
 
   return (
     <div>
-      <PageBanner pageName={t.sustainable?.fund?.pageTitle ?? "News"} />
+      <PageBanner
+        bannerImage={"/assets/images/bg/page-banner.jpg"}
+        pageName={t.sustainable?.fund?.pageTitle ?? "News"}
+      />
       <section className="rs-postbox-area section-space">
         <div className="container">
           <div className="row g-5">

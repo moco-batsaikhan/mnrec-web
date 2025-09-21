@@ -28,56 +28,14 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
               <nav id="mobile-menu" className="main-menu">
                 <ul className="multipage-menu">
                   <li className="menu-item-has-children">
-                    <a href="#">{t.menu.about}</a>
-                    <ul className="submenu last-children">
-                      <li>
-                        <Link href={`/${lang}/about-intro`}>{t.menu.about_intro}</Link>
-                      </li>
-                      <li>
-                        <Link href={`/${lang}/about-team`}>{t.menu.about_team}</Link>
-                      </li>
-                    </ul>
+                    <a href={`/${lang}/about`}>{t.menu.about}</a>
                   </li>
-                  {/* KB Project */}
                   <li className="menu-item-has-children">
-                    <a href="#">{t.menu.kb_project}</a>
-                    <ul className="submenu last-children">
-                      {/* <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.kb_overview}</Link>
-                      </li> */}
-                      <li>
-                        <Link href={`/${lang}/project-timeline`}>{t.menu.kb_history}</Link>
-                      </li>
-                      <li>
-                        <Link href={`/${lang}/geology-deposit`}>{t.menu.kb_geology}</Link>
-                      </li>
-                      <li>
-                        <Link href={`/${lang}/project-highlights`}>{t.menu.kb_highlight}</Link>
-                      </li>
-                      {/* <li>
-                        <a href="#kb-achievements">{t.menu.kb_achievements}</a>
-                      </li> */}
-                    </ul>
+                    <a href={`/${lang}/kb-project`}>{t.menu.kb_project}</a>
                   </li>
-                  {/* Rare Earth */}
                   <li className="menu-item-has-children">
-                    <a href="#">{t.menu.rare_earth}</a>
-                    <ul className="submenu last-children">
-                      <li>
-                        <Link href={`/${lang}/rare-earth-elements`}>{t.menu.ree_what}</Link>
-                      </li>
-                      <li>
-                        <Link href={`/${lang}/application-rare-elements`}>{t.menu.ree_uses}</Link>
-                      </li>
-                      <li>
-                        <Link href={`/${lang}/market-trends`}>{t.menu.ree_market}</Link>
-                      </li>
-                      <li>
-                        <Link href={`/${lang}/mongolian-ree`}>{t.menu.ree_mongolia}</Link>
-                      </li>
-                    </ul>
+                    <a href={`/${lang}/rare-earth-elements`}>{t.menu.rare_earth}</a>
                   </li>
-                  {/* Sustainability */}
                   <li className="menu-item-has-children">
                     <a href="#">{t.menu.sustainability}</a>
                     <ul className="submenu last-children">
@@ -87,9 +45,6 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                       <li>
                         <Link href={`/${lang}/enviroment`}>{t.menu.environment}</Link>
                       </li>
-                      {/* <li>
-                        <Link href={`/${lang}/news-detail`}>{t.menu.social}</Link>
-                      </li> */}
                       <li>
                         <Link href={`/${lang}/fund`}>{t.menu.development_fund}</Link>
                       </li>
@@ -105,12 +60,6 @@ export default async function Header({ locale, alt }: { locale: string; alt: str
                       <li>
                         <Link href={`/${lang}/videos`}>{t.menu.video}</Link>
                       </li>
-                      {/* <li>
-                        <Link href={`/${lang}/videos`}>{t.menu.gallery}</Link>
-                      </li> */}
-                      {/* <li>
-                        <Link href={`/${lang}/news`}>{t.menu.report}</Link>
-                      </li> */}
                     </ul>
                   </li>
                   {/* Contact */}

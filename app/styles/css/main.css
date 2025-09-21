@@ -943,7 +943,7 @@ textarea:focus {
 /*---------------------------------
 	1.3 Default Spacing SCSS
 ---------------------------------*/
-.section-space-ab{
+.section-space-ab {
   padding-top: 100px;
 }
 .section-space {
@@ -1309,10 +1309,10 @@ textarea:focus {
   color: var(--rs-white);
 }
 .rs-btn.blue-bg {
-  background: var(--rs-theme-blue);
+  background: linear-gradient(to right, #00b0b0, #24ff92);;
 }
 .rs-btn.blue-bg:hover {
-  background-color: rgba(4, 4, 35, 0.25);
+  background-color: linear-gradient(to right, #00b0b0, #24ff92);
 }
 .rs-btn.has-bg-transparent {
   background: transparent;
@@ -2042,7 +2042,7 @@ textarea:focus {
 }
 
 .rs-theme-orange {
-  color: var(--rs-mnrec-green);
+  color: var(--rs-text-primary);
 }
 
 .rs-theme-red {
@@ -2718,8 +2718,8 @@ textarea:focus {
   width: 40px;
   height: 40px;
   background: transparent;
-  color: var(--rs-black);
-  border: 1px solid var(--rs-border-secondary);
+  color: var(--rs-white);
+  border: 1px solid var(--rs-light);
   font-size: 16px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -2733,9 +2733,9 @@ textarea:focus {
   fill: currentColor;
 }
 .offcanvas-social ul li a:hover {
-  background: var(--rs-theme-orange);
-  color: var(--rs-white);
-  border-color: var(--rs-theme-orange);
+  background: var(--rs-mnrec-green);
+  color: var(--rs-black);
+  border-color: var(--rs-mnrec-green);
 }
 .offcanvas-notification-icon a {
   font-size: 14px;
@@ -2930,12 +2930,12 @@ textarea:focus {
 /*----------------------------------------*/
 .rs-section-title {
   color: var(--rs-title-primary);
-  font-size: 32px;
-    font-weight: 800;
-    text-transform: uppercase;
-    line-height: 1.25em;
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.25em;
 }
-.rs-section-title{
+.rs-section-title {
   text-decoration: inherit;
 }
 .rs-section-title.has-theme-blue {
@@ -2952,7 +2952,7 @@ textarea:focus {
 }
 .rs-section-subtitle {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 25px;
   text-transform: uppercase;
   color: var(--rs-black);
@@ -2995,7 +2995,7 @@ textarea:focus {
   fill: var(--rs-theme-light-green);
 }
 .rs-section-subtitle.has-theme-yellow {
-  color: var(--rs-theme-yellow);
+  color: var(--rs-theme-dark-blue);
 }
 .rs-section-subtitle.has-theme-yellow svg path {
   fill: var(--rs-theme-yellow);
@@ -3061,7 +3061,7 @@ textarea:focus {
 /*  2.6 Breadcrumb
 /*----------------------------------------*/
 .rs-breadcrumb-one {
-  padding-top: 170px;
+  padding-top: 380px;
   padding-bottom: 170px;
 }
 @media only screen and (max-width: 1199px) {
@@ -3075,6 +3075,17 @@ textarea:focus {
     padding-top: 120px;
     padding-bottom: 120px;
   }
+}
+.rs-breadcrumb-one::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 28px;
+  background: linear-gradient(to right, #00b0b0, #48ff68);
+  border-radius: 2px;
 }
 .rs-breadcrumb-one .rs-breadcrumb-bg.bg-black {
   display: none;
@@ -3408,7 +3419,7 @@ input[type="checkbox"] ~ label:hover {
   background: rgb(12, 80, 71);
   color: var(--rs-white);
 }
-.rs-contact-meta{
+.rs-contact-meta {
   color: aliceblue;
 }
 
@@ -11428,7 +11439,7 @@ html.lenis body {
   content: "";
   width: 100%;
   height: 100%;
-  background: var(--rs-theme-blue);
+  /* background: var(--rs-theme-blue); */
   top: 0;
   inset-inline-start: 0;
   opacity: 0.6;
@@ -12713,14 +12724,15 @@ html.lenis body {
 }
 .rs-about-eight .rs-about-thumb img {
   width: 100%;
-  border-radius: 2px;
+  border-radius: 32px;
 }
 .rs-about-eight .rs-about-thumb.img-one {
-  width: 360px;
+  width: 100%;
+  border-radius: 32px;
 }
 @media only screen and (max-width: 480px) {
   .rs-about-eight .rs-about-thumb.img-one {
-    width: 295px;
+    width: 100%;
   }
 }
 .rs-about-eight .rs-about-thumb.img-two {
@@ -12783,6 +12795,7 @@ html.lenis body {
 .rs-about-eight .descrip {
   margin: 20px 0 35px;
   max-width: 630px;
+  text-align: justify;
 }
 .rs-about-eight .rs-about-progress {
   max-width: 620px;
@@ -14578,7 +14591,7 @@ html.lenis body {
     grid-template-columns: 1fr;
   }
 }
-.rs-subscribe-one .rs-subscribe-text p {
+.rs-subscribe-one .rs-subscribe-text h4 {
   color: #cbcccd;
 }
 .rs-subscribe-one .rs-subscribe-input {
@@ -15394,27 +15407,7 @@ html.lenis body {
 .rs-team-two .rs-team-title a:hover {
   color: var(--rs-mnrec-green);
 }
-.rs-team-details .rs-team-details-thumb {
-  border-top: 4px solid var(--rs-mnrec-green);
-  border-radius: 4px;
-  width: 580px;
-}
-@media only screen and (max-width: 1600px) {
-  .rs-team-details .rs-team-details-thumb {
-    width: 100%;
-    position: sticky;
-    top: 110px;
-  }
-}
-@media only screen and (max-width: 991px) {
-  .rs-team-details .rs-team-details-thumb {
-    position: relative;
-    top: unset;
-  }
-}
-.rs-team-details .rs-team-details-thumb img {
-  width: 100%;
-}
+
 .rs-team-details .rs-team-details-info-title {
   font-weight: 500;
   color: var(--rs-black);
@@ -19575,18 +19568,17 @@ html.lenis body {
     font-size: 30px;
   }
 }
-.rs-work-step-title-with-border{
+.rs-work-step-title-with-border {
   background-color: var(--rs-mnrec-green);
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 30px;
-    font-size: 22px;
-    font-weight: 800;
-    text-transform: uppercase;
-    line-height: 1.25em;
-    letter-spacing: 0px;
-    color: var(--rs-white);
-
+  border-radius: 30px;
+  padding: 10px;
+  padding-left: 30px;
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.25em;
+  letter-spacing: 0px;
+  color: var(--rs-white);
 }
 .rs-portfolio-details-content .rs-portfolio-details-working-step-wrapper .rs-work-step-title {
   color: var(--rs-text-tertiary);
@@ -19776,7 +19768,7 @@ html.lenis body {
     padding: 25px 25px 25px 25px;
   }
 }
-.rs-work-step-area{
+.rs-work-step-area {
   margin-top: -40px;
 }
 .rs-contact-one.has-theme-red .rs-contact-bg-thumb {
@@ -20989,22 +20981,22 @@ html.lenis body {
 }
 .rs-map-one .rs-google-map iframe {
   width: 100%;
-  height: 800px;
-  filter: brightness(100%) contrast(100%) saturate(0%) blur(0px) hue-rotate(0deg);
+  height: 400px;
+  /* filter: brightness(100%) contrast(100%) saturate(0%) blur(0px) hue-rotate(0deg); */
 }
 @media only screen and (max-width: 1366px) {
   .rs-map-one .rs-google-map iframe {
-    height: 600px;
+    height: 300px;
   }
 }
 @media only screen and (max-width: 1199px) {
   .rs-map-one .rs-google-map iframe {
-    height: 400px;
+    height: 200px;
   }
 }
 @media only screen and (max-width: 767px) {
   .rs-map-one .rs-google-map iframe {
-    height: 300px;
+    height: 150px;
   }
 }
 

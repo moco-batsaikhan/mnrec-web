@@ -1,12 +1,15 @@
 import React from "react";
 
-export default function PageBanner({ pageName }: { pageName: string }) {
+export default function PageBanner({
+  pageName,
+  bannerImage,
+}: {
+  pageName: string;
+  bannerImage: string;
+}) {
   return (
     <section className="rs-breadcrumb-area rs-breadcrumb-one p-relative">
-      <div
-        className="rs-breadcrumb-bg"
-        style={{ backgroundImage: "url('/assets/images/bg/page-banner.jpg')" }}
-      ></div>
+      <div className="rs-breadcrumb-bg" style={{ backgroundImage: `url('${bannerImage}')` }}></div>
       <div
         className="rs-breadcrumb-overlay"
         style={{

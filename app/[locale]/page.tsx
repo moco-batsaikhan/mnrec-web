@@ -17,7 +17,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <>
       <Banner t={t} />
-      <HomeAbout t={t} />
+      {/* <HomeAbout t={t} /> */}
       {/* <HomeVideo lang={locale} /> */}
       {/* <HomeBlog lang={locale} /> */}
       {/* <HomePartner lang={locale} /> */}

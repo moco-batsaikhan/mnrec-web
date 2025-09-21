@@ -14,13 +14,13 @@ export default async function Environment(props: any) {
 
   // Define slider images for environment page
   const environmentImages = [
-    '/assets/images/gallery/sustainable/cover2.jpg',
-    '/assets/images/gallery/sustainable/cover3.jpg',
-    '/assets/images/gallery/sustainable/cover4.jpg',
-    '/assets/images/gallery/sustainable/cover5.jpg',
-    '/assets/images/gallery/sustainable/cover6.jpg',
-    '/assets/images/gallery/sustainable/cover7.jpg',
-    '/assets/images/gallery/sustainable/cover8.jpg',
+    "/assets/images/gallery/sustainable/cover2.jpg",
+    "/assets/images/gallery/sustainable/cover3.jpg",
+    "/assets/images/gallery/sustainable/cover4.jpg",
+    "/assets/images/gallery/sustainable/cover5.jpg",
+    "/assets/images/gallery/sustainable/cover6.jpg",
+    "/assets/images/gallery/sustainable/cover7.jpg",
+    "/assets/images/gallery/sustainable/cover8.jpg",
   ];
 
   const environmentTitles = [
@@ -35,7 +35,10 @@ export default async function Environment(props: any) {
 
   return (
     <div>
-      <PageBanner pageName={t.medee6.pageTitle ?? "News"} />
+      <PageBanner
+        bannerImage={"/assets/images/bg/page-banner.jpg"}
+        pageName={t.medee6.pageTitle ?? "News"}
+      />
       <section className="rs-postbox-area section-space">
         <div className="container">
           <div className="row g-5">
@@ -51,16 +54,16 @@ export default async function Environment(props: any) {
                   <p>{t.sustainable.enviroment.newsDescription}</p>
                   <p>{t.sustainable.enviroment.newsDescription1}</p>
                 </div>
-                
+
                 {/* Modern Swiper Slider */}
-                <ModernSlider 
+                <ModernSlider
                   images={environmentImages}
                   titles={environmentTitles}
                   height="450px"
                   autoplay={true}
                   effect="fade"
                 />
-                
+
                 <h3 className="rs-postbox-details-feature-title mb-20">
                   {t.sustainable.enviroment.tabMainTitle1}
                 </h3>
@@ -166,7 +169,7 @@ export default async function Environment(props: any) {
                 </div>
 
                 {/* Modern Swiper Slider */}
-                <ModernSlider 
+                <ModernSlider
                   images={environmentImages}
                   titles={environmentTitles}
                   height="450px"

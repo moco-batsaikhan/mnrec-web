@@ -50,24 +50,72 @@ export type Dictionary = {
   };
   about: {
     aboutUs: string;
-    mission: string;
     visionTitle: string;
     visionText: string;
     introduction: string;
     heading: string;
-    shortDescription: string;
-    licenses: string[];
-    counter1Title: string;
-    counter2Title: string;
-    counter3Title: string;
-    counter4Title: string;
     team: string;
-    manager1: string;
-    manager2: string;
     jobPosition1: string;
     jobPosition2: string;
+    jobPosition3: string;
+    jobPosition4: string;
+    manager1: string;
+    manager2: string;
+    manager3: string;
+    manager4: string;
     managerDesc1: string;
     managerDesc2: string;
+    managerDesc3: string;
+    managerDesc4: string;
+  };
+  kbProject: {
+    pageTitle: string;
+    tabTitle1: string;
+    tabDescTitle1: string;
+    tabDesc11: string;
+    tabDesc12: string;
+    tabDesc13: string;
+
+    tabDescTitle2: string;
+    tabDesc21: string;
+    tabDesc22: string;
+    tabDesc23: string;
+
+    tabDescTitle3: string;
+    tabDesc31: string;
+    tabDesc32: string;
+
+    tabDescTitle4: string;
+    tabDesc41: string;
+    tabDesc42: string;
+    tabDesc43: string;
+
+    tabTitle2: string;
+    tabDesc2: string;
+
+    tabTitle3: string;
+    tabDesc3: string;
+
+    tabTitle4: string;
+    tabDesc4: string;
+  };
+  ree: {
+    pageTitle: string;
+    tabTitle1: string;
+    tabDesc1: string;
+
+    tabTitle2: string;
+    tabDesc2: string;
+
+    tabTitle3: string;
+    tabSubtitle1: string;
+    tabSubtitle2: string;
+    tabSubtitle3: string;
+    tabSubtitle4: string;
+    tabSubDesc1: string;
+    tabSubDesc2: string;
+    tabSubDesc3: string;
+    tabSubDesc4: string;
   };
   contact: {
     contactUs: string;
@@ -85,7 +133,6 @@ export type Dictionary = {
     mainOffices: string;
     location: string;
     viewLocation: string;
-    writeMessage: string;
     fullAddress: string;
   };
   medee: {
@@ -108,7 +155,6 @@ export type Dictionary = {
   };
   medee4: {
     pageTitle: string;
-
     newsTitle: string;
     newsTitle1: string;
     newsTitle2: string;
@@ -118,7 +164,6 @@ export type Dictionary = {
   };
   medee5: {
     pageTitle: string;
-
     newsTitle: string;
     newsDescription: string;
   };
@@ -225,7 +270,8 @@ export type Dictionary = {
     banner: {
       subtitle: string;
       title: string;
-      breadcrumb: string;
+      breadcrumb1: string;
+      breadcrumb2: string;
     };
     section: {
       title: string;
@@ -328,7 +374,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           development_fund: "ХАЛЗАН БҮРЭГТЭЙ ХӨГЖЛИЙН САН",
           news_media: "МЭДЭЭ & МЕДИА",
           latest_news: "СҮҮЛИЙН ҮЕИЙН МЭДЭЭ",
-          video: "ВИДЕО",
+          video: "МЕДИА",
           gallery: "ЗУРГИЙН САН",
           report: "ТАЙЛАН",
           contact: "ХОЛБОО БАРИХ",
@@ -338,33 +384,89 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         },
         about: {
           aboutUs: "Бидний тухай",
-          mission: "ЭРХЭМ ЗОРИЛГО",
           visionTitle: "АЛСЫН ХАРАА",
           visionText:
-            "Дэлхийн хүнд Газрын ховор элементийн найдвартай ханган нийлүүлэгч болж сэргээгдэх эрчим хүч, ногоон технологийн хөгжилд бодит хувь нэмэр оруулах.",
-          introduction: `Монголиан Нэшнл Рийр Ийрт Корп ХХК (МНРИК) нь дотоодын 100% хөрөнгө оруулалттай үндэсний уул уурхайн компани юм. Ховд аймгийн Мянгад сумын нутагт орших газрын ховор элементийн “Халзан бүрэгтэй” төсөл дээр төвлөрөн ажиллаж байна.`,
+            "БНХАУ-аас хамааралгүйгээр хүнд газрын ховор элемент болох Диспрозий (Dy), Неодим (Nd)-ийн стратегийн нийлүүлэгч болж, дэлхийн эрчим хүчний хэмнэлттэй, тогтвортой хөгжлийг дэмжинэ.",
+          introduction: `“Монголын Үндэсний Газрын Ховор Корпораци” ХХК (“MNREC”) нь 100% үндэсний хөрөнгө оруулалттай уул уурхайн компани юм. 2010 онд байгуулагдсанаасаа хойш геологийн хайгуул болон уул уурхайн хөрөнгө оруулалтын чиглэлээр үйл ажиллагаа явуулж ирсэн. Одоогоор бидний гол үйл ажиллагаа нь Ховд аймгийн Мянгад суманд орших Халзан Бүрэгтэй газрын ховор элемент (ГХЭ)-ийн төсөл дээр төвлөрч байна.`,
           heading: "КОМПАНИЙН ТАНИЛЦУУЛГА",
-          shortDescription:
-            "МНРИК нь Мянгад сумын нутагт байрлах ашиглалтын тусгай зөвшөөрлүүдийг эзэмшдэг:",
-          licenses: ["Ар хүрэн - MV-012335", "Халзан бүрэгтэй - MV-006911"],
-          counter1Title: "Ашиглалтын тусгай зөвшөөрөл",
-          counter2Title: "Хайгуулын тусгай зөвшөөрөл",
-          counter3Title: "Нийт ажилчид",
-          counter4Title: "Нэгдлийн компаниуд",
           team: `МЕНЕЖМЕНТИЙН БАГ`,
           manager1: "Ч.МӨНХЖАРГАЛ",
           jobPosition1: "ТӨСӨЛ ХАРИУЦСАН ДЭД ЗАХИРАЛ",
           manager2: "Ч.ОДГЭРЭЛ",
           jobPosition2: "БИЗНЕС ХӨГЖЛИЙН МЕНЕЖЕР",
-          managerDesc1: `Ч.Мөнхжаргал нь уул уурхай, ашигт малтмал боловсруулалтын салбарын олон төсөл дээр 20 орчим жил ажиллаж буй туршлагатай, өндөр ур чадвартай мэргэжилтэн юм.
-              Истанбулын Техникийн их сургуульд Ашигт малтмалын баяжуулалтын чиглэлээр бакалавр, магистрын зэрэг хамгаалж, СЭЗИС-ийн MBA зэрэг хамгаалсан тэрбээр ажлын гараагаа Ухаа худгийн нүүрсний уурхайн (UHG) төслөөс эхлүүлж байв.
-              Монголын анхны 15 сая тонн коксжих нүүрсний үйлдвэрийг ашиглалтад оруулах багийн үйл ажиллагааг жигдрүүлэхэд голлох үүрэг гүйцэтгэсэн түүний хувьд мөн Монгол-Германы хамтарсан ашигт малтмал, технологийн их сургуульд (GMIT) 4 жил багшилж, залуу инженерүүдийг бэлтгэхэд үнэтэй хувь нэмэр оруулсан туршлагатай. Боловсролын салбарт богино хугацаанд ажилласныхаа дараа тэрбээр төмрийн хүдрийн төслүүд, тэр дундаа гангийн үйлдвэрлэлийн техникийн олон талт байдлыг судлах, төмрийн хүдэр боловсруулах, үрлэн бүтээгдэхүүний үйлдвэрлэлд төвлөрч, уул уурхайн салбартаа эргэн ажиллаж эхэлсэн.
-              Өдгөө тэрбээр газрын ховор элементийн Халзан бүрэгтэй ордын техникийн судалгаанаас эхлээд төслийг ашиглалтад бэлтгэх бүхий л үе шатанд хяналт тавин ажиллаж байна.
+          managerDesc1: `Хатагтай Мөнхжаргал нь эрдэс баяжуулалтын инженер бөгөөд ашигт малтмалын салбарт 15 жилээс дээш туршлагатай. Төслийн багт нэгдэхээс өмнө түүхий эдийн төслүүдийг санаачилснаас эхлээд ашиглалтад оруулах хүртэлх үе шатуудад удирдан ажиллаж байв. Тэрээр Истанбулын Техникийн Их Сургууль (ITU)-ийн Нүүрс болон Эрдэс Баяжуулалтын инженерийн чиглэлээр магистрын зэрэг хамгаалсан.
               `,
-          managerDesc2: `Одгэрэл нь стратеги болон санхүүгийн удирдлагын чиглэлээр 15 гаруй жилийн туршлага хуримтлуулсан, олон улсын түвшинд мэргэшсэн мэргэжилтэн юм. Тэрээр Австралийн Torrens их сургууль-д суралцан Бизнесийн удирдлагын магистр (MBA) болон Дэлхийн төслийн удирдлагын магистр зэрэг хамгаалсан бөгөөд CPA Australia болон CPA Mongolia-ийн гишүүн юм.
+          managerDesc2: `Хатагтай Одгэрэл нь стратеги болон санхүүгийн удирдлагын чиглэлээр 15 гаруй жилийн туршлага хуримтлуулсан, олон улсын түвшинд мэргэшсэн мэргэжилтэн юм. Тэрээр Австралийн Torrens их сургууль-д суралцан Бизнесийн удирдлагын магистр (MBA) болон Дэлхийн төслийн удирдлагын магистр зэрэг хамгаалсан бөгөөд CPA Australia болон CPA Mongolia-ийн гишүүн юм.
               Одоогоор тэрээр МНРИК-ийн Бизнес хөгжлийн менежер албыг хашиж, компанийн өсөлтийн зорилготой уялдсан стратегийн санаачилгуудыг амжилттай хэрэгжүүлэхийн тулд өөрийн мэдлэг, туршлагаа ашиглан манлайлан ажиллаж байна.
               МНРИК-д ажиллахаасаа өмнө Одгэрэл Австралийн Мельбурн хотод үйл ажиллагаа явуулдаг нэр хүндтэй бизнесийн зөвлөх компанид ес гаруй жил ажиллаж, олон төрлийн төсөл, багцыг амжилттай удирдсан билээ.
               `,
+          manager3: "Адъяа Цолмон",
+          jobPosition3: "Гүйцэтгэх захирал",
+          manager4: "Лхагвасүрэн Дагва-Очир",
+          jobPosition4: "Ахлах геологич",
+          managerDesc3: `Хатагтай Цолмон нь ашигт малтмалын нөөцийн тооцоо болон уурхайн геологийн чиглэлээр 14 жилээс дээш туршлагатай геологич. Тэрээр Монгол Улсын Шинжлэх Ухаан Технологийн Их сургуулиас Бакалаврын зэрэг, АНУ-ын Ютагийн Их Сургуульд Геологийн ухааны магистрын зэрэг хамгаалсан. 2017 оноос Австралазийн Уул Уурхай, Металлургийн Институт (AusIMM)-ийн гишүүнээр ажиллаж байна.
+              `,
+          managerDesc4: `Лхагвасүрэн Дагва-Очир (Даагий) нь MNREC ХХК-ийн ахлах геологич. Тэрээр 2018 онд Монгол Улсын Их Сургуульд “Хангайн бүсийн галт уулын чулуулгуудын эрдэс судлал, геохими, геодинамик орчин”-ы чиглэлээр судалж, Геологийн ухааны магистрын зэрэг хамгаалсан. Одоогоор БНХАУ-ын Чанша хотын Төв Өмнөд Их Сургуульд (Central South University) докторын зэрэг горилогч бөгөөд “Монголын зүүн бүсийн Түмэнцогт газрын ховор, вольфрамын ордын эрдэс судлал, геохими, геохронологи: Хүдэржилт ба тектоникийн орчны тайлбар”-ын чиглэлээр судалгаа хийж байна. Түүний эрдэм шинжилгээний ажил нь магмын чулуулгийн петрологи, далайн хавтангийн стратиграфи, газрын ховор болон ховор металлын хүдэржилтийн судалгааг хамардаг.
+              `,
+        },
+        kbProject: {
+          pageTitle: "",
+          tabTitle1: "Төслийн хураангуй",
+          tabDescTitle1: "Уурхай",
+          tabDesc11: "+25 уурхайн насжилт",
+          tabDesc12: "Ил уурхай",
+          tabDesc13: "Хөрс хуулалтын харьцаа бага",
+
+          tabDescTitle2: "Төслийн явц",
+          tabDesc21:
+            "Хагас үйлдвэрийн туршилт : Баяжуулалтын шатны туршилт дууссан, Боловсруулалтын шатны эхлэхээр бэлтгэгдэж байгаа.",
+          tabDesc22: "ТЭЗҮ : Wood & Stantec компануудаар гүйцэтгүүлж байгаа",
+          tabDesc23: "БОННҮ–Sustainability & SLR компануудаар гүйцэтгүүлж байгаа",
+
+          tabDescTitle3: "Өрөмдлөгийн голлох үзүүлэлт",
+          tabDesc31: "2012-2013онд нийт 11,000 тууш метр өрөмдлөг",
+          tabDesc32: "2022-2023 нийт 20,000 тууш метр өрөмдлөг",
+
+          tabDescTitle4: "Үйлдвэрлэлийн хэмжээ (жил)",
+          tabDesc41: "669мян.тн баяжмал",
+          tabDesc42: "13мян.тн ГХЭ нийлмэл исэл(Mixed Rare earth oxide)",
+          tabDesc43: "ГХЭ ислийн агуулга: 95%",
+
+          tabTitle2: "Төслийн байршил ",
+          tabDesc2:
+            "<article><p>Төсөл Монгол Улсын баруун хэсэгт, Ховд аймгийн Мянгад сумын нутагт оршдог. Уг төсөл нь нийслэл Улаанбаатараас баруун тийш 1600 км, аймгийн төв Ховд хотоос хойш 60 км, Мянгад сумаас хойш 20 км зайд байрладаг. Төсөл нь баруун урагш Хятад-Монголын хил хүртэл 389 км авто замаар холбогдсон байна. Төсөлрүү авто зам болон ойролцоох Ховд хотын нисэх буудлаас нэвтрэх боломжтой.</p></article>",
+
+          tabTitle3: "Геологи ба Хүдэржилт",
+          tabDesc3:
+            "<article><p>Ордын хувьд Доод Палеозойн аккрецийн бүсийг холбосон хагаралын ойролцоо байрладаг бөгөөд Девон-Карбоны үеийн металлогений бүсэд оршдог. Энэ бүс нь интрузив гаралтай газрын ховор элементүүдийн (ХГЭ) эрдэсжилт үүсэх боломжтой гэж тооцогддог. Халзан Бүрэгтэй нь хойд-хойд баруун чиглэлд үргэлжлэх шүлтлэг дайк, биетүүдийн хүрээнд байрладаг бөгөөд бүс нутгийн хамгийн их ашигт малтмалжсан биет юм. </p><br/><p>Халзан Бүрэгтэйг хэт шүлтлэг ГХЭ-ийн орд гэж үздэг. Шүлтлэг галт уулын чулуулгууд нь газрын гадаргаруу хэсэгчилсэн хайлалтын үр дүнд үүсдэг ба энэ нь хайлмалд тохирох элементүүдийг төвлөрүүлэхэд нөлөөлдөг. Үүний дараа магма ялгарал явагдаж, тохирох элементүүдийг дараагийн фазуудад төвлөрүүлэх боломжтой байдаг нь Халзан Бүрэгтэйд ажиглагдаж байна. </p><p>2024 оны 9 сар Хуудас 5 Халзан Бүрэгтэй төсөл NI 43-101 Техникийн Тайлан Бүлэг 1 – Хураангуй Талбайн баруун хэсэгт ашигт малтмалжсан нордмаркит, зүүн хэсэгт хэт шүлтлэг боржин чулуугаар бүрхэгдсэн байдаг. Хамгийн их ашигт малтмалжилт бүхий ~500 м диаметртэй дугуй хэлбэртэй хэт шүлтлэг боржин нь эдгээр хоёр нэгжийн зааг дээр, MV-012335 ашиглалтын зөвшөөрлийн хойд зүүн хэсэгт байрладаг. Өрөмдлөгийн ажлаар хэт шүлтлэг боржин нь газрын гадаргаас доош 200 м орчим гүнд үргэлжилдэг болохыг тогтоосон. Хэт шүлтлэг боржин нь доор орших нордмаркиттай дээшээ хотгор аажмаар шилжсэн бүтэцтэй. Нордмаркит нь одоогийн өрөмдлөгийн ажлын хүрээнд тогтоосноор гүн рүү үргэлжилдэг. Харин зүүн талын шүлтлэг боржингийн талбайд зөвхөн хоёр өрөмдлөгийн цооногийн төгсгөл хэсэг дайк бүсүүдийг огтолж өнгөрсөнөөс бусдаар өрөмдлөг хийгдээгүй байна.</p><br/><p>Хүдэржилт нь маш нарийн ширхэгтэй тархсан ГХЭ агуулсан эрдсүүдээс бүрддэг. Үүнд голлон бастнезит, синчезит багтах бөгөөд зарим ГХЭ нь циркон болон бусад циркон агуулсан эрдсүүдтэй холбогдсон байдаг. Хүдэржилт нь нүдэнд ил харагдахуйц бус байдаг. Хүдэржилт нь хүнд газрын ховор элемент (HREE) болон хөнгөн газрын ховор элементийн (LREE) агууламжаас бүрддэг. </p><p>ГХЭ-ийн агууламж нь хэт шүлтлэг боржин болон нордмаркит дотор ихсэж, тэдгээрийн төв хэсгээс доош, гадна чиглэлд агууламж болон HREE/LREE-ийн харьцаа буурдаг. Нийт геохимийн шинжилгээний үр дүнд үндэслэн өндөр, дунд, бага агуулгатай бүсүүдийг тодорхойлсон. Эдгээр бүсүүдийн хил зааг нь аажмаар шилждэг, харьцангуй хавтгай байрлалтай бөгөөд хэсэгчлэн газрын гадаргуугийн хэлбэрийг дагадаг. Хүдэржилт нь одоогийн блок загварын хүрээнд 2.3 км хойшоо-урд, 2.3 км зүүнээс-баруун, 800 м босоо зайд үргэлжилдэг. Хүдэржилт нь гүнд үргэлжилсэн хэвээр боловч агуулга багасч байгаа нь тогтоогдсон.</p></article>",
+
+          tabTitle4: "Өрөмдлөг ба Дээжлэлтийн Үйл Явц",
+          tabDesc4:
+            "<article><p>Энэхүү талбайн хайгуулыг голчлон цооногийн өрөмдлөгийн аргаар хийсэн. 1990-ээд онд газрын зураглал, гадаргын дээжлэлт, геофизикийн багахан судалгаа хийгдсэн бөгөөд 2011 онд дэлгэрэнгүй зураглал, 2012 2013 онд 41 цооногийн өрөмдлөг, 2021 оноос өнөөг хүртэл нэмэлтээр 94 цооногт өрөмдлөг хийгдсэн. Цаашид төлөвлөж буй өрөмдлөгүүд ашигт малтмалжилтын хязгаарыг тодорхойлоход чиглэнэ. </p><p>Халзан Бүрэгтэйд бүх өрөмдлөгийг алмаазан өрөмдлөгийн аргаар гүйцэтгэж, PQ-оос NQ хэмжээтэй кернийн дээж авсан бөгөөд цооногийн дундаж авалт 99% байна. Өрөмдлөгийг 50 м орчим хэсгийн хоорондох налуу сүлжээний дагуу, 20-100 м хоорондын огтлолын зайтай цуваагаар гүйцэтгэсэн. 2023 оны эцэс гэхэд нийт 135 цооног, нийт урт нь 30,395 метр, 1000 м x 500 м орчим талбайг хамарсан өрөмдлөг хийгдсэн. Цооногийн амсрын байрлалыг нарийвчлалтайгаар хэмжиж, бүх цооногийг гүний хэмжилт хийсэн. </p><p>MНРИК ХХК нь эрдэсжилтийн хажуугийн хязгаарыг тодорхойлох зорилгоор бүх чиглэлд өрөмдлөгийн хамрах хүрээг өргөжүүлэх нэмэлт өрөмдлөг хийхээр төлөвлөж байна. Өрөмдлөгийн цооногийн боловсруулалт болон дээж авах журам, чанарын баталгаажуулалт/чанарын хяналтын (QA/QC) протоколууд, дээжийн бэлтгэл ба шинжилгээ, аюулгүй байдлын арга хэмжээнүүдийг салбарын стандартад нийцүүлэн хэрэгжүүлсэн бөгөөд NI 43-101-ийн удирдамжийн дагуу ашигт малтмалын нөөцийг тооцоолох хангалттай түвшинд гэж үзсэн.</p></article>",
+        },
+        ree: {
+          pageTitle: "Газрын ховор элемент (ГХЭ)",
+          tabTitle1: "Газрын ховор элементүүд гэж юу вэ?",
+          tabDesc1:
+            "Газрын ховор элементүүд (Rare Earth Elements, REEs) нь соронзон, оптик болон дамжуулалтын өвөрмөц шинж чанараараа ялгардаг 17 төрлийн металлын бүлэг юм. Эдгээр элементүүд нь цахилгаан автомашин, салхин турбин, ухаалаг гар утаснаас эхлээд өндөр түвшний батлан хамгаалах систем хүртэл орчин үеийн технологийн салбарт зайлшгүй шаардлагатай.<br/><br/>АНУ-ын Эрчим хүчний яам (DOE)-ны 2023 оны “Эрчим хүчний технологид чухал ач холбогдолтой бөгөөд нийлүүлэлтийн сүлжээний өндөр эрсдэлтэй материалын эцсийн жагсаалт”-д газрын ховор элементүүдийн дөрөв нь хамгийн чухалд тооцогдсон бөгөөд тэдгээр нь Диспрозий (Dy), Неодим (Nd), Празеодим (Pr), Тербий (Tb) юм.<br/><br/>Харин Европын Холбооны “Чухал түүхий эдийн тухай хууль” (Critical Raw Materials Act) 2024 оны 5-р сарын 23-наас хэрэгжиж эхэлсэн бөгөөд бүх 17 газрын ховор элементийг чухал ангилалд багтааж, технологи болон аж үйлдвэрийн хэрэглээнд тэдгээрийн ач холбогдлыг онцлон тэмдэглэжээ.",
+
+          tabTitle2: "Хөнгөн ба хүнд газрын ховор элементүүд",
+          tabDesc2:
+            "<article><h4>Гол ялгаа</h4><p>Газрын ховор элементүүдийг хоёр ангилалд хуваадаг:</p><ul><li><b>Хөнгөн газрын ховор элементүүд (Light Rare Earth Elements, “LREEs”)</b> “Хөнгөн” гэдэг нэр нь жингээс бус, атомын бүтцээс нь хамаарсан ойлголт юм. LREE-үүд нь байгальд илүү элбэг тохиолддог бөгөөд ихэвчлэн хатуу чулуулаг ордод агуулагддаг. Илүү өргөн тархалт нь хүнд газрын ховор элементтэй харьцуулахад зах зээлийн үнэлгээг доогуур байлгадаг. Энэ бүлэгт лантан (La), цери (Ce), празеодим (Pr), неодим (Nd), промети (Pm), самари (Sm) багтдаг. Тэдгээрийн дундаас неодим (Nd) ба празеодим (Pr) нь цахилгаан автомашин болон салхин турбинд ашиглагддаг байнгын соронз үйлдвэрлэлд онцгой ач холбогдолтой.</li><li><b>Хүнд газрын ховор элементүүд (Heavy Rare Earth Elements, “HREEs”)</b> HREE-үүд нь цахилгаан автомашин, салхин турбин болон өндөр түвшний батлан хамгаалах системд хэрэглэгддэг өндөр гүйцэтгэлийн соронз үйлдвэрлэлд зайлшгүй шаардлагатай. Тэдгээр нь цэвэр эрчим хүч болон үндэсний аюулгүй байдлын технологид онцгой ач холбогдолтой тул хамгийн чухал түүхий эдийн тоонд ордог. HREE бүлэгт гадолиний (Gd), холми (Ho), эрби (Er), тули (Tm), иттэрби (Yb), лютеци (Lu), иттрий (Y) багтдаг. Эдгээрээс терби (Tb) ба диспрозий (Dy) нь байнгын соронз үйлдвэрлэлд ашиглагддаг тул онцгой үнэтэйд тооцогддог.</li><li><b>Хангалт ба ховор байдал</b> Дэлхийн хүнд газрын ховор элементүүдийн ихэнх нь түүхэндээ ионит шаварлаг ордоос гарган авдаг байсан бөгөөд ийм төрлийн орд геологийн хувьд нэн ховор. Энэхүү хомс байдал болон HREE-үүдийн стратегийн ач холбогдол нь тэдгээрийг хөнгөн газрын ховор элементүүдээс хавьгүй илүү үнэтэй болгож байна.</li></ul></article>",
+
+          tabTitle3: "ГХЭ хэрэглээ",
+          tabSubtitle1: "Диспрозий (Dy) (Хүнд ГХЭ)",
+          tabSubtitle2: "Терби (Tb) (Хүнд ГХЭ)",
+          tabSubtitle3: "Неодим (Nd) (Хөнгөн газрын ховор элемент)",
+          tabSubtitle4: "Празеодим (Pr) (Хөнгөн ГХЭ)",
+          tabSubDesc1:
+            "<p>NdFeB соронзны өндөр температурын нөхцөл дэх гүйцэтгэлийг сайжруулдаг.<br/><br/><b>Хэрэглээ:</b> Цахилгаан автомашины хөдөлгүүр, цэргийн зориулалтын өндөр мэдрэмжтэй мэдрэгчүүд, эрс тэс нөхцөлд ажиллах салхин турбин.</p>",
+          tabSubDesc2:
+            "<p>Өндөр температурын нөхцөлд соронзны гүйцэтгэлийг сайжруулдаг.<br/><br/><b>Хэрэглээ:</b> Ногоон эрчим хүчний технологи (жишээлбэл, салхин турбин), дэвшилтэт мэдрэгчүүд.</p>",
+          tabSubDesc3:
+            "<p>Үндсэн хэрэглээ: Неодим-төмөр-борын (NdFeB) соронз — байнгын соронзны хамгийн хүчтэй төрөл.<br/><br/><b>Хэрэглээ:</b> Цахилгаан автомашины хөдөлгүүр, салхин турбин, хатуу дискний драйв, чихэв болон бусад цахилгаан хэрэгслүүд.</p>",
+          tabSubDesc4:
+            "<p>Ихэвчлэн неодимтэй хайлш болгон ашиглаж, соронзны хүч болон халуунд тэсвэрлэх чанарыг нэмэгдүүлдэг.<br/><br/><b>Хэрэглээ:</b> Цахилгаан автомашины хөдөлгүүр, салхин турбин, нисэх онгоцны хөдөлгүүр.</p>",
         },
         contact: {
           contactUs: "Холбоо барих",
@@ -382,7 +484,6 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           mainOffices: "Төв оффис",
           location: "Улаанбаатар хот, Сүхбаатар дүүрэг",
           viewLocation: "Газрын зургаар харах",
-          writeMessage: "Та зурвасаа бичнэ үү",
           fullAddress:
             "Улаанбаатар хот, Сүхбаатар дүүрэг, 1 дүгээр хороо, Энхтайвны өргөн чөлөө-19, Худалдаа хөгжлийн банкны төв байр, 1301 тоот",
         },
@@ -541,8 +642,9 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         videos: {
           banner: {
             subtitle: "Үзэх",
-            title: "Бидний Видео",
-            breadcrumb: "Видео",
+            title: "Медиа",
+            breadcrumb1: "Видео",
+            breadcrumb2: "Зураг",
           },
           section: {
             title: "Видео цомог",
@@ -826,7 +928,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           development_fund: "KHALZAN BUREGTEI DEVELOPMENT FUND",
           news_media: "NEWS & MEDIA",
           latest_news: "LATEST NEWS",
-          video: "VIDEO",
+          video: "MEDIA",
           gallery: "GALLERY",
           report: "REPORTS",
           contact: "CONTACT",
@@ -836,25 +938,82 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         },
         about: {
           aboutUs: "About Us",
-          mission: "MISSION",
           visionTitle: "VISION",
           visionText:
-            "To become a strategic global supplier of the heavy REE, Dy-Tb plus Nd, Pr to contribute global energy transition.",
+            "Become a strategic non-China-based supplier of the critical HREE, Dy and Nd and promote energy-efficient, sustainable development of the World.",
           team: `MANAGEMENT TEAM`,
           introduction: `Mongolian National Rare Earth Corp LLC (“MNREC”) is a national mining company with 100% Mongolian national investment. Since our establishment in 2010, we have been engaged in the fields of geological exploration and mining investment. Currently, our primary focus lies on the Khalzan Bburegtei REE project located in the Myangad soum, Khovd aimag, Mongolia.`,
           heading: "Who We Are",
-          shortDescription: "MNREC’s holds the following adjacent mining tenures:",
-          licenses: ["MV-012335- Ar khuren", "MV-006911- Khalzan Buregtei"],
-          counter1Title: "Mining licences",
-          counter2Title: "Exploration licences",
-          counter3Title: "Total staff",
-          counter4Title: "Subsidiaries",
           manager1: "Chimeddorj Munkhjargal",
           jobPosition1: "Project deputy director",
           manager2: "Chuluunbatar Odgerel",
           jobPosition2: "Business development manager",
           managerDesc1: `Mrs. Munkhjargal is a mineral processing engineer with over 15 years of experience working in minerals industry. Prior to joining the project, she was responsible for various raw material projects from initiation to operation phases. She holds a master’s degree in Coal and Mineral Processing Engineering from Istanbul Technical University (ITU)`,
           managerDesc2: `Mrs. Odgerel has a rich background in strategy and financial management with over 15 years of experience in diverse industries. She holds an MBA and a Master of Global Project Management degree from Torrens University Australia, and a member of CPA Australia as well as CPA Mongolia. Currently serving as the Business Development Manager at MNREC, she leveraged her expertise to drive strategic initiatives that align with the company's growth objectives. Prior to joining MNREC, Mrs. Odgerel spent over nine years at a prominent business consulting firm in Melbourne, Australia where she managed various portfolios.`,
+          manager3: "Tsolmon Adiya",
+          jobPosition3: "CEO",
+          managerDesc3: `Mrs. Tsolmon is a geologist with over 14 years of experience working in mineral resource estimation and mine geology. Ms. Tsolmon holds a Bachelor of Science from the Mongolian University of Science and Technology , MSC from the University of Utah. She is a member of Australasian Institute of mining and Metallurgy (AusIMM) since 2017`,
+          manager4: "Davga-ochir Lhagvasuren",
+          jobPosition4: "Senior Geologist",
+          managerDesc4: `Dagva-Ochir Lkhagvasuren (Daagii) is a senior geologist at MNREC LLC. He obtained an M.Sc. degree in Geology from the National University of Mongolia in 2018, with a focus on "Mineralogy, geochemistry, and geodynamic environment of volcanic rocks from the Khangay region". Currently, he is a Ph.D. candidate at Central South University in Changsha, China, researching the topic "Mineralogy, geochemistry, and geochronology of the Tumentsogt tungsten deposit, Eastern Mongolia: Implications for ore genesis and tectonic setting. His scientific research fields encompass the petrology of magmatic rocks, ocean plate stratigraphy, and rare metal and REE mineralization`,
+        },
+        kbProject: {
+          pageTitle: "",
+          tabTitle1: "Project overview ",
+          tabDescTitle1: "Mining ",
+          tabDesc11: "+25 mine life ",
+          tabDesc12: "Open pit mining",
+          tabDesc13: "Low Strip ratio",
+
+          tabDescTitle2: "Status",
+          tabDesc21: "Pilot Test : Concentrator completed Refinery scheduled Oct 25",
+          tabDesc22: "DFS : Ongoing by Wood & Stantec",
+          tabDesc23: "ESIA – Ongoing by Sustainability & SLR",
+
+          tabDescTitle3: "Drilling highlight",
+          tabDesc31: "2012-2013 Total of 11,000 meters",
+          tabDesc32: "2022-2023 Total of 20,000 meters",
+
+          tabDescTitle4: "Annual production",
+          tabDesc41: "669kt concentrate",
+          tabDesc42: "13kt MREO(Mixed Rare earth oxide)",
+          tabDesc43: "MREO grade 95%",
+
+          tabTitle2: "Project location",
+          tabDesc2:
+            "<article><p>The Project lies in the far west of Mongolia, in the Myangad district of Khovd province. It is located approximately 1600 km west of the national capital, Ulaanbaatar, 60 km northeast of the provincial capital city of Khovd, and 20 km north of the township of Myangad. </p></article>",
+
+          tabTitle3: "Geology & Mineralization ",
+          tabDesc3:
+            "<article><p>Khalzan Buregtei is considered to be a peralkaline REE deposit. Alkaline igneous rocks form by small degrees of partial melting of crustal materials, which acts to concentrate incompatible elements in the melt fraction. The resultant magmas may undergo differentiation to further concentrate the incompatible elements in later phases, as appears to be the case at Khalzan Buregtei.</p><p>The western half of the Property is underlain by mineralised nordmarkite and the eastern half by peralkaline granite. A ~500 m diameter circular peralkaline granite hosting the strongest mineralisation is situated at the contact of these two units, within the northeast quarter of mining license MV-012335. Drilling has shown that the peralkaline granite generally persists to about 200 m below surface. The peralkaline granite has a broadly concave-upward gradational contact with the underlying nordmarkite. Nordmarkite persists to depth within the current drilling. No drilling has been conducted in the alkaline granite to the east, with the exception of the tail ends of two eastward-directed holes which mainly intersected dykes.</p><p>Mineralisation consists of very fine grained disseminated REE-bearing minerals, mainly bastnaesite and synchesite, with some REE associated with zircon and other Zr-bearing minerals; mineralisation is not visually obvious. Mineralisation consists of both heavy rare earth element (HREE) and light rare earth element (LREE) content. REE concentrations are strongly elevated within the peralkaline granite and nordmarkite, with both absolute values and the HREE/LREE ratio diminishing downward and outward from the centre of the peralkaline granite through the nordmarkite.</p><p>Nominal high, medium, and low-grade zones have been defined on the basis of overall analytical result patterns. The contacts are diffuse and gradational, relatively flat-lying and subparallel, and to some extent mimic topography. Mineralisation extends to the limits of the current block model over a distance of 2.3 km north-south, 2.3 km east-west, and 800 m vertically. All zones remain open to the south, west, and north, and possibly to the east. MNREC intends to begin a drilling program to test for the lateral limits of mineralisation. The deposit also remains open at depth, but at low grades which apparently are diminishing with depth.</p></article>",
+
+          tabTitle4: "Drilling and Sampling",
+          tabDesc4:
+            "<article><p>Exploration of the Property has been carried out mainly by core drilling. Mapping, surface sampling, and geophysical surveying in the 1990s was followed by more detailed mapping in 2011, drilling of 41 core holes in 2012-2013, and by a further 94 holes from 2021 to the present. Additional planned drilling will seek to define the lateral limits of mineralisation, which currently remain open in most directions. All drilling at Khalzan Buregtei has been carried out using conventional wireline diamond drilling techniques recovering PQ to NQ size core, with generally excellent recovery (99%). Drilling has been carried out on an oblique grid with section spacing of approximately 50 m and fans of holes at intersection spacing of 20-100 m. By the end of 2023, a total of 135 holes had been drilled for a total of 30 395 m, covering an area roughly 1000 m by 500 m. Collar positions have been accurately surveyed and all holes were downhole surveyed. There are no drilling, sampling, or recovery factors that would materially impact the accuracy and reliability of the results. Additional drilling is planned by MNREC, with the goal of extending drill coverage outward in all directions to determine the lateral limits of mineralisation. Core handling and sampling procedures, quality assurance/quality control (QA/QC) protocols, sample preparation and analysis, and security measures were all carried out to industry standards and are considered adequate to support estimation of mineral resources under the guidelines of NI 43-101.</p></article>",
+        },
+        ree: {
+          pageTitle: "Rare earth elements (REE)",
+          tabTitle1: "What are rare earth elements?",
+          tabDesc1:
+            "Rare Earth Elements (REEs) are a group of 17 metals known for their unique magnetic, optical, and conductive properties. These elements are essential to modern technologies, from electric vehicles and wind turbines to smartphones and advanced defense systems. The 2023 U.S. Department of Energy (DOE)’s Final Critical Materials List, highlighting materials crucial for energy technologies with significant supply chain risks, features 4 rare earths as the most critical: Dysprosium (Dy), Neodymium (Nd), Praseodymium (Pr), and Terbium (Tb). Meanwhile the European Union's Critical Raw Materials Act, effective May 23, 2024, designates all 17 rare earth elements as critical, emphasizing their importance for technological and industrial applications.",
+
+          tabTitle2: "Heavy and light rare earths",
+          tabDesc2:
+            "<article><h4>Key differences</h4><p>Rare earth elements are divided into two categories:</p><ul><li><b>Light Rare Earth Elements (“LREEs”):</b> Despite the name, “light” refers to their atomic structure—not their weight. LREEs are more abundant in nature and typically found in hard rock deposits. Their relative availability contributes to lower market prices compared to heavy rare earths. This group includes lanthanum (La), cerium (Ce), praseodymium (Pr), neodymium (Nd), promethium (Pm), and samarium (Sm), Nd and Pr being especially important for the production of permanent magnets used in electric vehicles and wind turbines.</li><li><b>Heavy Rare Earth Elements (“HREEs”):</b> HREEs are essential for high-performance magnets used in electric vehicles, wind turbines, and advanced defense sys",
+
+          tabTitle3: "REE applications",
+          tabSubtitle1: "Dysprosium (Dy) (Heavy Rare Earth)",
+          tabSubtitle2: "Terbium (Tb) (Heavy Rare Earth)",
+          tabSubtitle3: "Neodymium (Nd) (Light Rare Earth)",
+          tabSubtitle4: "Praseodymium (Pr) (Light Rare Earth)",
+          tabSubDesc1:
+            "<p>Enhances the high-temperature performance of NdFeB magnets.<br/><b>Applications:</b> Electric vehicle motors, military-grade sensors, and wind turbines operating in extreme conditions.</p>",
+          tabSubDesc2:
+            "<p>Improves magnet performance at high temperatures.<br/><br/><b>Applications:</b> Green energy technology, such as wind turbines, and advanced sensors.</p>",
+          tabSubDesc3:
+            "<p>Primary use: Neodymium-iron-boron (NdFeB) magnets, the strongest type of permanent magnet.<br/><br/><b>Applications:</b> Electric vehicle motors, wind turbines, hard disk drives, and headphones.</p>",
+          tabSubDesc4:
+            "<p>Often alloyed with neodymium to enhance magnet strength and heat resistance.<br/><br/><b>Applications:</b> EV motors, wind turbines, and aircraft engines.</p>",
         },
         contact: {
           contactUs: "Contact Us",
@@ -872,7 +1031,6 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           mainOffices: "Main Offices",
           location: "Sukhbaatar District, Ulaanbaatar, Mongolia",
           viewLocation: "View Location",
-          writeMessage: "Write Your Message",
           fullAddress:
             "Trade and Development Bank Headquarters, Peace Avenue-19, 1st Khoroo, Sukhbaatar District, Ulaanbaatar, Mongolia",
         },
@@ -1028,8 +1186,9 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         videos: {
           banner: {
             subtitle: "Watch Our",
-            title: "Featured Videos",
-            breadcrumb: "Videos",
+            title: "Media",
+            breadcrumb1: "Videos",
+            breadcrumb2: "Gallery",
           },
           section: {
             title: "Our Video Gallery",

@@ -59,7 +59,7 @@ export default async function NewsDetailPage(props: any) {
 
   return (
     <div>
-      <PageBanner pageName={newsData.title} />
+      <PageBanner bannerImage={"/assets/images/bg/page-banner.jpg"} pageName={newsData.title} />
       <section className="rs-postbox-area section-space">
         <div className="container">
           <div className="row g-5">

@@ -1,0 +1,269 @@
+/* Videos Gallery Page Styles */
+.videos-gallery-section {
+  background-color: #f8f9fa;
+  padding: 80px 0;
+}
+
+/* Vertical Tab Navigation - Left Sidebar */
+.tab-navigation-sidebar {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.nav-tabs-vertical {
+  display: flex;
+  flex-direction: column;
+  border-right: none;
+  border-bottom: none;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  padding: 20px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-start;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-link:last-child {
+  border-bottom: none;
+}
+
+.nav-link i {
+  font-size: 18px;
+  width: 20px;
+}
+
+.nav-link:hover {
+  background-color: #f0f8f8;
+  color: #00b0b0;
+  transform: translateX(5px);
+}
+
+.nav-link.active {
+  background-color: #00b0b0;
+  color: #ffffff;
+  transform: translateX(5px);
+  box-shadow: inset 4px 0 0 #24ff92;
+}
+
+/* Tab Content - Right Side */
+.tab-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  min-height: 500px;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Gallery Styles */
+.gallery-item {
+  margin-bottom: 30px;
+}
+
+.gallery-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 176, 176, 0.8), rgba(36, 255, 146, 0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-image:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.download-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.download-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn i {
+  font-size: 16px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  .videos-gallery-section {
+    padding: 60px 0;
+  }
+
+  .videos-gallery-section .row {
+    flex-direction: column;
+  }
+
+  .tab-navigation-sidebar {
+    margin-bottom: 30px;
+  }
+
+  .nav-tabs-vertical {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .nav-link {
+    min-width: 150px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    border-radius: 8px;
+    border-bottom: none;
+    padding: 15px 20px;
+  }
+
+  .nav-link.active,
+  .nav-link:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 176, 176, 0.3);
+  }
+
+  .tab-content {
+    padding: 25px;
+  }
+
+  .gallery-image img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .videos-gallery-section {
+    padding: 50px 0;
+  }
+
+  .nav-link {
+    padding: 12px 16px;
+    font-size: 14px;
+    min-width: 130px;
+  }
+
+  .nav-link i {
+    font-size: 16px;
+  }
+
+  .tab-content {
+    padding: 20px;
+  }
+
+  .gallery-image img {
+    height: 220px;
+  }
+
+  .download-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .gallery-item {
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-tabs-vertical {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .nav-link {
+    padding: 10px 12px;
+    font-size: 13px;
+    min-width: 110px;
+  }
+
+  .tab-content {
+    padding: 15px;
+  }
+
+  .gallery-image img {
+    height: 200px;
+  }
+
+  .download-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}

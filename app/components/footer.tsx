@@ -7,32 +7,77 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
   const t = await getDictionary(lang);
 
   return (
-    <div className="rs-footer-bg-thumb-wrapper has-theme-teal">
+    <div className="rs-footer-bg-thumb-wrapper">
       <div
         className="rs-footer-bg-thumb"
-        // style={{ backgroundImage: "url('/assets/images/bg/footer-bg-02.png')" }}
+        style={{
+          backgroundImage: "url('/assets/images/bg/footer-bg.png')",
+          backgroundColor: "transparent",
+        }}
       ></div>
 
       <div className="rs-subscribe-area rs-subscribe-one has-theme-orange">
         <div className="container">
           <div className="rs-subscribe-wrapper">
             <div className="row g-5 align-items-center">
-              <div className="col-xl-3 col-lg-3">
-                <div className="rs-subscribe-logo">
+              <div className="col-xl-6 col-lg-6">
+                <div className="rs-subscribe-logo mb-30">
                   <img src={`/assets/images/logo/logo.png`} alt="logo" />
                 </div>
+                <div className="contact-info-section mb-8">
+                  <div className="contact-item flex items-start gap-4 mb-10">
+                    <div className="contact-label">
+                      <p className="text-white font-semibold text-base tracking-wide uppercase">
+                        Email:
+                      </p>
+                    </div>
+                    <div className="contact-value">
+                      <p className="text-white font-normal text-base">mail@example.com</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="offcanvas-social mt-30">
+                  <ul>
+                    <li>
+                      <a href="#" aria-label="Facebook">
+                        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
+                          <use href="/assets/fonts/remixicon.symbol.svg#ri-facebook-fill" />
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" aria-label="Twitter">
+                        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
+                          <use href="/assets/fonts/remixicon.symbol.svg#ri-twitter-fill" />
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" aria-label="YouTube">
+                        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
+                          <use href="/assets/fonts/remixicon.symbol.svg#ri-youtube-fill" />
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" aria-label="LinkedIn">
+                        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
+                          <use href="/assets/fonts/remixicon.symbol.svg#ri-linkedin-fill" />
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="col-xl-9 col-lg-9">
-                <div className="rs-subscribe-content">
-                  <div className="rs-subscribe-text">
-                    <p>Subscribe for the latest news. Stay updated on the latest trends.</p>
-                  </div>
-                  <div className="rs-subscribe-input">
-                    <input name="name" type="text" placeholder="Enter Your Email" />
-                    <button type="submit" className="rs-btn has-theme-orange">
-                      Send Message
-                    </button>
-                  </div>
+              <div className="col-xl-6 col-lg-6">
+                <div className="rs-subscribe-text mb-10">
+                  <h4>Stay Connected with Mnrec LLC</h4>
+                </div>
+                <div className="rs-subscribe-input">
+                  <input name="name" type="text" placeholder="Enter Your Email" />
+                  <button type="submit" className="rs-btn blue-bg">
+                    Send Message
+                  </button>
                 </div>
               </div>
             </div>

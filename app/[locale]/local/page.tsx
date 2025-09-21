@@ -21,7 +21,10 @@ export default async function Local(props: any) {
 
   return (
     <div>
-      <PageBanner pageName={t.sustainable?.local?.pageTitle ?? "News"} />
+      <PageBanner
+        bannerImage={"/assets/images/bg/page-banner.jpg"}
+        pageName={t.sustainable?.local?.pageTitle ?? "News"}
+      />
       <section className="rs-postbox-area section-space">
         <div className="container">
           <div className="row g-5">

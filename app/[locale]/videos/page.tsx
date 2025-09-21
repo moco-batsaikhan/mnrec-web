@@ -1,6 +1,7 @@
 import PageBanner from "../../components/pageBanner";
-import ModernVideoPlayer from "../../components/ModernVideoPlayer";
 import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
+import ClientVideos from "./client-component";
+import "./style.css";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Videos(props: any) {
@@ -39,27 +40,9 @@ export default async function Videos(props: any) {
 
   return (
     <>
-      <PageBanner pageName={t.videos.banner.title} />
+      <PageBanner bannerImage={"/assets/images/bg/media.jpg"} pageName={t.videos.banner.title} />
 
-      {/* VIDEOS AREA START */}
-      <section className="video-area pt-120 pb-90">
-        <div className="container">
-          {/* <div className="row">
-            <div className="col-12">
-              <div className="section-title text-center mb-50">
-                <h2 className="title">{t.videos.section.title}</h2>
-                <p className="description">{t.videos.section.description}</p>
-              </div>
-            </div>
-          </div> */}
-          <div className="row">
-            <div className="col-12">
-              <ModernVideoPlayer videos={videoData} />
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* VIDEOS AREA END */}
+      <ClientVideos videoData={videoData} translations={t} />
     </>
   );
 }
