@@ -4,7 +4,9 @@ import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
 import ClientReeProject from "./client-component";
 import "./style.css";
 
-export default async function RareEarthElementsPage(props: any) {
+export default async function RareEarthElementsPage(props: {
+  params: Promise<{ locale: string }>;
+}) {
   const params = props?.params instanceof Promise ? await props.params : props?.params;
   const langParam = params?.locale ?? defaultLocale;
   const lang = (locales as string[]).includes(langParam) ? (langParam as Locale) : defaultLocale;

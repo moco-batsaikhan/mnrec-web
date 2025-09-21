@@ -11,7 +11,7 @@ interface VideoData {
 
 interface ClientVideosProps {
   videoData: VideoData[];
-  translations: any;
+  translations: Record<string, any>;
 }
 
 export default function ClientVideos({ videoData, translations }: ClientVideosProps) {

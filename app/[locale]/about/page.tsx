@@ -3,7 +3,7 @@ import React from "react";
 import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
 import "./style.css";
 
-export default async function ProjectTimeline(props: any) {
+export default async function ProjectTimeline(props: { params: Promise<{ locale: string }> }) {
   const params = props?.params instanceof Promise ? await props.params : props?.params;
   const langParam = params?.locale ?? defaultLocale;
   const lang = (locales as string[]).includes(langParam) ? (langParam as Locale) : defaultLocale;
@@ -15,7 +15,7 @@ export default async function ProjectTimeline(props: any) {
       name: t.about.manager3,
       position: t.about.jobPosition3,
       description: t.about.managerDesc3,
-      image: "/assets/images/team/odgerel.avif",
+      image: "/assets/images/team/Tsolmon.png",
     },
     {
       id: 1,
@@ -36,7 +36,7 @@ export default async function ProjectTimeline(props: any) {
       name: t.about.manager4,
       position: t.about.jobPosition4,
       description: t.about.managerDesc4,
-      image: "/assets/images/team/odgerel.avif",
+      image: "/assets/images/team/Daagii.png",
     },
   ];
 

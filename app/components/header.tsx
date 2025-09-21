@@ -9,21 +9,7 @@ interface HeaderProps {
   locale: string;
   alt: string;
   currentPath?: string;
-  translations: {
-    menu: {
-      about: string;
-      kb_project: string;
-      rare_earth: string;
-      sustainability: string;
-      community: string;
-      environment: string;
-      development_fund: string;
-      news_media: string;
-      latest_news: string;
-      video: string;
-      contact: string;
-    };
-  };
+  translations: Record<string, any>;
 }
 
 export default function Header({ locale, alt, currentPath, translations }: HeaderProps) {

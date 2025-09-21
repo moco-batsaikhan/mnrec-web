@@ -12,7 +12,7 @@ interface HeaderWrapperProps {
 
 export default function HeaderWrapper({ locale, alt }: HeaderWrapperProps) {
   const pathname = usePathname();
-  const [translations, setTranslations] = useState<any>(null);
+  const [translations, setTranslations] = useState<Record<string, any> | null>(null);
 
   useEffect(() => {
     const loadTranslations = async () => {

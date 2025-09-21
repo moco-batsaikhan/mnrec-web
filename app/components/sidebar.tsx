@@ -6,13 +6,12 @@ import LanguageSwitcher from "./language-switcher";
 interface SidebarProps {
   locale: string;
   alt: string;
-  translations: any;
+  translations: Record<string, any>;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Sidebar({ locale, alt, translations }: SidebarProps) {
-  const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "mn";
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "mn";
   const t = translations;
   return (
     <>

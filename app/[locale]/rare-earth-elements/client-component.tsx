@@ -11,7 +11,7 @@ interface SidebarItem {
 
 interface ClientKbProjectProps {
   sidebarItems: SidebarItem[];
-  translations: any;
+  translations: Record<string, any>;
 }
 
 export default function ClientReeProject({ sidebarItems, translations }: ClientKbProjectProps) {

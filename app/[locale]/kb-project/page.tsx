@@ -4,7 +4,7 @@ import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
 import ClientKbProject from "./client-component";
 import "./style.css";
 
-export default async function KbProject(props: any) {
+export default async function KbProject(props: { params: Promise<{ locale: string }> }) {
   const params = props?.params instanceof Promise ? await props.params : props?.params;
   const langParam = params?.locale ?? defaultLocale;
   const lang = (locales as string[]).includes(langParam) ? (langParam as Locale) : defaultLocale;

@@ -3,7 +3,7 @@ import React from "react";
 import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
 import "./style.css";
 
-export default async function Contact(props: any) {
+export default async function Contact(props: { params: Promise<{ locale: string }> }) {
   const params = props?.params instanceof Promise ? await props.params : props?.params;
   const langParam = params?.locale ?? defaultLocale;
   const lang = (locales as string[]).includes(langParam) ? (langParam as Locale) : defaultLocale;
