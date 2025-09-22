@@ -63,7 +63,6 @@ export default async function Environment(props: any) {
                   autoplay={true}
                   effect="fade"
                 />
-
                 <h3 className="rs-postbox-details-feature-title mb-20">
                   {t.sustainable.enviroment.tabMainTitle1}
                 </h3>
