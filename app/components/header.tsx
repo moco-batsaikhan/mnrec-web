@@ -61,7 +61,7 @@ export default function Header({ locale, alt, currentPath, translations }: Heade
                         : ""
                     }`}
                   >
-                    <a href="#">{translations.menu.sustainability}</a>
+                    <a href={`/${lang}/enviroment`}>{translations.menu.sustainability}</a>
                     <ul className="submenu last-children">
                       <li>
                         <Link href={`/${lang}/local`}>{translations.menu.community}</Link>
@@ -90,20 +90,8 @@ export default function Header({ locale, alt, currentPath, translations }: Heade
                       </li>
                     </ul>
                   </li>
-                  {/* Contact */}
                   <li className={`menu-item-has-children ${isActive("/contact") ? "active" : ""}`}>
                     <Link href={`/${lang}/contact`}>{translations.menu.contact}</Link>
-                    {/* <ul className="submenu last-children">
-                      <li>
-                        <a href="#address">{t.menu.address}</a>
-                      </li>
-                      <li>
-                        <a href="#email-phone">{t.menu.email_phone}</a>
-                      </li>
-                      <li>
-                        <a href="#feedback">{t.menu.feedback}</a>
-                      </li>
-                    </ul> */}
                   </li>
                 </ul>
               </nav>
