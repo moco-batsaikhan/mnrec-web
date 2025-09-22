@@ -8,7 +8,7 @@ export default function Banner({ t }: { t: any }) {
       style={{ position: "relative", overflow: "hidden" }}
     >
       <video
-        src="/assets/mp4/home.mp4"
+        src="/assets/mp4/banner.mp4"
         autoPlay
         loop
         muted
