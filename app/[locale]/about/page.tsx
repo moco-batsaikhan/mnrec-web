@@ -22,14 +22,14 @@ export default async function ProjectTimeline(props: { params: Promise<{ locale:
       name: t.about.manager1,
       position: t.about.jobPosition1,
       description: t.about.managerDesc1,
-      image: "/assets/images/leader-team/munkhjargal.avif",
+      image: "/assets/images/leader-team/Munkhjargal.avif",
     },
     {
       id: 2,
       name: t.about.manager2,
       position: t.about.jobPosition2,
       description: t.about.managerDesc2,
-      image: "/assets/images/leader-team/odgerel.avif",
+      image: "/assets/images/leader-team/Odgerel.avif",
     },
     {
       id: 4,

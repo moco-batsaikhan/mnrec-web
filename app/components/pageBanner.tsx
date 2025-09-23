@@ -26,8 +26,19 @@ export default function PageBanner({
         <div className="row">
           <div className="col-xxl-6 col-xl-8 col-lg-8">
             <div className="rs-breadcrumb-content-wrapper">
-              <div className="rs-breadcrumb-title-wrapper">
-                <h1 className="rs-breadcrumb-title">{pageName}</h1>
+              <div
+                className="rs-breadcrumb-title-wrapper"
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+              >
+                <img
+                  src="/assets/images/icon/symbol.png"
+                  alt={pageName}
+                  className="rs-breadcrumb-image rs-breadcrumb-icon-responsive"
+                  style={{ width: "80px", height: "80px", objectFit: "contain" }}
+                />
+                <h1 className="rs-breadcrumb-title" style={{ margin: 0 }}>
+                  {pageName}
+                </h1>
               </div>
               {/* <div className="rs-breadcrumb-menu">
                   <nav>

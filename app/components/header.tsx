@@ -61,16 +61,15 @@ export default function Header({ locale, alt, currentPath, translations }: Heade
                         : ""
                     }`}
                   >
-                    <a href={`/${lang}/enviroment`}>{translations.menu.sustainability}</a>
+                    <a href={`/${lang}/sustainability`}>{translations.menu.sustainability}</a>
                     <ul className="submenu last-children">
                       <li>
-                        <Link href={`/${lang}/local`}>{translations.menu.community}</Link>
+                        <Link href={`/${lang}/sustainability`}>
+                          {translations.menu.sustainability}
+                        </Link>
                       </li>
                       <li>
                         <Link href={`/${lang}/enviroment`}>{translations.menu.environment}</Link>
-                      </li>
-                      <li>
-                        <Link href={`/${lang}/fund`}>{translations.menu.development_fund}</Link>
                       </li>
                     </ul>
                   </li>
@@ -80,7 +79,7 @@ export default function Header({ locale, alt, currentPath, translations }: Heade
                       isActive("/news") || isActive("/videos") ? "active" : ""
                     }`}
                   >
-                    <a href="#">{translations.menu.news_media}</a>
+                    <a href={`/${lang}/news`}>{translations.menu.news_media}</a>
                     <ul className="submenu last-children">
                       <li>
                         <Link href={`/${lang}/news`}>{translations.menu.latest_news}</Link>

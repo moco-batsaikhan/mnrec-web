@@ -72,7 +72,7 @@ export default async function NewsPage(props: any) {
   return (
     <div>
       <PageBanner
-        bannerImage={"/assets/images/bg/page-banner.jpg"}
+        bannerImage={"/assets/images/bg/media.jpg"}
         pageName={t.menu.latest_news ?? "News"}
       />
       <section className="rs-postbox-area section-space">

@@ -36,17 +36,17 @@ export default async function Environment(props: any) {
   return (
     <div>
       <PageBanner
-        bannerImage={"/assets/images/bg/page-banner.jpg"}
-        pageName={t.medee6.pageTitle ?? "News"}
+        bannerImage={"/assets/images/gallery/sustainable/cover1.jpg"}
+        pageName={t.menu.environment ?? "Environment"}
       />
       <section className="rs-postbox-area section-space">
         <div className="container">
           <div className="row g-5">
-            <div className="col-xl-8 col-lg-8">
+            <div className="col-xl-12 col-lg-12">
               <div className="rs-postbox-details-wrapper">
-                <div className="rs-postbox-details-thumb">
+                {/* <div className="rs-postbox-details-thumb">
                   <img src="/assets/images/gallery/sustainable/cover1.jpg" alt="image" />
-                </div>
+                </div> */}
                 <div className="rs-postbox-content">
                   <h3 className="rs-postbox-details-title">{t.sustainable.enviroment.newsTitle}</h3>
                 </div>
@@ -168,16 +168,16 @@ export default async function Environment(props: any) {
                 </div>
 
                 {/* Modern Swiper Slider */}
-                <ModernSlider
+                {/* <ModernSlider
                   images={environmentImages}
                   titles={environmentTitles}
                   height="450px"
                   autoplay={true}
                   effect="fade"
-                />
+                /> */}
               </div>
             </div>
-            <div className="col-xl-4 col-lg-4">
+            {/* <div className="col-xl-4 col-lg-4">
               <div className="rs-sidebar-wrapper rs-sidebar-sticky">
                 <div className="sidebar-widget mb-30">
                   <div className="sidebar-search">
@@ -244,7 +244,7 @@ export default async function Environment(props: any) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

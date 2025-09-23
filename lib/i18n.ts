@@ -117,6 +117,24 @@ export type Dictionary = {
     tabSubDesc3: string;
     tabSubDesc4: string;
   };
+  sustainability: {
+    tabTitle1: string;
+    tabDesc1: string;
+    tabTitle2: string;
+    tabDesc2: string;
+    tabTitle3: string;
+    tabDesc3: string;
+    tabSubTitle1: string;
+    tabSubDesc1: string;
+    tabSubTitle2: string;
+    tabSubDesc2: string;
+    tabSubTitle3: string;
+    tabSubDesc3: string;
+    tabSubTitle4: string;
+    tabSubDesc4: string;
+    tabSubTitle5: string;
+    tabSubDesc5: string;
+  };
   contact: {
     contactUs: string;
     address: string;
@@ -330,6 +348,9 @@ export type Dictionary = {
   };
   footer: {
     copyRight: string;
+    enterEmail: string;
+    sendMessage: string;
+    connectWithUs: string;
   };
 };
 
@@ -468,6 +489,97 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           tabSubDesc4:
             "<p>Ихэвчлэн неодимтэй хайлш болгон ашиглаж, соронзны хүч болон халуунд тэсвэрлэх чанарыг нэмэгдүүлдэг.<br/><br/><b>Хэрэглээ:</b> Цахилгаан автомашины хөдөлгүүр, салхин турбин, нисэх онгоцны хөдөлгүүр.</p>",
         },
+        sustainability: {
+          tabTitle1: "Оролцогч талуудын оролцооны төлөвлөгөө",
+          tabDesc1:
+            "Оролцогч талуутын оролцооны төлөвлгөөний гол зорилго нь төслийн бүх үе шатанд олон нийтэд мэдээлэл түгээх, санал зөвлөлдөх үйл ажиллагааг багтаасан оролцогч талуудын оролцооны хөтөлбөрийг тодорхойлох явдал юм. Оролцогч талуутын оролцооны төлөвлгөөнд MNREC компани оролцогч талуудтай хэрхэн харилцах арга замыг тодорхойлсон бөгөөд төслийн болон түүнтэй холбоотой аливаа үйл ажиллагааны талаар хүмүүс санаа зовнил илэрхийлэх, санал өгөх, гомдол гаргах боломжтой механизмыг багтаасан. Мөн төслийн сөрөг нөлөөнд илүү өртөх магадлалтай эсвэл төслөөс хүртэх үр өгөөжид хүрэх боломж нь хязгаарлагдах эрсдэлтэй эмзэг бүлгийн иргэдийн оролцоог хангах тусгай зохицуулалтыг тусгасан. SEP нь “бодит баримт бичиг” бөгөөд төслийн үйл ажиллагаанд болон орон нутгийн нийгмийн өөрчлөлтөд нийцүүлэн жил бүр шинэчлэн хянагдана. ",
+          tabTitle2: "Гол зарчим ",
+          tabDesc2: `<div>
+  <p>
+    Оролцогч талуудын оролцоо гэдэг нь урт хугацаанд эерэг харилцаа тогтоон хадгалах үйл явцыг хэлнэ. 
+    Энэ нь компани болон төслийн оролцогч талуудын хооронд төслийн бүх хугацаанд тасралтгүй өрнөх бөгөөд мэдээлэл түгээх, зөвлөлдөх, оролцуулах, хэлэлцээ хийх, хамтран ажиллах зэрэг олон төрлийн үйл ажиллагаа, арга барилыг хамардаг. 
+    Оролцооны давтамж, шинж чанар нь төслийн эрсдэлийн түвшин болон боломжит нөлөөлөлтэй уялдан тодорхойлогдох ёстой.
+  </p>
+
+  <p>
+    Оролцогч талуудын оролцооны төлөвлөгөө (SEP) нь компанийн оролцогч талуудтай харилцах арга барил, зохион байгуулалтын хүрээг тухайн нутгийн соёл, нөхцөлд нийцүүлэн тодорхойлох зорилготой. 
+    Түүний үндсэн зорилго нь холбогдох мэдээллийг цаг тухайд нь, ойлгомжтой байдлаар хүргэхийн зэрэгцээ оролцогч талууд өөрсдийн байр суурь, санаа зовнил, санал хүсэлтээ илэрхийлэх боломжтой бүтэцтэй үйл явцыг бүрдүүлэхэд оршино. 
+    Ингэснээр компани эдгээр асуудлыг хүлээн авч, зохих арга хэмжээ авах боломжтой болдог (IFC, 2007).
+  </p>
+
+  <p><strong>Үр дүнтэй оролцооны гол зарчмууд нь дараахыг багтаана:</strong></p>
+  <ul>
+    <li>Зорилтот оролцогч талын бүлгийн хэрэгцээнд нийцүүлэн, ойлгомжтой хэлбэрээр, холбогдох хэл дээр мэдээллийг хүргэх.</li>
+    <li>Зөвлөлдөх уулзалт болон шийдвэр гаргалтын өмнө шаардлагатай мэдээллийг урьдчилан түгээх.</li>
+    <li>Мэдээллийг оролцогч талууд хялбархан олж авч чадахуйц арга зам, байршлаар түгээх.</li>
+    <li>Орон нутгийн уламжлал, хэл, цаг хугацааны онцлог болон шийдвэр гаргах үйл явцыг хүндэтгэх.</li>
+    <li>Хоёр талын харилцан яриаг бий болгож, санал бодол болон мэдээллээ солилцох, сонсох, тулгамдсан асуудлыг дуу хоолойгоор илэрхийлж, шийдвэрлүүлэх боломж олгох.</li>
+    <li>Үзэл бодлыг илэрхийлэхдээ олон талын төлөөллийг хангах, түүний дотор эмэгтэйчүүд, эмзэг бүлэг, цөөнхийн оролцоог хамруулах.</li>
+    <li>Айлган сүрдүүлэх, албадлагагүй, чөлөөтэй оролцох нөхцөлийг бүрдүүлэх.</li>
+    <li>Хүмүүсийн санаа зовнил, санал, гомдолд хариу өгөх тодорхой механизмтай байх.</li>
+    <li>Оролцогч талуудаас ирсэн санал хүсэлт, санал бодлыг төслийн болон хөтөлбөрийн төлөвлөлтөд тусган хэрэгжүүлэх, мөн эргэж мэдээлэх.</li>
+  </ul>
+</div>
+`,
+          tabTitle3: "Орон нутгийн зохион байгуулсан үйл ажиллагаа",
+          tabDesc3: `<div class="section">
+  <h4>Халзан бүрэгтэй хөгжлийн сан</h4>
+  <p>
+    “Монголиан Нэшнл Рийр Ийрт Корп” ХХК нь Ховд аймгийн Мянгад сумын нутаг дэвсгэрт уул уурхайн төсөл хэрэгжүүлэгч аж ахуй нэгжийн хувьд тухайн орон нутаг дахь хамтын ажиллагаа, үйл ажиллагаа нь төслийн багийн гүйцэтгэх үндсэн ажлуудын нэг юм. 
+    Энэ хүрээнд бид тухайн орон нутгийн Нийгэм, Эдийн засаг, Эрүүл мэнд, Боловсрол зэрэг голлох салбарт урт хугацаанд, бодитой хувь нэмэр оруулах зорилгоор 
+    <strong>“Халзан бүрэгтэй хөгжлийн сан”</strong>-г үүсгэн байгуулж, үйл ажиллагаагаа шат дараатайгаар хэрэгжүүлж эхлээд байгаа билээ.
+  </p>
+  <p>
+    Бид 2023-2025 оны хайгуулын ажлын хүрээнд дараах ажлуудыг орон нутагт зохион байгуулсан байна. Үүнд:
+  </p>
+</div>`,
+          tabSubTitle1: `Нийгэм`,
+          tabSubDesc1: `<ul>
+  <li>Ховд аймагт зохион байгуулагдсан “INVEST KHOVD 2023” форумын ерөнхий ивээн тэтгэгчээр ажиллалаа. (2023.01.30)</li>
+  <li>Ховд аймгийн “Хүүхэд залуучууд гэр бүл хөгжлийн газрын харьяа дотуур байранд 200кг гурил, 100кг будаа, 80л ургамлын тос, 50кг элсэн чихрийг хандив болгон өгөв. (2023.04.27)</li>
+  <li>Эх үрсийн баярыг тохиолдуулан “Мянгадын багачууд” баярын үйл ажиллагааг зохион байгууллаа... (2023.06.01)</li>
+  <li>“Халзан бүрэгтэй хөгжлийн сан”-ийн нэрэмжит Мянгад сумын өсвөрийн волейболын аварга шалгаруулах тэмцээнийг зохион байгуулав. (2023.06.03)</li>
+  <li>Ховд аймгийн өсвөрийн эрэгтэй, эмэгтэй волейболын шигшээ багийг улсын аваргад оролцоход дэмжив. (2023.09.23)</li>
+  <li>Мянгад сумын “Ахмадын баяр 2023” үйл ажиллагааг хамтран зохион байгуулав. (2023.10.01)</li>
+  <li>“Халзан бүрэгтэй хөгжлийн сан”-ийн нэрэмжит өсвөрийн волейболын тэмцээнийг хоёр дахь жилдээ амжилттай зохион байгуулав. (2024.06.01–06.02)</li>
+  <li>Галдан Бошгот хааны мэндэлсний 380 жилийн ойд дэмжигч байгууллагаар оролцов. (2024.08.02)</li>
+  <li>Сар шинийн баярыг тохиолдуулан Мянгад сумын ахмадуудад хүндэтгэл үзүүлэв. (2025.02.20)</li>
+  <li>“Миний мөрөөдөл” сэдэвт эсээ, гар зургийн уралдааныг хүүхдүүдийн дунд зохион байгуулав. (2025.06.01)</li>
+  <li>Жаргалант сумын 8, 15-р цэцэрлэгийн хүүхдүүд болон хөгжлийн бэрхшээлтэй хүүхэдтэй эцэг эхийн холбооны Ховд аймгийн салбарт баярын бэлэг гардуулав. (2025.06.01)</li>
+</ul>`,
+          tabSubTitle2: `Эрүүл мэнд`,
+          tabSubDesc2: `<ul>
+  <li>Баруун бүсийн оношилгоо, эмчилгээний төвтэй хамтран Мянгад сумын иргэдэд үнэ төлбөргүй шүдний үзлэг, эмчилгээ хийв. (2023.03.10)</li>
+  <li>Мянгад сумын эрүүл мэндийн төвийн өргөтгөлийн хурлын өрөөг тохижуулав. (2024.05.02)</li>
+  <li>МНРИК ХХК болон Ховд аймгийн Эрүүл мэндийн газар хамтран ажиллах санамж бичиг байгууллаа. (2025.04.04)</li>
+</ul>
+`,
+          tabSubTitle3: `Эдийн засаг`,
+          tabSubDesc3: `<ul>
+  <li>Малчин өрхийг дэмжих хүүгүй зээлийн хөтөлбөрийг амжилттай хэрэгжүүлж, 30 өрхөд зээл олгов.</li>
+</ul>`,
+          tabSubTitle4: `Боловсрол`,
+          tabSubDesc4: `<ul>
+  <li>Сурагчдад зориулсан ерөнхий мэдлэгийн боть номуудыг ЕБС-д хандивлав. (2023.03.14)</li>
+  <li>2023–2024 хичээлийн жилд тэтгэлэгт хөтөлбөр зарлаж, шилдэг 10 оюутанд сургалтын төлбөрийн тэтгэлэг олгов. (2023.10)</li>
+  <li>Мянгад сумын цэцэрлэгийн гадаах талбайд 13х18 м хэмжээтэй хөлбөмбөгийн талбай байгуулан хүлээлгэн өгөв.</li>
+  <li>2024–2025 оны хичээлийн жилд тэтгэлэгт хөтөлбөр зарлаж, шилдэг 20 оюутанд тус бүр 2 сая төгрөгийн тэтгэлэг олгов.</li>
+</ul>`,
+          tabSubTitle5: `Орон нутагт мэдээлэл түгээх`,
+          tabSubDesc5: `<ul>
+  <li>Ховд аймгийн политехникийн коллежийн оюутнуудад төслийн танилцуулга хийв. (2023.02.01)</li>
+  <li>Мянгад сумын ЗДТГ-ын ажилчдад мэдээлэл өгч санал авлаа. (2023.02.03)</li>
+  <li>Мөсний баярт оролцож иргэдийн санал, асуултыг авлаа. (2023.02.04)</li>
+  <li>Мянгад сумын багуудад нээлттэй хаалганы өдөрлөг зохион байгуулав. (2023.02.05)</li>
+  <li>“NUM DAY–ONE DAY” арга хэмжээнд оролцож, төслийн танилцуулга хийв. (2023.04.22)</li>
+  <li>Говь-Алтай аймагт болсон “Хариуцлагатай уул уурхай” өдөрлөгт оролцлоо. (2023.09.14)</li>
+  <li>Ховд аймгийн 17 суманд нээлттэй өдөрлөг хийж, иргэдийн санал авлаа. (2023.10.13–11.22)</li>
+  <li>“National Treasure of the Khovd” цуврал контент бэлтгэв.</li>
+  <li>“Хязгаар нутгийн хүчирхэг ирээдүй” хөтөлбөрийг хэрэгжүүлж эхлэв.</li>
+  <li>ШУА-тай хамтран танин мэдэхүйн сургалт зохион байгууллаа. (2024.12.03–04)</li>
+  <li>“Хариуцлагатай уул уурхайтай танилцах аялал”-д иргэдийг хамруулав. (2025.05.10–14)</li>
+</ul>`,
+        },
         contact: {
           contactUs: "Холбоо барих",
           address: "Хаяг",
@@ -485,7 +597,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           location: "Улаанбаатар хот, Сүхбаатар дүүрэг",
           viewLocation: "Газрын зургаар харах",
           fullAddress:
-            "Улаанбаатар хот, Сүхбаатар дүүрэг, 1 дүгээр хороо, Энхтайвны өргөн чөлөө-19, Худалдаа хөгжлийн банкны төв байр, 1301 тоот",
+            "Улаанбаатар хот, Сүхбаатар дүүрэг, 1 дүгээр хороо, <br/> Энхтайвны өргөн чөлөө-19, <br/> Худалдаа хөгжлийн банкны төв байр, 1301 тоот",
         },
         medee: {
           pageTitle: "ГХЭ гэж юу вэ?",
@@ -886,6 +998,9 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         },
         footer: {
           copyRight: " МНГХЭК",
+          enterEmail: "Мэйл хаягаа оруулна уу",
+          sendMessage: "илгээх",
+          connectWithUs: "Mnrec ХХК-тай холбогдох",
         },
       };
     case "en":
@@ -1015,6 +1130,102 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           tabSubDesc4:
             "<p>Often alloyed with neodymium to enhance magnet strength and heat resistance.<br/><br/><b>Applications:</b> EV motors, wind turbines, and aircraft engines.</p>",
         },
+        sustainability: {
+          tabTitle1: "Stakeholder engagement plan",
+          tabDesc1:
+            "The overall objective of this SEP is to define a program for stakeholder engagement, including public information disclosure and consultation throughout the entire project cycle. The SEP outlines the ways in which MNREC will communicate with stakeholders and includes a mechanism by which people can raise concerns, provide feedback, or make complaints about the project and any activities related to it. The SEP makes specific provisions for the meaningful engagement of vulnerable groups and individuals who may be at risk of being disproportionately affected by project impacts or having reduced access to project benefits.  ",
+          tabTitle2: "Key principles ",
+          tabDesc2: `<div>
+  <p>
+    Stakeholder engagement involves establishing and sustaining positive relationships over time. 
+    It is a continuous process between a company and project stakeholders that persists throughout the project's duration, incorporating various activities and strategies, including information dissemination, consultation, participation, negotiation, and collaboration. 
+    The frequency and nature of engagement should align with the project's level of risk and potential impacts.
+  </p>
+
+  <p>
+    A Stakeholder Engagement Plan serves to outline a company’s approach and framework for interacting with stakeholders in a manner that is culturally appropriate. 
+    Its primary objective is to ensure the timely delivery of clear and relevant information while also creating a structured process that enables stakeholders to voice their perspectives and concerns, allowing the company to acknowledge and address them (IFC 2007).
+  </p>
+
+  <p><strong>Key principles of effective engagement include:</strong></p>
+  <ul>
+    <li>Providing meaningful information in a format and language that is readily understandable and tailored to the needs of the target stakeholder group(s).</li>
+    <li>Providing information in advance of consultation activities and decision-making.</li>
+    <li>Disseminating information in ways and locations that make it easy for stakeholders to access it.</li>
+    <li>Respect for local traditions, languages, timeframes, and decision making processes.</li>
+    <li>Two-way dialogue that gives both sides the opportunity to exchange views and information, to listen, and to have their issues heard and addressed.</li>
+    <li>Inclusiveness in representation of views, including women, vulnerable and/or minority groups.</li>
+    <li>Processes free of intimidation or coercion.</li>
+    <li>Clear mechanisms for responding to people’s concerns, suggestions, and grievances.</li>
+    <li>Incorporating feedback into project or program design and reporting back to stakeholders.</li>
+  </ul>
+</div>
+`,
+          tabTitle3: "Stakeholder engagement activities ",
+          tabDesc3: `<div class="section">
+  <h4>Khalzan Buregtei Development Fund</h4>
+  <p>
+    The purpose of these engagements has been to ensure that stakeholders – particularly those directly affected – are provided with timely and accessible information, 
+    and that their views, concerns, and expectations are duly considered in project decision-making.
+  </p>
+  <p>
+    As a mining project developer operating in Myangad Soum, Khovd Province, 
+    <strong>Mongolian National Rare Earth Corp LLC</strong> considers cooperation and engagement with the local community as one of the core responsibilities of the project team. 
+    Within this framework, we have established the <strong>“Khalzan Buregtei Development Fund”</strong> to make a long-term and tangible contribution to key sectors such as social welfare, economy, healthcare, and education in the local area, 
+    and have begun implementing activities in a phased manner.
+  </p>
+  <p>
+    In connection with the exploration program carried out between 2023–2025, we have organized the following activities in the local community:
+  </p>
+</div>`,
+          tabSubTitle1: `Social`,
+          tabSubDesc1: `
+<ul>
+  <li>Served as the main sponsor of the “INVEST KHOVD 2023” forum held in Khovd Province. (2023.01.30)</li>
+  <li>Donated 200 kg of flour, 100 kg of rice, 80 liters of vegetable oil, and 50 kg of sugar to the dormitory of the Children, Youth, and Family Development Department of Khovd Province. (2023.04.27)</li>
+  <li>Organized the “Myangad Children’s Day” event to celebrate Mother and Child Day, where project staff and contractors also provided information about the project to interested community members. (2023.06.01)</li>
+  <li>Hosted the first Youth Volleyball Championship of Myangad Soum under the auspices of the “Khalzan Buregtei Development Fund.” (2023.06.03)</li>
+  <li>Supported the men’s and women’s youth volleyball teams of Khovd Province to participate in the National Championship as part of our social responsibility. (2023.09.23)</li>
+  <li>Co-organized the “Elders’ Day 2023” celebration in Myangad Soum. (2023.10.01)</li>
+  <li>Successfully organized the Youth Volleyball Championship of Myangad Soum under the auspices of the “Khalzan Buregtei Development Fund” for the second consecutive year. (2024.06.01–06.02)</li>
+  <li>Participated as a supporter of the 380th anniversary celebration of King Galdan Boshgot. (2024.08.02)</li>
+  <li>Honored elders of Myangad Soum on the occasion of the Lunar New Year. (2025.02.20)</li>
+  <li>Organized an essay and drawing competition titled “My Dream” for children of Myangad Soum to mark International Children’s Day. (2025.06.01)</li>
+  <li>Presented holiday gifts to children of Khovd Province’s Kindergarten No. 8 and No. 15 in Jargalant Soum, as well as to the local branch of the Association of Parents with Disabled Children, to celebrate International Children’s Day. (2025.06.01)</li>
+</ul>`,
+          tabSubTitle2: `Health`,
+          tabSubDesc2: `
+<ul>
+  <li>In cooperation with the Western Regional Diagnostic and Treatment Center of Khovd Province, provided free dental check-ups and treatments for the residents of Myangad Soum. (2023.03.10)</li>
+  <li>Furnished the new conference room of the Myangad Soum Health Center. (2024.05.02)</li>
+  <li>Signed a Memorandum of Understanding with the Khovd Province Health Department. (2025.04.04)</li>
+</ul>`,
+          tabSubTitle3: `Economy`,
+          tabSubDesc3: `<ul>
+  <li>Successfully implemented an interest-free loan program to support herder households, providing loans to 30 households in Myangad Soum.</li>
+</ul>`,
+          tabSubTitle4: `Education`,
+          tabSubDesc4: `<ul>
+  <li>Donated general knowledge reference books to secondary schools in Khovd Province to assist students preparing for university entrance exams. (2023.03.14)</li>
+  <li>Announced the first scholarship program under the “Khalzan Buregtei Development Fund” for the 2023–2024 academic year, awarding one-year tuition scholarships to 10 outstanding students of Khovd Province. (2023.10)</li>
+  <li>Constructed and handed over a standard 13x18 m football field in the kindergarten yard of Myangad Soum.</li>
+  <li>Announced the second scholarship program under the “Khalzan Buregtei Development Fund” for the 2024–2025 academic year, granting MNT 2 million scholarships to 20 outstanding students of Khovd Province.</li>
+</ul>`,
+          tabSubTitle5: `Community Engagement and Information Sharing`,
+          tabSubDesc5: `<ul>
+  <li>Delivered a project presentation to students of Khovd Polytechnic College. (2023.02.01)</li>
+  <li>Provided project information to the staff of the Myangad Soum Governor’s Office and gathered feedback. (2023.02.03)</li>
+  <li>Participated in the Ice Festival of Myangad Soum and collected questions, feedback, and suggestions from local residents. (2023.02.04)</li>
+  <li>Organized open days of the Khalzan Buregtei Project in the centers of Gakhait, Chatsarganat, Tsagaanbulan, Bayanbulag, and Bayankhoshuu baghs of Myangad Soum. (2023.02.05)</li>
+  <li>Supported the “NUM DAY–ONE DAY” event, delivering project presentations to students and local communities of Khovd Province. (2023.04.22)</li>
+  <li>Participated in the Responsible Mining Event of the Western Region in Govi-Altai Province, introducing the project to local communities and sector specialists. (2023.09.14)</li>
+  <li>Conducted open days for the Khalzan Buregtei Project in all 17 soums of Khovd Province, gathering feedback from residents. (2023.10.13–11.22)</li>
+  <li>Produced and delivered the “National Treasure of the Khovd” content series as part of our CSR initiatives to promote cultural heritage, SME development, education, and environmental protection.</li>
+  <li>Initiated and began implementing the “Strong Future of the Frontier” youth empowerment program.</li>
+  <li>In collaboration with scientists from the Institute of Physics and Technology of the Mongolian Academy of Sciences, organized educational outreach in Khovd Province to provide knowledge about rare earth elements, radiation, and project updates. (2024.12.03–04)</li>
+  <li>Organized a “Responsible Mining Familiarization Tour” for representatives of Myangad Soum residents and other stakeholders to visit Erdenet Mining Corporation. (2025.05.10–14)</li>
+</ul>`,
+        },
         contact: {
           contactUs: "Contact Us",
           address: "Address",
@@ -1032,7 +1243,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           location: "Sukhbaatar District, Ulaanbaatar, Mongolia",
           viewLocation: "View Location",
           fullAddress:
-            "Trade and Development Bank Headquarters, Peace Avenue-19, 1st Khoroo, Sukhbaatar District, Ulaanbaatar, Mongolia",
+            "Trade and Development Bank Headquarters, <br/> Peace Avenue-19, 1st Khoroo, Sukhbaatar District,<br/> Ulaanbaatar, Mongolia",
         },
         medee: {
           pageTitle: "What is REE?",
@@ -1430,6 +1641,9 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         },
         footer: {
           copyRight: " MNREC",
+          enterEmail: "Enter your email",
+          sendMessage: "send message",
+          connectWithUs: "Stay connected with MNREC LLC",
         },
       };
   }

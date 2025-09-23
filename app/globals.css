@@ -18,6 +18,41 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+/* Active menu underline with linear gradient */
+.main-menu > ul > li.active > a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(to right, #00b0b0, #24ff92);
+  border-radius: 2px;
+  transform: scaleX(1);
+  transition: transform 0.3s ease;
+}
+
+.main-menu > ul > li > a {
+  position: relative;
+}
+
+.main-menu > ul > li > a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(to right, #00b0b0, #24ff92);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.main-menu > ul > li:hover > a::after {
+  transform: scaleX(1);
+}
+
 /* Timeline styles (adapted) */
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,900);
 
@@ -335,5 +370,199 @@ header p {
     width: 380px;
     float: right;
     text-align: left;
+  }
+}
+
+/* Responsive breadcrumb icon sizing */
+@media (max-width: 768px) {
+  .rs-breadcrumb-icon-responsive {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .rs-breadcrumb-title-wrapper {
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .rs-breadcrumb-icon-responsive {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+/* Sticky Social Sidebar */
+.sticky-social-sidebar {
+  display: block;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  background: rgba(0, 176, 176, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 25px 0 0 25px;
+  padding: 15px 8px 15px 15px;
+  box-shadow: 0 8px 32px rgba(0, 176, 176, 0.3);
+  border: 1px solid rgba(0, 176, 176, 0.3);
+  border-right: none;
+  transition: all 0.3s ease;
+  min-width: 50px;
+}
+
+.sticky-social-sidebar:hover {
+  background: rgba(0, 176, 176, 0.98);
+  box-shadow: 0 12px 48px rgba(0, 176, 176, 0.4);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+/* .contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #00b0b0;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  border: 2px solid #00b0b0;
+}
+
+.contact-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-link:hover::before {
+  opacity: 1;
+}
+
+.contact-link:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 176, 176, 0.5);
+  background: #00b0b0;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .sticky-social-sidebar {
+    display: none;
+  }
+}
+
+/* Footer Contact Information */
+.footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: rgba(0, 176, 176, 0.1);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-icon svg {
+  fill: #00b0b0;
+}
+
+.contact-text {
+  display: flex;
+  align-items: center;
+}
+
+.footer-contact-link {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  line-height: 1.5;
+}
+
+.footer-contact-link:hover {
+  color: #00b0b0;
+  text-decoration: none;
+}
+
+/* Contact labels styling */
+.contact-label {
+  color: #f0f0f0 !important;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: -1px;
+  margin-right: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Address specific styling */
+.contact-address {
+  color: #f0f0f0 !important;
+}
+
+.contact-address p {
+  color: #f0f0f0 !important;
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+/* Mobile responsive for footer contact */
+@media (max-width: 768px) {
+  .footer-contact-info {
+    gap: 8px;
+  }
+
+  .contact-item {
+    gap: 10px;
+  }
+
+  .contact-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer-contact-link {
+    font-size: 14px;
   }
 }

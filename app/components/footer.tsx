@@ -1,7 +1,6 @@
 import React from "react";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async function Footer({ locale, alt }: { locale: string; alt: string }) {
   const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "en";
   const t = await getDictionary(lang);
@@ -24,18 +23,34 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
                 <div className="rs-subscribe-logo mb-30">
                   <img src={`/assets/images/logo/logo.png`} alt="logo" />
                 </div>
-                <div className="contact-info-section mb-8">
-                  <div className="contact-item flex items-start gap-4 mb-10">
-                    <div className="contact-label">
-                      <p className="text-white font-semibold text-base tracking-wide uppercase">
-                        Email:
-                      </p>
+
+                <div className="footer-contact-info mb-30">
+                  <div className="contact-item mb-5">
+                    <div className="contact-text">
+                      <p className="contact-label">{t.contact.email}:</p>
+
+                      <a href="mailto:info@mnrec.mn" className="footer-contact-link">
+                        info@mnrec.mn
+                      </a>
                     </div>
-                    <div className="contact-value">
-                      <p className="text-white font-normal text-base">mail@example.com</p>
+                  </div>
+
+                  <div className="contact-item mb-15">
+                    <div className="contact-text">
+                      <p className="contact-label">{t.contact.address}:</p>
+                      <span
+                        className="footer-contact-link contact-address"
+                        dangerouslySetInnerHTML={{
+                          __html: t.contact.fullAddress
+                            .split("\n")
+                            .map((paragraph: string) => `<p>${paragraph}</p>`)
+                            .join(""),
+                        }}
+                      />
                     </div>
                   </div>
                 </div>
+
                 <div className="offcanvas-social mt-30">
                   <ul>
                     <li>
@@ -53,7 +68,7 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
                       </a>
                     </li>
                     <li>
-                      <a href="#" aria-label="YouTube">
+                      <a href="https://www.youtube.com/@kbrareearth" aria-label="YouTube">
                         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
                           <use href="/assets/fonts/remixicon.symbol.svg#ri-youtube-fill" />
                         </svg>
@@ -71,12 +86,12 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
               </div>
               <div className="col-xl-6 col-lg-6">
                 <div className="rs-subscribe-text mb-10">
-                  <h4>Stay Connected with Mnrec LLC</h4>
+                  <h4>{t.footer.connectWithUs}</h4>
                 </div>
                 <div className="rs-subscribe-input">
-                  <input name="name" type="text" placeholder="Enter Your Email" />
+                  <input name="name" type="text" placeholder={t.footer.enterEmail} />
                   <button type="submit" className="rs-btn blue-bg">
-                    Send Message
+                    {t.footer.sendMessage}
                   </button>
                 </div>
               </div>

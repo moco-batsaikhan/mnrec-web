@@ -13,6 +13,7 @@ import HeaderWrapper from "../components/header-wrapper";
 import ClientScripts from "../components/client-scripts";
 import Script from "next/script";
 import Footer from "../components/footer";
+import StickySocial from "../components/sticky-social";
 
 export const metadata: Metadata = {
   title: "MNREC",
@@ -41,6 +42,9 @@ export default async function LocaleLayout({
       <HeaderWrapper locale={locale} alt={alt} />
 
       {children}
+      
+      <StickySocial />
+      
       <Footer locale={locale} alt={alt} />
 
       {/* Load jQuery first via script tag to ensure it's available globally */}
