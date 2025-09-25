@@ -17,8 +17,14 @@ export default function StickySocial() {
           </a>
         </div>
         <div className="contact-item">
-          <a href="https://linkedin.com/company/mnrec" target="_blank" rel="noopener noreferrer" className="contact-link" title="LinkedIn">
-            in
+          <a
+            href="https://www.facebook.com/khalzanburegteiproject"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-link"
+            title="Facebook"
+          >
+            f
           </a>
         </div>
       </div>

@@ -9,10 +9,7 @@ export default function LanguageSwitcher({ alt }: { alt: string }) {
   const altHref = `/${alt}${currentPath}`;
 
   return (
-    <Link
-      href={altHref}
-      className="text-white px-4 py-1.5 text-[16px] border border-gray-200"
-    >
+    <Link href={altHref} className="switcher px-4 py-1.5 text-[16px] border border-gray-200">
       {alt.toUpperCase()}
     </Link>
   );

@@ -289,11 +289,11 @@
 }
 
 .single-image {
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .single-image img {
-  width: 100%;
+  width: 80%;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);

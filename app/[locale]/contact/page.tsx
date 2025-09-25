@@ -25,7 +25,14 @@ export default async function Contact(props: { params: Promise<{ locale: string 
                       <div className="contact-content">
                         <div className="contact-icon-text">📍</div>
                         <h5>{t.contact.address}</h5>
-                        <p>{t.contact.fullAddress}</p>
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: t.contact.fullAddress
+                              .split("\n")
+                              .map((paragraph: string) => `<p>${paragraph}</p>`)
+                              .join(""),
+                          }}
+                        />
                       </div>
                     </div>
 
@@ -41,7 +48,7 @@ export default async function Contact(props: { params: Promise<{ locale: string 
                       <div className="contact-content">
                         <div className="contact-icon-text">📞</div>
                         <h5>{t.contact.phone}</h5>
-                        <p>+976 11 123456</p>
+                        <p>+976-7505-1801</p>
                       </div>
                     </div>
                   </div>

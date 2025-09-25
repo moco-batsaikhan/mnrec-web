@@ -1309,7 +1309,7 @@ textarea:focus {
   color: var(--rs-white);
 }
 .rs-btn.blue-bg {
-  background: linear-gradient(to right, #00b0b0, #24ff92);;
+  background: linear-gradient(to right, #00b0b0, #24ff92);
 }
 .rs-btn.blue-bg:hover {
   background-color: linear-gradient(to right, #00b0b0, #24ff92);
@@ -2801,12 +2801,13 @@ textarea:focus {
   fill: var(--rs-theme-orange);
 }
 .offcanvas-contact-icon {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
+  display: flex;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   text-align: center;
+  align-items: center;
 }
 /* Force MNREC green for contact icons regardless of theme/hover */
 .offcanvas-contact .offcanvas-contact-icon svg path {

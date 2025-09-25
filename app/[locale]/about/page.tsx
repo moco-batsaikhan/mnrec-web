@@ -104,9 +104,9 @@ export default async function ProjectTimeline(props: { params: Promise<{ locale:
                 <div className="rs-about-wrapper">
                   <div className="rs-about-content-wrapper">
                     <div className="rs-section-title-wrapper">
-                      <span className="rs-section-subtitle has-theme-yellow justify-content-start">
+                      {/* <span className="rs-section-subtitle has-theme-yellow justify-content-start">
                         {t.about.aboutUs}
-                      </span>
+                      </span> */}
                       <h2 className="rs-section-title rs-split-text-enable split-in-fade">
                         {t.about.heading}
                       </h2>
@@ -188,7 +188,7 @@ export default async function ProjectTimeline(props: { params: Promise<{ locale:
               <div className="col-xl-10 col-lg-10">
                 <div className="rs-section-title-wrapper text-center">
                   <h2 className="rs-section-title rs-split-text-enable split-in-fade">
-                    <span className="rs-theme-orange">{t.history.pageTitle}</span>
+                    <span className="rs-theme-orange">{t.menu.about_team}</span>
                   </h2>
                 </div>
               </div>

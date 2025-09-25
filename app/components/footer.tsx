@@ -54,16 +54,12 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
                 <div className="offcanvas-social mt-30">
                   <ul>
                     <li>
-                      <a href="#" aria-label="Facebook">
+                      <a
+                        href="https://www.facebook.com/khalzanburegteiproject"
+                        aria-label="Facebook"
+                      >
                         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
                           <use href="/assets/fonts/remixicon.symbol.svg#ri-facebook-fill" />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" aria-label="Twitter">
-                        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
-                          <use href="/assets/fonts/remixicon.symbol.svg#ri-twitter-fill" />
                         </svg>
                       </a>
                     </li>
@@ -75,9 +71,12 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
                       </a>
                     </li>
                     <li>
-                      <a href="#" aria-label="LinkedIn">
+                      <a
+                        href="https://www.instagram.com/khalzanburegtei?fbclid=IwY2xjawNARRlleHRuA2FlbQIxMABicmlkETFnNUpBSExmajlsMnZwQXhsAR6_U-tPr-PaB9_Yhe3Ix9Zi17JS_v5V9geChNawKWQpTJoOv1aHLX8FJh-AqQ_aem_kz-5QeLhPAL00EBf8zI2Zg"
+                        aria-label="Instagram"
+                      >
                         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
-                          <use href="/assets/fonts/remixicon.symbol.svg#ri-linkedin-fill" />
+                          <use href="/assets/fonts/remixicon.symbol.svg#ri-instagram-fill" />
                         </svg>
                       </a>
                     </li>

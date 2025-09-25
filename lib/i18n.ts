@@ -152,6 +152,7 @@ export type Dictionary = {
     location: string;
     viewLocation: string;
     fullAddress: string;
+    simpleAddress: string;
   };
   medee: {
     pageTitle: string;
@@ -440,12 +441,12 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
 
           tabDescTitle2: "Төслийн явц",
           tabDesc21:
-            "Хагас үйлдвэрийн туршилт : Баяжуулалтын шатны туршилт дууссан, Боловсруулалтын шатны эхлэхээр бэлтгэгдэж байгаа.",
+            "Хагас үйлдвэрийн туршилт : Баяжуулалтын шатны туршилт дууссан, Боловсруулалтын шатны туршилт эхлэхээр бэлтгэгдэж байгаа.",
           tabDesc22: "ТЭЗҮ : Wood & Stantec компануудаар гүйцэтгүүлж байгаа",
-          tabDesc23: "БОННҮ–Sustainability & SLR компануудаар гүйцэтгүүлж байгаа",
+          tabDesc23: "БОННҮ: Sustainability & SLR компануудаар гүйцэтгүүлж байгаа",
 
           tabDescTitle3: "Өрөмдлөгийн голлох үзүүлэлт",
-          tabDesc31: "2012-2013онд нийт 11,000 тууш метр өрөмдлөг",
+          tabDesc31: "2012-2013 онд нийт 11,000 тууш метр өрөмдлөг",
           tabDesc32: "2022-2023 нийт 20,000 тууш метр өрөмдлөг",
 
           tabDescTitle4: "Үйлдвэрлэлийн хэмжээ (жил)",
@@ -598,6 +599,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           viewLocation: "Газрын зургаар харах",
           fullAddress:
             "Улаанбаатар хот, Сүхбаатар дүүрэг, 1 дүгээр хороо, <br/> Энхтайвны өргөн чөлөө-19, <br/> Худалдаа хөгжлийн банкны төв байр, 1301 тоот",
+          simpleAddress: "Улаанбаатар хот, Сүхбаатар дүүрэг, 1 дүгээр хороо",
         },
         medee: {
           pageTitle: "ГХЭ гэж юу вэ?",
@@ -1000,7 +1002,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           copyRight: " МНГХЭК",
           enterEmail: "Мэйл хаягаа оруулна уу",
           sendMessage: "илгээх",
-          connectWithUs: "Mnrec ХХК-тай холбогдох",
+          connectWithUs: "MNREC ХХК-тай холбогдох",
         },
       };
     case "en":
@@ -1244,6 +1246,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           viewLocation: "View Location",
           fullAddress:
             "Trade and Development Bank Headquarters, <br/> Peace Avenue-19, 1st Khoroo, Sukhbaatar District,<br/> Ulaanbaatar, Mongolia",
+          simpleAddress: "1st Khoroo, Sukhbaatar District, Ulaanbaatar, Mongolia",
         },
         medee: {
           pageTitle: "What is REE?",

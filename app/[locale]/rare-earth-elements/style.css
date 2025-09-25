@@ -289,11 +289,11 @@
 }
 
 .single-image {
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .single-image img {
-  width: 100%;
+  width: 80%;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -505,7 +505,10 @@
 
 .content-body ul li {
   margin-bottom: 8px;
+  color: #666;
   line-height: 1.6;
+  text-align: justify;
+  font-size: 16px;
 }
 
 .content-body ul li::marker {

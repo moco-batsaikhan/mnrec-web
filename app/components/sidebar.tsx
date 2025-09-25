@@ -15,13 +15,121 @@ export default function Sidebar({ locale, alt, translations }: SidebarProps) {
   const t = translations;
   return (
     <>
+      <style jsx>{`
+        .mean-container .mean-nav ul li {
+          padding-left: 10px;
+        }
+
+        .contact-address p {
+          color: #000000;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        /* Footer text colors - black */
+        .footer-contact-info .contact-label {
+          color: #000000 !important;
+          font-weight: 600;
+        }
+
+        .footer-contact-link {
+          color: #000000 !important;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        .footer-contact-link:hover {
+          color: #333333 !important;
+        }
+
+        /* Footer social icons - black */
+        .offcanvas-social ul li a {
+          color: #000000 !important;
+          border: 1px solid #000000 !important;
+        }
+
+        .offcanvas-social ul li a svg {
+          fill: #000000 !important;
+        }
+
+        .offcanvas-social ul li a:hover svg {
+          fill: #333333 !important;
+        }
+
+        /* Language switcher text - black */
+        .language-switcher,
+        .language-switcher * {
+          color: #000000 !important;
+        }
+
+        .language-switcher button {
+          color: #000000 !important;
+          background-color: transparent;
+        }
+
+        .language-switcher button:hover {
+          color: #333333 !important;
+        }
+
+        /* Footer subscription text - black */
+        .rs-subscribe-text h4 {
+          color: #000000 !important;
+        }
+
+        /* Input placeholder - dark */
+        .rs-subscribe-input input::placeholder {
+          color: #666666 !important;
+        }
+
+        /* Additional footer styling to ensure black text */
+        .rs-subscribe-area .rs-subscribe-wrapper * {
+          color: #000000 !important;
+        }
+
+        .rs-subscribe-area .rs-subscribe-wrapper p,
+        .rs-subscribe-area .rs-subscribe-wrapper span,
+        .rs-subscribe-area .rs-subscribe-wrapper a {
+          color: #000000 !important;
+        }
+
+        /* Override any conflicting styles */
+        .footer-contact-info * {
+          color: #000000 !important;
+        }
+
+        .contact-item * {
+          color: #000000 !important;
+        }
+
+        /* Ensure SVG icons are black */
+        .rs-subscribe-area svg {
+          fill: #000000 !important;
+        }
+
+        .rs-subscribe-area svg:hover {
+          fill: #333333 !important;
+        }
+
+        /* Sidebar specific styling */
+        .offcanvas-contact-text a {
+          color: #000000 !important;
+        }
+
+        .offcanvas-contact-text span {
+          color: #000000 !important;
+        }
+
+        .offcanvas-title-meta {
+          color: #000000 !important;
+        }
+      `}</style>
       <div className="offcanvas-area has-theme-red" data-lenis-prevent>
         <div className="offcanvas-wrapper">
           <div className="offcanvas-content">
             <div className="offcanvas-top d-flex justify-content-between align-items-center mb-25">
               <div className="offcanvas-logo">
                 <a href="index.html">
-                  <img src="/assets/images/logo/logo.png" alt="logo" />
+                  <img src="/assets/images/logo/logo2.png" alt="logo" />
                 </a>
               </div>
 
@@ -35,47 +143,7 @@ export default function Sidebar({ locale, alt, translations }: SidebarProps) {
                 </button>
               </div>
             </div>
-            <div className="offcanvas-about mb-30 d-none d-sm-block">
-              <p>
-                {" "}
-                Industrie is a modern factory website. specifically designed for who need
-                construction, firms, oil, architecture and any other small business.
-              </p>
-            </div>
-            <div className="offcanvas-gallery d-none d-sm-block">
-              <div className="offcanvas-gallery-thumb-wrapper">
-                <div className="offcanvas-popup-thumb">
-                  <a className="popup-image" href="assets/images/gallery/gallery-thumb-01.png">
-                    <img src="/assets/images/gallery/gallery-thumb-01.png" alt="image" />
-                  </a>
-                </div>
-                <div className="offcanvas-popup-thumb">
-                  <a className="popup-image" href="assets/images/gallery/gallery-thumb-02.png">
-                    <img src="/assets/images/gallery/gallery-thumb-02.png" alt="image" />
-                  </a>
-                </div>
-                <div className="offcanvas-popup-thumb">
-                  <a className="popup-image" href="assets/images/gallery/gallery-thumb-03.png">
-                    <img src="/assets/images/gallery/gallery-thumb-03.png" alt="image" />
-                  </a>
-                </div>
-                <div className="offcanvas-popup-thumb">
-                  <a className="popup-image" href="assets/images/gallery/gallery-thumb-04.png">
-                    <img src="/assets/images/gallery/gallery-thumb-04.png" alt="image" />
-                  </a>
-                </div>
-                <div className="offcanvas-popup-thumb">
-                  <a className="popup-image" href="assets/images/gallery/gallery-thumb-05.png">
-                    <img src="/assets/images/gallery/gallery-thumb-05.png" alt="image" />
-                  </a>
-                </div>
-                <div className="offcanvas-popup-thumb">
-                  <a className="popup-image" href="assets/images/gallery/gallery-thumb-01.png">
-                    <img src="/assets/images/gallery/gallery-thumb-01.png" alt="image" />
-                  </a>
-                </div>
-              </div>
-            </div>
+
             <div className="mobile-menu">
               <div className="rs-offcanvas-menu mb-25">
                 <nav></nav>
@@ -85,7 +153,7 @@ export default function Sidebar({ locale, alt, translations }: SidebarProps) {
               <h4 className="offcanvas-title-meta">Contact Info</h4>
               <ul>
                 <li className="d-flex align-items-center gap-15">
-                  <div className="offcanvas-contact-icon">
+                  <div className="offcanvas-contact-icon contact-icon-info">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="14"
@@ -103,16 +171,12 @@ export default function Sidebar({ locale, alt, translations }: SidebarProps) {
                       ></path>
                     </svg>
                   </div>
-                  <div className="offcanvas-contact-text">
-                    <a href="#">
-                      {" "}
-                      2096 New Market, New Road <br />
-                      North Carolina, USA{" "}
-                    </a>
+                  <div className="offcanvas-contact-text side-address">
+                    <a href="#">{t.contact.simpleAddress}</a>
                   </div>
                 </li>
                 <li className="d-flex align-items-center gap-15">
-                  <div className="offcanvas-contact-icon">
+                  <div className="offcanvas-contact-icon contact-icon-info">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -130,12 +194,12 @@ export default function Sidebar({ locale, alt, translations }: SidebarProps) {
                       ></path>
                     </svg>
                   </div>
-                  <div className="offcanvas-contact-text">
-                    <a href="tel:+12346691234"> +123-4669-1234 </a>
+                  <div className="offcanvas-contact-text text-[16px]">
+                    <a href="tel:+976-7505-1801"> +976-7505-1801 </a>
                   </div>
                 </li>
                 <li className="d-flex align-items-center gap-15">
-                  <div className="offcanvas-contact-icon">
+                  <div className="offcanvas-contact-icon contact-icon-info">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -154,7 +218,9 @@ export default function Sidebar({ locale, alt, translations }: SidebarProps) {
                     </svg>
                   </div>
                   <div className="offcanvas-contact-text">
-                    <a href="mailto:info@gmail.com">info@gmail.com</a>
+                    <a href="mailto:info@mnrec.mn" className="footer-contact-link">
+                      info@mnrec.mn
+                    </a>
                   </div>
                 </li>
               </ul>
@@ -162,41 +228,37 @@ export default function Sidebar({ locale, alt, translations }: SidebarProps) {
 
             <div className="offcanvas-social">
               <h4 className="offcanvas-title-meta">Subscribe & Follow</h4>
-              <ul>
-                <li>
-                  <a href="#" aria-label="Facebook">
-                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
-                      <use href="/assets/fonts/remixicon.symbol.svg#ri-facebook-fill" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" aria-label="Twitter">
-                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
-                      <use href="/assets/fonts/remixicon.symbol.svg#ri-twitter-fill" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" aria-label="YouTube">
-                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
-                      <use href="/assets/fonts/remixicon.symbol.svg#ri-youtube-fill" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" aria-label="LinkedIn">
-                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
-                      <use href="/assets/fonts/remixicon.symbol.svg#ri-linkedin-fill" />
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-black p-4">
-              <div className="offcanvas-language ">
-                <div className="d-flex">
-                  <LanguageSwitcher alt={alt} />
+              <div className="flex justify-between">
+                <ul>
+                  <li>
+                    <a href="https://www.facebook.com/khalzanburegteiproject" aria-label="Facebook">
+                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
+                        <use href="/assets/fonts/remixicon.symbol.svg#ri-facebook-fill" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.youtube.com/@kbrareearth" aria-label="YouTube">
+                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
+                        <use href="/assets/fonts/remixicon.symbol.svg#ri-youtube-fill" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.instagram.com/khalzanburegtei?fbclid=IwY2xjawNARRlleHRuA2FlbQIxMABicmlkETFnNUpBSExmajlsMnZwQXhsAR6_U-tPr-PaB9_Yhe3Ix9Zi17JS_v5V9geChNawKWQpTJoOv1aHLX8FJh-AqQ_aem_kz-5QeLhPAL00EBf8zI2Zg"
+                      aria-label="LinkedIn"
+                    >
+                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
+                        <use href="/assets/fonts/remixicon.symbol.svg#ri-instagram-fill" />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+                <div className="offcanvas-language">
+                  <div className="d-flex">
+                    <LanguageSwitcher alt={alt} />
+                  </div>
                 </div>
               </div>
             </div>
