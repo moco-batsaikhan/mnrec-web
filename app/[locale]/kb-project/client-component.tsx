@@ -88,7 +88,7 @@ export default function ClientKbProject({ sidebarItems, translations }: ClientKb
             dangerouslySetInnerHTML={{
               __html: item.content
                 .split("\n")
-                .map((paragraph: string) => `<p>${paragraph}</p>`)
+                .map((paragraph: string) => `<div>${paragraph}</d>`)
                 .join(""),
             }}
           />

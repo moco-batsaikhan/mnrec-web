@@ -1,4 +1,5 @@
 import PageBanner from "@/app/components/pageBanner";
+import HomeAbout from "@/app/components/homeAbout";
 import React from "react";
 import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
 import "./style.css";
@@ -97,34 +98,10 @@ export default async function ProjectTimeline(props: { params: Promise<{ locale:
     <>
       <PageBanner bannerImage={"/assets/images/bg/aboutBanner.jpg"} pageName={t.about.aboutUs} />
       <div className="main-content">
-        <section id="homeabout" className="rs-about-area section-space-ab rs-about-eight">
-          <div className="container">
-            <div className="row g-5">
-              <div className="col-xl-6 col-lg-6">
-                <div className="rs-about-wrapper">
-                  <div className="rs-about-content-wrapper">
-                    <div className="rs-section-title-wrapper">
-                      {/* <span className="rs-section-subtitle has-theme-yellow justify-content-start">
-                        {t.about.aboutUs}
-                      </span> */}
-                      <h2 className="rs-section-title rs-split-text-enable split-in-fade">
-                        {t.about.heading}
-                      </h2>
-                      <p className="descrip">{t.about.introduction}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-6 col-lg-6">
-                <div className="rs-about-thumb-wrapper">
-                  <div className="rs-about-thumb img-one">
-                    <img src="/assets/images/about/aboutUs.jpg" alt="image" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HomeAbout
+          translations={{ about: t.about }}
+          image={{ src: "/assets/images/about/aboutUs.jpg" }}
+        />
         <section id="feature-section" className="feature-section pad-top-50 mt-40">
           <div className="container">
             <div className="row">

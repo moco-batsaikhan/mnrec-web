@@ -31,6 +31,18 @@ export default async function RareEarthElementsPage(props: {
       content: "",
       image: "",
     },
+    {
+      id: "4",
+      title: t.ree.tabTitle4,
+      content: "",
+      image: "",
+    },
+    {
+      id: "5",
+      title: t.ree.tabTitle5,
+      content: t.ree.tabDesc5,
+      image: "/assets/images/gallery/element-eng.png",
+    },
   ];
 
   return (
@@ -40,7 +52,7 @@ export default async function RareEarthElementsPage(props: {
         pageName={t.ree.pageTitle ?? "Rare Earth Elements"}
       />
 
-      <ClientReeProject sidebarItems={sidebarItems} translations={t} />
+      <ClientReeProject sidebarItems={sidebarItems} translations={t} locale={lang} />
     </div>
   );
 }

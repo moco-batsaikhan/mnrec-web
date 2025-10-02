@@ -1,7 +1,9 @@
 import type { Locale } from "@/lib/i18n";
 import { getDictionary, locales } from "@/lib/i18n";
 import Banner from "../components/banner";
-import HomeAbout from "../components/home-about";
+import HomeAbout from "../components/homeAbout";
+import HomeHighlights from "../components/homeHighlights";
+import HomeText from "../components/homeText";
 // import HomeVideo from "../components/homeVideo";
 // import HomePartner from "../components/homePartner";
 // import HomeBlog from "../components/homeBlog";
@@ -17,10 +19,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <>
       <Banner t={t} />
-      {/* <HomeAbout t={t} /> */}
-      {/* <HomeVideo lang={locale} /> */}
-      {/* <HomeBlog lang={locale} /> */}
-      {/* <HomePartner lang={locale} /> */}
+      <HomeAbout
+        translations={{ about: t.about }}
+        image={{ src: "/assets/images/gallery/khb/drilling/image4.jpg" }}
+      />
+      <HomeText translations={{ t }} />
+      <HomeHighlights translations={{ t }} />
     </>
   );
 }

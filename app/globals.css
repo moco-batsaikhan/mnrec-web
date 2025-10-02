@@ -53,6 +53,34 @@ body {
   transform: scaleX(1);
 }
 
+/* Header Layout - Centered Menu */
+@media (min-width: 1024px) {
+  .rs-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .rs-header-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .rs-header-menu-centered {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  .rs-header-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
 /* Timeline styles (adapted) */
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,900);
 
@@ -102,6 +130,17 @@ header p {
   border-right: 30px solid transparent;
   border-top: 15px solid #f0f0f0;
   bottom: -15px;
+}
+
+.rs-breadcrumb-one::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to right, #41c1c9, #34c067);
+  z-index: 1;
 }
 
 .timeline {
@@ -478,6 +517,22 @@ header p {
 }
 
 /* Footer Contact Information */
+
+/* .rs-footer-bg-thumb-wrapper {
+  position: relative;
+} */
+
+.rs-footer-bg-thumb-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to right, #41c1c9, #34c067);
+  z-index: 1;
+}
+
 .footer-contact-info {
   display: flex;
   flex-direction: column;
@@ -534,7 +589,7 @@ header p {
   margin-right: 10px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  min-width: 70px;
+  min-width: 80px;
 }
 
 /* Address specific styling */
@@ -555,6 +610,11 @@ header p {
 
 /* Mobile responsive for footer contact */
 @media (max-width: 768px) {
+  .rs-about-eight .descrip {
+    margin: 20px 0 35px;
+    max-width: 630px;
+    text-align: justify;
+  }
   .footer-contact-info {
     gap: 8px;
   }
@@ -651,4 +711,245 @@ header p {
 
 .contact-icon-info svg {
   min-width: 50px;
+}
+
+/* Footer Balance and Styling */
+
+.rs-subscribe-input {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.subscribe-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: 2px solid rgba(240, 240, 240, 0.3);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.subscribe-input::placeholder {
+  color: rgba(240, 240, 240, 0.7);
+}
+
+.subscribe-input:focus {
+  border-color: #00b0b0;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.subscribe-btn {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+/* Mobile responsive for footer */
+@media (max-width: 768px) {
+  .rs-subscribe-input {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .subscribe-input {
+    width: 100%;
+  }
+
+  .subscribe-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Quote icon styling */
+.quote-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.quote-icon-wrapper {
+  flex-shrink: 0;
+  margin-top: -5px;
+}
+
+.quote-icon-img {
+  width: 70px;
+  height: 70px;
+  filter: brightness(0) saturate(100%) invert(66%) sepia(47%) saturate(563%) hue-rotate(118deg)
+    brightness(92%) contrast(91%);
+  transition: transform 0.3s ease;
+}
+
+.quote-icon-img:hover {
+  transform: scale(1.05);
+}
+
+.quote-text {
+  flex: 1;
+  margin: 0;
+}
+
+/* Responsive sizing */
+@media (max-width: 1199px) {
+  .quote-icon-img {
+    width: 50px;
+    height: 50px;
+  }
+  .quote-layout {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 991px) {
+  .quote-icon-img {
+    width: 40px;
+    height: 40px;
+  }
+  .quote-layout {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .quote-icon-img {
+    width: 40px;
+    height: 40px;
+  }
+  .quote-layout {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 575px) {
+  .quote-icon-img {
+    width: 30px;
+    height: 30px;
+  }
+  .quote-layout {
+    gap: 10px;
+  }
+}
+
+/* Banner button responsive styling */
+.link-box {
+  display: inline-block;
+}
+
+.rs-link-btn.has-icon .icon-box svg {
+  width: 17px;
+  fill: var(--rs-white);
+}
+
+.link-box .rs-link-btn {
+  display: block;
+  width: max-content;
+}
+
+.rs-btn.has-icon:hover .icon-first {
+  transform: translateX(150%);
+}
+.rs-btn.has-icon:hover .icon-second {
+  transform: translateX(0%);
+}
+
+.rs-link-btn.has-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 3px solid #ffffff;
+  border-radius: 50px;
+}
+.rs-link-btn.has-icon .icon-box {
+  overflow: hidden;
+  position: relative;
+  display: inline-flex;
+  transition: all 0.3s ease-out 0s;
+}
+
+.rs-link-btn {
+  font-size: 18px;
+  text-transform: capitalize;
+  color: var(--rs-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 35px;
+  height: 60px;
+  transition: all 0.3s linear;
+  border-radius: 2px;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  letter-spacing: 2px;
+}
+
+.banner-icon-desc {
+  color: #f0f0f0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 12px;
+}
+
+.banner-icon-date {
+  margin-top: 15px;
+  color: #f0f0f0;
+  font-size: 13px;
+  line-height: 11px;
+}
+
+.banner-icon-text-box {
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  /* .rs-banner-btn {
+    gap: 20px !important;
+  } */
+}
+
+@media (max-width: 480px) {
+  .banner-icon-desc,
+  .banner-icon-date {
+    font-size: 12px;
+  }
+}
+
+/* Icon hover effects */
+
+.rs-link-btn.has-icon .icon-box .icon-first {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+}
+
+.rs-link-btn.has-icon .icon-box .icon-second {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+.rs-link-btn.has-icon:hover .icon-box .icon-first {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+}
+
+.rs-link-btn.has-icon:hover .icon-box .icon-second {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
 }

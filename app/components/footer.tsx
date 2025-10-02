@@ -28,9 +28,17 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
                   <div className="contact-item mb-5">
                     <div className="contact-text">
                       <p className="contact-label">{t.contact.email}:</p>
-
                       <a href="mailto:info@mnrec.mn" className="footer-contact-link">
                         info@mnrec.mn
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="contact-item mb-5">
+                    <div className="contact-text">
+                      <p className="contact-label">{t.contact.phone}:</p>
+                      <a href="tel:+976-7505-1801" className="footer-contact-link">
+                        +976-7505-1801
                       </a>
                     </div>
                   </div>
@@ -83,13 +91,18 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
                   </ul>
                 </div>
               </div>
-              <div className="col-xl-6 col-lg-6">
-                <div className="rs-subscribe-text mb-10">
+              <div className="col-xl-6 col-lg-6 mt-0">
+                <div className="rs-subscribe-text mb-20">
                   <h4>{t.footer.connectWithUs}</h4>
                 </div>
-                <div className="rs-subscribe-input">
-                  <input name="name" type="text" placeholder={t.footer.enterEmail} />
-                  <button type="submit" className="rs-btn blue-bg">
+                <div className="rs-subscribe-input mb-70">
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder={t.footer.enterEmail}
+                    className="subscribe-input"
+                  />
+                  <button type="submit" className="rs-btn blue-bg subscribe-btn">
                     {t.footer.sendMessage}
                   </button>
                 </div>

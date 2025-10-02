@@ -31,7 +31,7 @@ export default function PageBanner({
                 style={{ display: "flex", alignItems: "center", gap: "10px" }}
               >
                 <img
-                  src="/assets/images/icon/symbol.png"
+                  src="/assets/images/logo/favicon.png"
                   alt={pageName}
                   className="rs-breadcrumb-image rs-breadcrumb-icon-responsive"
                   style={{ width: "80px", height: "80px", objectFit: "contain" }}

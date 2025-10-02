@@ -42,9 +42,9 @@ export default async function LocaleLayout({
       <HeaderWrapper locale={locale} alt={alt} />
 
       {children}
-      
+
       <StickySocial />
-      
+
       <Footer locale={locale} alt={alt} />
 
       {/* Load jQuery first via script tag to ensure it's available globally */}
@@ -53,7 +53,6 @@ export default async function LocaleLayout({
       {/* Load plugins that extend jQuery */}
       <Script src="/assets/js/vendor/magnific-popup.min.js" strategy="afterInteractive" />
       <Script src="/assets/js/plugins/wow.min.js" strategy="afterInteractive" />
-      <Script src="/assets/js/plugins/jarallax.min.js" strategy="afterInteractive" />
       <Script src="/assets/js/plugins/nice-select.min.js" strategy="afterInteractive" />
 
       {/* Custom scripts that aren't available via npm */}
@@ -67,7 +66,6 @@ export default async function LocaleLayout({
       <Script src="/assets/js/plugins/rs-scroll-trigger.min.js" strategy="afterInteractive" />
       <Script src="/assets/js/plugins/rs-splitText.min.js" strategy="afterInteractive" />
       <Script src="/assets/js/plugins/jquery.lettering.js" strategy="afterInteractive" />
-      <Script src="/assets/js/plugins/parallax-effect.min.js" strategy="afterInteractive" />
       <Script src="/assets/js/plugins/jquery.appear.min.js" strategy="afterInteractive" />
       <Script src="/assets/js/plugins/marquee.min.js" strategy="afterInteractive" />
       <Script src="/assets/js/vendor/purecounter.js" strategy="afterInteractive" />

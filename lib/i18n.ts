@@ -116,6 +116,16 @@ export type Dictionary = {
     tabSubDesc2: string;
     tabSubDesc3: string;
     tabSubDesc4: string;
+
+    tabTitle4: string;
+    tabSubtitle41: string;
+    tabSubDesc41: string;
+    tabSubtitle42: string;
+    tabSubDesc421: string;
+    tabSubDesc422: string;
+
+    tabTitle5: string;
+    tabDesc5: string;
   };
   sustainability: {
     tabTitle1: string;
@@ -459,8 +469,26 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
             "<article><p>Төсөл Монгол Улсын баруун хэсэгт, Ховд аймгийн Мянгад сумын нутагт оршдог. Уг төсөл нь нийслэл Улаанбаатараас баруун тийш 1600 км, аймгийн төв Ховд хотоос хойш 60 км, Мянгад сумаас хойш 20 км зайд байрладаг. Төсөл нь баруун урагш Хятад-Монголын хил хүртэл 389 км авто замаар холбогдсон байна. Төсөлрүү авто зам болон ойролцоох Ховд хотын нисэх буудлаас нэвтрэх боломжтой.</p></article>",
 
           tabTitle3: "Геологи ба Хүдэржилт",
-          tabDesc3:
-            "<article><p>Ордын хувьд Доод Палеозойн аккрецийн бүсийг холбосон хагаралын ойролцоо байрладаг бөгөөд Девон-Карбоны үеийн металлогений бүсэд оршдог. Энэ бүс нь интрузив гаралтай газрын ховор элементүүдийн (ХГЭ) эрдэсжилт үүсэх боломжтой гэж тооцогддог. Халзан Бүрэгтэй нь хойд-хойд баруун чиглэлд үргэлжлэх шүлтлэг дайк, биетүүдийн хүрээнд байрладаг бөгөөд бүс нутгийн хамгийн их ашигт малтмалжсан биет юм. </p><br/><p>Халзан Бүрэгтэйг хэт шүлтлэг ГХЭ-ийн орд гэж үздэг. Шүлтлэг галт уулын чулуулгууд нь газрын гадаргаруу хэсэгчилсэн хайлалтын үр дүнд үүсдэг ба энэ нь хайлмалд тохирох элементүүдийг төвлөрүүлэхэд нөлөөлдөг. Үүний дараа магма ялгарал явагдаж, тохирох элементүүдийг дараагийн фазуудад төвлөрүүлэх боломжтой байдаг нь Халзан Бүрэгтэйд ажиглагдаж байна. </p><p>2024 оны 9 сар Хуудас 5 Халзан Бүрэгтэй төсөл NI 43-101 Техникийн Тайлан Бүлэг 1 – Хураангуй Талбайн баруун хэсэгт ашигт малтмалжсан нордмаркит, зүүн хэсэгт хэт шүлтлэг боржин чулуугаар бүрхэгдсэн байдаг. Хамгийн их ашигт малтмалжилт бүхий ~500 м диаметртэй дугуй хэлбэртэй хэт шүлтлэг боржин нь эдгээр хоёр нэгжийн зааг дээр, MV-012335 ашиглалтын зөвшөөрлийн хойд зүүн хэсэгт байрладаг. Өрөмдлөгийн ажлаар хэт шүлтлэг боржин нь газрын гадаргаас доош 200 м орчим гүнд үргэлжилдэг болохыг тогтоосон. Хэт шүлтлэг боржин нь доор орших нордмаркиттай дээшээ хотгор аажмаар шилжсэн бүтэцтэй. Нордмаркит нь одоогийн өрөмдлөгийн ажлын хүрээнд тогтоосноор гүн рүү үргэлжилдэг. Харин зүүн талын шүлтлэг боржингийн талбайд зөвхөн хоёр өрөмдлөгийн цооногийн төгсгөл хэсэг дайк бүсүүдийг огтолж өнгөрсөнөөс бусдаар өрөмдлөг хийгдээгүй байна.</p><br/><p>Хүдэржилт нь маш нарийн ширхэгтэй тархсан ГХЭ агуулсан эрдсүүдээс бүрддэг. Үүнд голлон бастнезит, синчезит багтах бөгөөд зарим ГХЭ нь циркон болон бусад циркон агуулсан эрдсүүдтэй холбогдсон байдаг. Хүдэржилт нь нүдэнд ил харагдахуйц бус байдаг. Хүдэржилт нь хүнд газрын ховор элемент (HREE) болон хөнгөн газрын ховор элементийн (LREE) агууламжаас бүрддэг. </p><p>ГХЭ-ийн агууламж нь хэт шүлтлэг боржин болон нордмаркит дотор ихсэж, тэдгээрийн төв хэсгээс доош, гадна чиглэлд агууламж болон HREE/LREE-ийн харьцаа буурдаг. Нийт геохимийн шинжилгээний үр дүнд үндэслэн өндөр, дунд, бага агуулгатай бүсүүдийг тодорхойлсон. Эдгээр бүсүүдийн хил зааг нь аажмаар шилждэг, харьцангуй хавтгай байрлалтай бөгөөд хэсэгчлэн газрын гадаргуугийн хэлбэрийг дагадаг. Хүдэржилт нь одоогийн блок загварын хүрээнд 2.3 км хойшоо-урд, 2.3 км зүүнээс-баруун, 800 м босоо зайд үргэлжилдэг. Хүдэржилт нь гүнд үргэлжилсэн хэвээр боловч агуулга багасч байгаа нь тогтоогдсон.</p></article>",
+          tabDesc3: `<article>
+  <ul>
+    <li>
+      Ордын хувьд Доод Палеозойн аккрецийн бүсийг холбосон хагаралын ойролцоо байрладаг бөгөөд Девон-Карбоны үеийн металлогений бүсэд оршдог. Энэ бүс нь интрузив гаралтай газрын ховор элементүүдийн (ХГЭ) эрдэсжилт үүсэх боломжтой гэж тооцогддог. Халзан Бүрэгтэй нь хойд-хойд баруун чиглэлд үргэлжлэх шүлтлэг дайк, биетүүдийн хүрээнд байрладаг бөгөөд бүс нутгийн хамгийн их ашигт малтмалжсан биет юм.
+    </li>
+    <li>
+      Халзан Бүрэгтэйг хэт шүлтлэг ГХЭ-ийн орд гэж үздэг. Шүлтлэг галт уулын чулуулгууд нь газрын гадаргаруу хэсэгчилсэн хайлалтын үр дүнд үүсдэг ба энэ нь хайлмалд тохирох элементүүдийг төвлөрүүлэхэд нөлөөлдөг. Үүний дараа магма ялгарал явагдаж, тохирох элементүүдийг дараагийн фазуудад төвлөрүүлэх боломжтой байдаг нь Халзан Бүрэгтэйд ажиглагдаж байна.
+    </li>
+    <li>
+      2024 оны 9 сар Хуудас 5 Халзан Бүрэгтэй төсөл NI 43-101 Техникийн Тайлан Бүлэг 1 – Хураангуй. Талбайн баруун хэсэгт ашигт малтмалжсан нордмаркит, зүүн хэсэгт хэт шүлтлэг боржин чулуугаар бүрхэгдсэн байдаг. Хамгийн их ашигт малтмалжилт бүхий ~500 м диаметртэй дугуй хэлбэртэй хэт шүлтлэг боржин нь эдгээр хоёр нэгжийн зааг дээр, MV-012335 ашиглалтын зөвшөөрлийн хойд зүүн хэсэгт байрладаг. Өрөмдлөгийн ажлаар хэт шүлтлэг боржин нь газрын гадаргаас доош 200 м орчим гүнд үргэлжилдэг болохыг тогтоосон. Хэт шүлтлэг боржин нь доор орших нордмаркиттай дээшээ хотгор аажмаар шилжсэн бүтэцтэй. Нордмаркит нь одоогийн өрөмдлөгийн ажлын хүрээнд тогтоосноор гүн рүү үргэлжилдэг. Харин зүүн талын шүлтлэг боржингийн талбайд зөвхөн хоёр өрөмдлөгийн цооногийн төгсгөл хэсэг дайк бүсүүдийг огтолж өнгөрсөнөөс бусдаар өрөмдлөг хийгдээгүй байна.
+    </li>
+    <li>
+      Хүдэржилт нь маш нарийн ширхэгтэй тархсан ГХЭ агуулсан эрдсүүдээс бүрддэг. Үүнд голлон бастнезит, синчезит багтах бөгөөд зарим ГХЭ нь циркон болон бусад циркон агуулсан эрдсүүдтэй холбогдсон байдаг. Хүдэржилт нь нүдэнд ил харагдахуйц бус байдаг. Хүдэржилт нь хүнд газрын ховор элемент (HREE) болон хөнгөн газрын ховор элементийн (LREE) агууламжаас бүрддэг.
+    </li>
+    <li>
+      ГХЭ-ийн агууламж нь хэт шүлтлэг боржин болон нордмаркит дотор ихсэж, тэдгээрийн төв хэсгээс доош, гадна чиглэлд агууламж болон HREE/LREE-ийн харьцаа буурдаг. Нийт геохимийн шинжилгээний үр дүнд үндэслэн өндөр, дунд, бага агуулгатай бүсүүдийг тодорхойлсон. Эдгээр бүсүүдийн хил зааг нь аажмаар шилждэг, харьцангуй хавтгай байрлалтай бөгөөд хэсэгчлэн газрын гадаргуугийн хэлбэрийг дагадаг. Хүдэржилт нь одоогийн блок загварын хүрээнд 2.3 км хойшоо-урд, 2.3 км зүүнээс-баруун, 800 м босоо зайд үргэлжилдэг. Хүдэржилт нь гүнд үргэлжилсэн хэвээр боловч агуулга багасч байгаа нь тогтоогдсон.
+    </li>
+  </ul>
+</article>
+`,
 
           tabTitle4: "Өрөмдлөг ба Дээжлэлтийн Үйл Явц",
           tabDesc4:
@@ -489,6 +517,74 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
             "<p>Үндсэн хэрэглээ: Неодим-төмөр-борын (NdFeB) соронз — байнгын соронзны хамгийн хүчтэй төрөл.<br/><br/><b>Хэрэглээ:</b> Цахилгаан автомашины хөдөлгүүр, салхин турбин, хатуу дискний драйв, чихэв болон бусад цахилгаан хэрэгслүүд.</p>",
           tabSubDesc4:
             "<p>Ихэвчлэн неодимтэй хайлш болгон ашиглаж, соронзны хүч болон халуунд тэсвэрлэх чанарыг нэмэгдүүлдэг.<br/><br/><b>Хэрэглээ:</b> Цахилгаан автомашины хөдөлгүүр, салхин турбин, нисэх онгоцны хөдөлгүүр.</p>",
+          tabTitle4: `Дэлхийн ГХЭ нөөц ба үйлдвэрлэл (2024)`,
+          tabSubtitle41: "ГХЭ нөөц",
+          tabSubtitle42: "ГХЭ үйлдвэрлэл",
+          tabSubDesc41: `2024 оны байдлаар дэлхийн газрын ховор элементийн (REE) нөөц ойролцоогоор 90 сая тонн 
+      газрын ховор ислийн (REO) эквивалент гэж тооцоологдож байна. Эдгээр нөөцийн хамгийн их 
+      хэсгийг Хятад улс эзэлж байгаа бөгөөд ойролцоогоор 44 сая тонн, дараагаар нь Бразил 
+      (21 сая тонн), Энэтхэг (6.9 сая тонн), Австрали (5.7 сая тонн), ОХУ (3.8 сая тонн), 
+      Вьетнам (3.5 сая тонн), мөн АНУ болон Гринланд-д харьцангуй бага боловч чухал нөөцүүд 
+      байдаг. Эдгээр нөөц нь өнөөгийн техник, эдийн засгийн нөхцөлд олборлоход боломжтой ордууд 
+      бөгөөд цаашид хайгуулын ажил өргөжихийн хэрээр хэмжээ нь нэмэгдэх боломжтой.`,
+          tabSubDesc421: `Үйлдвэрлэлийн хувьд, 2024 онд дэлхийн газрын ховорын нийт үйлдвэрлэл ойролцоогоор 
+      390,000 тонн REO эквивалент-д хүрсэн байна. Хятад улс үйлдвэрлэлээр давамгайлсаар байгаа 
+      бөгөөд дэлхийн нийлүүлэлтийн ихэнхийг бүрдүүлдэг. Бусад гол үйлдвэрлэгч орнуудад АНУ 
+      (~45,000 тонн), Мьянмар (~31,000 тонн), Австрали (~13,000 тонн) багтдаг бөгөөд үүнээс гадна 
+      Нигери, Тайланд зэрэг улс тодорхой хэмжээгээр хувь нэмэр оруулж байна. Нөөцийн өргөн 
+      тархалттай хэдий ч боловсруулалт болон ялгалтын хүчин чадал ихэнхдээ Хятадад төвлөрсөн 
+      хэвээр байгаа нь дэлхийн нийлүүлэлтийн сүлжээг зах зээл болон бодлогын өөрчлөлтөд эмзэг 
+      болгож байна.`,
+          tabSubDesc422: `2024 онд дэлхийн газрын ховор элементийн (REE) зах зээл ойролцоогоор 5.62 тэрбум ам.доллар-оор 
+      үнэлэгдсэн бөгөөд 2025 он гэхэд 6.25 тэрбум ам.доллар хүртэл өсөж, ойролцоогоор 11.2%-ийн жилийн 
+      нийлмэл өсөлтийн хурдтай (CAGR) байх төлөвтэй байна. Бусад таамаглалаар зах зээл 2024 онд 
+      3.75 тэрбум ам.доллар байснаас 2034 он гэхэд бараг 9.91 тэрбум ам.доллар хүрч өснө гэж үзэж байна. 
+      Энэ нь олон салбарт эрэлтийн тогтвортой өсөлтийг илтгэнэ.`,
+          tabTitle5: `Дэлхийн ГХЭ зах зээл `,
+          tabDesc5: `<div class="mn">
+
+  <h5><strong>Эрэлтийн хөдөлгөгч хүчин зүйлс</strong></h4>
+  <ul>
+    <li>
+      <strong>Цэвэр эрчим хүчний шилжилт:</strong> Цахилгаан автомашин (EV), салхин турбин, сэргээгдэх эрчим хүчний системийн хурдан нэвтрэлт нь газрын ховорын эрэлтийг нэмэгдүүлсээр байна. 
+      Ялангуяа неодим (Nd), празеодим (Pr), диспрози (Dy) зэрэг элементүүдийн хэрэгцээ өндөр.
+    </li>
+    <li>
+      <strong>Өндөр технологийн хэрэглээ:</strong> Байнгын соронз, дэвшилтэт электроник, робот техник болон батлан хамгаалах технологи газрын ховорын гол хэрэглэгчид хэвээр байна.
+    </li>
+    <li>
+      <strong>Зах зээлийн бүтэц:</strong> Хөнгөн газрын ховор элементүүд (LREEs) зах зээлийг давамгайлж, нийт хэрэглээний ойролцоогоор 80%-ийг бүрдүүлж байна.
+    </li>
+  </ul>
+
+  <h5><strong>Нийлүүлэлтийн байдал ба сорилтууд</strong></h5>
+  <ul>
+    <li>
+      <strong>Хятадын давамгайлал:</strong> Хятад улс газрын ховор элементийн олборлолт, боловсруулалтаар дэлхийд тэргүүлж байна. 
+      2024 онд тус улсын экспорт 55,431 тонн болж өссөн ч үнийн уналтаас шалтгаалан экспортын орлого буурсан.
+    </li>
+    <li>
+      <strong>Төвлөрлийн эрсдэл:</strong> Дэлхий даяар нөөц өргөн тархсан ч боловсруулах болон ялгах хүчин чадал ихэнхдээ Хятадад төвлөрсөн хэвээр байгаа нь нийлүүлэлтийн сүлжээг геополитик болон зах зээлийн эрсдэлд өртөмтгий болгож байна.
+    </li>
+    <li>
+      <strong>Дэлхийн хариу арга хэмжээ:</strong> АНУ, Австрали, Европын холбоо зэрэг орнууд олборлолт, боловсруулалт болон дахин боловсруулалтын дотоодын төслүүдэд хөрөнгө оруулж, нийлүүлэлтийн олон эх үүсвэр бий болгох бодлого баримталж байна.
+    </li>
+  </ul>
+
+  <h5><strong>Чиг хандлага ба ирээдүйн төлөв</strong></h5>
+  <ul>
+    <li>
+      <strong>Тогтвортой өсөлт:</strong> Цэвэр эрчим хүч болон дэвшилтэт технологийн хэрэглээгээр хөтлөгдөн 2030 он хүртэл зах зээл жилд 5–6%-ийн өсөлттэй байна гэж таамаглаж байна.
+    </li>
+    <li>
+      <strong>Стратегийн төслүүд:</strong> Засгийн газрууд чухал ашигт малтмалын стратеги, үндэсний нөөц бүрдүүлэх, боловсруулах хүчин чадалд хөрөнгө оруулалтыг нэмэгдүүлж байна.
+    </li>
+    <li>
+      <strong>Инноваци ба дахин боловсруулах:</strong> Дахин боловсруулах технологи болон үр ашиг өндөртэй олборлолтын шинэ арга технологи ирээдүйд эрэлтийг хангахад улам бүр чухал үүрэг гүйцэтгэнэ.
+    </li>
+  </ul>
+</div>
+`,
         },
         sustainability: {
           tabTitle1: "Оролцогч талуудын оролцооны төлөвлөгөө",
@@ -1101,8 +1197,22 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
             "<article><p>The Project lies in the far west of Mongolia, in the Myangad district of Khovd province. It is located approximately 1600 km west of the national capital, Ulaanbaatar, 60 km northeast of the provincial capital city of Khovd, and 20 km north of the township of Myangad. </p></article>",
 
           tabTitle3: "Geology & Mineralization ",
-          tabDesc3:
-            "<article><p>Khalzan Buregtei is considered to be a peralkaline REE deposit. Alkaline igneous rocks form by small degrees of partial melting of crustal materials, which acts to concentrate incompatible elements in the melt fraction. The resultant magmas may undergo differentiation to further concentrate the incompatible elements in later phases, as appears to be the case at Khalzan Buregtei.</p><p>The western half of the Property is underlain by mineralised nordmarkite and the eastern half by peralkaline granite. A ~500 m diameter circular peralkaline granite hosting the strongest mineralisation is situated at the contact of these two units, within the northeast quarter of mining license MV-012335. Drilling has shown that the peralkaline granite generally persists to about 200 m below surface. The peralkaline granite has a broadly concave-upward gradational contact with the underlying nordmarkite. Nordmarkite persists to depth within the current drilling. No drilling has been conducted in the alkaline granite to the east, with the exception of the tail ends of two eastward-directed holes which mainly intersected dykes.</p><p>Mineralisation consists of very fine grained disseminated REE-bearing minerals, mainly bastnaesite and synchesite, with some REE associated with zircon and other Zr-bearing minerals; mineralisation is not visually obvious. Mineralisation consists of both heavy rare earth element (HREE) and light rare earth element (LREE) content. REE concentrations are strongly elevated within the peralkaline granite and nordmarkite, with both absolute values and the HREE/LREE ratio diminishing downward and outward from the centre of the peralkaline granite through the nordmarkite.</p><p>Nominal high, medium, and low-grade zones have been defined on the basis of overall analytical result patterns. The contacts are diffuse and gradational, relatively flat-lying and subparallel, and to some extent mimic topography. Mineralisation extends to the limits of the current block model over a distance of 2.3 km north-south, 2.3 km east-west, and 800 m vertically. All zones remain open to the south, west, and north, and possibly to the east. MNREC intends to begin a drilling program to test for the lateral limits of mineralisation. The deposit also remains open at depth, but at low grades which apparently are diminishing with depth.</p></article>",
+          tabDesc3: `
+  <ul>
+    <li>
+      Khalzan Buregtei is considered to be a peralkaline REE deposit. Alkaline igneous rocks form by small degrees of partial melting of crustal materials, which acts to concentrate incompatible elements in the melt fraction. The resultant magmas may undergo differentiation to further concentrate the incompatible elements in later phases, as appears to be the case at Khalzan Buregtei.
+    </li>
+    <li>
+      The western half of the Property is underlain by mineralised nordmarkite and the eastern half by peralkaline granite. A ~500 m diameter circular peralkaline granite hosting the strongest mineralisation is situated at the contact of these two units, within the northeast quarter of mining license MV-012335. Drilling has shown that the peralkaline granite generally persists to about 200 m below surface. The peralkaline granite has a broadly concave-upward gradational contact with the underlying nordmarkite. Nordmarkite persists to depth within the current drilling. No drilling has been conducted in the alkaline granite to the east, with the exception of the tail ends of two eastward-directed holes which mainly intersected dykes.
+    </li>
+    <li>
+      Mineralisation consists of very fine grained disseminated REE-bearing minerals, mainly bastnaesite and synchesite, with some REE associated with zircon and other Zr-bearing minerals; mineralisation is not visually obvious. Mineralisation consists of both heavy rare earth element (HREE) and light rare earth element (LREE) content. REE concentrations are strongly elevated within the peralkaline granite and nordmarkite, with both absolute values and the HREE/LREE ratio diminishing downward and outward from the centre of the peralkaline granite through the nordmarkite.
+    </li>
+    <li>
+      Nominal high, medium, and low-grade zones have been defined on the basis of overall analytical result patterns. The contacts are diffuse and gradational, relatively flat-lying and subparallel, and to some extent mimic topography. Mineralisation extends to the limits of the current block model over a distance of 2.3 km north-south, 2.3 km east-west, and 800 m vertically. All zones remain open to the south, west, and north, and possibly to the east. MNREC intends to begin a drilling program to test for the lateral limits of mineralisation. The deposit also remains open at depth, but at low grades which apparently are diminishing with depth.
+    </li>
+  </ul>
+`,
 
           tabTitle4: "Drilling and Sampling",
           tabDesc4:
@@ -1131,6 +1241,85 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
             "<p>Primary use: Neodymium-iron-boron (NdFeB) magnets, the strongest type of permanent magnet.<br/><br/><b>Applications:</b> Electric vehicle motors, wind turbines, hard disk drives, and headphones.</p>",
           tabSubDesc4:
             "<p>Often alloyed with neodymium to enhance magnet strength and heat resistance.<br/><br/><b>Applications:</b> EV motors, wind turbines, and aircraft engines.</p>",
+          tabTitle4: `Reserve & Production `,
+          tabSubtitle41: "Reserve",
+          tabSubtitle42: "Production",
+          tabSubDesc41: `As of 2024, the world’s rare earth element (REE) reserves are estimated at around 
+      90 million tons of rare earth oxide (REO) equivalent. The largest share of these reserves 
+      is held by China, with about 44 million tons, followed by Brazil (21 million tons), 
+      India (6.9 million tons), Australia (5.7 million tons), Russia (3.8 million tons), 
+      Vietnam (3.5 million tons), and smaller but significant reserves in the United States 
+      and Greenland. These reserves represent deposits that are technically and economically 
+      feasible to extract, and their size may grow further as exploration advances and new 
+      projects are developed.`,
+          tabSubDesc421: `In terms of production, global output of rare earths in 2024 reached approximately 
+        390,000 metric tons of REO equivalent. China continues to dominate production, 
+        accounting for the majority of global supply, while other key producers include 
+        the United States (around 45,000 tons), Myanmar (31,000 tons), and Australia (13,000 tons), 
+        along with contributions from countries such as Nigeria and Thailand. Despite the relatively 
+        wide geographic distribution of reserves, processing and separation capacity remain heavily 
+        concentrated in China, making global supply chains vulnerable to market and policy shifts.`,
+          tabSubDesc422: `The rare earth sector in 2024 reflects a growing tension between rapidly increasing demand, 
+      driven by the clean energy transition, and concerns over supply security. Electric vehicles, 
+      wind turbines, advanced electronics, and defense technologies continue to drive consumption, 
+      prompting many governments to invest in exploration, develop downstream refining capacity, 
+      and establish strategic stockpiles. Meanwhile, China’s rare earth exports in 2024 increased 
+      in volume but saw lower export values due to falling prices, highlighting the volatility of 
+      this market. Environmental and regulatory pressures also remain strong, as rare earth mining 
+      and processing involve complex chemical processes that require careful waste management.
+      Looking forward, the combination of strong demand, concentrated supply, and environmental 
+      challenges makes rare earths one of the most strategically important groups of minerals in 
+      the global economy. Countries with untapped reserves have significant opportunities to 
+      position themselves as alternative suppliers and to play a larger role in balancing the 
+      global rare earth supply chain.`,
+
+          tabTitle5: `Global REE market `,
+          tabDesc5: `<div class="en">
+  <h5><strong>Market Size and Growth Outlook</strong></h5>
+  <p>
+    The global rare earth elements (REE) market was valued at approximately USD 5.62 billion in 2024, with projections indicating growth to USD 6.25 billion in 2025 at a CAGR of around 11.2%. 
+    Other forecasts suggest the market could expand from USD 3.75 billion in 2024 to nearly USD 9.91 billion by 2034, reflecting sustained demand growth across multiple sectors.
+  </p>
+
+  <h5><strong>Demand Drivers</strong></h5>
+  <ul>
+    <li>
+      <strong>Clean Energy Transition:</strong> Rapid adoption of electric vehicles (EVs), wind turbines, and renewable energy systems continues to drive demand for REEs, particularly neodymium (Nd), praseodymium (Pr), and dysprosium (Dy).
+    </li>
+    <li>
+      <strong>High-tech Applications:</strong> Permanent magnets, advanced electronics, robotics, and defense technologies are key consumers of rare earths.
+    </li>
+    <li>
+      <strong>Market Composition:</strong> Light rare earth elements (LREEs) dominate the market, accounting for nearly 80% of total consumption.
+    </li>
+  </ul>
+
+  <h5><strong>Supply Landscape and Challenges</strong></h5>
+  <ul>
+    <li>
+      <strong>China’s Dominance:</strong> China remains the world’s leading producer and processor of REEs. In 2024, China’s exports rose to 55,431 tonnes, although export values declined due to falling prices.
+    </li>
+    <li>
+      <strong>Concentration Risks:</strong> Despite global reserves being widely distributed, refining and separation capacities are still highly concentrated in China, exposing supply chains to geopolitical and market risks.
+    </li>
+    <li>
+      <strong>Global Response:</strong> Countries such as the United States, Australia, and the European Union are prioritizing domestic mining, refining, and recycling projects to diversify supply sources.
+    </li>
+  </ul>
+
+  <h5><strong>Trends and Future Outlook</strong></h5>
+  <ul>
+    <li>
+      <strong>Sustained Growth:</strong> The market is expected to maintain a CAGR of 5–6% through 2030, driven by clean energy and advanced technologies.
+    </li>
+    <li>
+      <strong>Strategic Projects:</strong> Governments are investing in critical minerals strategies, strategic stockpiles, and downstream processing capabilities.
+    </li>
+    <li>
+      <strong>Innovation & Recycling:</strong> Development of recycling technologies and more efficient extraction methods will play an increasingly important role in meeting future demand.
+    </li>
+  </ul>
+</div>`,
         },
         sustainability: {
           tabTitle1: "Stakeholder engagement plan",

@@ -12,9 +12,14 @@ interface SidebarItem {
 interface ClientKbProjectProps {
   sidebarItems: SidebarItem[];
   translations: Record<string, any>;
+  locale: string;
 }
 
-export default function ClientReeProject({ sidebarItems, translations }: ClientKbProjectProps) {
+export default function ClientReeProject({
+  sidebarItems,
+  translations,
+  locale,
+}: ClientKbProjectProps) {
   const [activeTab, setActiveTab] = useState(sidebarItems[0]?.id || "");
 
   const handleTabClick = (itemId: string) => {
@@ -98,6 +103,48 @@ export default function ClientReeProject({ sidebarItems, translations }: ClientK
                   />
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (item.id === "5") {
+      return (
+        <div className="production-container">
+          <div className="production-main">
+            <div className="tab-content-with-image">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: item.content
+                    .split("\n")
+                    .map((paragraph: string) => `<p>${paragraph}</p>`)
+                    .join(""),
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    } else if (item.id === "4") {
+      const t = translations.ree;
+
+      console.log("Current locale:", locale);
+      const productionImage =
+        locale === "mn"
+          ? "/assets/images/gallery/production-mn.png"
+          : "/assets/images/gallery/production-en.png";
+
+      return (
+        <div className="production-content">
+          <div className="production-container">
+            <div className="production-main">
+              <h4 className="production-title">{t.tabSubtitle41}</h4>
+              <p className="production-text">{t.tabSubDesc41}</p>
+              <h4 className="production-title">{t.tabSubtitle42}</h4>
+              <p className="production-text">{t.tabSubDesc421}</p>
+              <div className="production-image-wrapper">
+                <img src={productionImage} alt="production" className="production-image" />
+              </div>
+              <p className="production-text">{t.tabSubDesc422}</p>
             </div>
           </div>
         </div>
