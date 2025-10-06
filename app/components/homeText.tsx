@@ -16,7 +16,7 @@ export default function HomeText({ translations }: HomeTextProps) {
               <img src="assets/images/icon/quote.png" alt="icon-quote" className="quote-icon-img" />
             </div>
             <p className="rs-split-text-enable split-in-fade quote-text">
-              High potential project for Mongolia's first rare earth project development and a
+              High potential project for Mongolia&apos;s first rare earth project development and a
               significant opportunity for Khovd province
             </p>
           </div>

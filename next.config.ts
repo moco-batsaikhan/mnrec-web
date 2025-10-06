@@ -1,5 +1,7 @@
 module.exports = {
-  output: "export",
+  // Temporarily commented out for admin development
+  // output: "export",
+  trailingSlash: true,
   redirects: async () => [
     {
       source: "/",
