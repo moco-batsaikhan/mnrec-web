@@ -25,7 +25,7 @@ interface News extends NewsForm {
   viewCount: number;
 }
 
-export default function EditNews({ params }: { params: { id: string } }) {
+export default function EditNews({ params }: { params: Promise<{ id: string }> }) {
   const [formData, setFormData] = useState<NewsForm>({
     title: "",
     content: "",
@@ -40,6 +40,7 @@ export default function EditNews({ params }: { params: { id: string } }) {
   const [error, setError] = useState("");
   const [tagInput, setTagInput] = useState("");
   const [news, setNews] = useState<News | null>(null);
+  const [newsId, setNewsId] = useState<string>("");
   const router = useRouter();
 
   const categories = [
@@ -53,12 +54,17 @@ export default function EditNews({ params }: { params: { id: string } }) {
   ];
 
   useEffect(() => {
-    fetchNews();
-  }, [params.id]);
+    const initializeParams = async () => {
+      const resolvedParams = await params;
+      setNewsId(resolvedParams.id);
+      fetchNews(resolvedParams.id);
+    };
+    initializeParams();
+  }, [params]);
 
-  const fetchNews = async () => {
+  const fetchNews = async (id: string) => {
     try {
-      const response = await fetch(`/api/news/${params.id}`);
+      const response = await fetch(`/api/news/${id}`);
       if (response.ok) {
         const result = await response.json();
         const newsData = result.data;
@@ -120,7 +126,7 @@ export default function EditNews({ params }: { params: { id: string } }) {
     setError("");
 
     try {
-      const response = await fetch(`/api/news/${params.id}`, {
+      const response = await fetch(`/api/news/${newsId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -177,7 +183,7 @@ export default function EditNews({ params }: { params: { id: string } }) {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Мэдээ засварлах</h1>
-            <p className="text-gray-600">"{news?.title}" мэдээг засварлах</p>
+            <p className="text-gray-600">&quot;{news?.title}&quot; мэдээг засварлах</p>
             {news && (
               <div className="text-sm text-gray-500 mt-2">
                 <span>Үүсгэсэн: {new Date(news.createdAt).toLocaleDateString("mn-MN")}</span>

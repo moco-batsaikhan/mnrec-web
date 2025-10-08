@@ -86,7 +86,7 @@ export async function initDatabase() {
       'SELECT COUNT(*) as count FROM users WHERE role = "admin"',
     );
 
-    if (existingUsers[0].count === 0) {
+    if ((existingUsers as any)[0].count === 0) {
       await connection.execute(`
         INSERT INTO users (email, name, password, role, status, last_login) VALUES 
         ('admin@mnrec.mn', 'Админ', 'password123', 'admin', 'active', NOW()),
@@ -99,16 +99,16 @@ export async function initDatabase() {
     // Insert sample news if not exists
     const [existingNews] = await connection.execute("SELECT COUNT(*) as count FROM news");
 
-    if (existingNews[0].count === 0) {
+    if ((existingNews as any)[0].count === 0) {
       const [adminUser] = await connection.execute(
         'SELECT id FROM users WHERE email = "admin@mnrec.mn"',
       );
-      const adminId = adminUser[0].id;
+      const adminId = (adminUser as any)[0].id;
 
       const [editorUser] = await connection.execute(
         'SELECT id FROM users WHERE email = "editor@mnrec.mn"',
       );
-      const editorId = editorUser[0].id;
+      const editorId = (editorUser as any)[0].id;
 
       await connection.execute(`
         INSERT INTO news (title, content, summary, slug, status, featured_image, category, tags, author_id, published_at, view_count) VALUES 

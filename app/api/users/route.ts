@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
 
     // Build WHERE clause
     let whereClause = "WHERE 1=1";
-    let queryParams: any[] = [];
+    const queryParams: any[] = [];
 
     if (search) {
       whereClause += " AND (name LIKE ? OR email LIKE ?)";

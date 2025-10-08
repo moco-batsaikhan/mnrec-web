@@ -10,10 +10,11 @@ interface User {
   created_at: string;
   last_login: string | null;
 } // PUT - Хэрэглэгч засварлах
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const connection = await pool.getConnection();
-    const userId = parseInt(params.id);
+    const resolvedParams = await params;
+    const userId = parseInt(resolvedParams.id);
     const { email, name, role, status } = await request.json();
 
     // Хэрэглэгч олох
@@ -89,10 +90,11 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 }
 
 // DELETE - Хэрэглэгч устгах
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const connection = await pool.getConnection();
-    const userId = parseInt(params.id);
+    const resolvedParams = await params;
+    const userId = parseInt(resolvedParams.id);
 
     // Хэрэглэгч олох
     const [user] = await connection.execute("SELECT * FROM users WHERE id = ?", [userId]);
@@ -125,10 +127,11 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
 }
 
 // GET - Тодорхой хэрэглэгч авах
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const connection = await pool.getConnection();
-    const userId = parseInt(params.id);
+    const resolvedParams = await params;
+    const userId = parseInt(resolvedParams.id);
 
     const [rows] = await connection.execute("SELECT * FROM users WHERE id = ?", [userId]);
 

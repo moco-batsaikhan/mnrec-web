@@ -20,10 +20,11 @@ interface News {
 }
 
 // PUT - Мэдээ засварлах
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const connection = await pool.getConnection();
-    const newsId = parseInt(params.id);
+    const resolvedParams = await params;
+    const newsId = parseInt(resolvedParams.id);
     const { title, content, summary, status, category, tags, featuredImage } = await request.json();
 
     // Мэдээ олох
@@ -149,10 +150,11 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 }
 
 // DELETE - Мэдээ устгах
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const connection = await pool.getConnection();
-    const newsId = parseInt(params.id);
+    const resolvedParams = await params;
+    const newsId = parseInt(resolvedParams.id);
 
     // Мэдээ олох
     const [existingNews] = await connection.execute("SELECT * FROM news WHERE id = ?", [newsId]);
@@ -197,10 +199,11 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
 }
 
 // GET - Нэг мэдээ авах
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const connection = await pool.getConnection();
-    const newsId = parseInt(params.id);
+    const resolvedParams = await params;
+    const newsId = parseInt(resolvedParams.id);
 
     // Мэдээ олох
     const [newsResult] = await connection.execute(
