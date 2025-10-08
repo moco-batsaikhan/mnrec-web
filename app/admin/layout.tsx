@@ -1,11 +1,14 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "MNREC CMS - Удирдлагын систем",
+  description: "MNREC веб сайтын удирдлагын систем",
+};
+
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="mn">
-      <head>
-        <title>MNREC CMS - Удирдлагын систем</title>
-        <meta name="description" content="MNREC веб сайтын удирдлагын систем" />
-      </head>
-      <body>{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
