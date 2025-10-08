@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "serve": "npx serve@latest out -p 3000",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:test": "ts-node scripts/test-db.ts"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^11.0.0",
@@ -27,6 +28,8 @@
     "jquery": "^3.7.1",
     "magnific-popup": "^1.2.0",
     "mysql2": "^3.15.2",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
     "next": "15.5.2",
     "nouislider": "^15.8.1",
     "odometer": "^0.4.8",
@@ -47,6 +50,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }

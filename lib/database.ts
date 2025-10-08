@@ -1,19 +1,66 @@
 import mysql from "mysql2/promise";
+import fs from "fs";
+import path from "path";
+
+// If environment variables aren't set (e.g. when running scripts with ts-node),
+// try loading them from a .env.local file in the project root.
+function loadEnvLocal() {
+  try {
+    const envPath = path.resolve(process.cwd(), ".env.local");
+    if (!fs.existsSync(envPath)) {
+      // nothing to load
+      return;
+    }
+
+    const content = fs.readFileSync(envPath, "utf8");
+    const lines = content.split(/\r?\n/);
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith("#")) continue;
+      const idx = trimmed.indexOf("=");
+      if (idx === -1) continue;
+      const key = trimmed.slice(0, idx).trim();
+      let value = trimmed.slice(idx + 1).trim();
+      if (
+        (value.startsWith('"') && value.endsWith('"')) ||
+        (value.startsWith("'") && value.endsWith("'"))
+      ) {
+        value = value.slice(1, -1);
+      }
+      if (!process.env[key]) {
+        process.env[key] = value;
+      }
+    }
+
+    console.log(`📥 Loaded environment from ${envPath}`);
+  } catch (err) {
+    console.warn("Could not load .env.local:", err);
+  }
+}
+
+loadEnvLocal();
 
 // Database connection configuration
 const dbConfig = {
-  host: "db-mysql-sgp1-301-do-user-25594947-0.e.db.ondigitalocean.com",
-  port: 25060,
-  user: "doadmin",
-  password: "AVNS_EtA-52-_c0dRK",
-  database: "defaultdb",
+  host: process.env.DATABASE_HOST,
+  port: parseInt(process.env.DATABASE_PORT || "25060"),
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
   ssl: {
     rejectUnauthorized: false,
   },
-  connectionLimit: 10,
-  acquireTimeout: 60000,
-  timeout: 60000,
+  connectionLimit: 5,
 };
+
+console.log("📦 Loaded database config:");
+console.log({
+  host: process.env.DATABASE_HOST,
+  port: process.env.DATABASE_PORT,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD ? "********" : "(empty)",
+  database: process.env.DATABASE_NAME,
+});
 
 // Create connection pool
 const pool = mysql.createPool(dbConfig);
@@ -81,91 +128,80 @@ export async function initDatabase() {
       )
     `);
 
-    // Insert default admin user if not exists
-    const [existingUsers] = await connection.execute(
-      'SELECT COUNT(*) as count FROM users WHERE role = "admin"',
-    );
-
-    if ((existingUsers as any)[0].count === 0) {
-      await connection.execute(`
-        INSERT INTO users (email, name, password, role, status, last_login) VALUES 
-        ('admin@mnrec.mn', 'Админ', 'password123', 'admin', 'active', NOW()),
-        ('editor@mnrec.mn', 'Редактор', 'editor123', 'editor', 'active', NOW()),
-        ('user@example.com', 'Энгийн хэрэглэгч', 'user123', 'user', 'inactive', '2024-09-28 13:45:00')
-      `);
-      console.log("✅ Default users created");
-    }
-
-    // Insert sample news if not exists
-    const [existingNews] = await connection.execute("SELECT COUNT(*) as count FROM news");
-
-    if ((existingNews as any)[0].count === 0) {
-      const [adminUser] = await connection.execute(
-        'SELECT id FROM users WHERE email = "admin@mnrec.mn"',
-      );
-      const adminId = (adminUser as any)[0].id;
-
-      const [editorUser] = await connection.execute(
-        'SELECT id FROM users WHERE email = "editor@mnrec.mn"',
-      );
-      const editorId = (editorUser as any)[0].id;
-
-      await connection.execute(`
-        INSERT INTO news (title, content, summary, slug, status, featured_image, category, tags, author_id, published_at, view_count) VALUES 
-        (
-          'IMARC хурлын тайлан',
-          'IMARC (International Mining and Resources Conference) хурлын дэлгэрэнгүй тайлан. Энэ хурал дээр дэлхийн уул уурхайн салбарын хамгийн сүүлийн үеийн технологи, инноваци, хөрөнгө оруулалтын чиглэлүүдийг хэлэлцсэн.',
-          'IMARC хурлын гол агуулгыг товч тайлбарласан тайлан',
-          'imarc-conference-report-2024',
-          'published',
-          '/assets/images/news/imarc-conference.jpg',
-          'Хурал',
-          '["IMARC", "хурал", "уул уурхай", "технологи"]',
-          ${adminId},
-          '2024-10-05 10:00:00',
-          1250
-        ),
-        (
-          'Халзан Бүрэгтэй төслийн шинэчлэл',
-          'Халзан Бүрэгтэй төслийн хүрээнд хийгдсэн геологийн судалгааны үр дүн, ашигт малтмалын нөөцийн үнэлгээ, боловсруулах технологийн судалгааны талаархи дэлгэрэнгүй мэдээлэл.',
-          'Халзан Бүрэгтэй төслийн сүүлийн үеийн ахиц дэвшлийн тухай',
-          'khalzan-buregtei-project-update',
-          'published',
-          '/assets/images/news/khalzan-buregtei.jpg',
-          'Төсөл',
-          '["Халзан Бүрэгтэй", "төсөл", "геологи", "нөөц"]',
-          ${editorId},
-          '2024-10-03 14:20:00',
-          890
-        ),
-        (
-          'Газрын ховор элементийн зах зээлийн судалгаа',
-          '2024 оны газрын ховор элементийн дэлхийн зах зээлийн нөхцөл байдал, үнийн хөдөлгөөн, эрэлт нийлүүлэлтийн тэнцвэрт байдлын талаархи судалгааны тайлан.',
-          'ГХЭ-ийн зах зээлийн өнөөгийн байдал болон ирээдүйн чиг хандлага',
-          'rare-earth-market-analysis-2024',
-          'draft',
-          NULL,
-          'Судалгаа',
-          '["ГХЭ", "зах зээл", "судалгаа", "үнэ"]',
-          ${editorId},
-          NULL,
-          0
-        ),
-        (
-          'Байгаль орчны хамгаалалын арга хэмжээ',
-          'MNREC-ийн байгаль орчныг хамгаалах талаар хэрэгжүүлж буй арга хэмжээний тайлан. Усны эх үүсвэрийг хамгаалах, хог хаягдлыг боловсруулах, нөхөн сэргээх ажлын талаар.',
-          'Байгаль орчны хамгаалалын хүрээнд хийгдсэн ажлуудын тайлан',
-          'environmental-protection-measures',
-          'published',
-          '/assets/images/news/environment.jpg',
-          'Байгаль орчин',
-          '["байгаль орчин", "хамгаалал", "нөхөн сэргээлт"]',
-          ${adminId},
-          '2024-09-28 13:45:00',
-          675
+    // Create refresh_tokens table for refresh token rotation / revocation
+    await connection.execute(`
+        CREATE TABLE IF NOT EXISTS refresh_tokens (
+          id INT AUTO_INCREMENT PRIMARY KEY,
+          user_id INT NOT NULL,
+          token VARCHAR(1024) NOT NULL,
+          revoked TINYINT(1) DEFAULT 0,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          expires_at TIMESTAMP NULL,
+          INDEX idx_user (user_id),
+          FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         )
       `);
-      console.log("✅ Sample news created");
+
+    // NOTE: default user creation removed.
+    // Users are expected to be managed by application logic or migration scripts.
+
+    // Insert sample news if not exists
+    const [existingNews] = await connection.execute(
+      "SELECT COUNT(*) as count FROM news"
+    );
+
+    if ((existingNews as any)[0].count === 0) {
+      // Attempt to find admin/editor users to attach as authors for sample news
+      const [adminRows] = await connection.execute(
+        "SELECT id FROM users WHERE email = 'admin@mnrec.mn' LIMIT 1"
+      );
+      const adminId = (adminRows as any)[0]?.id ?? null;
+
+      const [editorRows] = await connection.execute(
+        "SELECT id FROM users WHERE email = 'editor@mnrec.mn' LIMIT 1"
+      );
+      const editorId = (editorRows as any)[0]?.id ?? null;
+
+      // Only insert sample news if we have at least one valid author id
+      if (adminId || editorId) {
+        const aid = adminId ?? editorId;
+        const eid = editorId ?? adminId;
+
+        await connection.execute(`
+          INSERT INTO news (title, content, summary, slug, status, featured_image, category, tags, author_id, published_at, view_count) VALUES 
+          (
+            'IMARC хурлын тайлан',
+            'IMARC (International Mining and Resources Conference) хурлын дэлгэрэнгүй тайлан. Энэ хурал дээр дэлхийн уул уурхайн салбарын хамгийн сүүлийн үеийн технологи, инноваци, хөрөнгө оруулалтын чиглэлүүдийг хэлэлцсэн.',
+            'IMARC хурлын гол агуулгыг товч тайлбарласан тайлан',
+            'imarc-conference-report-2024',
+            'published',
+            '/assets/images/news/imarc-conference.jpg',
+            'Хурал',
+            '["IMARC", "хурал", "уул уурхай", "технологи"]',
+            ${aid},
+            '2024-10-05 10:00:00',
+            1250
+          ),
+          (
+            'Халзан Бүрэгтэй төслийн шинэчлэл',
+            'Халзан Бүрэгтэй төслийн хүрээнд хийгдсэн геологийн судалгааны үр дүн, ашигт малтмалын нөөцийн үнэлгээ, боловсруулах технологийн судалгааны талаархи дэлгэрэнгүй мэдээлэл.',
+            'Халзан Бүрэгтэй төслийн сүүлийн үеийн ахиц дэвшлийн тухай',
+            'khalzan-buregtei-project-update',
+            'published',
+            '/assets/images/news/khalzan-buregtei.jpg',
+            'Төсөл',
+            '["Халзан Бүрэгтэй", "төсөл", "геологи", "нөөц"]',
+            ${eid},
+            '2024-10-03 14:20:00',
+            890
+          )
+        `);
+        console.log("✅ Sample news created");
+      } else {
+        console.log(
+          "ℹ️ Skipping sample news insertion — no admin/editor users found to assign as authors"
+        );
+      }
     }
 
     connection.release();

@@ -1,15 +1,19 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import { revokeRefreshToken } from "../../../../lib/auth";
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
-    // Logout хийх - client талаас token устгах хэрэгтэй
-
-    return NextResponse.json({
-      success: true,
-      message: "Амжилттай гарлаа",
-    });
-  } catch (error) {
-    console.error("Logout API алдаа:", error);
-    return NextResponse.json({ message: "Серверийн алдаа" }, { status: 500 });
+    const { refreshToken } = await request.json();
+    if (refreshToken) await revokeRefreshToken(refreshToken);
+    const res = NextResponse.json({ ok: true });
+    // clear cookies if set
+    res.cookies.set("accessToken", "", { path: "/", maxAge: 0 });
+    res.cookies.set("refreshToken", "", { path: "/", maxAge: 0 });
+    return res;
+  } catch (err) {
+    return NextResponse.json(
+      { error: (err as Error).message },
+      { status: 500 }
+    );
   }
 }

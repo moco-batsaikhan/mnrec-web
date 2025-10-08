@@ -1,0 +1,38 @@
+.adminRoot {
+  --admin-sidebar-width: 16rem; /* 256px */
+  --admin-header-height: 56px;
+}
+
+.content {
+  margin-left: var(--admin-sidebar-width);
+  padding-top: var(--admin-header-height);
+  min-height: calc(100vh - var(--admin-header-height));
+  background: #f7fafc; /* light gray */
+}
+
+/* Target client components by their global class names */
+.adminRoot :global(.global-header) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--admin-header-height);
+  z-index: 40;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.adminRoot :global(.admin-sidebar) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--admin-sidebar-width);
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  z-index: 30;
+}
+
+.adminRoot :global(.admin-content-box) {
+  padding: 1rem;
+}
