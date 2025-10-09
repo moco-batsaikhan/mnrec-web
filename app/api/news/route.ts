@@ -29,7 +29,10 @@ export async function GET(request: NextRequest) {
     const search = url.searchParams.get("search") || "";
     const status = url.searchParams.get("status") || "";
     const category = url.searchParams.get("category") || "";
-    const sortBy = url.searchParams.get("sortBy") || "created_at";
+    const author = url.searchParams.get("author") || "";
+    const startDate = url.searchParams.get("startDate") || "";
+    const endDate = url.searchParams.get("endDate") || "";
+    const sortBy = url.searchParams.get("sortBy") || "createdAt";
     const sortOrder = url.searchParams.get("sortOrder") || "desc";
 
     // Base query
@@ -43,8 +46,8 @@ export async function GET(request: NextRequest) {
 
     // Хайлт болон шүүлт
     if (search) {
-      query += ` AND (n.title LIKE ? OR n.content LIKE ? OR n.summary LIKE ?)`;
-      queryParams.push(`%${search}%`, `%${search}%`, `%${search}%`);
+      query += ` AND (n.title LIKE ? OR n.content LIKE ? OR n.summary LIKE ? OR u.name LIKE ?)`;
+      queryParams.push(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
     }
 
     if (status) {
@@ -57,13 +60,41 @@ export async function GET(request: NextRequest) {
       queryParams.push(category);
     }
 
+    if (author) {
+      query += ` AND u.name LIKE ?`;
+      queryParams.push(`%${author}%`);
+    }
+
+    if (startDate) {
+      query += ` AND DATE(n.created_at) >= ?`;
+      queryParams.push(startDate);
+    }
+
+    if (endDate) {
+      query += ` AND DATE(n.created_at) <= ?`;
+      queryParams.push(endDate);
+    }
+
     // Count query for pagination
     const countQuery = query.replace("n.*, u.name as author_name", "COUNT(*) as total");
     const [countResult] = await connection.execute(countQuery, queryParams);
     const totalCount = (countResult as any)[0].total;
 
     // Add ordering and pagination to main query
-    query += ` ORDER BY n.${sortBy} ${sortOrder.toUpperCase()}`;
+    const validSortColumns = {
+      'title': 'n.title',
+      'createdAt': 'n.created_at',
+      'updatedAt': 'n.updated_at', 
+      'viewCount': 'n.view_count',
+      'status': 'n.status',
+      'category': 'n.category',
+      'publishedAt': 'n.published_at'
+    };
+    
+    const sortColumn = validSortColumns[sortBy as keyof typeof validSortColumns] || 'n.created_at';
+    const sortDirection = sortOrder.toLowerCase() === 'asc' ? 'ASC' : 'DESC';
+    
+    query += ` ORDER BY ${sortColumn} ${sortDirection}`;
     query += ` LIMIT ? OFFSET ?`;
     queryParams.push(limit, (page - 1) * limit);
 
