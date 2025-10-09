@@ -23,15 +23,25 @@ export default function GlobalHeader() {
     }
   };
 
+  const isAdminPage = pathname?.startsWith("/admin");
+
   return (
-    <header className="global-header bg-white shadow-sm border-b fixed top-0 left-0 right-0 z-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-14 items-center">
-          <div className="text-lg font-semibold">MNREC</div>
-          <div>
+    <header className="global-header bg-white shadow-sm border-b w-full h-16">
+      <div className={`${isAdminPage ? "px-6" : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}`}>
+        <div className="flex justify-between h-16 items-center">
+          <div className="flex items-center space-x-4">
+            <div className="text-xl font-bold text-blue-600">MNREC</div>
+            {isAdminPage && (
+              <div className="text-sm text-gray-500 border-l border-gray-300 pl-4">
+                Удирдлагын систем
+              </div>
+            )}
+          </div>
+          <div className="flex items-center space-x-4">
+            {isAdminPage && <div className="text-sm text-gray-600">Админ хэрэглэгч</div>}
             <button
               onClick={handleLogout}
-              className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm"
             >
               Гарах
             </button>

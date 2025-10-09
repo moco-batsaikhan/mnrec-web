@@ -230,7 +230,7 @@ export default function CreateNews() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="p-6">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between">

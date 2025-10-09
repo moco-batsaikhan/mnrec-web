@@ -28,13 +28,13 @@ export default function AdminSidebar() {
   ];
 
   return (
-    <div className="admin-sidebar bg-white h-screen w-64 fixed left-0 top-0 shadow-lg">
-      <div className="p-4 border-b">
-        <h2 className="text-xl font-semibold text-gray-800">MNREC Админ</h2>
+    <div className="admin-sidebar bg-white h-full w-full">
+      <div className="p-4 border-b border-gray-200">
+        <h2 className="text-lg font-semibold text-gray-800">MNREC Админ</h2>
       </div>
       <nav className="p-4">
-        <ul className="space-y-2">
-          {menuItems.map((item) => {
+        <ul className="space-y-1">
+          {menuItems.map(item => {
             const isActive = pathname === item.href;
             return (
               <li key={item.href}>
@@ -42,12 +42,12 @@ export default function AdminSidebar() {
                   href={item.href}
                   className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
                     isActive
-                      ? "bg-blue-50 text-blue-600"
-                      : "text-gray-600 hover:bg-gray-50"
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "text-gray-700 hover:bg-gray-100"
                   }`}
                 >
-                  <i className={`${item.icon} w-5`} />
-                  <span>{item.title}</span>
+                  <i className={`${item.icon} w-5 text-sm`} />
+                  <span className="font-medium">{item.title}</span>
                 </Link>
               </li>
             );

@@ -82,18 +82,18 @@ export async function GET(request: NextRequest) {
 
     // Add ordering and pagination to main query
     const validSortColumns = {
-      'title': 'n.title',
-      'createdAt': 'n.created_at',
-      'updatedAt': 'n.updated_at', 
-      'viewCount': 'n.view_count',
-      'status': 'n.status',
-      'category': 'n.category',
-      'publishedAt': 'n.published_at'
+      title: "n.title",
+      createdAt: "n.created_at",
+      updatedAt: "n.updated_at",
+      viewCount: "n.view_count",
+      status: "n.status",
+      category: "n.category",
+      publishedAt: "n.published_at",
     };
-    
-    const sortColumn = validSortColumns[sortBy as keyof typeof validSortColumns] || 'n.created_at';
-    const sortDirection = sortOrder.toLowerCase() === 'asc' ? 'ASC' : 'DESC';
-    
+
+    const sortColumn = validSortColumns[sortBy as keyof typeof validSortColumns] || "n.created_at";
+    const sortDirection = sortOrder.toLowerCase() === "asc" ? "ASC" : "DESC";
+
     query += ` ORDER BY ${sortColumn} ${sortDirection}`;
     query += ` LIMIT ? OFFSET ?`;
     queryParams.push(limit, (page - 1) * limit);
