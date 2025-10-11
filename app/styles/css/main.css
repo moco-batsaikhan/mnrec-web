@@ -205,7 +205,7 @@ h6,
   --rs-theme-light-blue: #0d80ce;
   --rs-theme-green: #023b4a;
   --rs-theme-light-green: #507a7c;
-  --rs-mnrec-green: #00b0b0;
+  --rs-mnrec-green: #12d5b1;
   --rs-theme-yellow: #f7c600;
   --rs-theme-deep-blue: #3b37fd;
   --rs-text-primary: #000000;
@@ -1308,10 +1308,10 @@ textarea:focus {
   color: var(--rs-white);
 }
 .rs-btn.blue-bg {
-  background: linear-gradient(to right, #00b0b0, #24ff92);
+  background: linear-gradient(to right, #12d5b1, #24ff92);
 }
 .rs-btn.blue-bg:hover {
-  background-color: linear-gradient(to right, #00b0b0, #24ff92);
+  background-color: linear-gradient(to right, #12d5b1, #24ff92);
 }
 .rs-btn.has-bg-transparent {
   background: transparent;
@@ -1335,7 +1335,7 @@ textarea:focus {
   background: var(--rs-mnrec-green);
 }
 .rs-btn.has-theme-red {
-  background: #00b0b0;
+  background: #12d5b1;
 }
 .rs-btn.has-theme-red:hover {
   filter: brightness(120%);
@@ -3007,8 +3007,8 @@ textarea:focus {
   color: var(--rs-theme-light-blue);
 }
 .rs-section-subtitle.has-stroke {
-  -webkit-text-stroke-color: #00b0b0;
-  stroke: #00b0b0;
+  -webkit-text-stroke-color: #12d5b1;
+  stroke: #12d5b1;
   letter-spacing: 4.6px;
   color: rgba(2, 1, 1, 0);
   -webkit-text-stroke-width: 1px;
@@ -7105,7 +7105,7 @@ html.lenis body {
     transform: translateX(-50%);
     width: 90%;
     height: 4px;
-    background: linear-gradient(to right, #00b0b0, #24ff92);
+    background: linear-gradient(to right, #12d5b1, #24ff92);
     border-radius: 2px;
 }
 
@@ -7134,7 +7134,7 @@ html.lenis body {
   max-width: 620px;
 }
 .rs-banner-two .rs-banner-descrip p {
-  color: #41c1c9;
+  color: #12d5b1;
   font-size: 20px;
   font-weight: 600;
 }
@@ -10284,7 +10284,7 @@ html.lenis body {
   transition: 0.3s;
 }
 .rs-postbox-tag a:hover {
-  background: #00b0b0;
+  background: #12d5b1;
 }
 .rs-postbox-meta-list {
   display: flex;
@@ -14331,7 +14331,7 @@ html.lenis body {
 }
 
 .apostrophe{
-  color: #00b0b0;
+  color: #12d5b1;
   font-size: 70px;
   font-weight: 800;
   line-height: 1.2;
@@ -14350,7 +14350,7 @@ html.lenis body {
   line-height: 1;
 }
 .apostrophe{
-  color: #00b0b0;
+  color: #12d5b1;
   font-size: 50px;
   font-weight: 800;
   line-height: 1.2;
@@ -14373,7 +14373,7 @@ html.lenis body {
   line-height: 1.3;
 }
 .apostrophe{
-  color: #00b0b0;
+  color: #12d5b1;
   font-size: 30px;
   font-weight: 800;
   line-height: 1.2;
@@ -14394,7 +14394,7 @@ html.lenis body {
   line-height: 1.4;
 }
 .apostrophe{
-  color: #00b0b0;
+  color: #12d5b1;
   font-size: 20px;
   font-weight: 800;
   line-height: 1.2;
@@ -14672,7 +14672,7 @@ html.lenis body {
     grid-template-columns: 1fr;
   }
 }
-.rs-subscribe-one .rs-subscribe-text h4 {
+.rs-subscribe-one .rs-subscribe-text h5 {
   color: #cbcccd;
 }
 .rs-subscribe-one .rs-subscribe-input {

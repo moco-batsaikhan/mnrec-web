@@ -27,14 +27,12 @@ interface News {
   slug: string;
   status: "draft" | "published" | "archived";
   featuredImage: string | null;
-  category: string;
   tags: string[];
   authorId: number;
   authorName: string;
   publishedAt: string | null;
   createdAt: string;
   updatedAt: string;
-  viewCount: number;
 }
 
 interface Pagination {
@@ -65,7 +63,6 @@ export default function AdminNews() {
   // Filters
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("");
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortOrder, setSortOrder] = useState("desc");
   const [authorFilter, setAuthorFilter] = useState("");
@@ -73,23 +70,12 @@ export default function AdminNews() {
 
   const router = useRouter();
 
-  const categories = [
-    "Мэдээ",
-    "Хурал",
-    "Төсөл",
-    "Судалгаа",
-    "Байгаль орчин",
-    "Технологи",
-    "Хөрөнгө оруулалт",
-  ];
-
   useEffect(() => {
     fetchNews();
   }, [
     pagination.current,
     search,
     statusFilter,
-    categoryFilter,
     sortBy,
     sortOrder,
     authorFilter,
@@ -103,7 +89,6 @@ export default function AdminNews() {
         limit: pagination.perPage.toString(),
         ...(search && { search }),
         ...(statusFilter && { status: statusFilter }),
-        ...(categoryFilter && { category: categoryFilter }),
         ...(sortBy && { sortBy }),
         ...(sortOrder && { sortOrder }),
         ...(authorFilter && { author: authorFilter }),
@@ -197,7 +182,6 @@ export default function AdminNews() {
   const clearFilters = () => {
     setSearch("");
     setStatusFilter("");
-    setCategoryFilter("");
     setAuthorFilter("");
     setDateRange({ start: "", end: "" });
     setSortBy("createdAt");
@@ -322,8 +306,8 @@ export default function AdminNews() {
                   type="text"
                   value={search}
                   onChange={e => setSearch(e.target.value)}
-                  placeholder="Гарчиг, агуулга, товч тайлбараар хайх..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="..."
+                  className="w-full px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
                 />
               </div>
 
@@ -334,7 +318,7 @@ export default function AdminNews() {
                 <select
                   value={pagination.perPage}
                   onChange={e => handlePerPageChange(Number(e.target.value))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   <option value={5}>5</option>
                   <option value={10}>10</option>
@@ -352,23 +336,21 @@ export default function AdminNews() {
                     setSortBy(field);
                     setSortOrder(order);
                   }}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
-                  <option value="createdAt-desc">Шинэээс хуучин руу</option>
-                  <option value="createdAt-asc">Хуучнаас шинэ рүү</option>
-                  <option value="title-asc">Гарчиг А-Я</option>
-                  <option value="title-desc">Гарчиг Я-А</option>
-                  <option value="viewCount-desc">Үзэлт ихээс бага руу</option>
-                  <option value="viewCount-asc">Үзэлт багаас их рүү</option>
+                  <option value="createdAt-desc">Шинэээс хуучин руу (огноогоор)</option>
+                  <option value="createdAt-asc">Хуучнаас шинэ рүү (огноогоор)</option>
+                  <option value="title-asc">Гарчиг А-Я (үсгийн дарааллаар)</option>
+                  <option value="title-desc">Гарчиг Я-А (үсгийн буруу дарааллаар)</option>
                 </select>
               </div>
 
               <div className="flex items-end">
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 text-base font-medium rounded-lg transition-colors"
                 >
-                  Хайх
+                  🔍 Хайх
                 </button>
               </div>
             </div>
@@ -380,7 +362,7 @@ export default function AdminNews() {
                 <select
                   value={statusFilter}
                   onChange={e => setStatusFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   <option value="">Бүгд</option>
                   <option value="draft">Ноорог</option>
@@ -390,28 +372,12 @@ export default function AdminNews() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Ангилал</label>
-                <select
-                  value={categoryFilter}
-                  onChange={e => setCategoryFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="">Бүгд</option>
-                  {categories.map(category => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Эхлэх огноо</label>
                 <input
                   type="date"
                   value={dateRange.start}
                   onChange={e => setDateRange(prev => ({ ...prev, start: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
 
@@ -421,7 +387,7 @@ export default function AdminNews() {
                   type="date"
                   value={dateRange.end}
                   onChange={e => setDateRange(prev => ({ ...prev, end: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
             </div>
@@ -452,29 +418,11 @@ export default function AdminNews() {
                     </th>
                     <th
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort("category")}
-                    >
-                      <div className="flex items-center space-x-1">
-                        <span>Ангилал</span>
-                        <span className="text-gray-400">{getSortIcon("category")}</span>
-                      </div>
-                    </th>
-                    <th
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                       onClick={() => handleSort("status")}
                     >
                       <div className="flex items-center space-x-1">
                         <span>Төлөв</span>
                         <span className="text-gray-400">{getSortIcon("status")}</span>
-                      </div>
-                    </th>
-                    <th
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                      onClick={() => handleSort("viewCount")}
-                    >
-                      <div className="flex items-center space-x-1">
-                        <span>Үзэлт</span>
-                        <span className="text-gray-400">{getSortIcon("viewCount")}</span>
                       </div>
                     </th>
                     <th
@@ -519,10 +467,10 @@ export default function AdminNews() {
                               {item.summary || "Товч тайлбар байхгүй"}
                             </div>
                             <div className="flex items-center mt-2 text-xs text-gray-400 space-x-4">
-                              <span>✍️ {item.authorName}</span>
+                              <span>{item.authorName}</span>
                               {item.tags && item.tags.length > 0 && (
                                 <span>
-                                  🏷️ {item.tags.slice(0, 2).join(", ")}
+                                  {item.tags.slice(0, 2).join(", ")}
                                   {item.tags.length > 2 ? "..." : ""}
                                 </span>
                               )}
@@ -531,18 +479,7 @@ export default function AdminNews() {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="inline-flex px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
-                          {item.category}
-                        </span>
-                      </td>
                       <td className="px-6 py-4 whitespace-nowrap">{getStatusBadge(item.status)}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900 font-medium">
-                          {item.viewCount.toLocaleString()}
-                        </div>
-                        <div className="text-xs text-gray-500">үзэлт</div>
-                      </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
                           {new Date(item.createdAt).toLocaleDateString("mn-MN")}
@@ -582,12 +519,12 @@ export default function AdminNews() {
               </div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">Мэдээ олдсонгүй</h3>
               <p className="text-gray-500 mb-6 max-w-sm mx-auto">
-                {search || statusFilter || categoryFilter || dateRange.start
+                {search || statusFilter || dateRange.start
                   ? "Таны хайлтад тохирох мэдээ олдсонгүй. Өөр хайлтын утга оруулж үзнэ үү."
                   : "Та анхны мэдээгээ нэмж эхлээрэй."}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                {(search || statusFilter || categoryFilter || dateRange.start) && (
+                {(search || statusFilter || dateRange.start) && (
                   <button
                     onClick={clearFilters}
                     className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition-colors"
@@ -694,7 +631,7 @@ export default function AdminNews() {
                     min={1}
                     max={pagination.total}
                     placeholder={pagination.current.toString()}
-                    className="w-16 px-2 py-1 border border-gray-300 rounded text-center"
+                    className="w-20 px-3 py-2 text-gray-800 text-base border border-gray-300 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     onKeyPress={e => {
                       if (e.key === "Enter") {
                         const page = parseInt(e.currentTarget.value);

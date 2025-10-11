@@ -9,26 +9,31 @@ interface News {
   slug: string;
   status: "draft" | "published" | "archived";
   featuredImage: string | null;
-  category: string;
   tags: string[];
   authorId: number;
   authorName: string;
   publishedAt: string | null;
   createdAt: string;
   updatedAt: string;
-  viewCount: number;
 }
 
 // PUT - Мэдээ засварлах
-export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
     const connection = await pool.getConnection();
     const resolvedParams = await params;
     const newsId = parseInt(resolvedParams.id);
-    const { title, content, summary, status, category, tags, featuredImage } = await request.json();
+    const { title, content, summary, status, tags, featuredImage } =
+      await request.json();
 
     // Мэдээ олох
-    const [existingNews] = await connection.execute("SELECT * FROM news WHERE id = ?", [newsId]);
+    const [existingNews] = await connection.execute(
+      "SELECT * FROM news WHERE id = ?",
+      [newsId]
+    );
 
     if ((existingNews as any).length === 0) {
       connection.release();
@@ -50,7 +55,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
       // Slug давхардаж байгаа эсэхийг шалгах
       const [slugCheck] = await connection.execute(
         "SELECT id FROM news WHERE slug = ? AND id != ?",
-        [newSlug, newsId],
+        [newSlug, newsId]
       );
 
       if ((slugCheck as any).length > 0) {
@@ -86,10 +91,6 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
       updateFields.push("status = ?");
       updateValues.push(status);
     }
-    if (category) {
-      updateFields.push("category = ?");
-      updateValues.push(category);
-    }
     if (tags) {
       updateFields.push("tags = ?");
       updateValues.push(JSON.stringify(Array.isArray(tags) ? tags : []));
@@ -103,24 +104,38 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     updateValues.push(
       newSlug,
       publishedAt,
-      new Date().toISOString().slice(0, 19).replace("T", " "),
+      new Date().toISOString().slice(0, 19).replace("T", " ")
     );
     updateValues.push(newsId);
 
     // Мэдээ засварлах
     await connection.execute(
       `UPDATE news SET ${updateFields.join(", ")} WHERE id = ?`,
-      updateValues,
+      updateValues
     );
 
     // Засварласан мэдээг авах
     const [updatedNews] = await connection.execute(
       "SELECT n.*, u.name as author_name FROM news n LEFT JOIN users u ON n.author_id = u.id WHERE n.id = ?",
-      [newsId],
+      [newsId]
     );
 
     const newsData = (updatedNews as any)[0];
     connection.release();
+
+    // Safely parse tags JSON, fallback to empty array if invalid
+    let parsedTags = [];
+    if (newsData.tags) {
+      try {
+        parsedTags = JSON.parse(newsData.tags);
+      } catch (error) {
+        console.warn(
+          `Invalid JSON in tags for updated news ID ${newsData.id}:`,
+          newsData.tags
+        );
+        parsedTags = [];
+      }
+    }
 
     return NextResponse.json({
       success: true,
@@ -134,13 +149,12 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
         status: newsData.status,
         featuredImage: newsData.featured_image,
         category: newsData.category,
-        tags: newsData.tags ? JSON.parse(newsData.tags) : [],
+        tags: parsedTags,
         authorId: newsData.author_id,
         authorName: newsData.author_name,
         publishedAt: newsData.published_at,
         createdAt: newsData.created_at,
         updatedAt: newsData.updated_at,
-        viewCount: newsData.view_count,
       },
     });
   } catch (error) {
@@ -150,14 +164,20 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 }
 
 // DELETE - Мэдээ устгах
-export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
     const connection = await pool.getConnection();
     const resolvedParams = await params;
     const newsId = parseInt(resolvedParams.id);
 
     // Мэдээ олох
-    const [existingNews] = await connection.execute("SELECT * FROM news WHERE id = ?", [newsId]);
+    const [existingNews] = await connection.execute(
+      "SELECT * FROM news WHERE id = ?",
+      [newsId]
+    );
 
     if ((existingNews as any).length === 0) {
       connection.release();
@@ -171,6 +191,20 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
 
     connection.release();
 
+    // Safely parse tags JSON, fallback to empty array if invalid
+    let parsedTags = [];
+    if (newsData.tags) {
+      try {
+        parsedTags = JSON.parse(newsData.tags);
+      } catch (error) {
+        console.warn(
+          `Invalid JSON in tags for deleted news ID ${newsData.id}:`,
+          newsData.tags
+        );
+        parsedTags = [];
+      }
+    }
+
     return NextResponse.json({
       success: true,
       message: "Мэдээ амжилттай устгагдлаа",
@@ -183,13 +217,12 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
         status: newsData.status,
         featuredImage: newsData.featured_image,
         category: newsData.category,
-        tags: newsData.tags ? JSON.parse(newsData.tags) : [],
+        tags: parsedTags,
         authorId: newsData.author_id,
         authorName: newsData.author_name,
         publishedAt: newsData.published_at,
         createdAt: newsData.created_at,
         updatedAt: newsData.updated_at,
-        viewCount: newsData.view_count,
       },
     });
   } catch (error) {
@@ -199,7 +232,10 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
 }
 
 // GET - Нэг мэдээ авах
-export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
     const connection = await pool.getConnection();
     const resolvedParams = await params;
@@ -208,7 +244,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     // Мэдээ олох
     const [newsResult] = await connection.execute(
       "SELECT n.*, u.name as author_name FROM news n LEFT JOIN users u ON n.author_id = u.id WHERE n.id = ?",
-      [newsId],
+      [newsId]
     );
 
     if ((newsResult as any).length === 0) {
@@ -218,10 +254,21 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
     const newsData = (newsResult as any)[0];
 
-    // Үзэлтийн тоо нэмэгдүүлэх (GET хүсэлт ирэх бүрд)
-    await connection.execute("UPDATE news SET view_count = view_count + 1 WHERE id = ?", [newsId]);
-
     connection.release();
+
+    // Safely parse tags JSON, fallback to empty array if invalid
+    let parsedTags = [];
+    if (newsData.tags) {
+      try {
+        parsedTags = JSON.parse(newsData.tags);
+      } catch (error) {
+        console.warn(
+          `Invalid JSON in tags for news ID ${newsData.id}:`,
+          newsData.tags
+        );
+        parsedTags = [];
+      }
+    }
 
     return NextResponse.json({
       success: true,
@@ -234,13 +281,12 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         status: newsData.status,
         featuredImage: newsData.featured_image,
         category: newsData.category,
-        tags: newsData.tags ? JSON.parse(newsData.tags) : [],
+        tags: parsedTags,
         authorId: newsData.author_id,
         authorName: newsData.author_name,
         publishedAt: newsData.published_at,
         createdAt: newsData.created_at,
         updatedAt: newsData.updated_at,
-        viewCount: newsData.view_count + 1, // Updated count
       },
     });
   } catch (error) {

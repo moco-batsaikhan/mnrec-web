@@ -22,6 +22,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <HomeAbout
         translations={{ about: t.about }}
         image={{ src: "/assets/images/gallery/khb/drilling/image4.jpg" }}
+        heading={t.homeAbout.heading}
+        introduction={t.homeAbout.desc}
+        section="HOME"
       />
       <HomeText translations={{ t }} />
       <HomeHighlights translations={{ t }} />

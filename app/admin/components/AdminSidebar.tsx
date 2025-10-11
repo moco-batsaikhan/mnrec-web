@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 export default function AdminSidebar() {
   const pathname = usePathname();
 
-  // Hide sidebar on auth pages including localized paths like /en/auth/login
   if (pathname && pathname.includes("/auth")) return null;
 
   const menuItems = [
@@ -14,11 +13,6 @@ export default function AdminSidebar() {
       title: "Хянах самбар",
       href: "/admin",
       icon: "fas fa-chart-line",
-    },
-    {
-      title: "Хэрэглэгчид",
-      href: "/admin/users",
-      icon: "fas fa-users",
     },
     {
       title: "Мэдээ",

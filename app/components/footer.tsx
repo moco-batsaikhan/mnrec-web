@@ -93,7 +93,7 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
               </div>
               <div className="col-xl-6 col-lg-6 mt-0">
                 <div className="rs-subscribe-text mb-20">
-                  <h4>{t.footer.connectWithUs}</h4>
+                  <h5>{t.footer.connectWithUs}</h5>
                 </div>
                 <div className="rs-subscribe-input mb-70">
                   <input

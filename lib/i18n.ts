@@ -7,6 +7,7 @@ export type Dictionary = {
   home: {
     keyWord: string;
     keyNote: string;
+    aboutProjectText?: string;
   };
   cta: {
     deploy: string;
@@ -144,6 +145,19 @@ export type Dictionary = {
     tabSubDesc4: string;
     tabSubTitle5: string;
     tabSubDesc5: string;
+  };
+  highlights: {
+    pageTitle: string;
+    desc1: string;
+    desc2: string;
+    desc3: string;
+    desc4: string;
+    desc5: string;
+    desc6: string;
+  };
+  homeAbout: {
+    heading: string;
+    desc: string;
   };
   contact: {
     contactUs: string;
@@ -372,7 +386,9 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         home: {
           keyWord: "Хязгаар нутгийн хөгжлийн төлөө хамтдаа ",
           keyNote:
-            "Тогтвортой ховор элементийн нийлүүлэлтийн сүлжээг бий болгон, ногоон эрчим хүч рүү шилжилтийг түргэтгэх нь",
+            "Газрын ховор элементийн тогтвортой нийлүүлэлтийн сүлжээг бүрдүүлж, ногоон эрчим хүчний шилжилтийг түргэтгэнэ.",
+          aboutProjectText:
+            "Халзан Бүрэгтэй төсөл нь Монголын анхны газрын ховор элементийн хөгжүүлэлтийн өндөр боломжит төсөл бөгөөд Ховд аймагт томоохон боломжийг санал болгож байна.",
         },
         cta: {
           deploy: "Шууд байршуул",
@@ -453,7 +469,8 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           tabDesc21:
             "Хагас үйлдвэрийн туршилт : Баяжуулалтын шатны туршилт дууссан, Боловсруулалтын шатны туршилт эхлэхээр бэлтгэгдэж байгаа.",
           tabDesc22: "ТЭЗҮ : Wood & Stantec компануудаар гүйцэтгүүлж байгаа",
-          tabDesc23: "БОННҮ: Sustainability & SLR компануудаар гүйцэтгүүлж байгаа",
+          tabDesc23:
+            "БОННҮ: Sustainability & SLR компануудаар гүйцэтгүүлж байгаа",
 
           tabDescTitle3: "Өрөмдлөгийн голлох үзүүлэлт",
           tabDesc31: "2012-2013 онд нийт 11,000 тууш метр өрөмдлөг",
@@ -677,6 +694,32 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
   <li>“Хариуцлагатай уул уурхайтай танилцах аялал”-д иргэдийг хамруулав. (2025.05.10–14)</li>
 </ul>`,
         },
+        highlights: {
+          pageTitle: "Төслийн онцлог",
+          desc1:
+            "Диспрози (Dy): Дэлхийд өрсөлдөхүйц хэмжээний стратегийн нөөцтэй",
+          desc2:
+            "Эрэлт өндөр газрын ховрын эрдсээр баялаг: Диспрози(Dy), Неоди(Nd), Празоди (Pr), Терби(Tb)",
+          desc3:
+            "Өндөр зэрэглэлийн MREO буюу ГХЭ-ийн нийлмэл ислийг үйлдвэрлэх боломж",
+          desc4: "Хөрс хуулалтын харьцаа бага",
+          desc5: "Уурхайн насжилт 30+ жил",
+          desc6: "~600 хүний ажлын байр, оролцоо",
+        },
+        homeAbout: {
+          heading: "MNREC-ийн тухай",
+          desc: `
+                  <div class="mnrec-article">
+                    <p class="lead">
+                      Монголиан нэшнл рийр ийрт корп ХХК (<strong>MNREC</strong>) нь 2010 онд үүсгэн байгуулагдсан цагаасаа геологийн судалгаа болон уул уурхайн хөрөнгө оруулалтын чиглэлээр ажиллаж байгаа бөгөөд өдгөө Ховд аймгийн Мянгад суманд байрлах Газрын ховор элементийн Халзан бүрэгтэй төсөл дээр төвлөрөн ажиллаж байна.
+                    </p>
+
+                    <p class="highlight">
+                      Халзан бүрэгтэй нь Монголын анхны газрын ховор элементийн төсөл бөгөөд зөвхөн Ховд аймгийн төдийгүй баруун бүсийн эдийн засгийн өсөлт, дэд бүтцийн хөгжилд бодит хувь нэмэр оруулах боломжтой. Мөн уул уурхайн салбарын шинэ чиг хандлагыг тодорхойлох өндөр ач холбогдолтой бөгөөд бүс нутгийн ажил эрхлэлт, орон нутгийн бизнесийн идэвх зэрэг олон салбарыг тэлэх нөхцөлийг бүрдүүлнэ.
+                    </p>
+                  </div>
+                `,
+        },
         contact: {
           contactUs: "Холбоо барих",
           address: "Хаяг",
@@ -694,7 +737,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           location: "Улаанбаатар хот, Сүхбаатар дүүрэг",
           viewLocation: "Газрын зургаар харах",
           fullAddress:
-            "Улаанбаатар хот, Сүхбаатар дүүрэг, 1 дүгээр хороо, <br/> Энхтайвны өргөн чөлөө-19, <br/> Худалдаа хөгжлийн банкны төв байр, 1301 тоот",
+            "Улаанбаатар хот, Сүхбаатар дүүрэг, 1 дүгээр хороо, <br/> Энхтайвны өргөн чөлөө – 19, <br/> Худалдаа хөгжлийн банкны төв байр, 14 давхар",
           simpleAddress: "Улаанбаатар хот, Сүхбаатар дүүрэг, 1 дүгээр хороо",
         },
         medee: {
@@ -768,7 +811,8 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         history: {
           pageTitle: "Түүхэн замнал",
           title1: "1984",
-          description1: "Орос-Монголын хамтарсан геологийн судалгааны экспедиц ордыг анх илрүүлэв",
+          description1:
+            "Орос-Монголын хамтарсан геологийн судалгааны экспедиц ордыг анх илрүүлэв",
           title2: "1987",
           description2: "Агаарын гамма- спектрометрийн судалгаа",
           title3: "1989",
@@ -785,9 +829,11 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           title8: "2021",
           description8: "NI43-101 урьдчилсан эдийн засгийн үнэлгээ",
           title9: "2022",
-          description9: "Баттай нөөцийг тогтоох нарийвчилсан хайгуулын ажил эхлэв",
+          description9:
+            "Баттай нөөцийг тогтоох нарийвчилсан хайгуулын ажил эхлэв",
           title10: "2024",
-          description10: "Олон улсын стандартад нийцсэн Урьдчилсан техник эдийн засгийн үнэлгээ",
+          description10:
+            "Олон улсын стандартад нийцсэн Урьдчилсан техник эдийн засгийн үнэлгээ",
         },
         sustainable: {
           local: {
@@ -803,7 +849,8 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
               "Тусгай зөвшөөрлийн  талбайд  нарийвчилсан  хайгуулын ажил хийх үед орчны хяналт шинжилгээний хөтөлбөрийг төлөвлөн, байгаль  орчныг хамгаалах чиглэлээр Монгол Улсад хэрэгжиж буй хууль, тогтоомж, зааварчилгаа, аргачилсан зөвлөмжүүд, Олон улсын БОНЗ хэрэгжилтийн стандартыг мөрдөж ажиллалаа. Мөн компанийн хэмжээнд “Байгаль орчныг хамгаалах үйл ажиллагааны ерөнхий журам”, “Цацрагийн аюулгүй ажиллагааны дотоод дүрэм”, “Цацрагийн хамгаалалтын хөтөлбөр”-ийг баталж, үйл ажиллагаандаа хэрэгжүүлж байна.",
             newsDescription1:
               "Түүнчлэн хайгуулын ажлын үед байгаль орчныг хамгаалах, сөрөг нөлөөллийг бууруулах арга хэмжээг орон нутгийн захиргаа, олон нийтийн байгууллага, мэргэжлийн оролцогч талуудтай нягт хамтрах, хэрэгжилтийг хангаж ажиллахыг тэргүүний зорилт болгон хэрэгжүүлэв.",
-            tabMainTitle1: "Богино хугацаанд: Ордыг ашиглалтад бэлтгэх хайгуулын үе шат",
+            tabMainTitle1:
+              "Богино хугацаанд: Ордыг ашиглалтад бэлтгэх хайгуулын үе шат",
             tabTitle1: "Байгаль орчин",
             tabDescription11:
               "Уур амьсгалын өөрчлөлт, эрчим хүчний менежмент, хүлэмжийн хийн ялгаруулалт ",
@@ -1054,7 +1101,8 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
 </div>`,
           },
           news6: {
-            title: "Монгол, Япон газрын ховор элементийн чиглэлд хамтран ажиллана",
+            title:
+              "Монгол, Япон газрын ховор элементийн чиглэлд хамтран ажиллана",
             intro:
               "Монголын газрын ховор элементийн үндэсний корпорац (МНРИК) болон Японы Металл ба эрчим хүчний аюулгүй байдлын байгууллага (JOGMEC) өнгөрсөн 8 сарын 20-нд газрын ховор элементийн Халзан бүрэгтэй төсөлд хамтран ажиллах санамж бичгийг үзэглэсэн билээ. Харин талууд хамтын ажиллагааны санамж бичиг байгуулах ёслолоо 9 сарын 10-нд тохиосон бөгөөд тус ёслол Халзан бүрэгтэй төслийн Урьдчилсан ТЭЗҮ дуусах үетэй давхцаж буйг дуулгахад таатай байна. ",
             htmlContent: `<div class="mn">
@@ -1105,9 +1153,11 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
     default:
       return {
         home: {
-          keyWord: "Changing the Future of the world's critical metal supply ",
+          keyWord: "Changing the future of the world’s critical metal supply",
           keyNote:
-            "Establishing a sustainable rare earths supply chain to propel the shift towards green energy.",
+            "Establishing a sustainable rare earths supply chain to propel the green energy transition",
+          aboutProjectText:
+            "The Khalzan Buregtei project represents a high-potential development of Mongolia's first rare earth elements initiative and presents a significant growth opportunity for Khovd province.",
         },
         cta: {
           deploy: "Deploy now",
@@ -1179,7 +1229,8 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           tabDesc13: "Low Strip ratio",
 
           tabDescTitle2: "Status",
-          tabDesc21: "Pilot Test : Concentrator completed Refinery scheduled Oct 25",
+          tabDesc21:
+            "Pilot Test : Concentrator completed Refinery scheduled Oct 25",
           tabDesc22: "DFS : Ongoing by Wood & Stantec",
           tabDesc23: "ESIA – Ongoing by Sustainability & SLR",
 
@@ -1417,6 +1468,35 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
   <li>Organized a “Responsible Mining Familiarization Tour” for representatives of Myangad Soum residents and other stakeholders to visit Erdenet Mining Corporation. (2025.05.10–14)</li>
 </ul>`,
         },
+        highlights: {
+          pageTitle: "Project Highlights",
+          desc1: "Dy (Dysprosium): One of the world’s largest deposits",
+          desc2:
+            "Rich in high-demand REEs: Dysprosium (Dy), Neodymium (Nd), Praseodymium (Pr), Terbium (Tb)",
+          desc3: "High-grade MREO production",
+          desc4: "Low strip ratio & rapid development",
+          desc5: "Potential 30-year mine life",
+          desc6: "~600 operational workforce",
+        },
+        homeAbout: {
+          heading: "About MNREC",
+          desc: `
+                  <div class="mnrec-article">
+                    <p >
+                      Established in 2010, <strong>Mongolian National Rare Earth Corp LLC (MNREC)</strong> is committed to unlocking Mongolia’s rare earth potential through responsible geological exploration and strategic mining investment. Our flagship operation, the <strong>Khalzan Buregtei Rare Earth Elements (REE) Project</strong>, is located in Myangad soum, Khovd province.
+                    </p>
+
+                    <p >
+                      This project represents:
+                    </p>
+
+                    <ul class="feature-list" aria-label="Project highlights">
+                      <li>Mongolia’s first rare earth project development</li>
+                      <li>A major growth opportunity for Khovd province</li>
+                    </ul>
+                  </div>
+                `,
+        },
         contact: {
           contactUs: "Contact Us",
           address: "Address",
@@ -1434,8 +1514,9 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           location: "Sukhbaatar District, Ulaanbaatar, Mongolia",
           viewLocation: "View Location",
           fullAddress:
-            "Trade and Development Bank Headquarters, <br/> Peace Avenue-19, 1st Khoroo, Sukhbaatar District,<br/> Ulaanbaatar, Mongolia",
-          simpleAddress: "1st Khoroo, Sukhbaatar District, Ulaanbaatar, Mongolia",
+            "Ulaanbaatar City, Sukhbaatar District, 1st Khoroo, <br/> Peace Avenue – 19, <br/> Trade and development bank of Mongolia HQ, F14",
+          simpleAddress:
+            "1st Khoroo, Sukhbaatar District, Ulaanbaatar, Mongolia",
         },
         medee: {
           pageTitle: "What is REE?",
@@ -1460,7 +1541,8 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         medee4: {
           pageTitle: "Mongolia REE",
           newsTitle: "Rare earth element deposits in Mongolia",
-          newsTitle1: "What opportunities will Rare Earth Elements bring to Mongolia?",
+          newsTitle1:
+            "What opportunities will Rare Earth Elements bring to Mongolia?",
           newsTitle2: "Mongolian reserve ",
           newsDescription:
             "Mongolia possesses a substantial resource of Rare Earth Elements (REE), totaling 3.1 million tons with elevated concentrations primarily found in the southern and western regions of the country. The level of exploration stage vary within these deposits, however, both Khotgor and Kalzan Buregtei deposits stand out as the most extensively studied in adherence to international standards.",
@@ -1521,11 +1603,14 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           title6: "2013",
           description6: "Positive resource estimate published",
           title7: "2018",
-          description7: "The feasibility study was approved by the Minerals Professional Counci",
+          description7:
+            "The feasibility study was approved by the Minerals Professional Counci",
           title8: "2021",
-          description8: "NI43101 Prelimibnary Economic Assessment (PEA) completed",
+          description8:
+            "NI43101 Prelimibnary Economic Assessment (PEA) completed",
           title9: "2022",
-          description9: "Commencement of detailed exploration work to determine proven reserves ",
+          description9:
+            "Commencement of detailed exploration work to determine proven reserves ",
           title10: "2024",
           description10: "International Feasibility Study to be concluded",
         },
@@ -1564,7 +1649,8 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
             tabDescription34: "Supply management",
             tabMainTitle2: "IN THE MEDIUM TERM: PROJECT DEVELOPMENT PHASE",
             tabTitle4: "Environmental:",
-            tabDescription41: "Climate change, energy management and greenhouse gas emissions",
+            tabDescription41:
+              "Climate change, energy management and greenhouse gas emissions",
             tabDescription42: "Appropriate use and management of resources",
             tabDescription43: "Water management",
             tabDescription44: "Waste management and mine closure",
@@ -1724,7 +1810,8 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
 `,
           },
           news4: {
-            title: "World Bank: Mongolia’s Rare Earth Element Mining Attracts Global Attention",
+            title:
+              "World Bank: Mongolia’s Rare Earth Element Mining Attracts Global Attention",
             intro:
               "The World Bank’s report <em>“Mongolia – Climate and Development”</em> outlines comprehensive reform measures to support Mongolia’s climate and development policies and strategies. It also highlights trends in coal, copper, and rare earth elements.",
             htmlContent: `<article>

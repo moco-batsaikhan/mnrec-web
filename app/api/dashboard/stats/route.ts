@@ -11,10 +11,10 @@ const getDashboardStats = () => {
 
   // News статистик
   const news = [
-    { id: 1, status: "published", viewCount: 1250, createdAt: "2024-10-05" },
-    { id: 2, status: "published", viewCount: 890, createdAt: "2024-10-03" },
-    { id: 3, status: "draft", viewCount: 0, createdAt: "2024-10-01" },
-    { id: 4, status: "published", viewCount: 675, createdAt: "2024-09-28" },
+    { id: 1, status: "published", createdAt: "2024-10-05" },
+    { id: 2, status: "published", createdAt: "2024-10-03" },
+    { id: 3, status: "draft", createdAt: "2024-10-01" },
+    { id: 4, status: "published", createdAt: "2024-09-28" },
   ];
 
   // Статистик тооцоолох
@@ -23,7 +23,6 @@ const getDashboardStats = () => {
   const totalNews = news.length;
   const publishedNews = news.filter(n => n.status === "published").length;
   const draftNews = news.filter(n => n.status === "draft").length;
-  const totalViews = news.reduce((sum, n) => sum + n.viewCount, 0);
   const totalComments = 89; // Demo тоо
 
   // Сүүлийн 7 өдрийн статистик
@@ -45,7 +44,6 @@ const getDashboardStats = () => {
       totalNews,
       publishedNews,
       draftNews,
-      totalViews,
       totalComments,
     },
     charts: {
@@ -76,7 +74,6 @@ const getDashboardStats = () => {
     ],
     topPosts: news
       .filter(n => n.status === "published")
-      .sort((a, b) => b.viewCount - a.viewCount)
       .slice(0, 5)
       .map(n => ({
         id: n.id,
@@ -88,7 +85,6 @@ const getDashboardStats = () => {
             : n.id === 4
             ? "Байгаль орчны хамгаалалын арга хэмжээ"
             : "Demo мэдээ",
-        viewCount: n.viewCount,
         createdAt: n.createdAt,
       })),
   };

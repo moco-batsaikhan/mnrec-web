@@ -38,7 +38,7 @@
 .contact-icon {
   width: 50px;
   height: 50px;
-  background-color: #00b0b0;
+  background-color: #12d5b1;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -108,7 +108,7 @@
 }
 
 .contact-form .form-control:focus {
-  border-color: #00b0b0;
+  border-color: #12d5b1;
   outline: none;
   box-shadow: 0 0 0 0.2rem rgba(0, 176, 176, 0.1);
 }
@@ -123,7 +123,7 @@
 }
 
 .contact-btn {
-  background-color: #00b0b0;
+  background-color: #12d5b1;
   color: #ffffff;
   padding: 15px 40px;
   border: none;
