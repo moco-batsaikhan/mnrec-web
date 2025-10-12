@@ -16,11 +16,4 @@ module.exports = {
     // your project has type errors.
     ignoreBuildErrors: true,
   },
-  redirects: async () => [
-    {
-      source: "/",
-      destination: "/mn",
-      permanent: false,
-    },
-  ],
 };

@@ -25,6 +25,13 @@ export function middleware(request: NextRequest) {
     return;
   }
 
+  // Handle root path explicitly - redirect to default locale
+  if (pathname === "/") {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${defaultLocale}`;
+    return NextResponse.redirect(url);
+  }
+
   // Protect admin paths: if user has no accessToken cookie, redirect to login
   // but exclude the login and register pages themselves to avoid redirect loops
   if (
