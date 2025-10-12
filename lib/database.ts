@@ -31,8 +31,6 @@ function loadEnvLocal() {
         process.env[key] = value;
       }
     }
-
-    console.log(`📥 Loaded environment from ${envPath}`);
   } catch (err) {
     console.warn("Could not load .env.local:", err);
   }
@@ -52,15 +50,6 @@ const dbConfig = {
   },
   connectionLimit: 5,
 };
-
-console.log("📦 Loaded database config:");
-console.log({
-  host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD ? "********" : "(empty)",
-  database: process.env.DATABASE_NAME,
-});
 
 // Create connection pool
 const pool = mysql.createPool(dbConfig);

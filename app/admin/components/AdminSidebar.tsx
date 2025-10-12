@@ -24,6 +24,17 @@ export default function AdminSidebar() {
       href: "/admin/users",
       icon: "fas fa-users",
     },
+    {
+      title: "Холбоо барих",
+      href: "/admin/contact",
+      icon: "fas fa-envelope",
+    },
+    {
+      title: "Subscribe",
+      href: "/admin/newsletter",
+      icon: "fas fa-paper-plane",
+    },
+    
   ];
 
   return (

@@ -1,5 +1,6 @@
 import React from "react";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
+import SubscribeForm from "./SubscribeForm";
 
 export default async function Footer({ locale, alt }: { locale: string; alt: string }) {
   const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "en";
@@ -95,17 +96,12 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
                 <div className="rs-subscribe-text mb-20">
                   <h5>{t.footer.connectWithUs}</h5>
                 </div>
-                <div className="rs-subscribe-input mb-70">
-                  <input
-                    name="email"
-                    type="email"
-                    placeholder={t.footer.enterEmail}
-                    className="subscribe-input"
-                  />
-                  <button type="submit" className="rs-btn blue-bg subscribe-btn">
-                    {t.footer.sendMessage}
-                  </button>
-                </div>
+                <SubscribeForm
+                  translations={{
+                    enterEmail: t.footer.enterEmail,
+                    sendMessage: t.footer.sendMessage,
+                  }}
+                />
               </div>
             </div>
           </div>

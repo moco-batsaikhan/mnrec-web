@@ -18,6 +18,7 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [initMessage, setInitMessage] = useState("");
 
   useEffect(() => {
     fetchStats();
@@ -37,6 +38,46 @@ export default function AdminDashboard() {
       setError("Серверт холбогдох үед алдаа гарлаа");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const initContactTable = async () => {
+    try {
+      setInitMessage("⏳ Contact table үүсгэж байна...");
+      const response = await fetch("/api/db/init-contact");
+      const result = await response.json();
+      
+      if (response.ok) {
+        setInitMessage(result.message);
+      } else {
+        setInitMessage("❌ " + result.message);
+      }
+      
+      setTimeout(() => setInitMessage(""), 5000);
+    } catch (error) {
+      console.error("Init contact table error:", error);
+      setInitMessage("❌ Серверт холбогдох үед алдаа гарлаа");
+      setTimeout(() => setInitMessage(""), 5000);
+    }
+  };
+
+  const initNewsletterTable = async () => {
+    try {
+      setInitMessage("⏳ Newsletter table үүсгэж байна...");
+      const response = await fetch("/api/db/init-newsletter");
+      const result = await response.json();
+      
+      if (response.ok) {
+        setInitMessage(result.message);
+      } else {
+        setInitMessage("❌ " + result.message);
+      }
+      
+      setTimeout(() => setInitMessage(""), 5000);
+    } catch (error) {
+      console.error("Init newsletter table error:", error);
+      setInitMessage("❌ Серверт холбогдох үед алдаа гарлаа");
+      setTimeout(() => setInitMessage(""), 5000);
     }
   };
 
@@ -66,6 +107,16 @@ export default function AdminDashboard() {
         <h1 className="text-3xl font-bold text-gray-900">Хянах самбар</h1>
         <p className="text-gray-600">MNREC удирдлагын системийн нүүр хуудас</p>
       </div>
+
+      {initMessage && (
+        <div className={`mb-4 p-4 rounded-lg ${
+          initMessage.includes("✅") ? "bg-green-50 border border-green-200 text-green-700" :
+          initMessage.includes("❌") ? "bg-red-50 border border-red-200 text-red-700" :
+          "bg-blue-50 border border-blue-200 text-blue-700"
+        }`}>
+          {initMessage}
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div className="bg-white rounded-lg shadow p-6">
@@ -147,6 +198,22 @@ export default function AdminDashboard() {
             >
               👥 Хэрэглэгчид
             </a>
+          </div>
+
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <h4 className="text-sm font-medium text-gray-900 mb-3">⚙️ Тохиргоо</h4>
+            <button
+              onClick={initContactTable}
+              className="block w-full p-3 mb-2 text-purple-600 hover:bg-purple-50 rounded-lg transition-colors text-left"
+            >
+              🗄️ Contact Table Үүсгэх
+            </button>
+            <button
+              onClick={initNewsletterTable}
+              className="block w-full p-3 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors text-left"
+            >
+              📧 Newsletter Table Үүсгэх
+            </button>
           </div>
         </div>
 
