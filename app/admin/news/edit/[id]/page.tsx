@@ -14,6 +14,9 @@ interface NewsForm {
   title: string;
   content: string;
   summary: string;
+  en_title: string;
+  en_content: string;
+  en_summary: string;
   status: "draft" | "published" | "archived";
   tags: string[];
   featuredImage: string;
@@ -34,6 +37,9 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
     title: "",
     content: "",
     summary: "",
+    en_title: "",
+    en_content: "",
+    en_summary: "",
     status: "draft",
     tags: [],
     featuredImage: "",
@@ -48,6 +54,7 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
   const [newsId, setNewsId] = useState<string>("");
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const [imagePreview, setImagePreview] = useState("");
+  const [activeTab, setActiveTab] = useState<"mn" | "en">("mn");
   const router = useRouter();
 
 
@@ -113,6 +120,9 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
           title: newsData.title,
           content: newsData.content,
           summary: newsData.summary,
+          en_title: newsData.en_title || "",
+          en_content: newsData.en_content || "",
+          en_summary: newsData.en_summary || "",
           status: newsData.status,
           tags: newsData.tags,
           featuredImage: newsData.featuredImage || "",
