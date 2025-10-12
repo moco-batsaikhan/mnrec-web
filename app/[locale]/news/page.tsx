@@ -2,8 +2,8 @@
 
 import PageBanner from "@/app/components/pageBanner";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useParams } from "next/navigation";
 import "./news.css";
 
 interface NewsArticle {
@@ -31,9 +31,8 @@ interface NewsResponse {
   };
 }
 
-export default function NewsPage() {
+function NewsContent() {
   const params = useParams();
-  const searchParams = useSearchParams();
   const lang = (params?.locale as string) || "mn";
   
   const [news, setNews] = useState<NewsArticle[]>([]);
@@ -358,5 +357,20 @@ export default function NewsPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function NewsPage() {
+  return (
+    <Suspense fallback={
+      <div className="text-center py-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+        <p className="mt-3">Loading...</p>
+      </div>
+    }>
+      <NewsContent />
+    </Suspense>
   );
 }
