@@ -54,6 +54,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
     "@types/imagesloaded": "^4.1.7",
     "@types/isotope-layout": "^3.0.15",
     "@types/jquery": "^3.5.33",

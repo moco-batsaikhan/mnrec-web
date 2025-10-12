@@ -1,8 +1,65 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import AdminSidebar from "./components/AdminSidebar";
 
+interface DashboardStats {
+  overview: {
+    totalUsers: number;
+    activeUsers: number;
+    totalNews: number;
+    publishedNews: number;
+    draftNews: number;
+  };
+  recentNews: any[];
+}
+
 export default function AdminDashboard() {
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
+
+  const fetchStats = async () => {
+    try {
+      const response = await fetch("/api/dashboard/stats");
+      if (response.ok) {
+        const result = await response.json();
+        setStats(result.data);
+      } else {
+        setError("Статистик ачаалахад алдаа гарлаа");
+      }
+    } catch (error) {
+      console.error("Stats fetch error:", error);
+      setError("Серверт холбогдох үед алдаа гарлаа");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="p-6">
+        <div className="flex items-center justify-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <p className="text-red-700">{error}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="p-6">
       <div className="mb-8">
@@ -20,7 +77,7 @@ export default function AdminDashboard() {
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">Нийт мэдээ</p>
-              <p className="text-2xl font-bold text-gray-900">24</p>
+              <p className="text-2xl font-bold text-gray-900">{stats?.overview.totalNews || 0}</p>
             </div>
           </div>
         </div>
@@ -34,7 +91,7 @@ export default function AdminDashboard() {
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">Нийтлэгдсэн</p>
-              <p className="text-2xl font-bold text-gray-900">18</p>
+              <p className="text-2xl font-bold text-gray-900">{stats?.overview.publishedNews || 0}</p>
             </div>
           </div>
         </div>
@@ -43,12 +100,12 @@ export default function AdminDashboard() {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
-                <span className="text-lg">👥</span>
+                <span className="text-lg">�</span>
               </div>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">Хэрэглэгчид</p>
-              <p className="text-2xl font-bold text-gray-900">156</p>
+              <p className="text-sm font-medium text-gray-500">Ноорог</p>
+              <p className="text-2xl font-bold text-gray-900">{stats?.overview.draftNews || 0}</p>
             </div>
           </div>
         </div>
@@ -57,36 +114,18 @@ export default function AdminDashboard() {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                <span className="text-lg">👁️</span>
+                <span className="text-lg">👥</span>
               </div>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">Нийт үзэлт</p>
-              <p className="text-2xl font-bold text-gray-900">2,847</p>
+              <p className="text-sm font-medium text-gray-500">Хэрэглэгчид</p>
+              <p className="text-2xl font-bold text-gray-900">{stats?.overview.totalUsers || 0}</p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Сүүлийн үйл ажиллагаа</h3>
-          <div className="space-y-3">
-            <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-              <span className="text-sm text-gray-500">10:30</span>
-              <span className="text-sm">Шинэ мэдээ нэмэгдлээ</span>
-            </div>
-            <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-              <span className="text-sm text-gray-500">09:15</span>
-              <span className="text-sm">Хэрэглэгч бүртгэгдлээ</span>
-            </div>
-            <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-              <span className="text-sm text-gray-500">08:45</span>
-              <span className="text-sm">Мэдээ засварлагдлаа</span>
-            </div>
-          </div>
-        </div>
-
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4">Шуурхай холбоосууд</h3>
           <div className="space-y-2">
@@ -109,6 +148,24 @@ export default function AdminDashboard() {
               👥 Хэрэглэгчид
             </a>
           </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow p-6">
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Сүүлийн мэдээнүүд</h3>
+          {stats && stats.recentNews && stats.recentNews.length > 0 ? (
+            <div className="space-y-3">
+              {stats.recentNews.map((news: any) => (
+                <div key={news.id} className="border-l-4 border-blue-500 pl-3">
+                  <p className="text-sm font-medium text-gray-900">{news.title}</p>
+                  <p className="text-xs text-gray-500">
+                    {new Date(news.created_at).toLocaleDateString("mn-MN")}
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500 text-sm">Мэдээ байхгүй байна</p>
+          )}
         </div>
       </div>
     </div>

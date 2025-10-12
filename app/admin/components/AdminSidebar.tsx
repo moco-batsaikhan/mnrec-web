@@ -19,6 +19,11 @@ export default function AdminSidebar() {
       href: "/admin/news",
       icon: "fas fa-newspaper",
     },
+    {
+      title: "Хэрэглэгчид",
+      href: "/admin/users",
+      icon: "fas fa-users",
+    },
   ];
 
   return (

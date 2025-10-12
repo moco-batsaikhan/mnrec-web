@@ -49,7 +49,6 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const [imagePreview, setImagePreview] = useState("");
   const router = useRouter();
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
 
 
@@ -550,14 +549,11 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
                       console.log("Edit: Removing image preview...");
                       setImagePreview("");
                       handleChange("featuredImage", "");
-                      if (fileInputRef.current) {
-                        fileInputRef.current.value = '';
-                        console.log("Hidden file input cleared via ref");
-                      }
-                      const visibleInput = document.getElementById('image-upload-visible-edit') as HTMLInputElement;
-                      if (visibleInput) {
-                        visibleInput.value = '';
-                        console.log("Visible file input cleared");
+                      // Clear file input
+                      const fileInput = document.getElementById('image-upload-edit') as HTMLInputElement;
+                      if (fileInput) {
+                        fileInput.value = '';
+                        console.log("File input cleared");
                       }
                     }}
                     className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"
@@ -570,28 +566,19 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
             ) : null}
 
             <div className="space-y-3">
-              <input
-                type="file"
-                accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
-                onChange={handleImageUpload}
-                className="hidden"
-                id="image-upload-edit"
-                ref={fileInputRef}
-              />
-              
-              <div className="relative">
-                <input
-                  type="file"
-                  accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
-                  onChange={handleImageUpload}
-                  className={`absolute inset-0 w-full h-full opacity-0 z-10 ${uploading ? 'cursor-not-allowed' : 'cursor-pointer'}`}
-                  id="image-upload-visible-edit"
-                  disabled={uploading}
-                />
-                <div className={`w-full py-3 px-4 rounded-lg transition-colors font-medium flex items-center justify-center ${uploading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 cursor-pointer'} text-white`}>
+              {/* File upload button */}
+              <div>
+                <label
+                  htmlFor="image-upload-edit"
+                  className={`block w-full py-3 px-4 rounded-lg transition-colors font-medium text-center ${
+                    uploading
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-blue-600 hover:bg-blue-700 cursor-pointer'
+                  } text-white`}
+                >
                   {uploading ? (
                     <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      <div className="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                       Зураг ачааллаж байна...
                     </>
                   ) : (
@@ -600,9 +587,16 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
                       {imagePreview ? "Өөр зураг сонгох" : "Зураг сонгох"}
                     </>
                   )}
-                </div>
+                </label>
+                <input
+                  type="file"
+                  accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                  id="image-upload-edit"
+                  disabled={uploading}
+                />
               </div>
-
 
               <p className="text-xs text-gray-500 text-center">
                 Зөвхөн PNG, JPG, WebP, GIF форматыг дэмждэг (хамгийн ихдээ 5MB)

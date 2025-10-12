@@ -36,7 +36,6 @@ export default function CreateNews() {
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const [imagePreview, setImagePreview] = useState("");
   const router = useRouter();
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
 
 
@@ -418,15 +417,11 @@ export default function CreateNews() {
                       console.log("Create: Removing image preview...");
                       setImagePreview("");
                       handleChange("featuredImage", "");
-                      // Clear both file inputs
-                      if (fileInputRef.current) {
-                        fileInputRef.current.value = '';
-                        console.log("Hidden file input cleared via ref");
-                      }
-                      const visibleInput = document.getElementById('image-upload-visible') as HTMLInputElement;
-                      if (visibleInput) {
-                        visibleInput.value = '';
-                        console.log("Visible file input cleared");
+                      // Clear file input
+                      const fileInput = document.getElementById('image-upload') as HTMLInputElement;
+                      if (fileInput) {
+                        fileInput.value = '';
+                        console.log("File input cleared");
                       }
                     }}
                     className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"
@@ -440,30 +435,19 @@ export default function CreateNews() {
 
             {/* Upload Controls */}
             <div className="space-y-3">
-              {/* Hidden file input for programmatic access */}
-              <input
-                type="file"
-                accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
-                onChange={handleImageUpload}
-                className="hidden"
-                id="image-upload"
-                ref={fileInputRef}
-              />
-              
-              {/* Visible file input as fallback */}
-              <div className="relative">
-                <input
-                  type="file"
-                  accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
-                  onChange={handleImageUpload}
-                  className={`absolute inset-0 w-full h-full opacity-0 z-10 ${uploading ? 'cursor-not-allowed' : 'cursor-pointer'}`}
-                  id="image-upload-visible"
-                  disabled={uploading}
-                />
-                <div className={`w-full py-3 px-4 rounded-lg transition-colors font-medium flex items-center justify-center ${uploading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 cursor-pointer'} text-white`}>
+              {/* File upload button */}
+              <div>
+                <label
+                  htmlFor="image-upload"
+                  className={`block w-full py-3 px-4 rounded-lg transition-colors font-medium text-center ${
+                    uploading
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-blue-600 hover:bg-blue-700 cursor-pointer'
+                  } text-white`}
+                >
                   {uploading ? (
                     <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      <div className="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                       Зураг ачааллаж байна...
                     </>
                   ) : (
@@ -472,9 +456,16 @@ export default function CreateNews() {
                       {imagePreview ? "Өөр зураг сонгох" : "Зураг сонгох"}
                     </>
                   )}
-                </div>
+                </label>
+                <input
+                  type="file"
+                  accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                  id="image-upload"
+                  disabled={uploading}
+                />
               </div>
-
 
               <p className="text-xs text-gray-500 text-center">
                 Зөвхөн PNG, JPG, WebP, GIF форматыг дэмждэг (хамгийн ихдээ 5MB)
