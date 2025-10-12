@@ -458,8 +458,145 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
       {/* Form */}
       <div className="bg-white rounded-lg shadow p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Title */}
-          <div>
+          {/* Language Tabs */}
+          <div className="border-b border-gray-200">
+            <div className="flex space-x-1">
+              <button
+                type="button"
+                onClick={() => setActiveTab("mn")}
+                className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${
+                  activeTab === "mn"
+                    ? "border-blue-500 text-blue-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                }`}
+              >
+                🇲🇳 Монгол хэл
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("en")}
+                className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${
+                  activeTab === "en"
+                    ? "border-blue-500 text-blue-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                }`}
+              >
+                🇬🇧 English
+              </button>
+            </div>
+          </div>
+
+          {/* Mongolian Content */}
+          {activeTab === "mn" && (
+            <div className="space-y-6">
+              {/* Title */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Гарчиг *</label>
+                <input
+                  type="text"
+                  value={formData.title}
+                  onChange={e => handleChange("title", e.target.value)}
+                  className={`w-full px-4 py-3 text-gray-800 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 ${
+                    validationErrors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
+                  placeholder="Мэдээний гарчиг оруулна уу"
+                />
+                {validationErrors.title && (
+                  <p className="text-red-500 text-sm mt-1">{validationErrors.title}</p>
+                )}
+                <p className="text-gray-500 text-xs mt-1">{formData.title.length}/200 тэмдэгт</p>
+              </div>
+
+              {/* Summary */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Товч агуулга *</label>
+                <textarea
+                  value={formData.summary}
+                  onChange={e => handleChange("summary", e.target.value)}
+                  rows={4}
+                  className={`w-full px-4 py-3 text-gray-800 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none placeholder-gray-400 ${
+                    validationErrors.summary ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
+                  placeholder="Мэдээний товч агуулга (2-3 өгүүлбэр, 20-500 тэмдэгт)"
+                />
+                {validationErrors.summary && (
+                  <p className="text-red-500 text-sm mt-1">{validationErrors.summary}</p>
+                )}
+                <p className="text-gray-500 text-xs mt-1">{formData.summary.length}/500 тэмдэгт</p>
+              </div>
+
+              {/* Content */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Дэлгэрэнгүй агуулга *
+                </label>
+                <div className={validationErrors.content ? "border-2 border-red-300 rounded-lg" : ""}>
+                  <TipTapEditor
+                    value={formData.content}
+                    onChange={(content) => handleChange("content", content)}
+                    placeholder="Мэдээний дэлгэрэнгүй агуулгыг засварлах..."
+                    readOnly={false}
+                  />
+                </div>
+                {validationErrors.content && (
+                  <p className="text-red-500 text-sm mt-1">{validationErrors.content}</p>
+                )}
+                <p className="text-gray-500 text-xs mt-1">
+                  {formData.content.replace(/<[^>]*>/g, "").length} тэмдэгт (HTML-гүй)
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* English Content */}
+          {activeTab === "en" && (
+            <div className="space-y-6">
+              {/* English Title */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Title</label>
+                <input
+                  type="text"
+                  value={formData.en_title}
+                  onChange={e => handleChange("en_title", e.target.value)}
+                  className="w-full px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+                  placeholder="Enter news title in English"
+                />
+                <p className="text-gray-500 text-xs mt-1">Optional - English translation</p>
+              </div>
+
+              {/* English Summary */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Summary</label>
+                <textarea
+                  value={formData.en_summary}
+                  onChange={e => handleChange("en_summary", e.target.value)}
+                  rows={4}
+                  className="w-full px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none placeholder-gray-400"
+                  placeholder="Brief summary in English (2-3 sentences)"
+                />
+                <p className="text-gray-500 text-xs mt-1">{formData.en_summary.length}/500 characters</p>
+              </div>
+
+              {/* English Content */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Detailed Content
+                </label>
+                <TipTapEditor
+                  value={formData.en_content}
+                  onChange={(content) => handleChange("en_content", content)}
+                  placeholder="Edit the detailed news content in English..."
+                  readOnly={false}
+                />
+                <p className="text-gray-500 text-xs mt-1">
+                  {formData.en_content.replace(/<[^>]*>/g, "").length} characters (HTML-free)
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Title (Hidden - for old code compatibility) */}
+          <div style={{ display: 'none' }}>
             <label className="block text-sm font-medium text-gray-700 mb-2">Гарчиг *</label>
             <input
               type="text"
@@ -476,45 +613,7 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
             <p className="text-gray-500 text-xs mt-1">{formData.title.length}/200 тэмдэгт</p>
           </div>
 
-          {/* Summary */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Товч агуулга *</label>
-            <textarea
-              value={formData.summary}
-              onChange={e => handleChange("summary", e.target.value)}
-              rows={4}
-              className={`w-full px-4 py-3 text-gray-800 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none placeholder-gray-400 ${
-                validationErrors.summary ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
-              placeholder="Мэдээний товч агуулга (2-3 өгүүлбэр, 20-500 тэмдэгт)"
-            />
-            {validationErrors.summary && (
-              <p className="text-red-500 text-sm mt-1">{validationErrors.summary}</p>
-            )}
-            <p className="text-gray-500 text-xs mt-1">{formData.summary.length}/500 тэмдэгт</p>
-          </div>
-
-          {/* Content */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Дэлгэрэнгүй агуулга *
-            </label>
-            <div className={validationErrors.content ? "border-2 border-red-300 rounded-lg" : ""}>
-              <TipTapEditor
-                value={formData.content}
-                onChange={(content) => handleChange("content", content)}
-                placeholder="Мэдээний дэлгэрэнгүй агуулгыг засварлах..."
-                readOnly={false}
-              />
-            </div>
-            {validationErrors.content && (
-              <p className="text-red-500 text-sm mt-1">{validationErrors.content}</p>
-            )}
-            <p className="text-gray-500 text-xs mt-1">
-              {formData.content.replace(/<[^>]*>/g, "").length} тэмдэгт (HTML-гүй)
-            </p>
-          </div>
-
+          {/* Status and shared fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             <div>

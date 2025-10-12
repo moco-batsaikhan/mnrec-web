@@ -3087,23 +3087,23 @@ textarea:focus {
   }
 }
 .rs-breadcrumb-one .rs-breadcrumb-title {
-  font-size: 55px;
+  font-size: 45px;
   margin-bottom: 15px;
   color: var(--rs-white);
 }
 @media only screen and (max-width: 991px) {
   .rs-breadcrumb-one .rs-breadcrumb-title {
-    font-size: 50px;
+    font-size: 30px;
   }
 }
 @media only screen and (max-width: 575px) {
   .rs-breadcrumb-one .rs-breadcrumb-title {
-    font-size: 40px;
+    font-size: 20px;
   }
 }
 @media only screen and (max-width: 480px) {
   .rs-breadcrumb-one .rs-breadcrumb-title {
-    font-size: 35px;
+    font-size: 15px;
   }
 }
 .rs-breadcrumb-one .rs-breadcrumb-menu ul {
@@ -10345,12 +10345,12 @@ html.lenis body {
 }
 @media only screen and (max-width: 1600px) {
   .rs-postbox-details-title {
-    font-size: 35px;
+    font-size: 30px;
   }
 }
 @media only screen and (max-width: 1199px) {
   .rs-postbox-details-title {
-    font-size: 30px;
+    font-size: 20px;
   }
 }
 .rs-postbox-details-video {

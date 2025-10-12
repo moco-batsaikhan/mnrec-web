@@ -25,6 +25,7 @@ export async function GET(request: NextRequest) {
     const page = parseInt(url.searchParams.get("page") || "1");
     const limit = parseInt(url.searchParams.get("limit") || "10");
     const search = url.searchParams.get("search") || "";
+    const slug = url.searchParams.get("slug") || "";
     const status = url.searchParams.get("status") || "";
     const author = url.searchParams.get("author") || "";
     const startDate = url.searchParams.get("startDate") || "";
@@ -42,6 +43,11 @@ export async function GET(request: NextRequest) {
     const queryParams: any[] = [];
 
     // Хайлт болон шүүлт
+    if (slug) {
+      query += ` AND n.slug = ?`;
+      queryParams.push(slug);
+    }
+
     if (search) {
       query += ` AND (n.title LIKE ? OR n.content LIKE ? OR n.summary LIKE ? OR u.name LIKE ?)`;
       queryParams.push(
@@ -132,6 +138,9 @@ export async function GET(request: NextRequest) {
         title: row.title,
         content: row.content,
         summary: row.summary,
+        en_title: row.en_title || null,
+        en_content: row.en_content || null,
+        en_summary: row.en_summary || null,
         slug: row.slug,
         status: row.status,
         featuredImage: row.featured_image,
@@ -165,8 +174,23 @@ export async function GET(request: NextRequest) {
 
 // POST - Шинэ мэдээ нэмэх
 export async function POST(request: NextRequest) {
+  let connection;
   try {
-    const connection = await pool.getConnection();
+    console.log("📝 NEWS CREATE API - Starting...");
+
+    const body = await request.json();
+    console.log("📝 Received data:", {
+      title: body.title,
+      hasContent: !!body.content,
+      hasSummary: !!body.summary,
+      authorId: body.authorId,
+      status: body.status,
+      tags: body.tags,
+    });
+
+    connection = await pool.getConnection();
+    console.log("✅ Database connection established");
+
     const {
       title,
       content,
@@ -175,13 +199,20 @@ export async function POST(request: NextRequest) {
       en_content,
       en_summary,
       status = "draft",
+      category = "general",
       tags = [],
       authorId,
       featuredImage,
-    } = await request.json();
+    } = body;
 
     // Validation
     if (!title || !content || !summary || !authorId) {
+      console.error("❌ Validation failed:", {
+        title: !!title,
+        content: !!content,
+        summary: !!summary,
+        authorId: !!authorId,
+      });
       connection.release();
       return NextResponse.json(
         { message: "Шаардлагатай талбарууд дутуу байна" },
@@ -190,12 +221,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Author байгаа эсэхийг шалгах
+    console.log("🔍 Checking author with ID:", authorId);
     const [authorResult] = await connection.execute(
       "SELECT name FROM users WHERE id = ?",
       [authorId]
     );
 
     if ((authorResult as any).length === 0) {
+      console.error("❌ Author not found:", authorId);
       connection.release();
       return NextResponse.json(
         { message: "Зохиогч олдсонгүй" },
@@ -204,6 +237,7 @@ export async function POST(request: NextRequest) {
     }
 
     const authorName = (authorResult as any)[0].name;
+    console.log("✅ Author found:", authorName);
 
     // Slug үүсгэх (title-ээс)
     let slug = title
@@ -213,6 +247,8 @@ export async function POST(request: NextRequest) {
       .replace(/--+/g, "-")
       .trim();
 
+    console.log("📝 Generated slug:", slug);
+
     // Slug давхардаж байгаа эсэхийг шалгах
     const [existingSlug] = await connection.execute(
       "SELECT id FROM news WHERE slug = ?",
@@ -221,17 +257,19 @@ export async function POST(request: NextRequest) {
 
     if ((existingSlug as any).length > 0) {
       slug = `${slug}-${Date.now()}`;
+      console.log("⚠️ Slug existed, using new slug:", slug);
     }
 
     // Шинэ мэдээ нэмэх
     const now = new Date().toISOString().slice(0, 19).replace("T", " ");
     const publishedAt = status === "published" ? now : null;
 
+    console.log("💾 Inserting news into database...");
     const [result] = await connection.execute(
       `INSERT INTO news (
         title, content, summary, en_title, en_content, en_summary,
-        slug, status, featured_image, tags, author_id, published_at, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        slug, status, category, featured_image, tags, author_id, published_at, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         title,
         content,
@@ -241,6 +279,7 @@ export async function POST(request: NextRequest) {
         en_summary || null,
         slug,
         status,
+        category,
         featuredImage,
         JSON.stringify(tags),
         authorId,
@@ -251,6 +290,7 @@ export async function POST(request: NextRequest) {
     );
 
     const insertId = (result as any).insertId;
+    console.log("✅ News inserted with ID:", insertId);
 
     // Үүссэн мэдээг буцаах
     const [newNewsResult] = await connection.execute(
@@ -296,7 +336,23 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error("News create алдаа:", error);
-    return NextResponse.json({ message: "Серверийн алдаа" }, { status: 500 });
+    console.error("❌ NEWS CREATE ERROR:", error);
+    console.error("Error details:", {
+      name: error instanceof Error ? error.name : "Unknown",
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : "No stack trace",
+    });
+
+    if (connection) {
+      connection.release();
+    }
+
+    return NextResponse.json(
+      {
+        message: "Серверийн алдаа",
+        error: error instanceof Error ? error.message : String(error),
+      },
+      { status: 500 }
+    );
   }
 }

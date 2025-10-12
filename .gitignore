@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .DS_Store
+
+# Note: public/uploads/ is NOT ignored - uploaded images are tracked by git
+# This ensures images persist across deployments on DigitalOcean App Platform

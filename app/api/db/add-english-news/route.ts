@@ -30,18 +30,23 @@ export async function GET() {
         ADD COLUMN en_summary TEXT NULL AFTER summary
       `);
 
-      // Update FULLTEXT index
-      await connection.execute(`
-        DROP INDEX IF EXISTS idx_search ON news
-      `);
+      // Drop old FULLTEXT index (ignore error if not exists)
+      try {
+        await connection.execute(`DROP INDEX idx_search ON news`);
+      } catch (err) {
+        // Index might not exist, continue
+        console.log("Index does not exist or already dropped");
+      }
 
+      // Create new FULLTEXT index with English columns
       await connection.execute(`
         CREATE FULLTEXT INDEX idx_search ON news (title, content, summary, en_title, en_content, en_summary)
       `);
 
       return NextResponse.json({
         success: true,
-        message: "Successfully added English columns to news table and updated search index",
+        message:
+          "Successfully added English columns to news table and updated search index",
       });
     } finally {
       connection.release();

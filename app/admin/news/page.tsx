@@ -24,6 +24,9 @@ interface News {
   title: string;
   content: string;
   summary: string;
+  en_title?: string;
+  en_content?: string;
+  en_summary?: string;
   slug: string;
   status: "draft" | "published" | "archived";
   featuredImage: string | null;
@@ -461,8 +464,13 @@ export default function AdminNews() {
                           )}
                           <div className="flex-1 min-w-0">
                             <div className="text-sm font-medium text-gray-900 line-clamp-2 hover:text-blue-600 cursor-pointer">
-                              {item.title}
+                              🇲🇳 {item.title}
                             </div>
+                            {item.en_title && (
+                              <div className="text-sm font-medium text-gray-600 line-clamp-1 mt-1">
+                                🇬🇧 {item.en_title}
+                              </div>
+                            )}
                             <div className="text-sm text-gray-500 line-clamp-2 mt-1">
                               {item.summary || "Товч тайлбар байхгүй"}
                             </div>
@@ -475,6 +483,7 @@ export default function AdminNews() {
                                 </span>
                               )}
                               <span>#{item.id}</span>
+                              {item.en_title && <span className="text-green-600">✓ EN</span>}
                             </div>
                           </div>
                         </div>

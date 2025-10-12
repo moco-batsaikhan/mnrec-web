@@ -231,6 +231,15 @@ export default function CreateNews() {
     setLoading(true);
 
     try {
+      console.log("📤 Sending news data:", {
+        title: formData.title,
+        en_title: formData.en_title,
+        status: formData.status,
+        tags: formData.tags,
+        hasContent: !!formData.content,
+        hasEnContent: !!formData.en_content,
+      });
+
       const response = await fetch("/api/news", {
         method: "POST",
         headers: {
@@ -238,11 +247,15 @@ export default function CreateNews() {
         },
         body: JSON.stringify({
           ...formData,
+          category: "general", // Default category
           authorId: 1, // Demo - бодитоор current user-аас авна
         }),
       });
 
+      console.log("📥 Response status:", response.status);
+      
       const result = await response.json();
+      console.log("📥 Response data:", result);
 
       if (response.ok) {
         setSuccess("Мэдээ амжилттай үүсгэгдлээ!");
@@ -250,11 +263,12 @@ export default function CreateNews() {
           router.push("/admin/news");
         }, 1500);
       } else {
+        console.error("❌ Server error:", result);
         setError(result.message || "Мэдээ нэмэхэд алдаа гарлаа");
       }
     } catch (error) {
-      console.error("News create алдаа:", error);
-      setError("Серверт холбогдох үед алдаа гарлаа");
+      console.error("❌ News create алдаа:", error);
+      setError(`Серверт холбогдох үед алдаа гарлаа: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
       setLoading(false);
     }
@@ -281,6 +295,7 @@ export default function CreateNews() {
         },
         body: JSON.stringify({
           ...draftData,
+          category: "general", // Default category
           authorId: 1,
         }),
       });

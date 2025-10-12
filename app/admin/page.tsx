@@ -220,27 +220,6 @@ export default function AdminDashboard() {
             </Link>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-gray-200">
-            <h4 className="text-sm font-medium text-gray-900 mb-3">⚙️ Тохиргоо</h4>
-            <button
-              onClick={initContactTable}
-              className="block w-full p-3 mb-2 text-purple-600 hover:bg-purple-50 rounded-lg transition-colors text-left"
-            >
-              🗄️ Contact Table Үүсгэх
-            </button>
-            <button
-              onClick={initNewsletterTable}
-              className="block w-full p-3 mb-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors text-left"
-            >
-              📧 Newsletter Table Үүсгэх
-            </button>
-            <button
-              onClick={addEnglishToNews}
-              className="block w-full p-3 text-green-600 hover:bg-green-50 rounded-lg transition-colors text-left"
-            >
-              🌐 News Table - Англи Хэл Нэмэх
-            </button>
-          </div>
         </div>
 
         <div className="bg-white rounded-lg shadow p-6">

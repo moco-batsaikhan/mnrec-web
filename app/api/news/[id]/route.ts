@@ -26,10 +26,16 @@ export async function PUT(
     const connection = await pool.getConnection();
     const resolvedParams = await params;
     const newsId = parseInt(resolvedParams.id);
-    const { 
-      title, content, summary, 
-      en_title, en_content, en_summary,
-      status, tags, featuredImage 
+    const {
+      title,
+      content,
+      summary,
+      en_title,
+      en_content,
+      en_summary,
+      status,
+      tags,
+      featuredImage,
     } = await request.json();
 
     // Мэдээ олох
@@ -292,6 +298,9 @@ export async function GET(
         title: newsData.title,
         content: newsData.content,
         summary: newsData.summary,
+        en_title: newsData.en_title || null,
+        en_content: newsData.en_content || null,
+        en_summary: newsData.en_summary || null,
         slug: newsData.slug,
         status: newsData.status,
         featuredImage: newsData.featured_image,
