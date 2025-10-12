@@ -1,0 +1,38 @@
+# Dependencies
+node_modules
+npm-debug.log*
+
+# Next.js
+.next
+out
+build
+
+# Environment
+.env
+.env*.local
+.env.production
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage
+.nyc_output
+
+# Misc
+*.log
+.git
+.gitignore
+README.md
+DEPLOYMENT.md
+
+# Uploads (optional - include if you want uploads in image)
+# public/uploads
