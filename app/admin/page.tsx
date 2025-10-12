@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import AdminSidebar from "./components/AdminSidebar";
+import Link from "next/link";
 
 interface DashboardStats {
   overview: {
@@ -180,24 +180,24 @@ export default function AdminDashboard() {
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4">Шуурхай холбоосууд</h3>
           <div className="space-y-2">
-            <a
+            <Link
               href="/admin/news/create"
               className="block p-3 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
             >
               ➕ Шинэ мэдээ нэмэх
-            </a>
-            <a
+            </Link>
+            <Link
               href="/admin/news"
               className="block p-3 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
             >
               📰 Мэдээ удирдах
-            </a>
-            <a
+            </Link>
+            <Link
               href="/admin/users"
               className="block p-3 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
             >
               👥 Хэрэглэгчид
-            </a>
+            </Link>
           </div>
 
           <div className="mt-6 pt-6 border-t border-gray-200">

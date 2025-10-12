@@ -18,7 +18,6 @@ export async function POST(req: Request) {
         "INSERT INTO users (email, name, password, role, status) VALUES (?, ?, ?, 'user', 'active')",
         [email, name, hashed]
       );
-      // @ts-ignore
       insertId = (result as any).insertId;
     } finally {
       conn.release();
