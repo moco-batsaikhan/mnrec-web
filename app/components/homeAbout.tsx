@@ -9,9 +9,12 @@ interface HomeAboutProps {
     };
   };
   image?: { src: string };
+  heading?: string;
+  introduction?: string;
+  section?: "HOME" | "ABOUT";
 }
 
-export default function HomeAbout({ translations, image }: HomeAboutProps) {
+export default function HomeAbout({ translations, image, heading, introduction, section }: HomeAboutProps) {
   const t = translations.about;
 
   return (
@@ -22,11 +25,16 @@ export default function HomeAbout({ translations, image }: HomeAboutProps) {
             <div className="rs-about-wrapper">
               <div className="rs-about-content-wrapper">
                 <div className="rs-section-title-wrapper">
-                  {/* <span className="rs-section-subtitle has-theme-yellow justify-content-start">
-                        {t.aboutUs}
-                      </span> */}
-                  <h2 className="rs-section-title ">{t.heading}</h2>
-                  <p className="descrip">{t.introduction}</p>
+                  <h2 className="rs-section-title ">{heading}</h2>
+                  {section === "ABOUT" ? 
+                    <p className="descrip">{introduction}</p> : 
+                    <div
+                      className="home-about-text"
+                      dangerouslySetInnerHTML={{
+                        __html: introduction || ''
+                      }}
+                    />
+                  }
                 </div>
               </div>
             </div>

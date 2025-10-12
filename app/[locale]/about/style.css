@@ -37,7 +37,7 @@
   transform: translateX(-50%);
   width: 90%;
   height: 4px;
-  background: linear-gradient(to right, #00b0b0, #24ff92);
+  background: linear-gradient(to right, #12d5b1, #24ff92);
   border-radius: 2px;
 }
 
@@ -175,7 +175,7 @@
   transform: translateX(-50%);
   width: 4px;
   height: 100%;
-  background: linear-gradient(to bottom, #00b0b0, #007d7d);
+  background: linear-gradient(to bottom, #12d5b1, #007d7d);
   border-radius: 2px;
 }
 
@@ -242,17 +242,17 @@
   transform: translateX(-50%);
   width: 20px;
   height: 20px;
-  background: #00b0b0;
+  background: #12d5b1;
   border: 4px solid white;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px #00b0b0;
+  box-shadow: 0 0 0 4px #12d5b1;
   z-index: 2;
 }
 
 .timeline-year {
   font-size: 24px;
   font-weight: bold;
-  color: #00b0b0;
+  color: #12d5b1;
   margin-bottom: 10px;
 }
 

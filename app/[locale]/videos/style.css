@@ -50,12 +50,12 @@
 
 .nav-link:hover {
   background-color: #f0f8f8;
-  color: #00b0b0;
+  color: #12d5b1;
   transform: translateX(5px);
 }
 
 .nav-link.active {
-  background-color: #00b0b0;
+  background-color: #12d5b1;
   color: #ffffff;
   transform: translateX(5px);
   box-shadow: inset 4px 0 0 #24ff92;

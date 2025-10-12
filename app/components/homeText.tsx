@@ -5,20 +5,23 @@ interface HomeTextProps {
 }
 
 export default function HomeText({ translations }: HomeTextProps) {
-  const t = translations;
+  const t = translations.t;
   return (
-    <section className="rs-cta-area rs-cta-four">
-      {/* <div className="rs-cta-bg-thumb"></div> */}
+    <section className="rs-cta-area rs-cta-four home-quote-section">
       <div className="container">
         <div className="rs-cta-wrapper">
-          <div className="rs-section-title-wrapper apostrophe-text quote-layout">
-            <div className="quote-icon-wrapper">
-              <img src="assets/images/icon/quote.png" alt="icon-quote" className="quote-icon-img" />
-            </div>
-            <p className="rs-split-text-enable split-in-fade quote-text">
-              High potential project for Mongolia&apos;s first rare earth project development and a
-              significant opportunity for Khovd province
-            </p>
+          <div className="rs-section-title-wrapper quote-layout-horizontal">
+            <blockquote className="quote-text-with-icon">
+              
+              <p className="rs-split-text-enable split-in-fade">
+                <img 
+                src="/assets/images/icon/quote.png" 
+                alt="Quote icon" 
+                className="quote-icon-absolute"
+              />
+                {t.home?.aboutProjectText || "The Khalzan Buregtei project represents a high-potential development of Mongolia's first rare earth elements initiative and presents a significant growth opportunity for Khovd province"}
+              </p>
+            </blockquote>
           </div>
         </div>
       </div>

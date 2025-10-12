@@ -1,83 +1,54 @@
 import React from "react";
+import Image from "next/image";
 
 interface HomeHighlightsProps {
   translations: any;
 }
 
 export default function HomeHighlights({ translations }: HomeHighlightsProps) {
-  const t = translations;
-  return (
-    <div>
-      <section className="rs-elements-brand-area section-space rs-brand-two">
-        <div className="container">
-          <div className="row  g-5 section-title-space">
-            <div className="col-12">
-              <div className="rs-brand-wrapper">
-                <div className="rs-section-title-wrapper">
-                  <h2 className="rs-section-title">Our clients and partners</h2>
-                </div>
+  const t = translations.t;
+  
+  const highlights = [
+    { icon: "/assets/images/highlight-icons/icon-4.png", text: t.highlights?.desc1 || "Project highlight 1" },
+    { icon: "/assets/images/highlight-icons/icon-2.png", text: t.highlights?.desc2 || "Project highlight 2" },
+    { icon: "/assets/images/highlight-icons/icon-3.png", text: t.highlights?.desc3 || "Project highlight 3" },
+    { icon: "/assets/images/highlight-icons/icon-1.png", text: t.highlights?.desc4 || "Project highlight 4" },
+    { icon: "/assets/images/highlight-icons/icon-6.png", text: t.highlights?.desc5 || "Project highlight 5" },
+    { icon: "/assets/images/highlight-icons/icon-5.png", text: t.highlights?.desc6 || "Project highlight 6" }
+  ];
 
-                <div className="rs-brand-item-wrapper">
-                  <div
-                    className="rs-brand-item wow fadeIn"
-                    data-wow-delay=".6s"
-                    data-wow-duration="1s"
-                  >
-                    <div className="rs-brand-thumb">
-                      <img src="assets/images/brand/brand-thumb-11.png" alt="image" />
-                    </div>
+  return (
+    <section className="rs-elements-brand-area highlight-section-space rs-brand-two">
+      <div className="container">
+        <div className="row g-4">
+          <div className="col-lg-4 order-1 order-lg-1">
+            <div className="rs-section-title-wrapper">
+              <h2 className="rs-section-title">{t.highlights?.pageTitle || "Project Highlights"}</h2>
+            </div>
+          </div>
+          
+          <div className="col-lg-8 order-2 order-lg-2">
+            <div className="highlights-grid">
+              {highlights.map((highlight, index) => (
+                <div key={index} className="highlight-item">
+                  <div className="highlight-icon-wrapper">
+                    <Image 
+                      src={highlight.icon}
+                      alt={`Highlight ${index + 1}`}
+                      width={90}
+                      height={80}
+                      className="highlight-icon"
+                    />
                   </div>
-                  <div
-                    className="rs-brand-item wow fadeIn"
-                    data-wow-delay=".7s"
-                    data-wow-duration="1s"
-                  >
-                    <div className="rs-brand-thumb">
-                      <img src="assets/images/brand/brand-thumb-12.png" alt="image" />
-                    </div>
-                  </div>
-                  <div
-                    className="rs-brand-item wow fadeIn"
-                    data-wow-delay=".8s"
-                    data-wow-duration="1s"
-                  >
-                    <div className="rs-brand-thumb">
-                      <img src="assets/images/brand/brand-thumb-13.png" alt="image" />
-                    </div>
-                  </div>
-                  <div
-                    className="rs-brand-item wow fadeIn"
-                    data-wow-delay=".9s"
-                    data-wow-duration="1s"
-                  >
-                    <div className="rs-brand-thumb">
-                      <img src="assets/images/brand/brand-thumb-14.png" alt="image" />
-                    </div>
-                  </div>
-                  <div
-                    className="rs-brand-item wow fadeIn"
-                    data-wow-delay="1s"
-                    data-wow-duration="1s"
-                  >
-                    <div className="rs-brand-thumb">
-                      <img src="assets/images/brand/brand-thumb-15.png" alt="image" />
-                    </div>
-                  </div>
-                  <div
-                    className="rs-brand-item wow fadeIn"
-                    data-wow-delay="1s"
-                    data-wow-duration="1s"
-                  >
-                    <div className="rs-brand-thumb">
-                      <img src="assets/images/brand/brand-thumb-15.png" alt="image" />
-                    </div>
+                  <div className="highlight-text">
+                    <p>{highlight.text}</p>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

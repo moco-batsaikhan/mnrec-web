@@ -1,15 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import RichTextEditor from "../../../components/RichTextEditor";
+import dynamic from 'next/dynamic';
+
+// Dynamically import TipTap editor to avoid SSR issues
+const TipTapEditor = dynamic(() => import("../../../components/TipTapEditor"), {
+  ssr: false,
+  loading: () => <div className="p-4 text-center text-gray-600">Editor ачааллаж байна...</div>
+});
 
 interface NewsForm {
   title: string;
   content: string;
   summary: string;
   status: "draft" | "published" | "archived";
-  category: string;
   tags: string[];
   featuredImage: string;
 }
@@ -22,7 +27,6 @@ interface News extends NewsForm {
   publishedAt: string | null;
   createdAt: string;
   updatedAt: string;
-  viewCount: number;
 }
 
 export default function EditNews({ params }: { params: Promise<{ id: string }> }) {
@@ -31,12 +35,12 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
     content: "",
     summary: "",
     status: "draft",
-    category: "",
     tags: [],
     featuredImage: "",
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [tagInput, setTagInput] = useState("");
@@ -46,15 +50,7 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
   const [imagePreview, setImagePreview] = useState("");
   const router = useRouter();
 
-  const categories = [
-    "Мэдээ",
-    "Хурал",
-    "Төсөл",
-    "Судалгаа",
-    "Байгаль орчин",
-    "Технологи",
-    "Хөрөнгө оруулалт",
-  ];
+
 
   useEffect(() => {
     const initializeParams = async () => {
@@ -90,9 +86,7 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
       errors.content = "Дэлгэрэнгүй агуулга хамгийн багадаа 50 тэмдэгт байх ёстой";
     }
 
-    if (!formData.category) {
-      errors.category = "Ангилал заавал сонгоно уу";
-    }
+
 
     if (formData.featuredImage && !isValidImageUrl(formData.featuredImage)) {
       errors.featuredImage = "Зургийн URL буруу байна";
@@ -120,7 +114,6 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
           content: newsData.content,
           summary: newsData.summary,
           status: newsData.status,
-          category: newsData.category,
           tags: newsData.tags,
           featuredImage: newsData.featuredImage || "",
         };
@@ -162,6 +155,77 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
       setImagePreview("");
     }
   };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) {
+      console.log("No file selected");
+      return;
+    }
+
+    console.log("File selected:", file.name, file.type, file.size);
+
+    // Validate file type
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
+    if (!allowedTypes.includes(file.type)) {
+      setError("Зөвхөн зураг файл ашиглана уу (JPG, PNG, WebP, GIF)");
+      return;
+    }
+
+    // Validate file size (5MB limit)
+    const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+    if (file.size > maxSize) {
+      setError("Зургийн хэмжээ 5MB-аас хэтэрч болохгүй");
+      return;
+    }
+
+    setUploading(true);
+    setError("");
+
+    try {
+      // Create FormData for upload
+      const formData = new FormData();
+      formData.append('image', file);
+      
+      console.log("Starting upload to /api/upload/image");
+
+      // Upload to our API endpoint
+      const response = await fetch('/api/upload/image', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      console.log("Upload response status:", response.status);
+
+      if (response.ok) {
+        const result = await response.json();
+        const imageUrl = result.url;
+        
+        console.log("Upload successful, image URL:", imageUrl);
+        
+        // Update form data and preview
+        handleChange("featuredImage", imageUrl);
+        setImagePreview(imageUrl);
+        setSuccess("Зураг амжилттай ачааллагдлаа!");
+        
+        // Clear success message after 3 seconds
+        setTimeout(() => setSuccess(""), 3000);
+      } else {
+        const errorResult = await response.json();
+        console.log("Upload failed:", errorResult);
+        setError(errorResult.message || "Зураг ачааллахад алдаа гарлаа");
+      }
+    } catch (error) {
+      console.error("Image upload error:", error);
+      setError("Зураг ачааллахад алдаа гарлаа");
+    } finally {
+      setUploading(false);
+      // Reset file input
+      e.target.value = '';
+    }
+  };
+
+
 
   const handleAddTag = () => {
     const trimmedTag = tagInput.trim();
@@ -329,10 +393,10 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
                     }`}
                   >
                     {news.status === "published"
-                      ? "✅ Нийтлэгдсэн"
+                      ? "Нийтлэгдсэн"
                       : news.status === "draft"
-                      ? "📝 Ноорог"
-                      : "📦 Архивлагдсан"}
+                      ? "Ноорог"
+                      : "Архивлагдсан"}
                   </span>
                 )}
               </div>
@@ -343,26 +407,18 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                   <div>
                     <span className="text-gray-500">Үүсгэсэн:</span>
-                    <p className="font-medium">
+                    <p className="font-medium text-gray-400">
                       {new Date(news.createdAt).toLocaleDateString("mn-MN")}
                     </p>
                   </div>
                   {news.publishedAt && (
                     <div>
                       <span className="text-gray-500">Нийтэлсэн:</span>
-                      <p className="font-medium">
+                      <p className="font-medium text-gray-400">
                         {new Date(news.publishedAt).toLocaleDateString("mn-MN")}
                       </p>
                     </div>
                   )}
-                  <div>
-                    <span className="text-gray-500">Үзэлт:</span>
-                    <p className="font-medium">{news.viewCount.toLocaleString()}</p>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Ангилал:</span>
-                    <p className="font-medium">{news.category}</p>
-                  </div>
                 </div>
               )}
             </div>
@@ -374,7 +430,7 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
                   rel="noopener noreferrer"
                   className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors"
                 >
-                  👁️ Үзэх
+                  Үзэх
                 </a>
               )}
               <button
@@ -399,7 +455,7 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
               type="text"
               value={formData.title}
               onChange={e => handleChange("title", e.target.value)}
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              className={`w-full px-4 py-3 text-gray-800 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 ${
                 validationErrors.title ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="Мэдээний гарчиг оруулна уу"
@@ -417,7 +473,7 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
               value={formData.summary}
               onChange={e => handleChange("summary", e.target.value)}
               rows={4}
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none ${
+              className={`w-full px-4 py-3 text-gray-800 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none placeholder-gray-400 ${
                 validationErrors.summary ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="Мэдээний товч агуулга (2-3 өгүүлбэр, 20-500 тэмдэгт)"
@@ -433,48 +489,23 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Дэлгэрэнгүй агуулга *
             </label>
-            <div
-              className={`border rounded-lg ${
-                validationErrors.content ? "border-red-300" : "border-gray-300"
-              }`}
-            >
-              <RichTextEditor
+            <div className={validationErrors.content ? "border-2 border-red-300 rounded-lg" : ""}>
+              <TipTapEditor
                 value={formData.content}
-                onChange={content => handleChange("content", content)}
-                placeholder="Мэдээний дэлгэрэнгүй агуулгыг энд бичнэ үү... (хамгийн багадаа 50 тэмдэгт)"
-                height={400}
+                onChange={(content) => handleChange("content", content)}
+                placeholder="Мэдээний дэлгэрэнгүй агуулгыг засварлах..."
+                readOnly={false}
               />
             </div>
             {validationErrors.content && (
               <p className="text-red-500 text-sm mt-1">{validationErrors.content}</p>
             )}
             <p className="text-gray-500 text-xs mt-1">
-              {formData.content.replace(/<[^>]*>/g, "").length} тэмдэгт
+              {formData.content.replace(/<[^>]*>/g, "").length} тэмдэгт (HTML-гүй)
             </p>
           </div>
 
-          {/* Category & Status */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Ангилал *</label>
-              <select
-                value={formData.category}
-                onChange={e => handleChange("category", e.target.value)}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                  validationErrors.category ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
-              >
-                <option value="">Ангилал сонгоно уу</option>
-                {categories.map(category => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-              {validationErrors.category && (
-                <p className="text-red-500 text-sm mt-1">{validationErrors.category}</p>
-              )}
-            </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Төлөв</label>
@@ -483,11 +514,11 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
                 onChange={e =>
                   handleChange("status", e.target.value as "draft" | "published" | "archived")
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                <option value="draft">📝 Ноорог</option>
-                <option value="published">✅ Нийтлэх</option>
-                <option value="archived">📦 Архивлах</option>
+                <option value="draft">Ноорог</option>
+                <option value="published">Нийтлэх</option>
+                <option value="archived">Архивлах</option>
               </select>
               <p className="text-gray-500 text-xs mt-1">
                 {formData.status === "draft" && "Ноорог нь хадгалагдсан боловч нийтлэгдээгүй"}
@@ -500,36 +531,99 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
           {/* Featured Image */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Онцлох зураг</label>
+            
+            {/* Image Preview Section */}
+            {imagePreview ? (
+              <div className="mb-4">
+                <p className="text-sm font-medium text-gray-700 mb-2">Одоогийн зураг:</p>
+                <div className="relative inline-block border rounded-lg p-2 bg-gray-50">
+                  <img
+                    src={imagePreview}
+                    alt="Preview"
+                    className="w-full max-w-sm h-32 object-cover rounded"
+                    onError={() => setImagePreview("")}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      console.log("Edit: Removing image preview...");
+                      setImagePreview("");
+                      handleChange("featuredImage", "");
+                      // Clear file input
+                      const fileInput = document.getElementById('image-upload-edit') as HTMLInputElement;
+                      if (fileInput) {
+                        fileInput.value = '';
+                        console.log("File input cleared");
+                      }
+                    }}
+                    className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"
+                    title="Зураг арилгах"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            ) : null}
+
             <div className="space-y-3">
+              {/* File upload button */}
+              <div>
+                <label
+                  htmlFor="image-upload-edit"
+                  className={`block w-full py-3 px-4 rounded-lg transition-colors font-medium text-center ${
+                    uploading
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-blue-600 hover:bg-blue-700 cursor-pointer'
+                  } text-white`}
+                >
+                  {uploading ? (
+                    <>
+                      <div className="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Зураг ачааллаж байна...
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-lg mr-2">📷</span>
+                      {imagePreview ? "Өөр зураг сонгох" : "Зураг сонгох"}
+                    </>
+                  )}
+                </label>
+                <input
+                  type="file"
+                  accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                  id="image-upload-edit"
+                  disabled={uploading}
+                />
+              </div>
+
+              <p className="text-xs text-gray-500 text-center">
+                Зөвхөн PNG, JPG, WebP, GIF форматыг дэмждэг (хамгийн ихдээ 5MB)
+              </p>
+
+              {/* URL Input Alternative */}
+              <div className="relative my-4">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-300" />
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-3 bg-white text-gray-500">эсвэл URL засварлах</span>
+                </div>
+              </div>
+
               <input
                 type="text"
                 value={formData.featuredImage}
                 onChange={e => handleChange("featuredImage", e.target.value)}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                className={`w-full px-4 py-3 text-gray-800 text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 ${
                   validationErrors.featuredImage ? "border-red-300 bg-red-50" : "border-gray-300"
                 }`}
-                placeholder="https://example.com/image.jpg эсвэл /assets/images/news/example.jpg"
+                placeholder="https://example.com/image.jpg"
               />
-              {validationErrors.featuredImage && (
-                <p className="text-red-500 text-sm">{validationErrors.featuredImage}</p>
-              )}
-              <p className="text-xs text-gray-500">
-                Зургийн URL эсвэл файлын зам оруулна уу (.jpg, .png, .webp, .gif)
-              </p>
 
-              {/* Image Preview */}
-              {imagePreview && (
-                <div className="mt-3">
-                  <p className="text-sm font-medium text-gray-700 mb-2">Зургийн урьдчилан харах:</p>
-                  <div className="border rounded-lg p-2">
-                    <img
-                      src={imagePreview}
-                      alt="Preview"
-                      className="w-full max-w-md h-48 object-cover rounded"
-                      onError={() => setImagePreview("")}
-                    />
-                  </div>
-                </div>
+              {validationErrors.featuredImage && (
+                <p className="text-red-500 text-sm mt-1">{validationErrors.featuredImage}</p>
               )}
             </div>
           </div>
@@ -544,15 +638,15 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
                   value={tagInput}
                   onChange={e => setTagInput(e.target.value)}
                   onKeyPress={handleTagKeyPress}
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Түлхүүр үг нэмэх (Enter дарж нэмэх)"
+                  className="flex-1 px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+                  placeholder="..."
                   maxLength={30}
                 />
                 <button
                   type="button"
                   onClick={handleAddTag}
                   disabled={!tagInput.trim() || formData.tags.length >= 10}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 text-base font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Нэмэх
                 </button>
@@ -640,10 +734,10 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
               {saving
                 ? "Хадгалж байна..."
                 : formData.status === "published"
-                ? "✅ Нийтлэх"
+                ? "Нийтлэх"
                 : formData.status === "archived"
-                ? "📦 Архивлах"
-                : "📝 Хадгалах"}
+                ? "Архивлах"
+                : "Хадгалах"}
             </button>
           </div>
 

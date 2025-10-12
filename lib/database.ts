@@ -31,8 +31,6 @@ function loadEnvLocal() {
         process.env[key] = value;
       }
     }
-
-    console.log(`📥 Loaded environment from ${envPath}`);
   } catch (err) {
     console.warn("Could not load .env.local:", err);
   }
@@ -52,15 +50,6 @@ const dbConfig = {
   },
   connectionLimit: 5,
 };
-
-console.log("📦 Loaded database config:");
-console.log({
-  host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD ? "********" : "(empty)",
-  database: process.env.DATABASE_NAME,
-});
 
 // Create connection pool
 const pool = mysql.createPool(dbConfig);
@@ -111,16 +100,13 @@ export async function initDatabase() {
         slug VARCHAR(500) UNIQUE NOT NULL,
         status ENUM('draft', 'published', 'archived') DEFAULT 'draft',
         featured_image VARCHAR(500) NULL,
-        category VARCHAR(100) NOT NULL,
         tags JSON NULL,
         author_id INT NOT NULL,
         published_at TIMESTAMP NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        view_count INT DEFAULT 0,
         FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE,
         INDEX idx_status (status),
-        INDEX idx_category (category),
         INDEX idx_author (author_id),
         INDEX idx_created (created_at),
         INDEX idx_published (published_at),
@@ -168,7 +154,7 @@ export async function initDatabase() {
         const eid = editorId ?? adminId;
 
         await connection.execute(`
-          INSERT INTO news (title, content, summary, slug, status, featured_image, category, tags, author_id, published_at, view_count) VALUES 
+          INSERT INTO news (title, content, summary, slug, status, featured_image, tags, author_id, published_at) VALUES 
           (
             'IMARC хурлын тайлан',
             'IMARC (International Mining and Resources Conference) хурлын дэлгэрэнгүй тайлан. Энэ хурал дээр дэлхийн уул уурхайн салбарын хамгийн сүүлийн үеийн технологи, инноваци, хөрөнгө оруулалтын чиглэлүүдийг хэлэлцсэн.',
@@ -176,11 +162,9 @@ export async function initDatabase() {
             'imarc-conference-report-2024',
             'published',
             '/assets/images/news/imarc-conference.jpg',
-            'Хурал',
             '["IMARC", "хурал", "уул уурхай", "технологи"]',
             ${aid},
-            '2024-10-05 10:00:00',
-            1250
+            '2024-10-05 10:00:00'
           ),
           (
             'Халзан Бүрэгтэй төслийн шинэчлэл',
@@ -189,11 +173,9 @@ export async function initDatabase() {
             'khalzan-buregtei-project-update',
             'published',
             '/assets/images/news/khalzan-buregtei.jpg',
-            'Төсөл',
             '["Халзан Бүрэгтэй", "төсөл", "геологи", "нөөц"]',
             ${eid},
-            '2024-10-03 14:20:00',
-            890
+            '2024-10-03 14:20:00'
           )
         `);
         console.log("✅ Sample news created");

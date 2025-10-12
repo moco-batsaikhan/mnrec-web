@@ -34,6 +34,7 @@ export default function Banner({ t }: { t: any }) {
                   className="rs-banner-title wow fadeInUp"
                   data-wow-delay=".3s"
                   data-wow-duration=".7s"
+                  style={{ textTransform: 'none' }}
                 >
                   {t.home?.keyWord}
                 </h1>
@@ -50,7 +51,7 @@ export default function Banner({ t }: { t: any }) {
                   data-wow-duration="1.1s"
                   style={{ display: "flex", gap: "30px" }}
                 >
-                  <div className="link-box">
+                  {/* <div className="link-box">
                     <a className="rs-link-btn has-icon" href="contact.html">
                       Explore More
                       <span className="icon-box ">
@@ -103,7 +104,7 @@ export default function Banner({ t }: { t: any }) {
                       </a>
                       <p className="banner-icon-date">September 17, 2025</p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import PageBanner from "@/app/components/pageBanner";
 import React from "react";
 import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
+import ContactForm from "./contact-form";
 import "./style.css";
 
 export default async function Contact(props: { params: Promise<{ locale: string }> }) {
@@ -57,81 +58,14 @@ export default async function Contact(props: { params: Promise<{ locale: string 
             </div>
 
             <div className="col-lg-8">
-              <div className="contact-form-area">
-                <div className="contact-form-wrapper">
-                  <form className="contact-form">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="First Name"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Last Name"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <input
-                            type="email"
-                            className="form-control"
-                            placeholder={t.contact.yourEmail}
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <input
-                            type="tel"
-                            className="form-control"
-                            placeholder="Phone Number"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder={t.contact.subject}
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className="form-group">
-                          <textarea
-                            className="form-control"
-                            rows={6}
-                            placeholder={t.contact.message}
-                            required
-                          ></textarea>
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className="form-group">
-                          <button type="submit" className="btn btn-primary contact-btn">
-                            {t.contact.submit}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
+              <ContactForm
+                translations={{
+                  yourEmail: t.contact.yourEmail,
+                  subject: t.contact.subject,
+                  message: t.contact.message,
+                  submit: t.contact.submit,
+                }}
+              />
             </div>
           </div>
         </div>

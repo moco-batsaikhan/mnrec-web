@@ -34,6 +34,11 @@ export async function POST(request: Request) {
           { status: 401 }
         );
 
+      // Update last_login timestamp
+      await conn.execute("UPDATE users SET last_login = NOW() WHERE id = ?", [
+        user.id,
+      ]);
+
       const access = signAccessToken({ userId: user.id, role: user.role });
       const refresh = await createRefreshToken(user.id);
 
