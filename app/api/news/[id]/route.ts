@@ -26,8 +26,11 @@ export async function PUT(
     const connection = await pool.getConnection();
     const resolvedParams = await params;
     const newsId = parseInt(resolvedParams.id);
-    const { title, content, summary, status, tags, featuredImage } =
-      await request.json();
+    const { 
+      title, content, summary, 
+      en_title, en_content, en_summary,
+      status, tags, featuredImage 
+    } = await request.json();
 
     // Мэдээ олох
     const [existingNews] = await connection.execute(
@@ -86,6 +89,18 @@ export async function PUT(
     if (summary) {
       updateFields.push("summary = ?");
       updateValues.push(summary);
+    }
+    if (en_title !== undefined) {
+      updateFields.push("en_title = ?");
+      updateValues.push(en_title);
+    }
+    if (en_content !== undefined) {
+      updateFields.push("en_content = ?");
+      updateValues.push(en_content);
+    }
+    if (en_summary !== undefined) {
+      updateFields.push("en_summary = ?");
+      updateValues.push(en_summary);
     }
     if (status) {
       updateFields.push("status = ?");

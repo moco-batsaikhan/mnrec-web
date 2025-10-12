@@ -171,6 +171,9 @@ export async function POST(request: NextRequest) {
       title,
       content,
       summary,
+      en_title,
+      en_content,
+      en_summary,
       status = "draft",
       tags = [],
       authorId,
@@ -226,19 +229,21 @@ export async function POST(request: NextRequest) {
 
     const [result] = await connection.execute(
       `INSERT INTO news (
-        title, content, summary, slug, status, featured_image, 
-        tags, author_id, category, published_at, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        title, content, summary, en_title, en_content, en_summary,
+        slug, status, featured_image, tags, author_id, published_at, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         title,
         content,
         summary,
+        en_title || null,
+        en_content || null,
+        en_summary || null,
         slug,
         status,
         featuredImage,
         JSON.stringify(tags),
         authorId,
-        "general", // Default category
         publishedAt,
         now,
         now,

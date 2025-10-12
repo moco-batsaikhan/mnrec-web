@@ -11,16 +11,16 @@ export const metadata: Metadata = {
   description: "MNREC веб сайтын удирдлагын систем",
 };
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   // Server-side check for access token cookie
-  const cookieStore = cookies() as any;
-  const token = cookieStore.get?.("accessToken")?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get("accessToken")?.value;
   if (!token) {
     redirect("/admin/login");
   }
 
   try {
-    verifyAccessToken(token as string);
+    verifyAccessToken(token);
   } catch (err) {
     // invalid token
     redirect("/admin/login");

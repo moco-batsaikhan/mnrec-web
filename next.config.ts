@@ -1,10 +1,10 @@
 module.exports = {
-  // Use standalone output for DigitalOcean/production deployment
-  output: "standalone",
-  trailingSlash: false, // Set to false for server mode
+  // Temporarily commented out for admin development
+  // output: "export",
+  trailingSlash: true,
   images: {
-    unoptimized: false, // Enable image optimization in server mode
-    domains: ["mnrec.mn", "www.mnrec.mn"],
+    unoptimized: true, // For static export compatibility
+    domains: [],
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -16,13 +16,11 @@ module.exports = {
     // your project has type errors.
     ignoreBuildErrors: true,
   },
-  // Ensure rewrites work correctly
-  async rewrites() {
-    return [
-      {
-        source: "/",
-        destination: "/mn",
-      },
-    ];
-  },
+  redirects: async () => [
+    {
+      source: "/",
+      destination: "/mn",
+      permanent: false,
+    },
+  ],
 };

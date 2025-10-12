@@ -81,6 +81,26 @@ export default function AdminDashboard() {
     }
   };
 
+  const addEnglishToNews = async () => {
+    try {
+      setInitMessage("⏳ News table дээр англи хэлний баганууд нэмж байна...");
+      const response = await fetch("/api/db/add-english-news");
+      const result = await response.json();
+      
+      if (response.ok) {
+        setInitMessage("✅ " + result.message);
+      } else {
+        setInitMessage("❌ " + result.message);
+      }
+      
+      setTimeout(() => setInitMessage(""), 5000);
+    } catch (error) {
+      console.error("Add English columns error:", error);
+      setInitMessage("❌ Серверт холбогдох үед алдаа гарлаа");
+      setTimeout(() => setInitMessage(""), 5000);
+    }
+  };
+
   if (loading) {
     return (
       <div className="p-6">
@@ -210,9 +230,15 @@ export default function AdminDashboard() {
             </button>
             <button
               onClick={initNewsletterTable}
-              className="block w-full p-3 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors text-left"
+              className="block w-full p-3 mb-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors text-left"
             >
               📧 Newsletter Table Үүсгэх
+            </button>
+            <button
+              onClick={addEnglishToNews}
+              className="block w-full p-3 text-green-600 hover:bg-green-50 rounded-lg transition-colors text-left"
+            >
+              🌐 News Table - Англи Хэл Нэмэх
             </button>
           </div>
         </div>
