@@ -8,12 +8,12 @@ module.exports = {
     // Support for uploaded images
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**',
+        protocol: "https",
+        hostname: "**",
       },
       {
-        protocol: 'http',
-        hostname: '**',
+        protocol: "http",
+        hostname: "**",
       },
     ],
   },
@@ -38,11 +38,11 @@ module.exports = {
   async headers() {
     return [
       {
-        source: '/uploads/:path*',
+        source: "/uploads/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },

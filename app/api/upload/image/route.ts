@@ -6,7 +6,7 @@ import { existsSync } from "fs";
 export async function POST(request: NextRequest) {
   try {
     console.log("📤 Upload API called");
-    
+
     const formData = await request.formData();
     const file = formData.get("image") as File;
 
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     // Create upload directory path
     const uploadDir = join(process.cwd(), "public", "uploads", "news");
     console.log("📂 Upload directory:", uploadDir);
-    
+
     // Create directory if it doesn't exist
     try {
       if (!existsSync(uploadDir)) {
@@ -66,7 +66,10 @@ export async function POST(request: NextRequest) {
     } catch (mkdirError) {
       console.error("❌ Failed to create directory:", mkdirError);
       return NextResponse.json(
-        { message: "Зураг хадгалах хавтас үүсгэх боломжгүй. Серверийн эрх шалгана уу." },
+        {
+          message:
+            "Зураг хадгалах хавтас үүсгэх боломжгүй. Серверийн эрх шалгана уу.",
+        },
         { status: 500 }
       );
     }
@@ -77,7 +80,7 @@ export async function POST(request: NextRequest) {
     const originalName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
     const extension = originalName.split(".").pop() || "jpg";
     const filename = `news-${timestamp}-${randomStr}.${extension}`;
-    
+
     console.log("📝 Generated filename:", filename);
 
     // Convert file to buffer
@@ -88,7 +91,7 @@ export async function POST(request: NextRequest) {
     // Write file to upload directory
     const filepath = join(uploadDir, filename);
     console.log("💾 Writing file to:", filepath);
-    
+
     try {
       await writeFile(filepath, buffer);
       console.log("✅ File written successfully");
@@ -122,9 +125,9 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("❌ Image upload error:", error);
     return NextResponse.json(
-      { 
+      {
         message: "Зураг ачааллахад алдаа гарлаа",
-        error: error instanceof Error ? error.message : "Unknown error"
+        error: error instanceof Error ? error.message : "Unknown error",
       },
       { status: 500 }
     );

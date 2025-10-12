@@ -24,10 +24,12 @@ public/
 **POST** `/api/upload/image`
 
 **Request:**
+
 - Content-Type: `multipart/form-data`
 - Field: `image` (File)
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -38,6 +40,7 @@ public/
 ```
 
 **Validation:**
+
 - File Types: JPG, PNG, WebP, GIF
 - Max Size: 5MB
 - Filename: `news-{timestamp}-{random}.{extension}`
@@ -81,12 +84,14 @@ App Platform дээр файл системд бичих эрхтэй эсэхи
 ```
 
 Хэрэв эрх байхгүй бол:
+
 ```bash
 ❌ Failed to create directory: EACCES: permission denied
 ❌ Failed to write file: EACCES: permission denied
 ```
 
 **Шийдэл:**
+
 - DigitalOcean App Platform дээр файл систем `read-only` байна
 - Зургууд заавал Git-ээр deploy хийгдэх ёстой
 - Upload хийсэн зургууд `git add`, `git commit`, `git push` хийгдэнэ
@@ -100,6 +105,7 @@ https://your-app.ondigitalocean.app/uploads/news/news-1234567890.jpg
 ```
 
 **Next.js config** (`next.config.ts`):
+
 ```javascript
 async headers() {
   return [
@@ -139,12 +145,14 @@ git push origin main
 Олон зураг байвал **DigitalOcean Spaces** (S3-compatible) ашиглах нь дээр:
 
 **Давуу тал:**
+
 - ✅ Гэрэлтэй тэлэх боломжтой
 - ✅ Git-д хөнгөн байна
 - ✅ CDN дэмжлэг
 - ✅ Олон GB зураг хадгалах боломжтой
 
 **Setup:**
+
 1. DigitalOcean Spaces үүсгэх
 2. Access Key & Secret Key авах
 3. `@aws-sdk/client-s3` суулгах
@@ -184,11 +192,13 @@ console.log(result);
 #### "Зураг ачааллахад алдаа гарлаа"
 
 1. **Browser Console шалгах:**
+
    ```
    F12 → Console → Network → upload/image → Response
    ```
 
 2. **Server logs шалгах:**
+
    - DigitalOcean → Your App → Runtime Logs
    - `❌` тэмдэгтэй мөрүүдийг хайх
 
@@ -200,12 +210,14 @@ console.log(result);
 #### Зураг харагдахгүй байна
 
 1. **URL шалгах:**
+
    ```
    /uploads/news/filename.jpg  ✅ Зөв
    uploads/news/filename.jpg   ❌ Буруу (/ байхгүй)
    ```
 
 2. **Git-д орсон эсэхийг шалгах:**
+
    ```bash
    git status
    # public/uploads/news/xxx.jpg файлууд харагдах ёстой
@@ -229,16 +241,19 @@ console.log(result);
 ### Future Improvements
 
 1. **DigitalOcean Spaces Integration**
+
    - CDN delivery
    - Unlimited storage
    - Better performance
 
 2. **Image Processing**
+
    - Automatic resize
    - Thumbnail generation
    - Format conversion (WebP)
 
 3. **Authentication**
+
    - Require login for upload
    - Admin role check
 
