@@ -11,9 +11,9 @@ export default function HomeText({ translations }: HomeTextProps) {
       <div className="container">
         <div className="rs-cta-wrapper">
           <div className="rs-section-title-wrapper quote-layout-horizontal">
-            <blockquote className="quote-text-with-icon">
+            <div className="quote-text-with-icon">
               
-              <p className="rs-split-text-enable split-in-fade">
+              <p className="split-in-fade">
                 <img 
                 src="/assets/images/icon/quote.png" 
                 alt="Quote icon" 
@@ -21,7 +21,7 @@ export default function HomeText({ translations }: HomeTextProps) {
               />
                 {t.home?.aboutProjectText || "The Khalzan Buregtei project represents a high-potential development of Mongolia's first rare earth elements initiative and presents a significant growth opportunity for Khovd province"}
               </p>
-            </blockquote>
+            </div>
           </div>
         </div>
       </div>

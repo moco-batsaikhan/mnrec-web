@@ -726,6 +726,7 @@ h5,
   font-size: var(--rs-fs-h5);
   line-height: 1.4;
   font-weight: var(--rs-fw-bold);
+  font-family: 'Roboto', sans-serif;
 }
 @media only screen and (max-width: 1366px) {
   h5,

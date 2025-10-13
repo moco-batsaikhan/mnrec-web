@@ -175,13 +175,6 @@ export default function AdminLogin() {
               )}
             </button>
           </div>
-
-          <div className="text-center">
-            <div className="text-sm text-gray-600">Demo нэвтрэх мэдээлэл:</div>
-            <div className="text-xs text-gray-500 mt-1">
-              И-мэйл: admin@mnrec.mn | Нууц үг: password123
-            </div>
-          </div>
         </form>
       </div>
     </div>
