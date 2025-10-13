@@ -1,6 +1,6 @@
 "use client";
 
-import { useEditor, EditorContent } from '@tiptap/react';
+import { useEditor, EditorContent, ReactNodeViewRenderer } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
 import Image from '@tiptap/extension-image';
@@ -15,6 +15,7 @@ import { TextStyle } from '@tiptap/extension-text-style';
 import { Color } from '@tiptap/extension-color';
 import Highlight from '@tiptap/extension-highlight';
 import { useEffect } from 'react';
+import ResizableImageNode from './ResizableImageNode';
 
 interface TipTapEditorProps {
   value: string;
@@ -36,7 +37,9 @@ export default function TipTapEditor({
       StarterKit.configure({
         heading: {
           levels: [1, 2, 3, 4]
-        }
+        },
+        // Disable link from StarterKit since we're using custom Link extension
+        link: false,
       }),
       Underline,
       TextStyle,
@@ -55,9 +58,34 @@ export default function TipTapEditor({
           rel: 'noopener noreferrer',
         },
       }),
-      Image.configure({
-        HTMLAttributes: {
-          class: 'max-w-full h-auto rounded-lg',
+      Image.extend({
+        addNodeView() {
+          return ReactNodeViewRenderer(ResizableImageNode);
+        },
+        addAttributes() {
+          return {
+            ...this.parent?.(),
+            width: {
+              default: null,
+              parseHTML: element => element.getAttribute('width'),
+              renderHTML: attributes => {
+                if (!attributes.width) {
+                  return {};
+                }
+                return { width: attributes.width };
+              },
+            },
+            height: {
+              default: null,
+              parseHTML: element => element.getAttribute('height'),
+              renderHTML: attributes => {
+                if (!attributes.height) {
+                  return {};
+                }
+                return { height: attributes.height };
+              },
+            },
+          };
         },
       }),
       Table.configure({
@@ -142,10 +170,11 @@ export default function TipTapEditor({
         return;
       }
 
-      try {
-        // Show loading state
-        const loadingNode = editor.chain().focus().insertContent('⏳ Зураг ачаалж байна...').run();
+      // Show loading message
+      const loadingMessage = '⏳ Зураг ачаалж байна...';
+      alert(loadingMessage);
 
+      try {
         // Upload to API
         const formData = new FormData();
         formData.append('image', file);
@@ -161,15 +190,14 @@ export default function TipTapEditor({
           throw new Error(data.message || 'Зураг ачаалахад алдаа гарлаа');
         }
 
-        // Remove loading text and insert image
-        editor.chain().focus().deleteRange({ from: editor.state.selection.from - 20, to: editor.state.selection.from }).run();
+        // Insert image without asking for size - user can resize visually
         editor.chain().focus().setImage({ src: data.url }).run();
+        
+        alert('✅ Зураг амжилттай ачаалагдлаа. Зургийн булан дээр чирж хэмжээг өөрчилнө үү.');
 
       } catch (error) {
         console.error('Image upload error:', error);
         alert(error instanceof Error ? error.message : 'Зураг ачаалахад алдаа гарлаа');
-        // Remove loading text
-        editor.chain().focus().deleteRange({ from: editor.state.selection.from - 20, to: editor.state.selection.from }).run();
       }
     };
 
@@ -482,6 +510,76 @@ export default function TipTapEditor({
             🖼️
           </button>
 
+          {/* Image resize controls when image is selected */}
+          {editor.isActive('image') && (
+            <>
+              <button
+                onClick={() => {
+                  const currentAttrs = editor.getAttributes('image');
+                  const width = prompt('Зургийн өргөн (pixels):', currentAttrs.width || '');
+                  if (width && !isNaN(Number(width))) {
+                    editor.chain().focus().updateAttributes('image', { width: Number(width) }).run();
+                  }
+                }}
+                className="px-2 py-1.5 text-xs font-medium rounded bg-green-100 text-green-700 hover:bg-green-200 transition-colors"
+                type="button"
+                title="Set Image Width"
+              >
+                ↔️ Өргөн
+              </button>
+              
+              <button
+                onClick={() => {
+                  editor.chain().focus().updateAttributes('image', { width: null, height: null }).run();
+                }}
+                className="px-2 py-1.5 text-xs font-medium rounded bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors"
+                type="button"
+                title="Reset Image Size"
+              >
+                🔄 Анхны хэмжээ
+              </button>
+              
+              <button
+                onClick={() => {
+                  editor.chain().focus().updateAttributes('image', { 
+                    style: 'display: block; margin-left: 0; margin-right: auto;' 
+                  }).run();
+                }}
+                className="px-2 py-1.5 text-xs font-medium rounded bg-purple-100 text-purple-700 hover:bg-purple-200 transition-colors"
+                type="button"
+                title="Align Left"
+              >
+                ⬅️
+              </button>
+              
+              <button
+                onClick={() => {
+                  editor.chain().focus().updateAttributes('image', { 
+                    style: 'display: block; margin-left: auto; margin-right: auto;' 
+                  }).run();
+                }}
+                className="px-2 py-1.5 text-xs font-medium rounded bg-purple-100 text-purple-700 hover:bg-purple-200 transition-colors"
+                type="button"
+                title="Align Center"
+              >
+                ↔️
+              </button>
+              
+              <button
+                onClick={() => {
+                  editor.chain().focus().updateAttributes('image', { 
+                    style: 'display: block; margin-left: auto; margin-right: 0;' 
+                  }).run();
+                }}
+                className="px-2 py-1.5 text-xs font-medium rounded bg-purple-100 text-purple-700 hover:bg-purple-200 transition-colors"
+                type="button"
+                title="Align Right"
+              >
+                ➡️
+              </button>
+            </>
+          )}
+
           <div className="w-px h-8 bg-gray-300 mx-1"></div>
 
           {/* Undo & Redo */}
@@ -649,6 +747,90 @@ export default function TipTapEditor({
           height: auto;
           border-radius: 8px;
           margin: 1em 0;
+          cursor: pointer;
+        }
+
+        /* Resizable image selected state */
+        .tiptap-content .ProseMirror img.ProseMirror-selectednode {
+          outline: 3px solid #3b82f6;
+          outline-offset: 2px;
+        }
+
+        /* Image resize handles - 8 points: 4 corners + 4 edges */
+        .ProseMirror .image-resizer {
+          position: relative;
+          display: inline-block;
+        }
+
+        .ProseMirror .image-resizer img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+        }
+
+        .ProseMirror .image-resizer .resize-handle {
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          background: #3b82f6;
+          border: 2px solid white;
+          border-radius: 50%;
+          z-index: 10;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Corner handles - diagonal resize */
+        .ProseMirror .image-resizer .resize-handle.top-left {
+          top: -6px;
+          left: -6px;
+          cursor: nw-resize;
+        }
+
+        .ProseMirror .image-resizer .resize-handle.top-right {
+          top: -6px;
+          right: -6px;
+          cursor: ne-resize;
+        }
+
+        .ProseMirror .image-resizer .resize-handle.bottom-left {
+          bottom: -6px;
+          left: -6px;
+          cursor: sw-resize;
+        }
+
+        .ProseMirror .image-resizer .resize-handle.bottom-right {
+          bottom: -6px;
+          right: -6px;
+          cursor: se-resize;
+        }
+
+        /* Edge handles - width/height only */
+        .ProseMirror .image-resizer .resize-handle.top {
+          top: -6px;
+          left: 50%;
+          transform: translateX(-50%);
+          cursor: n-resize;
+        }
+
+        .ProseMirror .image-resizer .resize-handle.bottom {
+          bottom: -6px;
+          left: 50%;
+          transform: translateX(-50%);
+          cursor: s-resize;
+        }
+
+        .ProseMirror .image-resizer .resize-handle.left {
+          left: -6px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: w-resize;
+        }
+
+        .ProseMirror .image-resizer .resize-handle.right {
+          right: -6px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: e-resize;
         }
 
         /* Horizontal Rule */

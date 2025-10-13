@@ -1,19 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
-// Initialize S3 client for DigitalOcean Spaces
-const s3Client = new S3Client({
-  endpoint: process.env.SPACES_ENDPOINT,
-  region: process.env.SPACES_REGION || "sgp1",
-  credentials: {
-    accessKeyId: process.env.SPACES_ACCESS_KEY_ID || "",
-    secretAccessKey: process.env.SPACES_SECRET_ACCESS_KEY || "",
-  },
-});
-
 export async function POST(request: NextRequest) {
   try {
     console.log("📤 Upload API called");
+    console.log("🔧 Spaces Config:", {
+      endpoint: process.env.SPACES_ENDPOINT,
+      region: process.env.SPACES_REGION,
+      bucket: process.env.SPACES_BUCKET,
+      hasAccessKey: !!process.env.SPACES_ACCESS_KEY_ID,
+      hasSecretKey: !!process.env.SPACES_SECRET_ACCESS_KEY,
+    });
+
+    // Initialize S3 client inside the function to use latest env variables
+    const s3Client = new S3Client({
+      endpoint: process.env.SPACES_ENDPOINT,
+      region: process.env.SPACES_REGION || "sgp1",
+      credentials: {
+        accessKeyId: process.env.SPACES_ACCESS_KEY_ID || "",
+        secretAccessKey: process.env.SPACES_SECRET_ACCESS_KEY || "",
+      },
+    });
 
     const formData = await request.formData();
     const file = formData.get("image") as File;
@@ -81,15 +88,26 @@ export async function POST(request: NextRequest) {
         Key: key,
         Body: buffer,
         ContentType: file.type,
-        ACL: "public-read",
+        ACL: "public-read", // Make file publicly accessible
       });
 
       await s3Client.send(command);
       console.log("✅ File uploaded to Spaces successfully");
     } catch (uploadError) {
       console.error("❌ Failed to upload to Spaces:", uploadError);
+      console.error("Upload error details:", {
+        message: uploadError instanceof Error ? uploadError.message : "Unknown",
+        name: uploadError instanceof Error ? uploadError.name : "Unknown",
+        stack: uploadError instanceof Error ? uploadError.stack : "Unknown",
+      });
       return NextResponse.json(
-        { message: "Зураг Spaces руу ачааллахад алдаа гарлаа" },
+        {
+          message: "Зураг Spaces руу ачааллахад алдаа гарлаа",
+          error:
+            uploadError instanceof Error
+              ? uploadError.message
+              : String(uploadError),
+        },
         { status: 500 }
       );
     }
