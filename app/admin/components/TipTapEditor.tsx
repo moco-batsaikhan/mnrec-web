@@ -120,10 +120,61 @@ export default function TipTapEditor({
   };
 
   const addImage = () => {
-    const url = window.prompt('Зургийн URL оруулна уу:');
-    if (url) {
-      editor.chain().focus().setImage({ src: url }).run();
-    }
+    // Create a file input element
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    
+    input.onchange = async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+
+      // Validate file type
+      const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
+      if (!allowedTypes.includes(file.type)) {
+        alert('Зөвхөн зураг файл ашиглана уу (JPG, PNG, WebP, GIF)');
+        return;
+      }
+
+      // Validate file size (5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('Зургийн хэмжээ 5MB-аас хэтэрч болохгүй');
+        return;
+      }
+
+      try {
+        // Show loading state
+        const loadingNode = editor.chain().focus().insertContent('⏳ Зураг ачаалж байна...').run();
+
+        // Upload to API
+        const formData = new FormData();
+        formData.append('image', file);
+
+        const response = await fetch('/api/upload/image', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || 'Зураг ачаалахад алдаа гарлаа');
+        }
+
+        // Remove loading text and insert image
+        editor.chain().focus().deleteRange({ from: editor.state.selection.from - 20, to: editor.state.selection.from }).run();
+        editor.chain().focus().setImage({ src: data.url }).run();
+
+      } catch (error) {
+        console.error('Image upload error:', error);
+        alert(error instanceof Error ? error.message : 'Зураг ачаалахад алдаа гарлаа');
+        // Remove loading text
+        editor.chain().focus().deleteRange({ from: editor.state.selection.from - 20, to: editor.state.selection.from }).run();
+      }
+    };
+
+    // Trigger file selection
+    input.click();
   };
 
   return (

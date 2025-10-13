@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import { join } from "path";
-import { existsSync } from "fs";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+
+// Initialize S3 client for DigitalOcean Spaces
+const s3Client = new S3Client({
+  endpoint: process.env.SPACES_ENDPOINT,
+  region: process.env.SPACES_REGION || "sgp1",
+  credentials: {
+    accessKeyId: process.env.SPACES_ACCESS_KEY_ID || "",
+    secretAccessKey: process.env.SPACES_SECRET_ACCESS_KEY || "",
+  },
+});
 
 export async function POST(request: NextRequest) {
   try {
@@ -50,71 +58,47 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create upload directory path
-    const uploadDir = join(process.cwd(), "public", "uploads", "news");
-    console.log("📂 Upload directory:", uploadDir);
-
-    // Create directory if it doesn't exist
-    try {
-      if (!existsSync(uploadDir)) {
-        console.log("📁 Creating upload directory...");
-        await mkdir(uploadDir, { recursive: true });
-        console.log("✅ Directory created successfully");
-      } else {
-        console.log("✅ Directory already exists");
-      }
-    } catch (mkdirError) {
-      console.error("❌ Failed to create directory:", mkdirError);
-      return NextResponse.json(
-        {
-          message:
-            "Зураг хадгалах хавтас үүсгэх боломжгүй. Серверийн эрх шалгана уу.",
-        },
-        { status: 500 }
-      );
-    }
-
     // Generate unique filename
     const timestamp = Date.now();
     const randomStr = Math.random().toString(36).substring(2, 8);
     const originalName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
     const extension = originalName.split(".").pop() || "jpg";
     const filename = `news-${timestamp}-${randomStr}.${extension}`;
+    const key = `uploads/news/${filename}`;
 
     console.log("📝 Generated filename:", filename);
+    console.log("🔑 S3 Key:", key);
 
     // Convert file to buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     console.log("💾 Buffer created, size:", buffer.length);
 
-    // Write file to upload directory
-    const filepath = join(uploadDir, filename);
-    console.log("💾 Writing file to:", filepath);
-
+    // Upload to DigitalOcean Spaces
     try {
-      await writeFile(filepath, buffer);
-      console.log("✅ File written successfully");
-    } catch (writeError) {
-      console.error("❌ Failed to write file:", writeError);
+      const command = new PutObjectCommand({
+        Bucket: process.env.SPACES_BUCKET,
+        Key: key,
+        Body: buffer,
+        ContentType: file.type,
+        ACL: "public-read",
+      });
+
+      await s3Client.send(command);
+      console.log("✅ File uploaded to Spaces successfully");
+    } catch (uploadError) {
+      console.error("❌ Failed to upload to Spaces:", uploadError);
       return NextResponse.json(
-        { message: "Зураг хадгалах боломжгүй. Серверийн эрх шалгана уу." },
+        { message: "Зураг Spaces руу ачааллахад алдаа гарлаа" },
         { status: 500 }
       );
     }
 
-    // Verify file was written
-    if (!existsSync(filepath)) {
-      console.error("❌ File not found after writing");
-      return NextResponse.json(
-        { message: "Зураг хадгалагдсан боловч баталгаажуулах боломжгүй" },
-        { status: 500 }
-      );
-    }
-
-    // Return the public URL
-    const imageUrl = `/uploads/news/${filename}`;
-    console.log("✅ Upload successful, URL:", imageUrl);
+    // Return the CDN URL
+    const cdnEndpoint =
+      process.env.SPACES_CDN_ENDPOINT || process.env.SPACES_ENDPOINT;
+    const imageUrl = `${cdnEndpoint}/${key}`;
+    console.log("✅ Upload successful, CDN URL:", imageUrl);
 
     return NextResponse.json({
       success: true,
@@ -134,7 +118,6 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Disable body parsing to handle FormData
 export const config = {
   api: {
     bodyParser: false,
