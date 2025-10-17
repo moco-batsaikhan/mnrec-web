@@ -24,118 +24,76 @@ export default function ClientSustainabilityProject({
     setActiveTab(itemId);
   };
 
+  const [selectedItem, setSelectedItem] = useState<{ title: string; description: string } | null>(null);
+
+  const gridItems = [
+    { title: translations.sustainability.tabSubTitle1, description: translations.sustainability.tabSubDesc1, image: "/assets/company-photos/image2.jpg" },
+    { title: translations.sustainability.tabSubTitle2, description: translations.sustainability.tabSubDesc2, image: "/assets/company-photos/image8.jpg" },
+    { title: translations.sustainability.tabSubTitle3, description: translations.sustainability.tabSubDesc3, image: "/assets/company-photos/image9.png" },
+    { title: translations.sustainability.tabSubTitle4, description: translations.sustainability.tabSubDesc4, image: "/assets/company-photos/image10.png" },
+    { title: translations.sustainability.tabSubTitle5, description: translations.sustainability.tabSubDesc5, image: "/assets/company-photos/image11.png" },
+  ];
+
   const renderTabContent = (item: SidebarItem) => {
     if (item.id === "3") {
       const t = translations.sustainability;
       return (
         <div className="tab-content-grid">
-          <div className="grid-container">
-            <div className="grid-item">
-              <div className="grid-text">
-                <div className="grid-description">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: t.tabDesc3
-                        .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
-                        .join(""),
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="grid-intro-text">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: t.tabDesc3
+                  .split("\n")
+                  .map((paragraph: string) => `<p>${paragraph}</p>`)
+                  .join(""),
+              }}
+            />
+          </div>
 
-            <div className="grid-item">
-              <div className="grid-image">
-                <img src="/assets/company-photos/image2.jpg" alt="Praseodymium" />
-              </div>
-              <div className="grid-text">
-                <h4>{t.tabSubTitle1}</h4>
-                <div className="grid-description">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: t.tabSubDesc1
-                        .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
-                        .join(""),
-                    }}
-                  />
+          <div className="grid-container-two-column">
+            {gridItems.map((gridItem, index) => (
+              <div key={index} className="grid-card">
+                <div className="grid-card-image">
+                  <img src={gridItem.image} alt={gridItem.title} />
+                </div>
+                <div className="grid-card-content">
+                  <button
+                    className="grid-card-button"
+                    onClick={() => setSelectedItem({ title: gridItem.title, description: gridItem.description })}
+                  >
+                    {gridItem.title}
+                  </button>
                 </div>
               </div>
-            </div>
-            <div className="grid-item">
-              <div className="grid-image">
-                <img src="/assets/company-photos/image8.jpg" alt="Praseodymium" />
-              </div>
-              <div className="grid-text">
-                <h4>{t.tabSubTitle2}</h4>
-                <div className="grid-description">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: t.tabSubDesc2
-                        .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
-                        .join(""),
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="grid-image">
-                <img src="/assets/company-photos/image9.png" alt="Praseodymium" />
-              </div>
-              <div className="grid-text">
-                <h4>{t.tabSubTitle3}</h4>
-                <div className="grid-description">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: t.tabSubDesc3
-                        .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
-                        .join(""),
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="grid-image">
-                <img src="/assets/company-photos/image10.png" alt="Praseodymium" />
-              </div>
-              <div className="grid-text">
-                <h4>{t.tabSubTitle4}</h4>
-                <div className="grid-description">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: t.tabSubDesc4
-                        .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
-                        .join(""),
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="grid-image">
-                <img src="/assets/company-photos/image11.png" alt="Praseodymium" />
-              </div>
-              <div className="grid-text">
-                <h4>{t.tabSubTitle5}</h4>
-                <div className="grid-description">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: t.tabSubDesc5
-                        .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
-                        .join(""),
-                    }}
-                  />
-                </div>
-              </div>
+            ))}
+          </div>
+
+          {/* Popup Modal */}
+          {selectedItem && (
+            <div className="sustainability-modal-overlay" onClick={() => setSelectedItem(null)}>
+              <div className="sustainability-modal-content" onClick={(e) => e.stopPropagation()}>
+                <button className="sustainability-modal-close" onClick={() => setSelectedItem(null)}>
+                  ×
+                </button>
+                <div className="highlights-header col-12">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <h2 className="rs-section-title sustainability-modal-title" style={{ margin: 0, whiteSpace: 'nowrap' }}>{selectedItem.title || "Project Highlights"}</h2>
+              <div style={{ flex: 1, height: '2px', backgroundColor: '#45D3B1' }}></div>
             </div>
           </div>
+                <div className="sustainability-modal-description">
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: selectedItem.description
+                        .split("\n")
+                        .map((paragraph: string) => `<p>${paragraph}</p>`)
+                        .join(""),
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       );
     } else {

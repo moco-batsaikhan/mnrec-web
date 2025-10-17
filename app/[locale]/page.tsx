@@ -18,7 +18,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <>
-      <Banner t={t} />
+      <Banner t={t} locale={locale} />
       <HomeAbout
         translations={{ about: t.about }}
         image={{ src: "/assets/images/gallery/khb/drilling/image4.jpg" }}

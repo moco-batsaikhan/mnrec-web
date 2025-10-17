@@ -165,7 +165,7 @@ function NewsContent() {
     <div>
       <PageBanner
         bannerImage={"/assets/images/bg/media.jpg"}
-        pageName={lang === "mn" ? "Сүүлийн мэдээ" : "Latest News"}
+        pageName={lang === "mn" ? "Мэдээ" : "News"}
       />
       <section className="rs-postbox-area section-space">
         <div className="container">

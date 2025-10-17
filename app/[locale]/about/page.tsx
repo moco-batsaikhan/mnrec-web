@@ -3,6 +3,7 @@ import HomeAbout from "@/app/components/homeAbout";
 import React from "react";
 import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
 import "./style.css";
+import TeamSection from "../../components/TeamSection";
 
 export default async function ProjectTimeline(props: { params: Promise<{ locale: string }> }) {
   const params = props?.params instanceof Promise ? await props.params : props?.params;
@@ -23,14 +24,14 @@ export default async function ProjectTimeline(props: { params: Promise<{ locale:
       name: t.about.manager1,
       position: t.about.jobPosition1,
       description: t.about.managerDesc1,
-      image: "/assets/images/leader-team/Munkhjargal.avif",
+      image: "/assets/images/leader-team/Munkhjargal.png",
     },
     {
       id: 2,
       name: t.about.manager2,
       position: t.about.jobPosition2,
       description: t.about.managerDesc2,
-      image: "/assets/images/leader-team/Odgerel.avif",
+      image: "/assets/images/leader-team/Odgerel.png",
     },
     {
       id: 4,
@@ -165,33 +166,15 @@ export default async function ProjectTimeline(props: { params: Promise<{ locale:
         <section className="rs-team-details-area section-space-top rs-team-details team-section mb-50">
           <div className="container">
             <div className="row  g-5 justify-content-center section-title-space align-items-center">
-              <div className="col-xl-10 col-lg-10">
-                <div className="rs-section-title-wrapper text-center">
-                  <h2 className="rs-section-title rs-split-text-enable split-in-fade">
-                    <span className="rs-theme-orange">{t.menu.about_team}</span>
-                  </h2>
-                </div>
-              </div>
+              <div className="highlights-header col-12">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <h2 className="rs-section-title2" style={{ margin: 0, whiteSpace: 'nowrap' }}>{t.menu.about_team || "Project Highlights"}</h2>
+              <div style={{ flex: 1, height: '2px', backgroundColor: '#45D3B1' }}></div>
+            </div>
+          </div>
             </div>
             <div className="row g-5">
-              {teamData.map((member, index) => (
-                <React.Fragment key={member.id}>
-                  <div className={`col-xl-4 col-lg-4`}>
-                    <div className="rs-team-details-thumb">
-                      <img src={member.image} alt={member.name} />
-                    </div>
-                  </div>
-                  <div className={`col-xl-8 col-lg-8`}>
-                    <div className="rs-team-details-content">
-                      <h2 className="rs-team-details-title">{member.name}</h2>
-                      <span className="rs-team-details-desig">{member.position}</span>
-                      <div className="rs-team-details-bio">
-                        <p>{member.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                </React.Fragment>
-              ))}
+              <TeamSection teamData={teamData} />
             </div>
           </div>
         </section>

@@ -632,7 +632,7 @@ export default function TipTapEditor({
           padding: 20px;
           min-height: 400px;
           outline: none;
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           font-size: 15px;
           line-height: 1.7;
           color: #1f2937;
@@ -711,7 +711,7 @@ export default function TipTapEditor({
           background-color: #f3f4f6;
           padding: 0.2em 0.4em;
           border-radius: 3px;
-          font-family: 'Courier New', monospace;
+          font-family: 'Manrope', monospace;
           font-size: 0.9em;
         }
 

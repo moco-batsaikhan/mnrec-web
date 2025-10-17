@@ -34,6 +34,7 @@ export async function PUT(
       en_content,
       en_summary,
       status,
+      category,
       tags,
       featuredImage,
     } = await request.json();
@@ -112,6 +113,10 @@ export async function PUT(
       updateFields.push("status = ?");
       updateValues.push(status);
     }
+    if (category) {
+      updateFields.push("category = ?");
+      updateValues.push(category);
+    }
     if (tags) {
       updateFields.push("tags = ?");
       updateValues.push(JSON.stringify(Array.isArray(tags) ? tags : []));
@@ -166,10 +171,13 @@ export async function PUT(
         title: newsData.title,
         content: newsData.content,
         summary: newsData.summary,
+        en_title: newsData.en_title || null,
+        en_content: newsData.en_content || null,
+        en_summary: newsData.en_summary || null,
         slug: newsData.slug,
         status: newsData.status,
-        featuredImage: newsData.featured_image,
         category: newsData.category,
+        featuredImage: newsData.featured_image,
         tags: parsedTags,
         authorId: newsData.author_id,
         authorName: newsData.author_name,

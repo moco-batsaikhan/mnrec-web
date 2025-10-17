@@ -2,8 +2,21 @@
   background-color: #f8f9fa;
 }
 
+.rs-section-title2 {
+    color: var(--rs-title-primary);
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.25em;
+}
+
 @media only screen and (max-width: 767px), only screen and (max-width: 575px) {
   .rs-section-title {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+  .rs-section-title2 {
     font-size: 22px;
     font-weight: 600;
     line-height: 32px;
@@ -329,5 +342,342 @@
     left: 20px;
     width: 16px;
     height: 16px;
+  }
+}
+
+/* Team Card Styling */
+.team-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: transparent;
+  cursor: pointer;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+}
+
+.team-card-image {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+}
+
+.team-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+
+.team-card:hover .team-card-image img {
+  transform: scale(1.05);
+}
+
+/* Overlay Effect */
+.team-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.team-card:hover .team-card-overlay {
+  opacity: 1;
+}
+
+.view-profile-text {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.team-card:hover .view-profile-text {
+  transform: translateY(0);
+}
+
+.team-card-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.team-card-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f1f1f;
+  margin-bottom: 8px;
+}
+
+.team-card-position {
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+}
+
+/* Modal Overlay */
+.team-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content */
+.team-modal-content {
+  background: #ffffff;
+  border-radius: 16px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.team-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: #1f1f1f;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-modal-close:hover {
+  background: #12d5b1;
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+/* Modal Body */
+.team-modal-body {
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+}
+
+.team-modal-image {
+  flex: 0 0 350px;
+  width: 350px;
+}
+
+.team-modal-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.team-modal-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.team-modal-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f1f1f;
+  margin: 0;
+}
+
+.team-modal-position {
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.team-modal-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.team-modal-description p {
+  margin: 0 0 15px 0;
+  text-align: justify;
+}
+
+.team-modal-description p:last-child {
+  margin-bottom: 0;
+}
+
+.team-modal-description b,
+.team-modal-description strong {
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.team-modal-description ul,
+.team-modal-description ol {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+.team-modal-description ul {
+  list-style-type: disc;
+}
+
+.team-modal-description ol {
+  list-style-type: decimal;
+}
+
+.team-modal-description li {
+  margin: 8px 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+.team-modal-description li::marker {
+  color: #12d5b1;
+  font-weight: 600;
+}
+
+.team-modal-description h1,
+.team-modal-description h2,
+.team-modal-description h3,
+.team-modal-description h4 {
+  margin: 20px 0 10px 0;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.team-modal-description a {
+  color: #12d5b1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.team-modal-description a:hover {
+  color: #0fa890;
+  text-decoration: underline;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+  .team-modal-body {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .team-modal-image {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .team-modal-name {
+    font-size: 24px;
+  }
+
+  .team-modal-position {
+    font-size: 14px;
+  }
+
+  .team-modal-description {
+    font-size: 15px;
+  }
+
+  .team-card-image {
+    height: 280px;
+  }
+}
+
+@media (max-width: 576px) {
+  .team-modal-content {
+    max-height: 95vh;
+  }
+
+  .team-modal-body {
+    padding: 15px;
+  }
+
+  .team-modal-name {
+    font-size: 20px;
+  }
+
+  .team-modal-position {
+    font-size: 12px;
+  }
+
+  .team-modal-description {
+    font-size: 14px;
+  }
+
+  .team-card-image {
+    height: 250px;
+  }
+
+  .team-card-info {
+    padding: 15px;
+  }
+
+  .team-card-name {
+    font-size: 18px;
+  }
+
+  .team-card-position {
+    font-size: 12px;
   }
 }

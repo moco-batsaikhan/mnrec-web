@@ -190,9 +190,9 @@ h6,
 
 :root {
   /**  @font family declaration */
-  --rs-ff-body: "Roboto", sans-serif;
-  --rs-ff-title: "Roboto", sans-serif;
-  --rs-ff-p: "Roboto", sans-serif;
+  --rs-ff-body: "Manrope", sans-serif;
+  --rs-ff-title: "Manrope", sans-serif;
+  --rs-ff-p: "Manrope", sans-serif;
   --rs-ff-fontawesome: "Font Awesome 6 Pro";
   --rs-ff-remixicon: "remixicon";
   /** @color declaration */
@@ -205,7 +205,7 @@ h6,
   --rs-theme-light-blue: #0d80ce;
   --rs-theme-green: #023b4a;
   --rs-theme-light-green: #507a7c;
-  --rs-mnrec-green: #12d5b1;
+  --rs-mnrec-green: #45D3B1;
   --rs-theme-yellow: #f7c600;
   --rs-theme-deep-blue: #3b37fd;
   --rs-text-primary: #000000;
@@ -726,7 +726,7 @@ h5,
   font-size: var(--rs-fs-h5);
   line-height: 1.4;
   font-weight: var(--rs-fw-bold);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 @media only screen and (max-width: 1366px) {
   h5,
@@ -7069,7 +7069,7 @@ html.lenis body {
 }
 
 .rs-banner-two .rs-banner-wrapper {
-  padding: 300px 0 345px;
+  padding: 260px 0 345px;
 }
 @media only screen and (max-width: 1366px) {
   .rs-banner-two .rs-banner-wrapper {
@@ -7135,7 +7135,7 @@ html.lenis body {
   max-width: 620px;
 }
 .rs-banner-two .rs-banner-descrip p {
-  color: #12d5b1;
+  color: #ffffff;
   font-size: 20px;
   font-weight: 600;
 }
@@ -8956,7 +8956,7 @@ html.lenis body {
 .main-menu .submenu {
   background-color: var(--rs-white);
   box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
-  width: 260px;
+  min-width: 260px;
   position: absolute;
   opacity: 0;
   pointer-events: none;
@@ -9072,7 +9072,8 @@ html.lenis body {
   color: rgba(255, 255, 255, 0.76);
 }
 .rs-header-area.has-theme-red .main-menu .submenu {
-  background: var(--rs-mnrec-green);
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 0 0 20px 20px;
 }
 .rs-header-area.has-theme-red .main-menu .submenu li:hover > a {
   color: rgba(255, 255, 255, 0.76);
@@ -14274,11 +14275,11 @@ html.lenis body {
 .rs-cta-three .rs-btn.has-theme-secondary:hover {
   background: var(--rs-white);
 }
-.rs-cta-four {
+/* .rs-cta-four {
   position: relative;
   z-index: 2;
   background: var(--rs-black);
-}
+} */
 
 .rs-cta-four .rs-cta-bg-thumb {
   position: absolute;
@@ -14296,7 +14297,7 @@ html.lenis body {
 
 .apostrophe-text p {
   color: #ffffff;
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-style: italic;
   font-size: 4.5rem;
   font-weight: 600;
@@ -14324,7 +14325,7 @@ html.lenis body {
   }
   .apostrophe-text p{
   color: #ffffff;
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-style: italic;
   font-size: 4.5rem;
   font-weight: 600;
@@ -14344,7 +14345,7 @@ html.lenis body {
   }
   .apostrophe-text p{
     color: #ffffff;
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-style: italic;
   font-size: 3.5rem;
   font-weight: 600;
@@ -14367,7 +14368,7 @@ html.lenis body {
   }
   .apostrophe-text p{
     color: #ffffff;
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-style: italic;
   font-size: 2.2rem;
   font-weight: 500;
@@ -14389,7 +14390,7 @@ html.lenis body {
   }
   .apostrophe-text p{
     color: #ffffff;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-size: 1.8rem;
   font-weight: 500;
   line-height: 1.4;
@@ -14408,7 +14409,7 @@ html.lenis body {
   }
   .apostrophe-text p{
     color: #ffffff !important;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.5;
@@ -25038,7 +25039,7 @@ body .ui-tooltip {
 .ui-widget input,
 .ui-widget select,
 .ui-widget textarea {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-size: 1em;
 }
 

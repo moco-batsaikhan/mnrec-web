@@ -11,8 +11,11 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
       <div
         className="rs-footer-bg-thumb"
         style={{
-          backgroundImage: "url('/assets/images/bg/footer-bg.png')",
-          backgroundColor: "transparent",
+          // backgroundImage: "url('/assets/images/bg/footer-bg.png')",
+          backgroundColor: "#000000",
+          backgroundSize: "70%",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "right bottom",
         }}
       ></div>
 

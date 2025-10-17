@@ -1,7 +1,9 @@
 "use client";
 
+import BannerNews from "./BannerNews";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function Banner({ t }: { t: any }) {
+export default function Banner({ t, locale }: { t: any; locale: string }) {
   return (
     <section
       className="rs-banner-area rs-banner-two p-relative"
@@ -45,66 +47,22 @@ export default function Banner({ t }: { t: any }) {
                 >
                   <p>{t.home?.keyNote} </p>
                 </div>
+                
+                {/* Banner News Section */}
                 <div
-                  className="rs-banner-btn wow fadeInUp"
+                  className="wow fadeInUp"
                   data-wow-delay=".7s"
                   data-wow-duration="1.1s"
+                >
+                  <BannerNews locale={locale} />
+                </div>
+                
+                <div
+                  className="rs-banner-btn wow fadeInUp"
+                  data-wow-delay=".9s"
+                  data-wow-duration="1.3s"
                   style={{ display: "flex", gap: "30px" }}
                 >
-                  {/* <div className="link-box">
-                    <a className="rs-link-btn has-icon" href="contact.html">
-                      Explore More
-                      <span className="icon-box ">
-                        <svg
-                          className="icon-first"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 32 32"
-                        >
-                          <path d="M31.71,15.29l-10-10L20.29,6.71,28.59,15H0v2H28.59l-8.29,8.29,1.41,1.41,10-10A1,1,0,0,0,31.71,15.29Z"></path>
-                        </svg>
-                        <svg
-                          className="icon-second"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 32 32"
-                        >
-                          <path d="M31.71,15.29l-10-10L20.29,6.71,28.59,15H0v2H28.59l-8.29,8.29,1.41,1.41,10-10A1,1,0,0,0,31.71,15.29Z"></path>
-                        </svg>
-                      </span>
-                    </a>
-                    <div className="banner-icon-text-box">
-                      <a href="#" className="banner-icon-desc">
-                        IMARC: Mining Giants Gather in One Place
-                      </a>
-                      <p className="banner-icon-date">September 17, 2025</p>
-                    </div>
-                  </div>
-                  <div className="link-box">
-                    <a className="rs-link-btn has-icon" href="contact.html">
-                      Latest presentation
-                      <span className="icon-box ">
-                        <svg
-                          className="icon-first"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 32 32"
-                        >
-                          <path d="M31.71,15.29l-10-10L20.29,6.71,28.59,15H0v2H28.59l-8.29,8.29,1.41,1.41,10-10A1,1,0,0,0,31.71,15.29Z"></path>
-                        </svg>
-                        <svg
-                          className="icon-second"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 32 32"
-                        >
-                          <path d="M31.71,15.29l-10-10L20.29,6.71,28.59,15H0v2H28.59l-8.29,8.29,1.41,1.41,10-10A1,1,0,0,0,31.71,15.29Z"></path>
-                        </svg>
-                      </span>
-                    </a>
-                    <div className="banner-icon-text-box">
-                      <a href="#" className="banner-icon-desc">
-                        IMARC: Mining Giants Gather in One Place
-                      </a>
-                      <p className="banner-icon-date">September 17, 2025</p>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>

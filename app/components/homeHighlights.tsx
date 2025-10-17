@@ -20,14 +20,15 @@ export default function HomeHighlights({ translations }: HomeHighlightsProps) {
   return (
     <section className="rs-elements-brand-area highlight-section-space rs-brand-two">
       <div className="container">
-        <div className="row g-4">
-          <div className="col-lg-4 order-1 order-lg-1">
-            <div className="rs-section-title-wrapper">
-              <h2 className="rs-section-title">{t.highlights?.pageTitle || "Project Highlights"}</h2>
+        <div className="row">
+          <div className="highlights-header col-12">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <h2 className="rs-section-title" style={{ margin: 0, whiteSpace: 'nowrap' }}>{t.highlights?.pageTitle || "Project Highlights"}</h2>
+              <div style={{ flex: 1, height: '2px', backgroundColor: '#45D3B1' }}></div>
             </div>
           </div>
           
-          <div className="col-lg-8 order-2 order-lg-2">
+          <div className="col-lg-12 order-2 order-lg-2">
             <div className="highlights-grid">
               {highlights.map((highlight, index) => (
                 <div key={index} className="highlight-item">
@@ -41,7 +42,15 @@ export default function HomeHighlights({ translations }: HomeHighlightsProps) {
                     />
                   </div>
                   <div className="highlight-text">
-                    <p>{highlight.text}</p>
+                    <div
+                      className="highlight-text"
+                      dangerouslySetInnerHTML={{
+                        __html: highlight.text
+                          .split("\n")
+                          .map((paragraph: string) => `<p>${paragraph}</p>`)
+                          .join(""),
+                      }}
+                    />
                   </div>
                 </div>
               ))}

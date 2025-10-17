@@ -11,6 +11,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
 /* Different colors for different section types */
 .environment-section:nth-of-type(1),
 .environment-section:nth-of-type(4) {
@@ -255,6 +261,9 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+  p {
+    font-size: 15px;
+  }
   .environment-section {
     flex-direction: column;
     gap: 15px;

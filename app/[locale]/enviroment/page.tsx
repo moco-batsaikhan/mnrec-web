@@ -4,6 +4,7 @@ import { getDictionary, locales, defaultLocale, type Locale } from "@/lib/i18n";
 import Link from "next/link";
 import "./style.css";
 import ModernSlider from "@/app/components/ModernSlider";
+import BoldBeforeColon from "@/app/components/BoldBeforeColon";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Environment(props: any) {
@@ -50,10 +51,17 @@ export default async function Environment(props: any) {
                 <div className="rs-postbox-content">
                   <h3 className="rs-postbox-details-title">{t.sustainable.enviroment.newsTitle}</h3>
                 </div>
-                <div className="rs-postbox-details-content">
-                  <p>{t.sustainable.enviroment.newsDescription}</p>
-                  <p>{t.sustainable.enviroment.newsDescription1}</p>
-                </div>
+                <BoldBeforeColon>
+                  <div
+                  className="rs-postbox-details-content"
+                      dangerouslySetInnerHTML={{
+                        __html: t.sustainable.enviroment.newsDescription
+                          .split("\n")
+                          .map((paragraph: string) => `${paragraph}`)
+                          .join(""),
+                      }}
+                    />
+                </BoldBeforeColon>
 
                 {/* Modern Swiper Slider */}
                 <ModernSlider

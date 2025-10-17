@@ -18,6 +18,7 @@ interface NewsForm {
   en_content: string;
   en_summary: string;
   status: "draft" | "published" | "archived";
+  category: "homeNews" | "homeIntroduction" | "news";
   tags: string[];
   featuredImage: string;
 }
@@ -31,6 +32,7 @@ export default function CreateNews() {
     en_content: "",
     en_summary: "",
     status: "draft",
+    category: "news",
     tags: [],
     featuredImage: "",
   });
@@ -247,7 +249,6 @@ export default function CreateNews() {
         },
         body: JSON.stringify({
           ...formData,
-          category: "general", // Default category
           authorId: 1, // Demo - бодитоор current user-аас авна
         }),
       });
@@ -295,7 +296,6 @@ export default function CreateNews() {
         },
         body: JSON.stringify({
           ...draftData,
-          category: "general", // Default category
           authorId: 1,
         }),
       });
@@ -512,6 +512,26 @@ export default function CreateNews() {
                 {formData.status === "draft" && "Ноорог нь хадгалагдсан боловч нийтлэгдээгүй"}
                 {formData.status === "published" && "Нийтлэгдсэн нь хэрэглэгчдэд харагдана"}
                 {formData.status === "archived" && "Архивлагдсан нь хэрэглэгчдэд харагдахгүй"}
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Ангилал</label>
+              <select
+                value={formData.category}
+                onChange={e =>
+                  handleChange("category", e.target.value as "homeNews" | "homeIntroduction" | "news")
+                }
+                className="w-full px-4 py-3 text-gray-800 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="news">Мэдээ</option>
+                <option value="homeNews">Нүүр хуудасны мэдээ</option>
+                <option value="homeIntroduction">Нүүр хуудасны танилцуулга</option>
+              </select>
+              <p className="text-gray-500 text-xs mt-1">
+                {formData.category === "homeNews" && "Нүүр хуудсанд харагдах мэдээ"}
+                {formData.category === "homeIntroduction" && "Нүүр хуудсанд харагдах танилцуулга"}
+                {formData.category === "news" && "Ердийн мэдээ"}
               </p>
             </div>
           </div>

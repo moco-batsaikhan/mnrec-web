@@ -4,6 +4,9 @@ import { useState } from "react";
 
 interface ContactFormProps {
   translations: {
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
     yourEmail: string;
     subject: string;
     message: string;
@@ -92,7 +95,7 @@ export default function ContactForm({ translations }: ContactFormProps) {
                   type="text"
                   name="firstName"
                   className="form-control"
-                  placeholder="First Name"
+                  placeholder={translations.firstName}
                   value={formData.firstName}
                   onChange={handleChange}
                   required
@@ -106,7 +109,7 @@ export default function ContactForm({ translations }: ContactFormProps) {
                   type="text"
                   name="lastName"
                   className="form-control"
-                  placeholder="Last Name"
+                  placeholder={translations.lastName}
                   value={formData.lastName}
                   onChange={handleChange}
                   required
@@ -134,7 +137,7 @@ export default function ContactForm({ translations }: ContactFormProps) {
                   type="tel"
                   name="phone"
                   className="form-control"
-                  placeholder="Phone Number"
+                  placeholder={translations.phoneNumber}
                   value={formData.phone}
                   onChange={handleChange}
                   required

@@ -60,6 +60,9 @@ export default async function Contact(props: { params: Promise<{ locale: string 
             <div className="col-lg-8">
               <ContactForm
                 translations={{
+                  firstName: t.contact.firstName,
+                  lastName: t.contact.lastName,
+                  phoneNumber: t.contact.phoneNumber,
                   yourEmail: t.contact.yourEmail,
                   subject: t.contact.subject,
                   message: t.contact.message,
