@@ -356,7 +356,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           keyNote:
             "Газрын ховор элементийн тогтвортой нийлүүлэлтийн сүлжээг бүрдүүлж, ногоон эрчим хүчний шилжилтийг түргэтгэнэ.",
           aboutProjectText:
-            "Халзан Бүрэгтэй төсөл нь Монголын анхны газрын ховор элементийн хөгжүүлэлтийн өндөр боломжит төсөл бөгөөд Ховд аймагт томоохон боломжийг санал болгож байна.",
+            "Халзан бүрэгтэй нь хайгуул судалгааны ажил нь хамгийн эрчимтэй өрнөж байгаа анхны ГХЭ-ийн төсөл бөгөөд Монгол орны баруун хягаар тэр дундаа Ховд аймгийн нийгэм эдийн засаг, дэд бүтцийн хөгжилд томоохон боломжуудыг нээх боломжтой төсөл юм.",
         },
         cta: {
           deploy: "Шууд байршуул",
@@ -827,14 +827,13 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           heading: "MNREC-ийн тухай",
           desc: `
                   <div class="mnrec-article">
-                    <p class="lead">
+                    <p class="highlight">
                       Монголиан нэшнл рийр ийрт корп ХХК (<strong>MNREC</strong>) нь 2010 онд үүсгэн байгуулагдсан цагаасаа геологийн судалгаа болон уул уурхайн хөрөнгө оруулалтын чиглэлээр ажиллаж байгаа бөгөөд өдгөө Ховд аймгийн Мянгад суманд байрлах газрын ховор элементийн Халзан бүрэгтэй төсөл дээр төвлөрч байна. 
                     </p>
 
-                    <p class="highlight">
+                    <p class="lead">
                       Халзан бүрэгтэй төсөл нь Монгол Улсын Эрдэс баялгийн санд бүртгэлтэй зургаан ГХЭ-ийн ордоос нөөцөөрөө хамгийн их (нийт нөөцийн 50% орчим), судалгааны түвшин ахицтай явж байгаа, өдгөө зах зээлд эрэлт нь нэмэгдэж байгаа хүнд ГХЭ агуулсан орд юм. Төсөл хэрэгжүүлэгч нэгж болох МНРИК нь олон улсын NI43-101 стандартын Урьдчилсан ТЭЗҮ (PFS, 2024)-г бэлтгэж 30+ жилийн ашиглалтын хугацаатай уурхай, баяжуулах, анхан шатны боловсруулах үйлдвэрийн концепцийн үр дүнг баталгаажуулаад байна.Одоогийн байдлаар Халзан бүрэгтэй төслийн Эцсийн ТЭЗҮ-г боловсруулах ажил үргэлжлэн хийгдэж байна.
                     </p>
-                    <p class="highlight">“ Халзан бүрэгтэй нь хайгуул судалгааны ажил нь хамгийн эрчимтэй өрнөж байгаа анхны ГХЭ-ийн төсөл бөгөөд Монгол орны баруун хягаар тэр дундаа Ховд аймгийн нийгэм эдийн засаг, дэд бүтцийн хөгжилд томоохон боломжуудыг нээх боломжтой төсөл юм.</p>
                   </div>
                 `,
         },
@@ -1086,7 +1085,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           keyNote:
             "Establishing a sustainable rare earths supply chain to propel the green energy transition",
           aboutProjectText:
-            "The Khalzan Buregtei project represents a high-potential development of Mongolia's first rare earth elements initiative and presents a significant growth opportunity for Khovd province.",
+            "Khalzan Buregtei is the first REE project in Mongolia with such intensive exploration activities, representing significant opportunities for socioeconomic development and infrastructure growth in western Mongolia, particularly in Khovd province.",
         },
         cta: {
           deploy: "Deploy now",
@@ -1496,14 +1495,14 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           heading: "About MNREC",
           desc: `
                   <div class="mnrec-article">
-                    <p >
+                    <p class="highlight">
                       Established in 2010, Mongolian National Rare Earth Corp LLC (MNREC) has been actively engaged in geological exploration and strategic mining investment. The company is currently focused on the Khalzan Buregtei Rare Earth Elements (REE) Project, located in Myangad soum, Khovd province.
                     </p>
-                    <p class="highlight">
+                    <p>
                       The Khalzan Buregtei Project is one of six REE deposits registered with the Mineral Resource Fund of Mongolia and contains the largest reserves among them, accounting for approximately 50% of the total. It is a heavy rare earth deposit at an advanced stage of exploration, with demand in the global market steadily increasing.
                     </p>
-                    <p class="highlight">As the project developer, MNREC has prepared an NI 43-101-compliant Preliminary Feasibility Study (PFS, 2024), validating the concept for a mine with a production lifespan exceeding 30 years, including beneficiation and primary processing facilities. The Definitive Feasibility Study (DFS) is currently underway.</p>
-                    <p class="highlight">Khalzan Buregtei is the first REE project in Mongolia with such intensive exploration activities, representing significant opportunities for socioeconomic development and infrastructure growth in western Mongolia, particularly in Khovd province.</p>
+                    <p>As the project developer, MNREC has prepared an NI 43-101-compliant Preliminary Feasibility Study (PFS, 2024), validating the concept for a mine with a production lifespan exceeding 30 years, including beneficiation and primary processing facilities. The Definitive Feasibility Study (DFS) is currently underway.</p>
+                    
                   </div>
                 `,
         },
