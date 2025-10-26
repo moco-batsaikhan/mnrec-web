@@ -103,8 +103,7 @@ export default async function ProjectTimeline(props: { params: Promise<{ locale:
           translations={{ about: t.about }}
           image={{ src: "/assets/images/about/aboutUs.jpg" }}
           heading={t.about.heading}
-          introduction={t.about.introduction}
-          section="ABOUT"
+          introduction={t.homeAbout.desc}
         />
         <section id="feature-section" className="feature-section pad-top-50 mt-40">
           <div className="container">
@@ -122,7 +121,18 @@ export default async function ProjectTimeline(props: { params: Promise<{ locale:
                       </div>
                     </div>
                     <div className="feature-content">
-                      <p className="mb-0 box-size">{t.about.visionText}</p>
+                      {(() => {
+                        const words = (t.about.visionText || "").split(/\s+/);
+                        const mid = Math.ceil(words.length / 2);
+                        const line1 = words.slice(0, mid).join(" ");
+                        const line2 = words.slice(mid).join(" ");
+                        return (
+                          <>
+                            <p className="mb-0 box-size">{line1}</p>
+                            {line2 && <p className="mb-0 box-size">{line2}</p>}
+                          </>
+                        );
+                      })()}
                     </div>
                   </div>
                 </div>

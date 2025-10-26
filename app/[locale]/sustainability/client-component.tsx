@@ -44,7 +44,7 @@ export default function ClientSustainabilityProject({
               dangerouslySetInnerHTML={{
                 __html: t.tabDesc3
                   .split("\n")
-                  .map((paragraph: string) => `<p>${paragraph}</p>`)
+                  .map((paragraph: string) => `${paragraph}`)
                   .join(""),
               }}
             />
@@ -86,7 +86,7 @@ export default function ClientSustainabilityProject({
                     dangerouslySetInnerHTML={{
                       __html: selectedItem.description
                         .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
+                        .map((paragraph: string) => `${paragraph}`)
                         .join(""),
                     }}
                   />
@@ -103,7 +103,7 @@ export default function ClientSustainabilityProject({
             dangerouslySetInnerHTML={{
               __html: item.content
                 .split("\n")
-                .map((paragraph: string) => `<p>${paragraph}</p>`)
+                .map((paragraph: string) => `${paragraph}`)
                 .join(""),
             }}
           />

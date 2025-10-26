@@ -58,7 +58,7 @@ function NewsContent() {
     try {
       const queryParams = new URLSearchParams({
         page: currentPage.toString(),
-        limit: "5",
+        limit: "3",
         status: "published",
         sortBy: "publishedAt",
         sortOrder: "desc",
@@ -200,24 +200,23 @@ function NewsContent() {
                           </Link>
                         </div>
                         <div className="rs-postbox-content">
-                          <div className="rs-postbox-meta-list">
+                          {/* <div className="rs-postbox-meta-list">
                             <div className="rs-postbox-meta-item">
                               <span className="rs-meta-text">
                                 {lang === "mn" ? "Зохиогч:" : "By"}
                                 MNREC
-                                {/* <Link className="meta-author" href={`/${lang}/news/${article.id}`}>
-                                  {article.authorName}
-                                </Link> */}
+                                
                               </span>
                             </div>
-                            <div className="rs-postbox-meta-item">
+                            
+                          </div> */}
+                           <div className="rs-postbox-meta-item">
                               <span className="rs-postbox-meta-text">
                                 <Link href={`/${lang}/news/${article.id}`}>
                                   {formatDate(article.publishedAt || article.createdAt)}
                                 </Link>
                               </span>
                             </div>
-                          </div>
                           <h3 className="rs-postbox-title">
                             <Link href={`/${lang}/news/${article.id}`}>{getTitle(article)}</Link>
                           </h3>

@@ -65,7 +65,7 @@ export default function Header({ locale, alt, currentPath, translations }: Heade
                     <ul className="submenu last-children">
                       <li>
                         <Link href={`/${lang}/sustainability`}>
-                          {translations.menu.sustainability}
+                          {translations.menu.development_fund}
                         </Link>
                       </li>
                       <li>

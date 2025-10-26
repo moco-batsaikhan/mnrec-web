@@ -53,7 +53,7 @@ export default async function Environment(props: any) {
                 </div>
                 <BoldBeforeColon>
                   <div
-                  className="rs-postbox-details-content"
+                  className="content-body"
                       dangerouslySetInnerHTML={{
                         __html: t.sustainable.enviroment.newsDescription
                           .split("\n")

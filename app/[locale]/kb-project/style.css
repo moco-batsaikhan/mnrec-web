@@ -38,6 +38,10 @@
   transition: color 0.3s ease;
 }
 
+.indent {
+  text-indent: 2em; /* эхний мөр зай авна */
+}
+
 /* Active Tab Styles */
 .sidebar-item.active {
   background-color: #12d5b1;
@@ -407,4 +411,8 @@
 .content-body ul ul li::marker {
   content: "◦";
   color: #12d5b1;
+}
+
+ul li {
+  margin-left: 18px;
 }

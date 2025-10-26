@@ -1263,7 +1263,7 @@ textarea:focus {
 /*----------------------------------------*/
 .rs-btn {
   font-size: 18px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   color: var(--rs-white);
   display: inline-flex;
   align-items: center;
@@ -2923,7 +2923,6 @@ textarea:focus {
   color: var(--rs-title-primary);
   font-size: 28px;
   font-weight: 800;
-  text-transform: uppercase;
   line-height: 1.25em;
 }
 .rs-section-title {
@@ -3088,7 +3087,7 @@ textarea:focus {
   }
 }
 .rs-breadcrumb-one .rs-breadcrumb-title {
-  font-size: 45px;
+  font-size: 42px;
   margin-bottom: 15px;
   color: var(--rs-white);
 }

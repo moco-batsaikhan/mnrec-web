@@ -555,8 +555,8 @@
 }
 
 .production-title {
-  color: #333;
-  font-size: 20px;
+  color: #000;
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 20px;
   padding-bottom: 0px;
@@ -602,7 +602,7 @@
   }
 
   .production-title {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .production-subtitle {
@@ -618,4 +618,9 @@
     margin: 20px 0;
     padding: 15px;
   }
+}
+
+/* Custom List Spacing */
+ul li {
+  margin-left: 18px;
 }

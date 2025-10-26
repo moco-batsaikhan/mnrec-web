@@ -43,7 +43,7 @@ export default function ClientReeProject({
                     dangerouslySetInnerHTML={{
                       __html: t.tabSubDesc1
                         .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
+                        .map((paragraph: string) => `${paragraph}`)
                         .join(""),
                     }}
                   />
@@ -61,7 +61,7 @@ export default function ClientReeProject({
                     dangerouslySetInnerHTML={{
                       __html: t.tabSubDesc2
                         .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
+                        .map((paragraph: string) => `${paragraph}`)
                         .join(""),
                     }}
                   />
@@ -79,7 +79,7 @@ export default function ClientReeProject({
                     dangerouslySetInnerHTML={{
                       __html: t.tabSubDesc3
                         .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
+                        .map((paragraph: string) => `${paragraph}`)
                         .join(""),
                     }}
                   />
@@ -97,7 +97,7 @@ export default function ClientReeProject({
                     dangerouslySetInnerHTML={{
                       __html: t.tabSubDesc4
                         .split("\n")
-                        .map((paragraph: string) => `<p>${paragraph}</p>`)
+                        .map((paragraph: string) => `${paragraph}`)
                         .join(""),
                     }}
                   />
@@ -116,7 +116,7 @@ export default function ClientReeProject({
                 dangerouslySetInnerHTML={{
                   __html: item.content
                     .split("\n")
-                    .map((paragraph: string) => `<p>${paragraph}</p>`)
+                    .map((paragraph: string) => `${paragraph}`)
                     .join(""),
                 }}
               />
@@ -156,7 +156,7 @@ export default function ClientReeProject({
             dangerouslySetInnerHTML={{
               __html: item.content
                 .split("\n")
-                .map((paragraph: string) => `<p>${paragraph}</p>`)
+                .map((paragraph: string) => `${paragraph}`)
                 .join(""),
             }}
           />

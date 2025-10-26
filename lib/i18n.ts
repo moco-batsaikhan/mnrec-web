@@ -371,7 +371,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           about: "БИДНИЙ ТУХАЙ",
           about_intro: "ТАНИЛЦУУЛГА",
           about_vision: "АЛСЫН ХАРАА, ЭРХЭМ ЗОРИЛГО",
-          about_team: "УДИРДЛАГЫН БАГ",
+          about_team: "Менежментийн Баг",
           kb_project: "ТӨСӨЛ",
           kb_overview: "ХАЛЗАН БҮРЭГТЭЙ ТӨСӨЛ",
           kb_history: "ТӨСЛИЙН ТҮҮХ",
@@ -384,10 +384,10 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           ree_market: "ЗАХ ЗЭЭЛ",
           ree_mongolia: "МОНГОЛЫН ГХЭ",
           sustainability: "ТОГТВОРТОЙ ХӨГЖИЛ",
+          development_fund: "ХӨГЖИЛИЙН САН",
           community: "ОРОН НУТАГ",
           environment: "БАЙГАЛЬ ОРЧИН",
           social: "НИЙГМИЙН ХАРИУЦЛАГА",
-          development_fund: "ХАЛЗАН БҮРЭГТЭЙ ХӨГЖЛИЙН САН",
           news_media: "МЭДЭЭ & МЕДИА",
           latest_news: "МЭДЭЭ",
           video: "МЕДИА",
@@ -400,12 +400,12 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         },
         about: {
           aboutUs: "Бидний тухай",
-          visionTitle: "АЛСЫН ХАРАА",
+          visionTitle: "Алсын Хараа",
           visionText:
             "Бид эрчим хүчний хэмнэлттэй, ногоон технологийн хөгжлийг дэмжих зорилгоор Диспрози (Dy), Неоди (Nd) зэрэг ховор элементийн дэлхийн хэмжээний найдвартай нийлүүлэгч болохыг зорьж байна.",
           introduction: `“Монголын Үндэсний Газрын Ховор Корпораци” ХХК (“MNREC”) нь 100% үндэсний хөрөнгө оруулалттай уул уурхайн компани юм. 2010 онд байгуулагдсанаасаа хойш геологийн хайгуул болон уул уурхайн хөрөнгө оруулалтын чиглэлээр үйл ажиллагаа явуулж ирсэн. Одоогоор бидний гол үйл ажиллагаа нь Ховд аймгийн Мянгад суманд орших Халзан Бүрэгтэй газрын ховор элемент (ГХЭ)-ийн төсөл дээр төвлөрч байна.`,
-          heading: "КОМПАНИЙН ТАНИЛЦУУЛГА",
-          team: `МЕНЕЖМЕНТИЙН БАГ`,
+          heading: "Компанийн Танилцуулга",
+          team: `Менежментийн баг`,
           manager1: "Ч. МӨНХЖАРГАЛ",
           jobPosition1: "ТӨСӨЛ ХАРИУЦСАН ДЭД ЗАХИРАЛ",
           manager2: "Ч. ОДГЭРЭЛ",
@@ -482,11 +482,11 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
 
           tabDescTitle2: "Төслийн явц",
           tabDesc21:
-            "Хагас үйлдвэрийн туршилт : Баяжуулалтын шатны туршилт дууссан, Боловсруулалтын шатны туршилт эхлэхээр бэлтгэгдэж байгаа.",
+            "Хагас үйлдвэрлэлийн туршилт: Баяжуулалт болон гүн боловсруулалт гэсэн 2 үе шаттай хийгдэхээр төлөвлөж байгаа бөгөөд 2025 оны II улиралд баяжуулалтын шатны туршилт амжилттай дууссан. Баяжмалыг цаашид гүн боловсруулах шатны (refinery) туршилтад тэжээх бөгөөд 2026 оны I улиралд дуусгахаар ажиллаж байна.",
           tabDesc22:
-            "Нарийвчилсан техник эдийн засгийн үндэслэл (Definitive Feasibility Study): Нарийвчилсан ТЭЗҮ-ийг 2026 оны II улиралд багтаан дуусгахаар төлөвлөж буй бөгөөд олон улсад энэ чиглэлийн ашигт малтмалын чиглэлээр туршлагатай Wood болон Stantec компанитай хамтран гүйцэтгэж байна.",
+            "Нарийвчилсан техник эдийн засгийн үндэслэл (Definitive Feasibility Study): Нарийвчилсан ТЭЗҮ-ийг 2026 оны II улиралд багтаан дуусгахаар төлөвлөж буй бөгөөд олон улсад энэ чиглэлийн ашигт малтмалын чиглэлээр туршлагатай Wood болон Stantec компанитай хамтран гүйцэтгэж байна. ",
           tabDesc23:
-            "Байгаль орчин, нийгмийн нөлөөллийн үнэлгээ (Environmental and Social Impact Assessment): БОННҮ-г олон улсын IFC ба Equator Principles 4 стандартад нийцүүлэн Sustainability East Asia ба SLR Consulting компани хамтран хэрэгжүүлж байна. Одоогоор төлөв байдлын (baseline) судалгаа амжилттай дууссан. Уг судалгаа нь 24 сарын хугацаанд үргэлжлэх юм.",
+            "Байгаль орчин, нийгмийн нөлөөллийн үнэлгээ (Environmental and Social Impact Assessment): БОННҮ-г олон улсын IFC ба Equator Principles 4 стандартад нийцүүлэн Sustainability East Asia ба SLR Consulting компани хамтран хэрэгжүүлж байна. Одоогоор төлөв байдлын (baseline) судалгаа амжилттай дууссан. Уг судалгаа нь 24 сарын хугацаанд үргэлжлэх юм. ",
 
           tabDescTitle3: "Өрөмдлөгийн голлох үзүүлэлт",
           tabDesc31: "2012-2013: нийт 11,000 тууш метр өрөмдлөг",
@@ -501,32 +501,32 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           tabDesc2:
             "<article><p>Халзан бүрэгтэй төсөл нь Монгол Улсын баруун бүс, Ховд аймгийн Мянгад сумын нутагт байрладаг. Төслийн байршил нь нийслэл Улаанбаатараас баруун тийш 1,600 км, аймгийн төв Ховд хотоос 60 км, Мянгад сумаас 20 км зайд оршдог бөгөөд баруун урагш Хятад-Монголын хил хүртэл 389 км авто замаар холбогдсон. Төслийн талбайд авто замаар болон ойролцоох Ховд хотын нисэх буудлаас хялбархан очих боломжтой.</p></article>",
 
-          tabTitle3: "Геологи ба Хүдэржилт",
+          tabTitle3: "Геологи ба хүдэржилт",
           tabDesc3: `<article>
-  <ul>
-    <li>
+  <div>
+    <p class="indent">
       Газрын ховор элемент (REE) нь өндөр технологийн үйлдвэрлэл болон дэлхийн ногоон эрчим хүчний шилжилтэд маш чухал үүрэгтэй. Монгол Улсад нийтдээ 6 орд, 80 илрэл, ойролцоогоор 300 орчим эрдэсжилттэй цэг бүртгэгдсэн бөгөөд нийт 3.1 сая тонн газрын ховор элементийн ислийн (TREO) нөөцтэй гэж тооцогддог. Эдгээр ордоос хамгийн том нь Халзан бүрэгтэй орд бөгөөд Монгол Улсын нийт нөөцийн тал орчим хувийг агуулдаг төдийгүй дэлхийд Диспрози (Dy), Терби (Tb) зэрэг элементүүд бүхий хүнд газрын ховор элементийн (HREE) цөөн идэвхтэй эх үүсвэрүүдийн нэг болох боломжтой.
-    </li>
-    <li>
+    </p>
+    <p class="indent">
       Халзан бүрэгтэй ордын газрын ховор элементийн эрдэсжилтийг анх 1984 онд Орос-Монголын хамтарсан судалгааны баг илрүүлсэн. Энэхүү орд нь шүлтлэг гранитын төрлийн газрын ховор элементийн ордын төрөлд хамаардаг. Ордын баруун хэсгийг эрдэсэжсэн нордмаркит, зүүн хэсгийг голчлон шүлтлэг гранит бүрдүүлдэг бөгөөд эдгээр хоёр геологийн нэгжийн зааг дээр байрлах, ойролцоогоор 500 метр диаметртэй дугуй хэлбэрийн шүлтлэг гранитийн биетэд хамгийн хүчтэй хүдрийн эрдэсжилт илэрдэг. Нарийвчилсан хайгуулын үеэр хийсэн өрөмдлөгийн үр дүнгээр энэхүү шүлтлэг гранит нь газрын гадаргаас доош ойролцоогоор 200 метр гүнд үргэлжилдэг болох нь тогтоогдсон.
-    </li>
-    <li>
+    </p>
+    <p class="indent">
       Хүдэржилт нь маш нарийн мөхлөгтэй, сарнисан газрын ховор элемент агуулсан эрдсүүдээс бүрдэх бөгөөд үндсэндээ бастнезит, синхизит түүнээс гадна циркон болон бусад циркон агуулсан силикат эрдсүүдэд агуулагдана.
-    </li>
-    <li>
+    </p>
+    <p class="indent">
       Хүдрийн эрдэсжилт нүдэнд ил тод харагдахгүй бөгөөд үндсэн хүдэр нь хөнгөн болон хүнд ховор газрын элементүүдийн (HREE, LREE) аль алиныг нь агуулдаг. Газрын ховор элементийн агуулга шүлтлэг гранит болон нордмаркит дотор өндөр байдаг ба агуулга болон HREE/LREE-ийн харьцаа нь шүлтлэг гранитын төвөөс гадагш болон доошлох тусам буурдаг. Судалгааны үр дүн болон лабораторийн дүн шинжилгээнд үндэслэн өндөр, дунд, бага агуулгатай бүсүүдийг ордын хэмжээнд ялгасан. Шүлтлэг гранит нь газрын ховор элементийн харьцангуй шинэ эх үүсвэр бөгөөд ихэвчлэн бага агуулгатай боловч их хэмжээний хүдрийн биет агуулдгаараа онцлог.
-    </li>
-  </ul>
+    </p>
+  </div>
 </article>
 `,
 
-          tabTitle4: "Өрөмдлөг ба Дээжлэлтийн Үйл Явц",
+          tabTitle4: "Өрөмдлөг ба дээжлэлтийн үйл явц",
           tabDesc4:
             "<article><p>Халзан бүрэгтэй төслийн хайгуулыг голчлон цооногийн өрөмдлөгийн аргаар гүйцэтгэсэн. 1990-ээд онд талбайн эхний газарзүйн зураглал, гадаргын дээжлэлт, геофизикийн судалгаа хийгдсэн бол 2011 онд бид газарзүйн дэлгэрэнгүй зураглал гүйцэтгэж, талбайн бүтцийн нарийвчилсан ойлголтыг бүрдүүлээд буй. </p><p>2012-2013 онд нийт 41 цооногт, 2021 оноос хойш нэмэлт 94 цооногт өрөмдлөг хийсэн бөгөөд цаашид ашигт малтмалжилтын хязгаарыг тодорхойлоход чиглэсэн төлөвлөгөөт өрөмдлөгүүдийг хэрэгжүүлэхээр бэлтгэж байна. </p><p>Бүх өрөмдлөгийг алмаазан өрөмдлөгийн аргаар, PQ-оос NQ хэмжээтэй кернүүдээр авч, дундаж керн авалт 99% байна. Өрөмдлөгийг ойролцоогоор 50 метрийн хэсгийн хоорондох налуу сүлжээ дагуу, цооног хоорондын зайг 20–100 метр болгон хийсэн.</p><p>2023 оны эцэст нийт 135 цооног, нийт урт 30,395 метр, ойролцоогоор 1,000×500 метр талбайг хамарсан өрөмдлөгийг амжилттай гүйцэтгэлээ. Цооногийн амсрын байрлал, гүн, чиглэл нь өндөр нарийвчлалтай хэмжигдэж, бүх өрөмдлөгийг гүний хэмжилтээр бүрэн баримтжуулсан бөгөөд цаашид эрдэсжилтийн хажуугийн хязгаарыг тодорхойлох зорилгоор бүх чиглэлд өрөмдлөгийн хамрах хүрээг өргөжүүлэх нэмэлт ажил хийхээр төлөвлөж буй юм.</p><p>Өрөмдлөгийн цооног боловсруулах, дээж авах журам, чанарын баталгаажуулалт (QA/QC), дээж бэлтгэл, шинжилгээ, аюулгүй ажиллагааны арга хэмжээ нь салбарын стандартын дагуу хэрэгжиж, NI 43-101 удирдамжийн дагуу ашигт малтмалын нөөцийг тооцоолох хангалттай түвшинд байна гэж үнэлэгдсэн билээ.</p></article>",
         },
         ree: {
-          pageTitle: "Газрын ховор элемент (ГХЭ)",
-          tabTitle1: "Газрын ховор элементүүд гэж юу вэ?",
+          pageTitle: "Газрын ховор элемент",
+          tabTitle1: "ГХЭ гэж юу вэ?",
           tabDesc1: `<p>
                       Газрын ховор элемент гэдэг нь шинж чанараараа төсөөтэй химийн 17 элементийн багц нэршил бөгөөд эдгээрийг дэлхий нийтээр олборлож, ашиглаад 70 орчим жилийн хугацаа өнгөрч байна. ГХЭ нь орчин үеийн технологийн салбарт зайлшгүй шаардлагатай гол түүхий эд бөгөөд цахилгаан автомашин, салхин турбин, ухаалаг гар утаснаас эхлээд өндөр технологийн бүтээгдэхүүнүүдэд өргөн ашиглагддаг.
                     </p>
@@ -551,12 +551,11 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
                     </p>
                     `,
 
-          tabTitle2: "Хөнгөн ба хүнд газрын ховор элементүүд",
+          tabTitle2: "Хүнд ба Хөнгөн ГХЭ",
           tabDesc2: `<p>
           Газрын ховор элемент (REEs)-ийг хүнд (HREEs), хөнгөн (LREEs) гэсэн үндсэн хоёр ангилалд хуваадаг.
         </p>
-
-        <b>1. Хөнгөн ГХЭ (Light Rare Earth Elements, LREEs)</b>
+          <div><b>1. Хөнгөн ГХЭ (Light Rare Earth Elements, LREEs)</b></div>
         <p>
           “Хөнгөн” гэдэг нь жингээс бус, атомын бүтцээс хамаарсан нэр юм. LREE-үүд нь байгальд илүү элбэг тархсан байдаг бөгөөд ихэвчлэн хатуу чулуулаг ордод агуулагддаг. Уг элементүүдийн тархалт өргөн байдаг учраас зах зээлийн үнэлгээ нь хүнд төрлийнхөөс харьцангуй бага.
         </p>
@@ -576,7 +575,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           Неоди (Nd) ба Празеоди (Pr) нь цахилгаан автомашин, салхин турбинд ашиглагддаг байнгын соронз үйлдвэрлэлд онцгой чухал үүрэгтэй.
         </p>
 
-        <b>2. Хүнд ГХЭ (HREEs)</b>
+        <div><b>2. Хүнд ГХЭ (HREEs)</b></div>
         <p>
           HREE-үүд нь өндөр чанартай соронз үйлдвэрлэлд зайлшгүй шаардлагатай түүхий эд бөгөөд цахилгаан автомашин, салхин турбин, өндөр технологиудын голлох системд ашиглагддаг.
         </p>
@@ -597,13 +596,13 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           Терби (Tb) ба Диспрози (Dy) нь тогтмол соронз үйлдвэрлэлд хэрэглэгддэг тул өндөр үнэтэй, технологийн чухал түүхий эдэд зүй ёсоор тооцогддог.
         </p>
 
-        <p>Хангалт ба ховор байдал</p>
+        <b>Хангалт ба ховор байдал</b>
         <p>
           Дэлхийн хүнд газрын ховор элементүүд (HREEs)-ийн түүхийг харвал ихэнхдээ ионит шаварлаг ордоос гарган авдаг байсан бөгөөд ийм төрлийн орд геологийн хувьд маш ховор. Энэхүү хомс байдал, мөн HREE-үүдийн стратегийн ач холбогдол нь тэдгээрийг хөнгөн газрын ховор элементүүд (LREEs)-ээс илүү үнэтэй болгож байна.
         </p>
         `,
 
-          tabTitle3: "ГХЭ хэрэглээ",
+          tabTitle3: "Газрын ховор элементийн хэрэглээ",
           tabSubtitle1: "Диспрози (Dysprosium, Dy) — Хүнд ГХЭ",
           tabSubtitle2: "Терби (Terbium, Tb) — Хүнд ГХЭ",
           tabSubtitle3: "Неодим (Neodymium, Nd) — Хөнгөн ГХЭ",
@@ -642,7 +641,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
                           <li>Нисэх онгоцны хөдөлгүүр</li>
                         </ul>
                       </div>`,
-          tabTitle4: `Дэлхийн ГХЭ нөөц ба үйлдвэрлэл (2024)`,
+          tabTitle4: `Дэлхийн газрын ховор элементийн нөөц ба үйлдвэрлэл`,
           tabSubtitle41: "ГХЭ нөөц",
           tabSubtitle42: "ГХЭ үйлдвэрлэл",
           tabSubDesc41: `2024 оны байдлаар дэлхийн газрын ховор элементийн (REE) нөөц ойролцоогоор 90 сая тонн 
@@ -665,10 +664,10 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
       нийлмэл өсөлтийн хурдтай (CAGR) байх төлөвтэй байна. Бусад таамаглалаар зах зээл 2024 онд 
       3.75 тэрбум ам.доллар байснаас 2034 он гэхэд бараг 9.91 тэрбум ам.доллар хүрч өснө гэж үзэж байна. 
       Энэ нь олон салбарт эрэлтийн тогтвортой өсөлтийг илтгэнэ.`,
-          tabTitle5: `Дэлхийн ГХЭ зах зээл `,
+          tabTitle5: `Дэлхийн ГХЭ-ийн зах зээл`,
           tabDesc5: `<div class="mn">
 
-  <h5><strong>Эрэлтийн хөдөлгөгч хүчин зүйлс</strong></h4>
+  <div><strong>Эрэлтийн хөдөлгөгч хүчин зүйлс</strong></div>
   <ul>
     <li>
       <strong>Цэвэр эрчим хүчний шилжилт:</strong> Цахилгаан автомашин (EV), салхин турбин, сэргээгдэх эрчим хүчний системийн хурдан нэвтрэлт нь газрын ховорын эрэлтийг нэмэгдүүлсээр байна. 
@@ -682,7 +681,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
     </li>
   </ul>
 
-  <h5><strong>Нийлүүлэлтийн байдал ба сорилтууд</strong></h5>
+  <div><strong>Нийлүүлэлтийн байдал ба сорилтууд</strong></div>
   <ul>
     <li>
       <strong>Хятадын давамгайлал:</strong> Хятад улс газрын ховор элементийн олборлолт, боловсруулалтаар дэлхийд тэргүүлж байна. 
@@ -696,7 +695,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
     </li>
   </ul>
 
-  <h5><strong>Чиг хандлага ба ирээдүйн төлөв</strong></h5>
+  <div><strong>Чиг хандлага ба ирээдүйн төлөв</strong></div>
   <ul>
     <li>
       <strong>Тогтвортой өсөлт:</strong> Цэвэр эрчим хүч болон дэвшилтэт технологийн хэрэглээгээр хөтлөгдөн 2030 он хүртэл зах зээл жилд 5–6%-ийн өсөлттэй байна гэж таамаглаж байна.
@@ -714,10 +713,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         sustainability: {
           tabTitle1: "Оролцогч талуудтай хамтран ажиллах төлөвлөгөө (SEP)",
           tabDesc1: `<p>
-                          МНРИК компани нь төслийнхөө бүхий л үе шатанд ил тод нээлттэй харилцаа, хамтын оролцоог хангахыг зорьж байна.
-                          Энэ ч утгаараа манай оролцогч талуудтай хамтран ажиллах төлөвлөгөө нь орон нутгийн иргэд, төрийн байгууллага,
-                          иргэний нийгэм болон бусад сонирхогч талуудтай нээлттэй мэдээлэл солилцох, санал сонсох, хамтран ажиллах үндсэн
-                          зарчмуудыг тодорхойлдог.
+                          МНРИК компани нь төслийнхөө бүхий л үе шатанд ил тод нээлттэй харилцаа, хамтын оролцоог хангахыг зорьж байна. Энэ ч утгаараа манай оролцогч талуудтай хамтран ажиллах төлөвлөгөө нь орон нутгийн иргэд, төрийн байгууллага, иргэний нийгэм болон бусад сонирхогч талуудтай нээлттэй мэдээлэл солилцох, санал сонсох, хамтран ажиллах үндсэн зарчмуудыг тодорхойлдог.
                         </p>
                         <p>
                           ОТХАТ-ний хүрээнд:
@@ -729,17 +725,14 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
                           Мөн төслийн нөлөөнд өртөх магадлалтай бүлгийн оролцоог хангах тусгай арга хэмжээг ч бид тус төлөвлөгөөнд тусгаад буй.
                         </p>
                         <p>
-                          Энэхүү төлөвлөгөө нь хугацааны явцад санал хүсэлт болон холбогдох эрхзүйн үндэслэлд үндэслэн байнгын шинэчлэгддэг бөгөөд
-                          төслийн явц, орон нутгийн нөхцөл байдал, олон нийтийн санал хүсэлттэй уялдуулан тогтмол сайжруулахыг эрмэлзэн ажиллаж байна.
+                          Энэхүү төлөвлөгөө нь хугацааны явцад санал хүсэлт болон холбогдох эрхзүйн үндэслэлд үндэслэн байнгын шинэчлэгддэг бөгөөд төслийн явц, орон нутгийн нөхцөл байдал, олон нийтийн санал хүсэлттэй уялдуулан тогтмол сайжруулахыг эрмэлзэн ажиллаж байна.
                         </p>`,
-          tabTitle2: "Гол зарчим ",
+          tabTitle2: "Оролцогч талуудтай харилцах зарчим",
           tabDesc2: `<p>
-      МНРИК ХХК нь орон нутгийн иргэд болон оролцогч талуудтайгаа итгэлцэл, харилцан ойлголцолд тулгуурласан хамтын ажиллагааг эрхэмлэдэг.
-      Энэхүү хамтын оролцоо нь төслийн бүх үе шатанд мэдээлэл түгээх, санал сонсох, хамтран шийдвэр гаргах байдлаар тасралтгүй хэрэгжиж явах юм.
+      МНРИК ХХК нь орон нутгийн иргэд болон оролцогч талуудтайгаа итгэлцэл, харилцан ойлголцолд тулгуурласан хамтын ажиллагааг эрхэмлэдэг. Энэхүү хамтын оролцоо нь төслийн бүх үе шатанд мэдээлэл түгээх, санал сонсох, хамтран шийдвэр гаргах байдлаар тасралтгүй хэрэгжиж явах юм.
     </p>
     <p>
-      Тус төлөвлөгөө нь төслийн нөлөөлөл, эрсдэлийн түвшинд үндэслэн, орон нутгийн нөхцөл, соёлд нийцсэн үр дүнтэй харилцаа, оролцооны хүрээг тодорхойлдог.
-      Үндсэн зорилго нь оролцогч талуудыг тодорхой, цаг үеэ олсон мэдээллээр хангах, мөн санаа зовнил, санал бодлоо илэрхийлэх орон зайг бий болгох юм.
+      Тус төлөвлөгөө нь төслийн нөлөөлөл, эрсдэлийн түвшинд үндэслэн, орон нутгийн нөхцөл, соёлд нийцсэн үр дүнтэй харилцаа, оролцооны хүрээг тодорхойлдог. Үндсэн зорилго нь оролцогч талуудыг тодорхой, цаг үеэ олсон мэдээллээр хангах, мөн санаа зовнил, санал бодлоо илэрхийлэх орон зайг бий болгох юм.
     </p>
     <b>Үндсэн зарчмууд:</b>
     <ul>
@@ -754,9 +747,8 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
       Эдгээр зарчим нь МНРИК-ийн оролцогч талуудтай ил тод, хариуцлагатай, урт хугацааны харилцааг хөгжүүлэх үндэс болдог.
     </p>
                     `,
-          tabTitle3: "Орон нутгийн зохион байгуулсан үйл ажиллагаа",
+          tabTitle3: "Орон нутаг - Хамтын ажиллагаа",
           tabDesc3: `<div class="section">
-                      <h4>Халзан бүрэгтэй Хөгжлийн сан</h4>
                       <p>
                         “Монголиан Нэшнл Рийр Ийрт Корп ХХК (МНРИК) нь Ховд аймгийн Мянгад сумын нутаг дэвсгэрт хэрэгжиж буй уул уурхайн төслийг хэрэгжүүлэгчийн хувьд орон нутгийн хөгжил, хамтын ажиллагааг компанийн үндсэн үйл ажиллагааны салшгүй хэсэг гэж үздэг. 
                       </p>
@@ -815,7 +807,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
     </ul>`,
         },
         highlights: {
-          pageTitle: "Төслийн онцлог",
+          pageTitle: "Төслийн Онцлог",
           desc1: `<p><b>Диспрози (Dy):</b> Дэлхийд өрсөлдөхүйц нөөцтэй</p>`,
           desc2: `<p><b>Дэлхийн зах зээлд эрэлт өндөр газрын ховрын эрдсээр баялаг:</b> Диспрози(Dy), Неоди(Nd), Празоди (Pr), Терби(Tb)</p>`,
           desc3: `<p><b>Нэмүү өртөг шингэсэн эцсийн бүтээгдэхүүн:</b> Өндөр зэрэглэлийн MREO буюу ГХЭ-ийн нийлмэл ислийг үйлдвэрлэх боломж</p>`,
@@ -929,7 +921,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
             "Ингэснээр Халзан Бүрэгтэй төсөл нь зөвхөн уул уурхайн төсөл бус, харин Баруун бүсийн эдийн засаг, дэд бүтцийн хөгжлийг хурдасгах стратегийн ач холбогдолтой томоохон төсөл болж байна.",
         },
         history: {
-          pageTitle: "Түүхэн замнал",
+          pageTitle: "Түүхэн Замнал",
           title1: "1984",
           description1:
             "Орос, Монголын хамтарсан геологийн судалгааны экспедиц ордыг анх илрүүлэв.",
@@ -985,7 +977,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
 
                             <p className="environmental-text">
                               Уур амьсгалын өөрчлөлт: Сүүлийн 80 жилийн хугацаанд Монгол орны агаарын дундаж температур 2.46°C-аар нэмэгдэж, уур амьсгалын эмзэг байдал нэмэгдэж байна. Энэ нь газрын доройтол, хур тунадасны хуваарилалт өөрчлөгдөх, мөнх цас, мөсөн голын хайлалт, усны хомсдол, үерийн эрсдэл, ган зудын давтамж нэмэгдэх зэрэг байдлаар илэрч байна.
-                              Иймд МНРИК компани нь эрчим хүчний үр ашгийг сайжруулах, сэргээгдэх эх үүсвэрийн шийдлийг үе шаттай хэрэгжүүлэх, мөн Монгол Улсын Ерөнхийлөгчийн санаачилсан “Тэрбум мод” үндэсний хөдөлгөөнд оролцох зэрэг арга хэмжээгээр уур амьсгалын өөрчлөлтийн эсрэг хувь нэмрээ оруулахаар ажиллаж байна.
+                              <br/> Иймд МНРИК компани нь эрчим хүчний үр ашгийг сайжруулах, сэргээгдэх эх үүсвэрийн шийдлийг үе шаттай хэрэгжүүлэх, мөн Монгол Улсын Ерөнхийлөгчийн санаачилсан “Тэрбум мод” үндэсний хөдөлгөөнд оролцох зэрэг арга хэмжээгээр уур амьсгалын өөрчлөлтийн эсрэг хувь нэмрээ оруулахаар ажиллаж байна.
                             </p>
 
                             <p className="environmental-text">
@@ -1100,7 +1092,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           about: "ABOUT",
           about_intro: "INTRODUCTION",
           about_vision: "VISION & MISSION",
-          about_team: "LEADERSHIP TEAM",
+          about_team: "Management Team",
           kb_project: "PROJECT",
           kb_overview: "KHALZAN BUREGTEI PROJECT",
           kb_history: "PROJECT HISTORY",
@@ -1116,7 +1108,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           community: "COMMUNITY",
           environment: "ENVIRONMENT",
           social: "SOCIAL RESPONSIBILITY",
-          development_fund: "KHALZAN BUREGTEI DEVELOPMENT FUND",
+          development_fund: "DEVELOPMENT FUND",
           news_media: "NEWS & MEDIA",
           latest_news: "NEWS",
           video: "MEDIA",
@@ -1129,10 +1121,10 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         },
         about: {
           aboutUs: "About Us",
-          visionTitle: "VISION",
+          visionTitle: "Vision",
           visionText:
             "We aspire to become a reliable global supplier of rare earth elements, particularly Dysprosium (Dy) and Neodymium (Nd), in support of the development of energy-efficient and green technologies worldwide.",
-          team: `MANAGEMENT TEAM`,
+          team: `Management Team`,
           introduction: `Mongolian National Rare Earth Corp LLC (“MNREC”) is a national mining company with 100% Mongolian national investment. Since our establishment in 2010, we have been engaged in the fields of geological exploration and mining investment. Currently, our primary focus lies on the Khalzan Bburegtei REE project located in the Myangad soum, Khovd aimag, Mongolia.`,
           heading: "Who We Are",
           manager1: "Chimeddorj Munkhjargal",
@@ -1219,30 +1211,30 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           tabDesc42: "Mixed Rare Earth Oxide (MREO): 13,000 tonnes",
           tabDesc43: "MREO Grade: 95%",
 
-          tabTitle2: "Project location",
+          tabTitle2: "Project Location",
           tabDesc2:
             "<article><p>The KB Project is situated in the far west of Mongolia, within Myangad soum, Khovd province. It is approximately 1,600 km west of Ulaanbaatar, 60 km northeast of Khovd city (provincial center), and 20 km north of Myangad township. The site is accessible via road and is conveniently connected to the nearby Khovd Airport.</p></article>",
 
-          tabTitle3: "Geology & Mineralization ",
+          tabTitle3: "Geology & mineralization ",
           tabDesc3: `
-  <ul>
-    <li>
+  <div>
+    <p class="indent">
       Rare Earth Elements (REE) play a critical role in high-tech manufacturing and the global transition to green energy. In Mongolia, there are a total of 6 deposits, 80 occurrences, and approximately 300 mineralized points, with an estimated total of 3.1 million tonnes of Total Rare Earth Oxides (TREO).
-    </li>
-    <li>
+    </p>
+    <p class="indent">
       Among these, the Halzan Buregtei deposit is the largest, containing approximately 50% of Mongolia’s total REE resources, and is potentially one of the few active sources of Heavy Rare Earth Elements (HREE) globally, including dysprosium (Dy) and terbium (Tb).
-    </li>
-    <li>
+    </p>
+    <p class="indent">
       The REE mineralization at Halzan Buregtei was first identified in 1984 by a joint Russian-Mongolian research team. The deposit is classified as an alkaline granite-type REE deposit, with the western part composed of mineralized nordmarkite and the eastern part mainly of alkaline granite. The strongest mineralization occurs in a roughly 500-meter-diameter circular body of alkaline granite, located at the boundary between these two geological units.
-    </li>
-    <li>
+    </p>
+    <p class="indent">
       Detailed exploration drilling has shown that the alkaline granite extends to a depth of approximately 200 meters below the surface. The mineralization consists of very fine-grained, disseminated REE-bearing minerals, primarily bastnäsite and synchysite, as well as zircon and other zircon-bearing silicate minerals.
-    </li>
-    <li>
-    The ore is not visually apparent, and the main ore contains both light and heavy rare earth elements (LREE and HREE). REE concentrations are high within the alkaline granite and nordmarkite, while the HREE/LREE ratio decreases outward from the center of the granite and with depth.</li>
-    <li>
-    Based on exploration results and laboratory analyses, the deposit has been divided into zones of high, medium, and low REE content. Alkaline granite represents a relatively new source of REE, typically of lower grade but notable for its large ore bodies.</li>
-  </ul>
+    </p>
+    <p class="indent">
+    The ore is not visually apparent, and the main ore contains both light and heavy rare earth elements (LREE and HREE). REE concentrations are high within the alkaline granite and nordmarkite, while the HREE/LREE ratio decreases outward from the center of the granite and with depth.</p>
+    <p class="indent">
+    Based on exploration results and laboratory analyses, the deposit has been divided into zones of high, medium, and low REE content. Alkaline granite represents a relatively new source of REE, typically of lower grade but notable for its large ore bodies.</p>
+  </div>
 `,
 
           tabTitle4: "Drilling and Sampling",
@@ -1250,16 +1242,39 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
             "<article><p>At MNREC, we have conducted exploration at the Halzan Buregtei project primarily through core drilling. Initial geological mapping, surface sampling, and geophysical surveys were carried out in the 1990s, followed by detailed geological mapping in 2011 to gain a more comprehensive understanding of the area’s structure.</p><p>Between 2012 and 2013, we completed a total of 41 drill holes, with an additional 94 drill holes added since 2021. Our planned future drilling is focused on delineating the boundaries of mineralization.</p><p>All drilling at Halzan Buregtei has been carried out using diamond core drilling, with core sizes ranging from PQ to NQ, achieving an average recovery of 99%. Drilling was conducted along a staggered grid with approximately 50-meter section spacing and drill hole spacing between 20 and 100 meters.</p><p>By the end of 2023, we successfully completed 135 drill holes covering a total length of 30,395 meters, spanning an area of roughly 1,000 by 500 meters. Drill collar locations, depths, and orientations were measured with high precision, and all drilling activities were fully documented using downhole surveys.</p><p>We plan to carry out additional drilling in all directions to further delineate the lateral extent of mineralization. All procedures for drill hole processing, sample collection, QA/QC, sample preparation, analysis, and safety are implemented in accordance with industry standards. Our drilling and sampling program has been assessed as sufficient to support mineral resource estimation in compliance with NI 43-101 guidelines.</p></article>",
         },
         ree: {
-          pageTitle: "Rare earth elements (REE)",
+          pageTitle: "Rare earth elements (REEs)",
           tabTitle1: "What are rare earth elements?",
-          tabDesc1:
-            "Rare Earth Elements (REEs) are a group of 17 metals known for their unique magnetic, optical, and conductive properties. These elements are essential to modern technologies, from electric vehicles and wind turbines to smartphones and advanced defense systems. The 2023 U.S. Department of Energy (DOE)’s Final Critical Materials List, highlighting materials crucial for energy technologies with significant supply chain risks, features 4 rare earths as the most critical: Dysprosium (Dy), Neodymium (Nd), Praseodymium (Pr), and Terbium (Tb). Meanwhile the European Union's Critical Raw Materials Act, effective May 23, 2024, designates all 17 rare earth elements as critical, emphasizing their importance for technological and industrial applications.",
+          tabDesc1: `<div>
+          <p>Rare Earth Elements (REEs) are a group of 17 chemically similar metallic elements that have been mined and utilized globally for over 70 years. They are essential raw materials for modern technology, widely used in everything from electric vehicles (EVs) and wind turbines to smartphones, computers, and other high-tech products.</p>
+          <p>According to the U.S. Department of Energy’s (DOE) 2023 Final Critical Materials List, four REEs are classified as most critical due to their essential role in clean energy technologies and high supply chain risks:</p>
+          <ul>
+          <li>Dysprosium (Dy)</li>
+          <li>Neodymium (Nd)</li>
+          <li>Praseodymium (Pr)</li>
+          <li>Terbium (Tb)</li>
+          </ul>
+          <p>Meanwhile, the European Union’s Critical Raw Materials Act, which came into force on May 23, 2024, designates all 17 rare earth elements as critical, underscoring their importance in industrial and technological applications worldwide.</p>
+            </div>`,
 
-          tabTitle2: "Heavy and light rare earths",
-          tabDesc2:
-            "<article><h4>Key differences</h4><p>Rare earth elements are divided into two categories:</p><ul><li><b>Light Rare Earth Elements (“LREEs”):</b> Despite the name, “light” refers to their atomic structure—not their weight. LREEs are more abundant in nature and typically found in hard rock deposits. Their relative availability contributes to lower market prices compared to heavy rare earths. This group includes lanthanum (La), cerium (Ce), praseodymium (Pr), neodymium (Nd), promethium (Pm), and samarium (Sm), Nd and Pr being especially important for the production of permanent magnets used in electric vehicles and wind turbines.</li><li><b>Heavy Rare Earth Elements (“HREEs”):</b> HREEs are essential for high-performance magnets used in electric vehicles, wind turbines, and advanced defense sys",
+          tabTitle2: "Light vs. Heavy Rare Earth Elements",
+          tabDesc2: `<div>
+            <p>Rare earth elements are categorized into two main groups:</p>
+            <p><b>1. Light Rare Earth Elements (LREEs):</b> “Light” refers to their atomic structure, not physical weight. LREEs are more abundant in nature, typically found in hard-rock deposits, and generally less expensive than heavy REEs due to their wider availability.</p>
+            <ul>
+            
+              <li><b>LREEs include:</b> La (Lanthanum), Ce (Cerium), Pr (Praseodymium), Nd (Neodymium), Pm (Promethium), and Sm (Samarium).</li>
+              <li><b>Key importance:</b> Neodymium (Nd) and Praseodymium (Pr) are vital for producing NdFeB permanent magnets, the strongest type of magnet used in EV motors and wind turbines.</li>
+            </ul>
+            <p><b>2. Heavy Rare Earth Elements (HREEs):</b> HREEs are crucial for high-performance magnets used in electric vehicles, wind turbines, and advanced defense systems. They are typically extracted from ionic clay deposits, which are geologically rare, resulting in limited supply and higher market value.</p>
+            <ul>
+            
+              <li><b>HREEs include:</b> Gd (Gadolinium), Tb (Terbium), Dy (Dysprosium), Ho (Holmium), Er (Erbium), Tm (Thulium), Yb (Ytterbium), Lu (Lutetium), and Y (Yttrium).</li>
+              <li><b>Key importance:</b> Terbium (Tb) and Dysprosium (Dy) are particularly valued for enhancing magnet performance at high temperatures, making them strategically critical and highly priced.</li>
+            </ul>
+            <p><b>Supply and Scarcity:</b> Most of the world’s heavy rare earth elements (HREEs) have historically been sourced from ionic clay deposits, which are geologically rare and environmentally sensitive to develop. This scarcity, combined with their strategic industrial value, makes HREEs significantly more valuable than LREEs.</p>
+            </div>`,
 
-          tabTitle3: "REE applications",
+          tabTitle3: "Applications of Rare Earth Elements",
           tabSubtitle1: "Dysprosium (Dy) (Heavy Rare Earth)",
           tabSubtitle2: "Terbium (Tb) (Heavy Rare Earth)",
           tabSubtitle3: "Neodymium (Nd) (Light Rare Earth)",
@@ -1299,53 +1314,29 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
                 <li>Aircraft engines</li>
               </ul>
             </div>`,
-          tabTitle4: `Reserve & Production `,
+          tabTitle4: `Global Rare Earth Elements (REE) Reserves and Production (2024)`,
           tabSubtitle41: "Reserve",
           tabSubtitle42: "Production",
-          tabSubDesc41: `As of 2024, the world’s rare earth element (REE) reserves are estimated at around 
-      90 million tons of rare earth oxide (REO) equivalent. The largest share of these reserves 
-      is held by China, with about 44 million tons, followed by Brazil (21 million tons), 
-      India (6.9 million tons), Australia (5.7 million tons), Russia (3.8 million tons), 
-      Vietnam (3.5 million tons), and smaller but significant reserves in the United States 
-      and Greenland. These reserves represent deposits that are technically and economically 
-      feasible to extract, and their size may grow further as exploration advances and new 
-      projects are developed.`,
-          tabSubDesc421: `In terms of production, global output of rare earths in 2024 reached approximately 
-        390,000 metric tons of REO equivalent. China continues to dominate production, 
-        accounting for the majority of global supply, while other key producers include 
-        the United States (around 45,000 tons), Myanmar (31,000 tons), and Australia (13,000 tons), 
-        along with contributions from countries such as Nigeria and Thailand. Despite the relatively 
-        wide geographic distribution of reserves, processing and separation capacity remain heavily 
-        concentrated in China, making global supply chains vulnerable to market and policy shifts.`,
-          tabSubDesc422: `The rare earth sector in 2024 reflects a growing tension between rapidly increasing demand, 
-      driven by the clean energy transition, and concerns over supply security. Electric vehicles, 
-      wind turbines, advanced electronics, and defense technologies continue to drive consumption, 
-      prompting many governments to invest in exploration, develop downstream refining capacity, 
-      and establish strategic stockpiles. Meanwhile, China’s rare earth exports in 2024 increased 
-      in volume but saw lower export values due to falling prices, highlighting the volatility of 
-      this market. Environmental and regulatory pressures also remain strong, as rare earth mining 
-      and processing involve complex chemical processes that require careful waste management.
-      Looking forward, the combination of strong demand, concentrated supply, and environmental 
-      challenges makes rare earths one of the most strategically important groups of minerals in 
-      the global economy. Countries with untapped reserves have significant opportunities to 
-      position themselves as alternative suppliers and to play a larger role in balancing the 
-      global rare earth supply chain.`,
+          tabSubDesc41: `As of 2024, global rare earth element (REE) reserves are estimated at approximately 90 million tonnes of rare earth oxide (REO) equivalent. China holds the largest share, with around 44 million tonnes, followed by Brazil (21 million tonnes), India (6.9 million tonnes), Australia (5.7 million tonnes), Russia (3.8 million tonnes), and Vietnam (3.5 million tonnes).
+                        The United States and Greenland also possess smaller but strategically significant reserves. These figures represent deposits that are technically and economically feasible to extract under current conditions. As exploration activities expand, the total estimated reserves are expected to increase.`,
+          tabSubDesc421: `In 2024, global REE production reached approximately 390,000 tonnes of REO equivalent. China continues to dominate output, accounting for the majority of global supply. Other major producers include the United States (~45,000 tonnes), Myanmar (~31,000 tonnes), and Australia (~13,000 tonnes), with Nigeria and Thailand contributing smaller but notable volumes.
+          `,
+          tabSubDesc422: `Although reserves are widely distributed across the world, processing and separation capacity remain heavily concentrated in China, leaving the global supply chain vulnerable to market and policy disruptions.`,
 
-          tabTitle5: `Global REE market `,
+          tabTitle5: `Global REE Market Overview`,
           tabDesc5: `<div class="en">
-                      <p><strong>Market Size and Growth Outlook</strong></p>
                       <p>
-                        The global rare earth elements (REE) market was valued at approximately USD 5.62 billion in 2024, with projections indicating growth to USD 6.25 billion in 2025 at a CAGR of around 11.2%. 
-                        Other forecasts suggest the market could expand from USD 3.75 billion in 2024 to nearly USD 9.91 billion by 2034, reflecting sustained demand growth across multiple sectors.
+                        The global rare earth elements (REE) market was valued at around USD 5.62 billion in 2024 and is projected to reach USD 6.25 billion by 2025, reflecting a compound annual growth rate (CAGR) of about 11.2%.
                       </p>
+                      <p>Other forecasts suggest the market could expand from USD 3.75 billion in 2024 to nearly USD 9.91 billion by 2034, indicating sustained demand growth across multiple sectors.</p>
 
-                      <p><strong>Demand Drivers</strong></p>
+                      <p><strong>Key Demand Drivers</strong></p>
                       <ul>
                         <li>
                           <strong>Clean Energy Transition:</strong> Rapid adoption of electric vehicles (EVs), wind turbines, and renewable energy systems continues to drive demand for REEs, particularly neodymium (Nd), praseodymium (Pr), and dysprosium (Dy).
                         </li>
                         <li>
-                          <strong>High-tech Applications:</strong> Permanent magnets, advanced electronics, robotics, and defense technologies are key consumers of rare earths.
+                          <strong>High-tech Applications:</strong> REEs are essential in permanent magnets, advanced electronics, robotics, and defense technologies, which remain key demand sectors.
                         </li>
                         <li>
                           <strong>Market Composition:</strong> Light rare earth elements (LREEs) dominate the market, accounting for nearly 80% of total consumption.
@@ -1355,26 +1346,26 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
                       <p><strong>Supply Landscape and Challenges</strong></p>
                       <ul>
                         <li>
-                          <strong>China’s Dominance:</strong> China remains the world’s leading producer and processor of REEs. In 2024, China’s exports rose to 55,431 tonnes, although export values declined due to falling prices.
+                          <strong>China’s Dominance:</strong> China remains the world’s leading producer and processor of REEs. In 2024, its exports rose to 55,431 tonnes, though export revenues declined due to lower global prices.
                         </li>
                         <li>
-                          <strong>Concentration Risks:</strong> Despite global reserves being widely distributed, refining and separation capacities are still highly concentrated in China, exposing supply chains to geopolitical and market risks.
+                          <strong>Concentration Risks:</strong> Despite geographically diverse reserves, refining and separation capacity are still highly concentrated in China, making global supply chains susceptible to geopolitical and market risks.
                         </li>
                         <li>
-                          <strong>Global Response:</strong> Countries such as the United States, Australia, and the European Union are prioritizing domestic mining, refining, and recycling projects to diversify supply sources.
+                          <strong>Global Response:</strong> Countries such as the United States, Australia, and the European Union are investing in domestic mining, refining, and recycling projects to diversify supply sources and reduce dependency on China.
                         </li>
                       </ul>
 
                       <p><strong>Trends and Future Outlook</strong></p>
                       <ul>
                         <li>
-                          <strong>Sustained Growth:</strong> The market is expected to maintain a CAGR of 5–6% through 2030, driven by clean energy and advanced technologies.
+                          <strong>Sustained Growth:</strong> Driven by clean energy expansion and advanced technologies, the market is projected to maintain a CAGR of 5%-6% through 2030.
                         </li>
                         <li>
-                          <strong>Strategic Projects:</strong> Governments are investing in critical minerals strategies, strategic stockpiles, and downstream processing capabilities.
+                          <strong>Strategic Projects:</strong> Governments are implementing critical mineral strategies, establishing national stockpiles, and investing in downstream processing capacity to strengthen supply security.
                         </li>
                         <li>
-                          <strong>Innovation & Recycling:</strong> Development of recycling technologies and more efficient extraction methods will play an increasingly important role in meeting future demand.
+                          <strong>Innovation & Recycling:</strong> Advances in recycling technologies and high-efficiency extraction methods are expected to play an increasingly important role in meeting future REE demand.
                         </li>
                       </ul>
                     </div>`,
@@ -1382,9 +1373,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
         sustainability: {
           tabTitle1: "Stakeholder engagement plan (SEP)",
           tabDesc1: `<p>
-      MNREC is committed to maintaining transparent, proactive communication and inclusive participation throughout all stages of the project.
-      The Stakeholder Engagement Plan (SEP) sets out the core principles for open information sharing, consultation, and collaboration with
-      local communities, government agencies, civil society organizations, and other interested parties.
+      MNREC is committed to maintaining transparent, proactive communication and inclusive participation throughout all stages of the project. The Stakeholder Engagement Plan (SEP) sets out the core principles for open information sharing, consultation, and collaboration with local communities, government agencies, civil society organizations, and other interested parties.
     </p>
     <p>
       Under the SEP:
@@ -1395,18 +1384,14 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
     <li>Specific measures are included to ensure the meaningful participation of groups likely to be most affected by the project.</li>
     </ul>
     <p>
-      The SEP is a living document, continuously updated based on stakeholder feedback, relevant legal frameworks, project progress,
-      and local conditions. MNREC is committed to ongoing improvement, ensuring the plan remains aligned with community needs and project developments.
+      The SEP is a living document, continuously updated based on stakeholder feedback, relevant legal frameworks, project progress, and local conditions. MNREC is committed to ongoing improvement, ensuring the plan remains aligned with community needs and project developments.
     </p>`,
-          tabTitle2: "Key principles ",
+          tabTitle2: "Stakeholder Engagement Principles",
           tabDesc2: `<p>
-      MNREC LLC values collaboration with local communities and all stakeholders based on trust, mutual understanding, and transparency.
-      This partnership is maintained throughout every stage of the project through the continuous sharing of information, open dialogue, and joint decision-making.
+      MNREC LLC values collaboration with local communities and all stakeholders based on trust, mutual understanding, and transparency. This partnership is maintained throughout every stage of the project through the continuous sharing of information, open dialogue, and joint decision-making.
     </p>
     <p>
-      The engagement plan is designed in accordance with the project’s level of impact and risk, and defines a framework for effective communication and participation
-      that is responsive to local conditions and cultural contexts. The overarching goal is to ensure that stakeholders receive clear, timely, and relevant information,
-      while providing them with an open platform to express their concerns, opinions, and feedback.
+      The engagement plan is designed in accordance with the project’s level of impact and risk, and defines a framework for effective communication and participation that is responsive to local conditions and cultural contexts. The overarching goal is to ensure that stakeholders receive clear, timely, and relevant information, while providing them with an open platform to express their concerns, opinions, and feedback.
     </p>
     <b>Core Principles:</b>
     <ul>
@@ -1421,9 +1406,8 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
       These principles form the foundation of MNRIC’s commitment to building transparent, accountable, and long-term relationships with its stakeholders.
     </p>
 `,
-          tabTitle3: "Stakeholder engagement activities ",
+          tabTitle3: "Khalzan Buregtei Development Fund",
           tabDesc3: `<div class="section">
-  <h4>Khalzan Buregtei Development Fund</h4>
   <p>
     As the implementing company of a mining project located in Myangad soum, Khovd province, Mongolian National Rare Earth Corporation (MNRIC LLC) regards local development and community partnership as an integral part of its core business operations.
   </p>
@@ -1640,42 +1624,46 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           enviroment: {
             pageTitle: "ENVIRONMENT",
             newsTitle: "ENVIRONMENT",
-            newsDescription: `<div className="environmental-section">
+            newsDescription: `<div className="environmental-section content-body">
   <p className="environmental-text">
-    Environmental Management: MNREC places the highest priority on preventing, minimizing, mitigating, and rehabilitating potential environmental impacts associated with the Khalzan Buregtei Rare Earth Project.
+    <b>Environmental Management:</b> MNREC places the highest priority on preventing, minimizing, mitigating, and rehabilitating potential environmental impacts associated with the Khalzan Buregtei Rare Earth Project.
     All project activities are planned and implemented in accordance with the following core principles of environmental responsibility and sustainable resource management.
   </p>
 
   <p className="environmental-text">
-    Standards and Compliance: The Project is being implemented in alignment with the ISO 14001:2015 Environmental Management System across all phases.
+    <b>Standards and Compliance:</b> The Project is being implemented in alignment with the ISO 14001:2015 Environmental Management System across all phases.
     An Environmental and Social Impact Assessment (ESIA) is currently being conducted in full compliance with the Law on Environmental Impact Assessment of Mongolia and in accordance with international best practice and the requirements of relevant multilateral organizations.
   </p>
 
   <p className="environmental-text">
-    Baseline Environmental Studies: Before the commencement of project operations, MNREC conducted comprehensive baseline studies to assess the existing conditions of key environmental components — including air, water, soil, biodiversity, and background radiation levels — within and around the project area.
+    <b>Baseline Environmental Studies:</b> Before the commencement of project operations, MNREC conducted comprehensive baseline studies to assess the existing conditions of key environmental components — including air, water, soil, biodiversity, and background radiation levels — within and around the project area.
     These studies provide the scientific foundation for ongoing environmental management and monitoring.
   </p>
 
   <p className="environmental-text">
-    Environmental Monitoring and Oversight: Environmental monitoring is performed on a continuous basis using automated monitoring stations installed around the project site.
+    <b>Environmental Monitoring and Oversight:</b> Environmental monitoring is performed on a continuous basis using automated monitoring stations installed around the project site.
     These stations record meteorological parameters such as air temperature, wind speed, precipitation, relative humidity, and evaporation, as well as the quality of air, water, soil, and radiation levels.
     Additionally, independent accredited laboratories conduct quarterly analyses to ensure transparency and data accuracy.
   </p>
 
   <p className="environmental-text">
-    Climate Change and Resilience: Over the past 80 years, Mongolia’s average air temperature has increased by 2.46°C, significantly heightening the country’s climate vulnerability.
-    This warming trend has led to land degradation, shifts in precipitation patterns, glacial retreat, water scarcity, and increased risks of floods and droughts.
-    In response, MNREC is committed to contributing to climate change mitigation through the following measures:
-    Improving energy efficiency across operations,
-    Introducing renewable energy solutions in a phased approach,
-    and Participating in the national “Billion Trees” initiative launched by the President of Mongolia.
-    Through these efforts, MNREC aims to reduce its environmental footprint and promote ecosystem resilience in the project region.
+    <b>Climate Change and Resilience:</b> Over the past 80 years, Mongolia’s average air temperature has increased by 2.46°C, significantly heightening the country’s climate vulnerability. This warming trend has led to land degradation, shifts in precipitation patterns, glacial retreat, water scarcity, and increased risks of floods and droughts.
   </p>
 
+   <p className="environmental-text">
+   In response, MNREC is committed to contributing to climate change mitigation through the following measures:
+  </p>
+
+  <ul>
+  <li>Improving energy efficiency across operations</li>
+  <li>Introducing renewable energy solutions in a phased approach</li>
+  <li>Participating in the national “Billion Trees” initiative launched by the President of Mongolia</li>
+  </ul>
+
+  <p>Through these efforts, MNREC aims to reduce its environmental footprint and promote ecosystem resilience in the project region.</p>
+
   <p className="environmental-text">
-    Stakeholder Engagemen: A grievance and feedback mechanism remains open and accessible throughout all stages of the project to ensure transparency and stakeholder inclusion.
-    MNREC provides regular updates to stakeholders and maintains continuous dialogue with local communities, authorities, technical experts, and professional organizations.
-    Moving forward, the company plans to strengthen joint monitoring mechanisms and regularly update environmental policies and plans in consultation with all relevant stakeholders.
+    <b>Stakeholder Engagement:</b> A grievance and feedback mechanism remains open and accessible throughout all stages of the project to ensure transparency and stakeholder inclusion. MNREC provides regular updates to stakeholders and maintains continuous dialogue with local communities, authorities, technical experts, and professional organizations. Moving forward, the company plans to strengthen joint monitoring mechanisms and regularly update environmental policies and plans in consultation with all relevant stakeholders.
   </p>
 </div>
 `,
