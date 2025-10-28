@@ -1,6 +1,6 @@
-"use client";
 
-import React, { useState } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 
 interface TeamMember {
   id: number;
@@ -10,8 +10,47 @@ interface TeamMember {
   image: string;
 }
 
-export default function TeamSection({ teamData }: { teamData: TeamMember[] }) {
+export default function TeamSection({ lang }: { lang: any }) {
+  const [teamData, setTeamData] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      setLoading(true);
+      setError("");
+      try {
+        const res = await fetch("/api/team");
+        const result = await res.json();
+        if (result.success && Array.isArray(result.data)) {
+          setTeamData(result.data.map((member: any) => ({
+            id: member.id,
+            name: lang === "mn" ? member.mn_name : member.en_name,
+            position: lang === "mn" ? member.mn_position : member.en_position,
+            description: lang === "mn" ? member.mn_description : member.en_description,
+            image: member.image_url,
+          })));
+        } else {
+          setTeamData([]);
+          setError("Team data not found");
+        }
+      } catch (err) {
+        setTeamData([]);
+        setError("Team API fetch error");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTeam();
+  }, []);
+
+  if (loading) {
+    return <div className="text-center py-5"><div className="spinner-border text-primary" role="status"><span className="visually-hidden">Loading...</span></div><p className="mt-3">Team loading...</p></div>;
+  }
+  if (error) {
+    return <div className="alert alert-danger" role="alert">{error}</div>;
+  }
 
   return (
     <>

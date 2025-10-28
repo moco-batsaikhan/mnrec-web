@@ -124,9 +124,9 @@ export default function CreateNews() {
       return;
     }
 
-    const maxSize = 5 * 1024 * 1024; 
+    const maxSize = 10 * 1024 * 1024; 
     if (file.size > maxSize) {
-      setError("Зургийн хэмжээ 5MB-аас хэтэрч болохгүй");
+      setError("Зургийн хэмжээ 10MB-аас хэтэрч болохгүй");
       return;
     }
 
@@ -608,7 +608,7 @@ export default function CreateNews() {
               </div>
 
               <p className="text-xs text-gray-500 text-center">
-                Зөвхөн PNG, JPG, WebP, GIF форматыг дэмждэг (хамгийн ихдээ 5MB)
+                Зөвхөн PNG, JPG, WebP, GIF форматыг дэмждэг (хамгийн ихдээ 10MB)
               </p>
 
               {/* URL Input Alternative */}

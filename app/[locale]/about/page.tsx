@@ -184,7 +184,7 @@ export default async function ProjectTimeline(props: { params: Promise<{ locale:
           </div>
             </div>
             <div className="row g-5">
-              <TeamSection teamData={teamData} />
+              <TeamSection lang={lang}/>
             </div>
           </div>
         </section>

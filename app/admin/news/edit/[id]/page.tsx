@@ -185,10 +185,10 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
       return;
     }
 
-    // Validate file size (5MB limit)
-    const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+    // Validate file size (10MB limit)
+    const maxSize = 10 * 1024 * 1024; // 10MB in bytes
     if (file.size > maxSize) {
-      setError("Зургийн хэмжээ 5MB-аас хэтэрч болохгүй");
+      setError("Зургийн хэмжээ 10MB-аас хэтэрч болохгүй");
       return;
     }
 
@@ -731,7 +731,7 @@ export default function EditNews({ params }: { params: Promise<{ id: string }> }
               </div>
 
               <p className="text-xs text-gray-500 text-center">
-                Зөвхөн PNG, JPG, WebP, GIF форматыг дэмждэг (хамгийн ихдээ 5MB)
+                Зөвхөн PNG, JPG, WebP, GIF форматыг дэмждэг (хамгийн ихдээ 10MB)
               </p>
 
               {/* URL Input Alternative */}

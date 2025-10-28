@@ -25,6 +25,11 @@ export default function AdminSidebar() {
       icon: "fas fa-users",
     },
     {
+      title: "Менежментийн баг",
+      href: "/admin/team",
+      icon: "fas fa-users",
+    },
+    {
       title: "Холбоо барих",
       href: "/admin/contact",
       icon: "fas fa-envelope",
