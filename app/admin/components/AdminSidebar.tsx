@@ -35,6 +35,11 @@ export default function AdminSidebar() {
       icon: "fas fa-video",
     },
     {
+      title: "Нүүр хуудасны текст",
+      href: "/admin/home-text",
+      icon: "fas fa-video",
+    },
+    {
       title: "Холбоо барих",
       href: "/admin/contact",
       icon: "fas fa-envelope",

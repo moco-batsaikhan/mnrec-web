@@ -1,9 +1,32 @@
 "use client";
 
 import BannerNews from "./BannerNews";
+import { useEffect, useState } from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function Banner({ t, locale }: { t: any; locale: string }) {
+export default function Banner({ locale }: { locale: string }) {
+  const [homeText, setHomeText] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetch("/api/homeText")
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data) {
+          setHomeText(data.data);
+        } else {
+          setError(data.message || "Not found");
+        }
+      })
+      .catch(() => setError("Failed to fetch homeText"))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const lang = locale === "en" ? "en" : "mn";
+
+  const keyWord = homeText ? (lang === "en" ? homeText.en_keyWord : homeText.mn_keyWord) : "";
+  const keyNote = homeText ? (lang === "en" ? homeText.en_keyNote : homeText.mn_keyNote) : "";
+
   return (
     <section
       className="rs-banner-area rs-banner-two p-relative"
@@ -32,23 +55,32 @@ export default function Banner({ t, locale }: { t: any; locale: string }) {
           <div className="col-xxl-8 col-xl-9 col-lg-9">
             <div className="rs-banner-wrapper">
               <div className="rs-banner-content">
+                {error ? (
+                  <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">
+                    {error}
+                  </div>
+                ) : null}
                 <h1
                   className="rs-banner-title wow fadeInUp"
                   data-wow-delay=".3s"
                   data-wow-duration=".7s"
                   style={{ textTransform: 'none' }}
                 >
-                  {t.home?.keyWord}
+                  {loading ? (
+                    <span className="inline-block h-8 w-2/3 bg-gray-200 animate-pulse rounded" />
+                  ) : keyWord}
                 </h1>
                 <div
                   className="rs-banner-descrip wow fadeInUp"
                   data-wow-delay=".5s"
                   data-wow-duration=".9s"
                 >
-                  <p>{t.home?.keyNote} </p>
+                  <p>
+                    {loading ? (
+                      <span className="inline-block h-5 w-1/2 bg-gray-200 animate-pulse rounded" />
+                    ) : keyNote}
+                  </p>
                 </div>
-                
-                {/* Banner News Section */}
                 <div
                   className="wow fadeInUp"
                   data-wow-delay=".7s"
@@ -56,7 +88,6 @@ export default function Banner({ t, locale }: { t: any; locale: string }) {
                 >
                   <BannerNews locale={locale} />
                 </div>
-                
                 <div
                   className="rs-banner-btn wow fadeInUp"
                   data-wow-delay=".9s"

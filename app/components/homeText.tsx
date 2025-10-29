@@ -1,11 +1,32 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 
 interface HomeTextProps {
-  translations: any;
+  locale: string;
 }
 
-export default function HomeText({ translations }: HomeTextProps) {
-  const t = translations.t;
+export default function HomeText({ locale }: HomeTextProps) {
+  const [homeText, setHomeText] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetch("/api/homeText")
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data) {
+          setHomeText(data.data);
+        } else {
+          setError(data.message || "Not found");
+        }
+      })
+      .catch(() => setError("Failed to fetch homeText"))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const lang = locale === "en" ? "en" : "mn";
+  const slogan = homeText ? (lang === "en" ? homeText.en_slogan_text : homeText.mn_slogan_text) : "";
+
   return (
     <section 
       className="rs-cta-area rs-cta-four home-quote-section"
@@ -28,13 +49,17 @@ export default function HomeText({ translations }: HomeTextProps) {
           zIndex: 1,
         }}
       />
-      
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div className="rs-cta-wrapper">
           <div className="rs-section-title-wrapper quote-layout-horizontal">
             <div className="quote-text-with-icon">
+              {error ? (
+                <p className="split-in-fade text-red-600 bg-red-100 p-2 rounded mb-2">{error}</p>
+              ) : null}
               <p className="split-in-fade">
-                {t.home?.aboutProjectText || "The Khalzan Buregtei project represents a high-potential development of Mongolia's first rare earth elements initiative and presents a significant growth opportunity for Khovd province"}
+                {loading ? (
+                  <span className="inline-block h-6 w-2/3 bg-gray-200 animate-pulse rounded" />
+                ) : slogan || "No slogan found."}
               </p>
             </div>
           </div>

@@ -18,14 +18,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <>
-      <Banner t={t} locale={locale} />
+      <Banner locale={locale} />
       <HomeAbout
         translations={{ about: t.about }}
         image={{ src: "/assets/images/gallery/khb/drilling/image4.jpg" }}
         heading={t.homeAbout.heading}
         introduction={t.homeAbout.desc}
       />
-      <HomeText translations={{ t }} />
+      <HomeText locale={locale} />
       <HomeHighlights translations={{ t }} />
     </>
   );
