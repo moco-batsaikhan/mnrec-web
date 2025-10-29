@@ -1,17 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-interface VideoPlayerProps {
-  videos: {
-    id: string;
-    title: string;
-    url: string;
-  }[];
+interface Video {
+  id: string;
+  title: string;
+  url: string;
+  type: number; 
 }
 
-export default function ModernVideoPlayer({ videos }: VideoPlayerProps) {
+
+
+export default function ModernVideoPlayer({ lang }: { lang: string }) {
   const [activeVideo, setActiveVideo] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
+  const [tabVideos, setTabVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  // Tab labels and type mapping
+  const tabLabels = lang === "en"
+    ? ["Vlog", "Broadcast", "Advertisement"]
+    : ["Влог", "Нэвтрүүлэг", "Сурталчилгаа"];
+  const typeMap = ["vlog", "broadcast", "advertisement"];
+
+  useEffect(() => {
+    setLoading(true);
+    setError("");
+    console.log("type", typeMap[activeTab]);
+    fetch(`/api/media/active?type=${typeMap[activeTab]}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && Array.isArray(data.data)) {
+          setTabVideos(data.data.map((item: any) => ({
+            id: String(item.id),
+            title: item.en_title || item.mn_title || "",
+            url: item.url,
+            type: typeof item.type === "number" ? item.type : Number(item.type),
+          })));
+          setActiveVideo(0);
+        } else {
+          setError(data.message || "Failed to load videos");
+        }
+      })
+      .catch(() => setError("Failed to fetch videos"))
+      .finally(() => setLoading(false));
+  }, [activeTab]);
+
+  const displayVideos = tabVideos;
+  const currentVideo = displayVideos.length > 0 ? (displayVideos[activeVideo] || displayVideos[0]) : undefined;
 
   const getYouTubeId = (url: string) => {
     const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
@@ -25,66 +62,169 @@ export default function ModernVideoPlayer({ videos }: VideoPlayerProps) {
 
   return (
     <div className="modern-video-player">
+      {/* Tab Bar */}
+      <div className="video-tabs">
+        <div className="video-tabs-border">
+          {tabLabels.map((label, idx) => (
+          <button
+            key={label}
+            className={`video-tab${activeTab === idx ? " active" : ""}`}
+            onClick={() => {
+              setActiveTab(idx);
+              setActiveVideo(0);
+            }}
+          >
+            {label}
+          </button>
+        ))}
+        </div>
+      </div>
       {/* Main Video Player */}
       <div className="main-video-container">
         <div className="current-video-title">
-          <h2>{videos[activeVideo].title}</h2>
         </div>
         <div className="video-wrapper">
-          <iframe
-            src={`https://www.youtube.com/embed/${getYouTubeId(
-              videos[activeVideo].url,
-            )}?rel=0&modestbranding=1`}
-            title={videos[activeVideo].title}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            className="main-video"
-          ></iframe>
+          {loading ? (
+            <div className="video-loading">
+              <span className="spinner"></span>
+              <span className="loading-text">Loading videos...</span>
+            </div>
+          ) : error ? (
+            <div style={{textAlign: "center", color: "#e53e3e", fontSize: "18px", padding: "40px 0"}}>{error}</div>
+          ) : currentVideo ? (
+            <iframe
+              src={`https://www.youtube.com/embed/${getYouTubeId(
+                currentVideo.url,
+              )}?rel=0&modestbranding=1`}
+              title={currentVideo.title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="main-video"
+            ></iframe>
+          ) : (
+            <div style={{textAlign: "center", color: "#999", fontSize: "18px", padding: "40px 0"}}>No video available.</div>
+          )}
         </div>
-        <div className="video-info">
-          <h3 className="video-title">{videos[activeVideo].title}</h3>
-          <div className="video-meta">
-            <span className="video-number">
-              Video {activeVideo + 1} of {videos.length}
-            </span>
+        {!loading && !error && currentVideo && (
+          <div className="video-info">
+            <h3 className="video-title">{currentVideo.title}</h3>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Video Playlist */}
       <div className="video-playlist">
         <h4 className="playlist-title">Video Playlist</h4>
         <div className="playlist-items">
-          {videos.map((video, index) => (
-            <div
-              key={video.id}
-              className={`playlist-item ${index === activeVideo ? "active" : ""}`}
-              onClick={() => setActiveVideo(index)}
-            >
-              <div className="playlist-thumbnail">
-                <img
-                  src={getYouTubeThumbnail(video.url)}
-                  alt={video.title}
-                  onError={e => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/assets/images/bg/video-bg-07.png";
-                  }}
-                />
-                <div className="play-overlay">
-                  <i className="fa-solid fa-play"></i>
+          {loading ? (
+            <div className="video-loading">
+              <span className="spinner"></span>
+              <span className="loading-text">Loading videos...</span>
+            </div>
+          ) : error ? (
+            <div style={{textAlign: "center", color: "#e53e3e", fontSize: "16px", padding: "30px 0"}}>{error}</div>
+          ) : displayVideos.length === 0 ? (
+            <div style={{textAlign: "center", color: "#999", fontSize: "16px", padding: "30px 0"}}>No videos found.</div>
+          ) : (
+            displayVideos.map((video, index) => (
+              <div
+                key={video.id}
+                className={`playlist-item ${index === activeVideo ? "active" : ""}`}
+                onClick={() => setActiveVideo(index)}
+              >
+                <div className="playlist-thumbnail">
+                  <img
+                    src={getYouTubeThumbnail(video.url)}
+                    alt={video.title}
+                    onError={e => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "/assets/images/bg/video-bg-07.png";
+                    }}
+                  />
+                  <div className="play-overlay">
+                    <i className="fa-solid fa-play"></i>
+                  </div>
+                </div>
+                <div className="playlist-info">
+                  <h5 className="playlist-item-title">{video.title}</h5>
+                  <span className="playlist-item-number">Video {index + 1}</span>
                 </div>
               </div>
-              <div className="playlist-info">
-                <h5 className="playlist-item-title">{video.title}</h5>
-                <span className="playlist-item-number">Video {index + 1}</span>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
 
       <style jsx>{`
+        .video-loading {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 40px 0;
+          background: rgba(255,255,255,0.25);
+          border-radius: 24px;
+          box-shadow: 0 8px 32px rgba(64,188,128,0.12), 0 1.5px 8px rgba(44,90,160,0.08);
+          backdrop-filter: blur(8px);
+          border: 1.5px solid rgba(64,188,128,0.18);
+          min-width: 220px;
+          min-height: 140px;
+        }
+        .spinner {
+          width: 54px;
+          height: 54px;
+          border: 6px solid #e0e0e0;
+          border-top: 6px solid #40BC80;
+          border-right: 6px solid #2c5aa0;
+          border-radius: 50%;
+          animation: spin 0.8s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+          margin-bottom: 20px;
+          box-shadow: 0 2px 12px rgba(64,188,128,0.12);
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+          color: #40BC80;
+          font-size: 22px;
+          font-weight: 700;
+          letter-spacing: 1.2px;
+          text-shadow: 0 2px 8px rgba(64,188,128,0.10);
+          margin-top: 2px;
+        }
+        .video-tabs {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 30px;
+          
+        }
+        .video-tabs-border {
+          display: inline-flex;
+          gap: 10px;
+          border: 2px solid #40BC80;
+          border-radius: 30px;
+          padding: 8px 6px;
+        }
+        .video-tab {
+          padding: 10px 55px;
+          font-size: 16px;
+          font-weight: 600;
+          // border: 2px solid #40BC80;
+          border-radius: 30px;
+          background: #fff;
+          color: #000;
+          cursor: pointer;
+          transition: all 0.2s;
+          outline: none;
+        }
+        .video-tab.active {
+          background: #40BC80;
+          color: #fff;
+          border-bottom: 2px solid #fff;
+          z-index: 2;
+        }
         .modern-video-player {
           margin: 40px 0;
         }
@@ -95,12 +235,19 @@ export default function ModernVideoPlayer({ videos }: VideoPlayerProps) {
           overflow: hidden;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
           margin-bottom: 30px;
+          position: relative;
+          z-index: 100;
         }
 
         .current-video-title {
-          background: linear-gradient(135deg, #2c5aa0 0%, #667eea 100%);
-          padding: 20px 25px;
+          background: #fff;
+          padding: 40px 45px;
           color: white;
+          position: relative;
+          background-image: url('/assets/images/bg/player-bg.png');
+          background-repeat: no-repeat;
+          background-size: 450px 250px;
+          background-position: right bottom -100px;
         }
 
         .current-video-title h2 {
@@ -125,12 +272,29 @@ export default function ModernVideoPlayer({ videos }: VideoPlayerProps) {
           width: 100%;
           height: 100%;
           border: none;
+          z-index: 1;
         }
 
         .video-info {
           padding: 20px 25px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: #fff;
           color: white;
+          position: relative;
+        }
+        .video-info::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -150px;
+          width: 450px;
+          height: 250px;
+          background-image: url('/assets/images/bg/player-bg.png');
+          background-repeat: no-repeat;
+          background-size: 450px 250px;
+          transform: scaleX(-1);
+        }
+        .video-info > * {
+          position: relative;
         }
 
         .video-title {

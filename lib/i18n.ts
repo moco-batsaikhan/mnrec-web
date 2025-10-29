@@ -384,7 +384,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           ree_market: "ЗАХ ЗЭЭЛ",
           ree_mongolia: "МОНГОЛЫН ГХЭ",
           sustainability: "ТОГТВОРТОЙ ХӨГЖИЛ",
-          development_fund: "ХӨГЖИЛИЙН САН",
+          development_fund: "ХӨГЖЛИЙН САН",
           community: "ОРОН НУТАГ",
           environment: "БАЙГАЛЬ ОРЧИН",
           social: "НИЙГМИЙН ХАРИУЦЛАГА",

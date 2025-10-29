@@ -178,8 +178,8 @@
 }
 
 .content-body ul li::marker {
-  color: #12d5b1;
-  font-size: 1.2em;
+  color: #000000;
+  font-size: 0.8em;
 }
 
 .content-body ol {

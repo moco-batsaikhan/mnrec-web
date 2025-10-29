@@ -11,13 +11,20 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
       <div
         className="rs-footer-bg-thumb"
         style={{
-          // backgroundImage: "url('/assets/images/bg/footer-bg.png')",
+          backgroundImage: "url('/assets/images/bg/footer-bg.png')",
           backgroundColor: "#000000",
-          backgroundSize: "70%",
+          backgroundSize: "95%",
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "right bottom",
+          backgroundPosition: "bottom -330px right -260px",
         }}
       ></div>
+      {/* <style>{`
+                  @media (max-width: 600px) {
+                    .rs-footer-bg-thumb {
+                      backgroundPosition: "bottom -150px right -100px" !important;
+                    }
+                  }
+                `}</style> */}
 
       <div className="rs-subscribe-area rs-subscribe-one has-theme-orange">
         <div className="container">
@@ -95,7 +102,7 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
                   </ul>
                 </div>
               </div>
-              <div className="col-xl-6 col-lg-6 mt-0">
+              {/* <div className="col-xl-6 col-lg-6 mt-0">
                 <div className="rs-subscribe-text mb-20">
                   <h5>{t.footer.connectWithUs}</h5>
                 </div>
@@ -105,7 +112,7 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
                     sendMessage: t.footer.sendMessage,
                   }}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

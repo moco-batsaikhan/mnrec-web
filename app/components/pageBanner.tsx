@@ -34,8 +34,26 @@ export default function PageBanner({
                   src="/assets/images/logo/favicon.png"
                   alt={pageName}
                   className="rs-breadcrumb-image rs-breadcrumb-icon-responsive"
-                  style={{ width: "80px", height: "80px", objectFit: "contain" }}
+                  style={{
+                    width: "2em",
+                    height: "2.3em",
+                    objectFit: "contain",
+                    marginTop: "6px",
+                    maxWidth: "35px",
+                    maxHeight: "40px"
+                  }}
                 />
+                <style>{`
+                  @media (max-width: 600px) {
+                    .rs-breadcrumb-icon-responsive {
+                      width: 1.5em !important;
+                      height: 1.7em !important;
+                      max-width: 15px !important;
+                      max-height: 20px !important;
+                      margin-top: 2px !important;
+                    }
+                  }
+                `}</style>
                 <h1 className="rs-breadcrumb-title" style={{ margin: 0 }}>
                   {pageName}
                 </h1>

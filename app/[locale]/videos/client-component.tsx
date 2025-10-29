@@ -8,6 +8,7 @@ interface VideoData {
   id: string;
   title: string;
   url: string;
+  type: number;
 }
 
 interface ClientVideosProps {
@@ -16,7 +17,7 @@ interface ClientVideosProps {
 }
 
 export default function ClientVideos({ translations, lang }: ClientVideosProps) {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(1);
   const [videoData, setVideoData] = useState<VideoData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -34,6 +35,7 @@ export default function ClientVideos({ translations, lang }: ClientVideosProps) 
                   ? item.en_title || ""
                   : item.mn_title || "",
               url: item.url,
+              type: typeof item.type === "number" ? item.type : Number(item.type),
             }))
           );
         } else {
@@ -96,14 +98,6 @@ export default function ClientVideos({ translations, lang }: ClientVideosProps) 
             <div className="tab-navigation-sidebar">
               <div className="nav nav-tabs-vertical" role="tablist">
                 <button
-                  className={`nav-link ${activeTab === 0 ? "active" : ""}`}
-                  onClick={() => handleTabClick(0)}
-                  type="button"
-                >
-                  <i className="fas fa-images"></i>
-                  {translations.videos.banner.breadcrumb2}
-                </button>
-                <button
                   className={`nav-link ${activeTab === 1 ? "active" : ""}`}
                   onClick={() => handleTabClick(1)}
                   type="button"
@@ -111,6 +105,15 @@ export default function ClientVideos({ translations, lang }: ClientVideosProps) 
                   <i className="fas fa-video"></i>
                   {translations.videos.banner.breadcrumb1}
                 </button>
+                <button
+                  className={`nav-link ${activeTab === 0 ? "active" : ""}`}
+                  onClick={() => handleTabClick(0)}
+                  type="button"
+                >
+                  <i className="fas fa-images"></i>
+                  {translations.videos.banner.breadcrumb2}
+                </button>
+                
               </div>
             </div>
           </div>
@@ -128,7 +131,7 @@ export default function ClientVideos({ translations, lang }: ClientVideosProps) 
                   ) : error ? (
                     <div className="text-danger">{error}</div>
                   ) : (
-                    <ModernVideoPlayer videos={videoData} />
+                    <ModernVideoPlayer lang={lang} />
                   )
                 )}
               </div>

@@ -416,6 +416,9 @@
   color: #333;
   margin: 0 0 10px 0;
   line-height: 1.4;
+  border: 2px solid #40BC80;
+  border-radius: 30px;
+  padding: 6px 8px;
 }
 
 .grid-description {
@@ -513,8 +516,8 @@
 }
 
 .content-body ul li::marker {
-  color: #12d5b1;
-  font-size: 1.2em;
+  color: #000000;
+  font-size: 0.8em;
 }
 
 .content-body ol {
