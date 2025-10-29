@@ -30,6 +30,11 @@ export default function AdminSidebar() {
       icon: "fas fa-users",
     },
     {
+      title: "Медиа",
+      href: "/admin/media",
+      icon: "fas fa-video",
+    },
+    {
       title: "Холбоо барих",
       href: "/admin/contact",
       icon: "fas fa-envelope",

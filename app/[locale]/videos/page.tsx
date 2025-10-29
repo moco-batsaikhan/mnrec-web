@@ -42,7 +42,7 @@ export default async function Videos(props: any) {
     <>
       <PageBanner bannerImage={"/assets/images/bg/media.jpg"} pageName={t.videos.banner.title} />
 
-      <ClientVideos videoData={videoData} translations={t} />
+      <ClientVideos translations={t} lang={lang}/>
     </>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+// ...existing code...
 import ModernVideoPlayer from "../../components/ModernVideoPlayer";
+import { useEffect, useState } from "react";
 
 interface VideoData {
   id: string;
@@ -10,12 +11,38 @@ interface VideoData {
 }
 
 interface ClientVideosProps {
-  videoData: VideoData[];
   translations: Record<string, any>;
+  lang: string;
 }
 
-export default function ClientVideos({ videoData, translations }: ClientVideosProps) {
+export default function ClientVideos({ translations, lang }: ClientVideosProps) {
   const [activeTab, setActiveTab] = useState(0);
+  const [videoData, setVideoData] = useState<VideoData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetch("/api/media/active")
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && Array.isArray(data.data)) {
+          setVideoData(
+            data.data.map((item: any) => ({
+              id: String(item.id),
+              title:
+                lang === "en"
+                  ? item.en_title || ""
+                  : item.mn_title || "",
+              url: item.url,
+            }))
+          );
+        } else {
+          setError(data.message || "Failed to load videos");
+        }
+      })
+      .catch(() => setError("Failed to fetch videos"))
+      .finally(() => setLoading(false));
+  }, [lang]);
 
   const handleTabClick = (tabIndex: number) => {
     setActiveTab(tabIndex);
@@ -95,7 +122,15 @@ export default function ClientVideos({ videoData, translations }: ClientVideosPr
               </div>
 
               <div className={`tab-pane ${activeTab === 1 ? "active" : ""}`}>
-                {activeTab === 1 && <ModernVideoPlayer videos={videoData} />}
+                {activeTab === 1 && (
+                  loading ? (
+                    <div>Loading videos...</div>
+                  ) : error ? (
+                    <div className="text-danger">{error}</div>
+                  ) : (
+                    <ModernVideoPlayer videos={videoData} />
+                  )
+                )}
               </div>
             </div>
           </div>
