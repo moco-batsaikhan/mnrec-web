@@ -627,3 +627,15 @@
 ul li {
   margin-left: 18px;
 }
+
+.ree-desc p{
+  text-align: left;
+}
+
+.ree-desc p b{
+  text-align: left;
+}
+
+.ree-desc ul li{
+  text-align: left;
+}

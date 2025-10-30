@@ -1380,6 +1380,10 @@ blockquote.quote-text {
 
 /* Mobile adjustments for highlights */
 @media (max-width: 991px) {
+.rs-footer-bg-thumb-wrapper {
+    background-image: none !important;
+  }
+
   .highlights-grid {
     grid-template-columns: 1fr;
     gap: 20px 50px;
@@ -1426,4 +1430,15 @@ blockquote.quote-text {
     font-size: 12px;
     line-height: 1.3;
   }
+
+  
 }
+
+.rs-footer-bg-thumb-wrapper {
+    background-image: url('/assets/images/bg/footer-bg.png');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: #000000;
+  }
+

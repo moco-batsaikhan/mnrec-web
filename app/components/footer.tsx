@@ -1,6 +1,6 @@
 import React from "react";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
-import SubscribeForm from "./SubscribeForm";
+// import SubscribeForm from "./SubscribeForm";
 
 export default async function Footer({ locale, alt }: { locale: string; alt: string }) {
   const lang = (locales as string[]).includes(locale) ? (locale as Locale) : "en";
@@ -10,22 +10,7 @@ export default async function Footer({ locale, alt }: { locale: string; alt: str
     <div className="rs-footer-bg-thumb-wrapper">
       <div
         className="rs-footer-bg-thumb"
-        style={{
-          backgroundImage: "url('/assets/images/bg/footer-bg.png')",
-          backgroundColor: "#000000",
-          backgroundSize: "95%",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "bottom -330px right -260px",
-        }}
       ></div>
-      {/* <style>{`
-                  @media (max-width: 600px) {
-                    .rs-footer-bg-thumb {
-                      backgroundPosition: "bottom -150px right -100px" !important;
-                    }
-                  }
-                `}</style> */}
-
       <div className="rs-subscribe-area rs-subscribe-one has-theme-orange">
         <div className="container">
           <div className="rs-subscribe-wrapper">

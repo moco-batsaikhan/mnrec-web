@@ -40,6 +40,7 @@ export default function ClientReeProject({
                 <h4>{t.tabSubtitle1}</h4>
                 <div className="grid-description">
                   <div
+                    className="ree-desc"
                     dangerouslySetInnerHTML={{
                       __html: t.tabSubDesc1
                         .split("\n")
@@ -58,6 +59,8 @@ export default function ClientReeProject({
                 <h4>{t.tabSubtitle2}</h4>
                 <div className="grid-description">
                   <div
+                    className="ree-desc"
+
                     dangerouslySetInnerHTML={{
                       __html: t.tabSubDesc2
                         .split("\n")
@@ -76,6 +79,8 @@ export default function ClientReeProject({
                 <h4>{t.tabSubtitle3}</h4>
                 <div className="grid-description">
                   <div
+                    className="ree-desc"
+
                     dangerouslySetInnerHTML={{
                       __html: t.tabSubDesc3
                         .split("\n")
@@ -94,6 +99,8 @@ export default function ClientReeProject({
                 <h4>{t.tabSubtitle4}</h4>
                 <div className="grid-description">
                   <div
+                    className="ree-desc"
+
                     dangerouslySetInnerHTML={{
                       __html: t.tabSubDesc4
                         .split("\n")
