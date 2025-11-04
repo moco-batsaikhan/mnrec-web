@@ -816,7 +816,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           desc6: `<p><b>Ажлын байр:</b> 600 +</p>`,
         },
         homeAbout: {
-          heading: "MNREC-ийн тухай",
+          heading: "МНРИК-ийн тухай",
           desc: `
                   <div class="mnrec-article">
                     <p class="highlight">
@@ -1202,11 +1202,11 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
           tabDesc23:
             "Environmental & Social Impact Assessment (ESIA): Ongoing by Sustainability & SLR",
 
-          tabDescTitle3: "Drilling highlight",
+          tabDescTitle3: "Drilling Highlight",
           tabDesc31: "2012-2013 Total of 11,000 meters",
           tabDesc32: "2022-2023 Total of 20,000 meters",
 
-          tabDescTitle4: "Annual production",
+          tabDescTitle4: "Annual Production",
           tabDesc41: "Concentrate: 669,000 tonnes",
           tabDesc42: "Mixed Rare Earth Oxide (MREO): 13,000 tonnes",
           tabDesc43: "MREO Grade: 95%",

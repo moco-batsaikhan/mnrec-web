@@ -101,7 +101,7 @@ export default async function ProjectTimeline(props: { params: Promise<{ locale:
       <div className="main-content">
         <HomeAbout
           translations={{ about: t.about }}
-          image={{ src: "/assets/images/about/aboutUs.jpg" }}
+          image={{ src: "/assets/images/about/about-us.png" }}
           heading={t.about.heading}
           introduction={t.homeAbout.desc}
         />

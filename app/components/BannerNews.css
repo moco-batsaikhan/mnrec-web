@@ -16,7 +16,7 @@
 .banner-news-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  gap: 20px;
 }
 
 .banner-news-card {

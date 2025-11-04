@@ -23,7 +23,7 @@ export default async function RareEarthElementsPage(props: {
       id: "2",
       title: t.ree.tabTitle2,
       content: t.ree.tabDesc2,
-      image: "/assets/images/gallery/element-eng.png",
+      image: lang === "mn" ? "/assets/images/gallery/element-mng.png" : "/assets/images/gallery/element-eng.png",
     },
     {
       id: "3",
@@ -41,7 +41,7 @@ export default async function RareEarthElementsPage(props: {
       id: "5",
       title: t.ree.tabTitle5,
       content: t.ree.tabDesc5,
-      image: "/assets/images/gallery/element-eng.png",
+      image: lang === "mn" ? "/assets/images/gallery/element-mng.png" : "/assets/images/gallery/element-eng.png",
     },
   ];
 
