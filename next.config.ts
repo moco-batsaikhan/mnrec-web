@@ -1,6 +1,6 @@
 module.exports = {
-  // Temporarily commented out for admin development
-  // output: "export",
+  // Use standalone output for deployment
+  output: "standalone",
   trailingSlash: true,
   images: {
     unoptimized: true, // For static export compatibility
