@@ -1,4 +1,6 @@
-module.exports = {
+import { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   // Use standalone output for deployment
   output: "standalone",
   trailingSlash: true,
@@ -49,3 +51,5 @@ module.exports = {
     ];
   },
 };
+
+export default nextConfig;
