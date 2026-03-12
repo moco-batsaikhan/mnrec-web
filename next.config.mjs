@@ -1,6 +1,5 @@
-import { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   // Use standalone output for deployment
   output: "standalone",
   trailingSlash: true,

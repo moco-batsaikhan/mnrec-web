@@ -25,6 +25,11 @@ ENV NODE_ENV=production
 # Build Next.js with standalone output
 RUN npm run build
 
+# Verify standalone build was created
+RUN echo "=== Verifying standalone build ===" && \
+    ls -la .next/standalone/ && \
+    echo "=== Standalone build confirmed ==="
+
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
