@@ -2,7 +2,6 @@
 const nextConfig = {
   // Use standalone output for deployment
   output: "standalone",
-  trailingSlash: true,
   images: {
     unoptimized: true, // For static export compatibility
     domains: [],

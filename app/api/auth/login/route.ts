@@ -18,20 +18,20 @@ export async function POST(request: Request) {
     try {
       const [rows] = await conn.execute(
         "SELECT id, password, role, name, email FROM users WHERE email = ?",
-        [email]
+        [email],
       );
       const user = (rows as any)[0];
       if (!user)
         return NextResponse.json(
           { error: "Invalid credentials" },
-          { status: 401 }
+          { status: 401 },
         );
 
       const ok = await comparePassword(password, user.password);
       if (!ok)
         return NextResponse.json(
           { error: "Invalid credentials" },
-          { status: 401 }
+          { status: 401 },
         );
 
       // Update last_login timestamp
@@ -51,13 +51,18 @@ export async function POST(request: Request) {
         },
       });
       // Set cookies (httpOnly)
+      const isProduction = process.env.NODE_ENV === "production";
       res.cookies.set("accessToken", access, {
         httpOnly: true,
+        secure: isProduction,
+        sameSite: "lax",
         path: "/",
         maxAge: 60 * 15,
       }); // 15 minutes
       res.cookies.set("refreshToken", refresh, {
         httpOnly: true,
+        secure: isProduction,
+        sameSite: "lax",
         path: "/",
         maxAge: 60 * 60 * 24 * 30,
       }); // 30 days
@@ -68,7 +73,7 @@ export async function POST(request: Request) {
   } catch (err) {
     return NextResponse.json(
       { error: (err as Error).message },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -88,7 +93,7 @@ export async function GET(request: Request) {
   } catch (err) {
     return NextResponse.json(
       { error: (err as Error).message },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
