@@ -323,10 +323,10 @@ async function ensureHomeTextTable(conn: mysql.PoolConnection) {
       id INT AUTO_INCREMENT PRIMARY KEY,
       mn_keyWord VARCHAR(255) NOT NULL DEFAULT '',
       en_keyWord VARCHAR(255) NOT NULL DEFAULT '',
-      mn_keyNote TEXT NOT NULL DEFAULT '',
-      en_keyNote TEXT NOT NULL DEFAULT '',
-      mn_slogan_text TEXT NOT NULL DEFAULT '',
-      en_slogan_text TEXT NOT NULL DEFAULT '',
+      mn_keyNote TEXT NULL,
+      en_keyNote TEXT NULL,
+      mn_slogan_text TEXT NULL,
+      en_slogan_text TEXT NULL,
       status ENUM('active','inactive') DEFAULT 'active',
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -340,10 +340,10 @@ async function ensureHomeTextTable(conn: mysql.PoolConnection) {
   const colsToAdd: { name: string; def: string }[] = [
     { name: "mn_keyWord", def: "VARCHAR(255) NOT NULL DEFAULT ''" },
     { name: "en_keyWord", def: "VARCHAR(255) NOT NULL DEFAULT ''" },
-    { name: "mn_keyNote", def: "TEXT NOT NULL DEFAULT ''" },
-    { name: "en_keyNote", def: "TEXT NOT NULL DEFAULT ''" },
-    { name: "mn_slogan_text", def: "TEXT NOT NULL DEFAULT ''" },
-    { name: "en_slogan_text", def: "TEXT NOT NULL DEFAULT ''" },
+    { name: "mn_keyNote", def: "TEXT NULL" },
+    { name: "en_keyNote", def: "TEXT NULL" },
+    { name: "mn_slogan_text", def: "TEXT NULL" },
+    { name: "en_slogan_text", def: "TEXT NULL" },
   ];
 
   for (const col of colsToAdd) {
