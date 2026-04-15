@@ -197,3 +197,92 @@ export async function initDatabase() {
 
 // Export database pool for use in API routes
 export default pool;
+
+/**
+ * Auto-migration: ensures all expected columns exist without re-creating tables.
+ * Safe to run on every startup — uses IF NOT EXISTS / column checks internally.
+ */
+export async function autoMigrate() {
+  const conn = await pool.getConnection();
+  try {
+    // ── news table columns ────────────────────────────────────────────────
+    const [newsCols]: any = await conn.execute("SHOW COLUMNS FROM news");
+    const newsColNames: string[] = newsCols.map((c: any) => c.Field);
+
+    if (!newsColNames.includes("en_title")) {
+      await conn.execute(
+        "ALTER TABLE news ADD COLUMN en_title VARCHAR(500) NULL AFTER title"
+      );
+      console.log("✅ migration: added news.en_title");
+    }
+    if (!newsColNames.includes("en_content")) {
+      await conn.execute(
+        "ALTER TABLE news ADD COLUMN en_content LONGTEXT NULL AFTER content"
+      );
+      console.log("✅ migration: added news.en_content");
+    }
+    if (!newsColNames.includes("en_summary")) {
+      await conn.execute(
+        "ALTER TABLE news ADD COLUMN en_summary TEXT NULL AFTER summary"
+      );
+      console.log("✅ migration: added news.en_summary");
+    }
+    if (!newsColNames.includes("category")) {
+      await conn.execute(
+        "ALTER TABLE news ADD COLUMN category VARCHAR(100) NULL DEFAULT 'news' AFTER slug"
+      );
+      console.log("✅ migration: added news.category");
+    }
+
+    // ── users table: role & status enum values ────────────────────────────
+    const [roleCol]: any = await conn.execute(
+      "SHOW COLUMNS FROM users WHERE Field = 'role'"
+    );
+    const roleType: string = roleCol[0]?.Type || "";
+    if (!roleType.includes("superAdmin")) {
+      await conn.execute(
+        `ALTER TABLE users MODIFY COLUMN role ENUM('admin', 'editor', 'superAdmin') NOT NULL DEFAULT 'editor'`
+      );
+      console.log("✅ migration: updated users.role enum");
+    }
+
+    const [statusCol]: any = await conn.execute(
+      "SHOW COLUMNS FROM users WHERE Field = 'status'"
+    );
+    const statusType: string = statusCol[0]?.Type || "";
+    if (!statusType.includes("suspended")) {
+      await conn.execute(
+        `ALTER TABLE users MODIFY COLUMN status ENUM('active', 'inactive', 'suspended') NOT NULL DEFAULT 'active'`
+      );
+      console.log("✅ migration: updated users.status enum");
+    }
+
+    // ── Rebuild FULLTEXT index if en_* columns were just added ────────────
+    const allEnExist =
+      newsColNames.includes("en_title") &&
+      newsColNames.includes("en_content") &&
+      newsColNames.includes("en_summary");
+    if (!allEnExist) {
+      // Drop old index (ignore if not exists) then recreate with all columns
+      try {
+        await conn.execute("DROP INDEX idx_search ON news");
+      } catch {
+        // index may not exist yet
+      }
+      try {
+        await conn.execute(
+          "CREATE FULLTEXT INDEX idx_search ON news (title, content, summary, en_title, en_content, en_summary)"
+        );
+        console.log("✅ migration: rebuilt news FULLTEXT index");
+      } catch (err: any) {
+        if (err.code !== "ER_DUP_KEYNAME") throw err;
+      }
+    }
+
+    console.log("✅ autoMigrate complete");
+  } catch (err) {
+    console.error("❌ autoMigrate failed:", err);
+  } finally {
+    conn.release();
+  }
+}

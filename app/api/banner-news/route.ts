@@ -65,7 +65,7 @@ export async function GET() {
         message: "Failed to fetch news",
         news: [],
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
