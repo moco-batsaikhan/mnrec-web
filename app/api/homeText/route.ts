@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import db from "@/lib/database";
 
 async function selectOne() {
-  const [rows] = await db.query("SELECT * FROM homeText WHERE id = ?", 1);
+  const [rows] = await db.query("SELECT * FROM homeText WHERE id = ?", [1]);
   const homeText = Array.isArray(rows) ? (rows[0] as any) : null;
   return homeText || null;
 }
@@ -41,27 +41,45 @@ export async function PUT(req: NextRequest) {
   } catch {
     return NextResponse.json(
       { success: false, message: "Invalid JSON" },
-      { status: 400 }
+      { status: 400 },
     );
   }
   try {
-    await db.query(
-      "UPDATE homeText SET mn_keyWord = ?, en_keyWord = ?, mn_keyNote = ?, en_keyNote = ?, mn_slogan_text = ?, en_slogan_text = ?, status = ? WHERE id = 1",
-      [
-        body.mn_keyWord,
-        body.en_keyWord,
-        body.mn_keyNote,
-        body.en_keyNote,
-        body.mn_slogan_text,
-        body.en_slogan_text,
-        body.status || "active",
-      ]
-    );
+    // Check if row exists
+    const existing = await selectOne();
+    if (existing) {
+      await db.query(
+        "UPDATE homeText SET mn_keyWord = ?, en_keyWord = ?, mn_keyNote = ?, en_keyNote = ?, mn_slogan_text = ?, en_slogan_text = ?, status = ? WHERE id = 1",
+        [
+          body.mn_keyWord,
+          body.en_keyWord,
+          body.mn_keyNote,
+          body.en_keyNote,
+          body.mn_slogan_text,
+          body.en_slogan_text,
+          body.status || "active",
+        ],
+      );
+    } else {
+      await db.query(
+        "INSERT INTO homeText (id, mn_keyWord, en_keyWord, mn_keyNote, en_keyNote, mn_slogan_text, en_slogan_text, status) VALUES (1, ?, ?, ?, ?, ?, ?, ?)",
+        [
+          body.mn_keyWord || "",
+          body.en_keyWord || "",
+          body.mn_keyNote || "",
+          body.en_keyNote || "",
+          body.mn_slogan_text || "",
+          body.en_slogan_text || "",
+          body.status || "active",
+        ],
+      );
+    }
     return NextResponse.json({ success: true });
-  } catch (err) {
+  } catch (err: any) {
+    console.error("homeText PUT error:", err);
     return NextResponse.json(
-      { success: false, message: "Error updating" },
-      { status: 500 }
+      { success: false, message: err?.message || "Error updating" },
+      { status: 500 },
     );
   }
 }

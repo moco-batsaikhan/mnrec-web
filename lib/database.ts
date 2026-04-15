@@ -133,18 +133,18 @@ export async function initDatabase() {
 
     // Insert sample news if not exists
     const [existingNews] = await connection.execute(
-      "SELECT COUNT(*) as count FROM news"
+      "SELECT COUNT(*) as count FROM news",
     );
 
     if ((existingNews as any)[0].count === 0) {
       // Attempt to find admin/editor users to attach as authors for sample news
       const [adminRows] = await connection.execute(
-        "SELECT id FROM users WHERE email = 'admin@mnrec.mn' LIMIT 1"
+        "SELECT id FROM users WHERE email = 'admin@mnrec.mn' LIMIT 1",
       );
       const adminId = (adminRows as any)[0]?.id ?? null;
 
       const [editorRows] = await connection.execute(
-        "SELECT id FROM users WHERE email = 'editor@mnrec.mn' LIMIT 1"
+        "SELECT id FROM users WHERE email = 'editor@mnrec.mn' LIMIT 1",
       );
       const editorId = (editorRows as any)[0]?.id ?? null;
 
@@ -181,7 +181,7 @@ export async function initDatabase() {
         console.log("✅ Sample news created");
       } else {
         console.log(
-          "ℹ️ Skipping sample news insertion — no admin/editor users found to assign as authors"
+          "ℹ️ Skipping sample news insertion — no admin/editor users found to assign as authors",
         );
       }
     }
@@ -199,8 +199,8 @@ export async function initDatabase() {
 export default pool;
 
 /**
- * Auto-migration: ensures all expected columns exist without re-creating tables.
- * Safe to run on every startup — uses IF NOT EXISTS / column checks internally.
+ * Auto-migration: ensures all expected columns/tables exist without re-creating tables.
+ * Safe to run on every startup.
  */
 export async function autoMigrate() {
   const conn = await pool.getConnection();
@@ -209,69 +209,37 @@ export async function autoMigrate() {
     const [newsCols]: any = await conn.execute("SHOW COLUMNS FROM news");
     const newsColNames: string[] = newsCols.map((c: any) => c.Field);
 
-    if (!newsColNames.includes("en_title")) {
-      await conn.execute(
-        "ALTER TABLE news ADD COLUMN en_title VARCHAR(500) NULL AFTER title"
-      );
-      console.log("✅ migration: added news.en_title");
-    }
-    if (!newsColNames.includes("en_content")) {
-      await conn.execute(
-        "ALTER TABLE news ADD COLUMN en_content LONGTEXT NULL AFTER content"
-      );
-      console.log("✅ migration: added news.en_content");
-    }
-    if (!newsColNames.includes("en_summary")) {
-      await conn.execute(
-        "ALTER TABLE news ADD COLUMN en_summary TEXT NULL AFTER summary"
-      );
-      console.log("✅ migration: added news.en_summary");
-    }
-    if (!newsColNames.includes("category")) {
-      await conn.execute(
-        "ALTER TABLE news ADD COLUMN category VARCHAR(100) NULL DEFAULT 'news' AFTER slug"
-      );
-      console.log("✅ migration: added news.category");
+    const newsColsToAdd: { name: string; def: string }[] = [
+      { name: "en_title", def: "VARCHAR(500) NULL AFTER title" },
+      { name: "en_content", def: "LONGTEXT NULL AFTER content" },
+      { name: "en_summary", def: "TEXT NULL AFTER summary" },
+      { name: "category", def: "VARCHAR(100) NULL DEFAULT 'news'" },
+      { name: "featured_image", def: "VARCHAR(500) NULL" },
+      { name: "tags", def: "JSON NULL" },
+    ];
+    for (const col of newsColsToAdd) {
+      if (!newsColNames.includes(col.name)) {
+        await conn.execute(
+          `ALTER TABLE news ADD COLUMN \`${col.name}\` ${col.def}`,
+        );
+        console.log(`✅ migration: added news.${col.name}`);
+      }
     }
 
-    // ── users table: role & status enum values ────────────────────────────
-    const [roleCol]: any = await conn.execute(
-      "SHOW COLUMNS FROM users WHERE Field = 'role'"
-    );
-    const roleType: string = roleCol[0]?.Type || "";
-    if (!roleType.includes("superAdmin")) {
-      await conn.execute(
-        `ALTER TABLE users MODIFY COLUMN role ENUM('admin', 'editor', 'superAdmin') NOT NULL DEFAULT 'editor'`
-      );
-      console.log("✅ migration: updated users.role enum");
-    }
-
-    const [statusCol]: any = await conn.execute(
-      "SHOW COLUMNS FROM users WHERE Field = 'status'"
-    );
-    const statusType: string = statusCol[0]?.Type || "";
-    if (!statusType.includes("suspended")) {
-      await conn.execute(
-        `ALTER TABLE users MODIFY COLUMN status ENUM('active', 'inactive', 'suspended') NOT NULL DEFAULT 'active'`
-      );
-      console.log("✅ migration: updated users.status enum");
-    }
-
-    // ── Rebuild FULLTEXT index if en_* columns were just added ────────────
-    const allEnExist =
+    // Rebuild FULLTEXT index when en_* columns were just added
+    const hadAllEn =
       newsColNames.includes("en_title") &&
       newsColNames.includes("en_content") &&
       newsColNames.includes("en_summary");
-    if (!allEnExist) {
-      // Drop old index (ignore if not exists) then recreate with all columns
+    if (!hadAllEn) {
       try {
         await conn.execute("DROP INDEX idx_search ON news");
       } catch {
-        // index may not exist yet
+        /* ok */
       }
       try {
         await conn.execute(
-          "CREATE FULLTEXT INDEX idx_search ON news (title, content, summary, en_title, en_content, en_summary)"
+          "CREATE FULLTEXT INDEX idx_search ON news (title, content, summary, en_title, en_content, en_summary)",
         );
         console.log("✅ migration: rebuilt news FULLTEXT index");
       } catch (err: any) {
@@ -279,10 +247,113 @@ export async function autoMigrate() {
       }
     }
 
+    // ── users table: role & status enum values ────────────────────────────
+    const [roleCol]: any = await conn.execute(
+      "SHOW COLUMNS FROM users WHERE Field = 'role'",
+    );
+    if (!((roleCol[0]?.Type as string) || "").includes("superAdmin")) {
+      await conn.execute(
+        `ALTER TABLE users MODIFY COLUMN role ENUM('admin', 'editor', 'superAdmin') NOT NULL DEFAULT 'editor'`,
+      );
+      console.log("✅ migration: updated users.role enum");
+    }
+    const [statusCol]: any = await conn.execute(
+      "SHOW COLUMNS FROM users WHERE Field = 'status'",
+    );
+    if (!((statusCol[0]?.Type as string) || "").includes("suspended")) {
+      await conn.execute(
+        `ALTER TABLE users MODIFY COLUMN status ENUM('active', 'inactive', 'suspended') NOT NULL DEFAULT 'active'`,
+      );
+      console.log("✅ migration: updated users.status enum");
+    }
+
+    // ── media table: API uses mn_title, en_title, url, type ──────────────
+    const [mediaCols]: any = await conn.execute("SHOW COLUMNS FROM media");
+    const mediaColNames: string[] = mediaCols.map((c: any) => c.Field);
+    const mediaColsToAdd: { name: string; def: string }[] = [
+      { name: "mn_title", def: "VARCHAR(255) NULL" },
+      { name: "en_title", def: "VARCHAR(255) NULL" },
+      { name: "url", def: "VARCHAR(500) NULL" },
+      { name: "type", def: "VARCHAR(100) NULL" },
+      { name: "status", def: "ENUM('active','inactive') DEFAULT 'active'" },
+      {
+        name: "updated_at",
+        def: "DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+      },
+    ];
+    for (const col of mediaColsToAdd) {
+      if (!mediaColNames.includes(col.name)) {
+        await conn.execute(
+          `ALTER TABLE media ADD COLUMN \`${col.name}\` ${col.def}`,
+        );
+        console.log(`✅ migration: added media.${col.name}`);
+      }
+    }
+
+    // ── homeText table ────────────────────────────────────────────────────
+    await ensureHomeTextTable(conn);
+
+    // ── newsletter_subscribers table ──────────────────────────────────────
+    await conn.execute(`
+      CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        subscribed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        INDEX idx_email (email),
+        INDEX idx_subscribed_at (subscribed_at)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    `);
+    console.log("✅ migration: newsletter_subscribers table ensured");
+
     console.log("✅ autoMigrate complete");
   } catch (err) {
     console.error("❌ autoMigrate failed:", err);
   } finally {
     conn.release();
   }
+}
+
+/**
+ * Ensure homeText table exists and has the required columns.
+ * Called from autoMigrate.
+ */
+async function ensureHomeTextTable(conn: mysql.PoolConnection) {
+  await conn.execute(`
+    CREATE TABLE IF NOT EXISTS homeText (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      mn_keyWord VARCHAR(255) NOT NULL DEFAULT '',
+      en_keyWord VARCHAR(255) NOT NULL DEFAULT '',
+      mn_keyNote TEXT NOT NULL DEFAULT '',
+      en_keyNote TEXT NOT NULL DEFAULT '',
+      mn_slogan_text TEXT NOT NULL DEFAULT '',
+      en_slogan_text TEXT NOT NULL DEFAULT '',
+      status ENUM('active','inactive') DEFAULT 'active',
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    )
+  `);
+
+  // Table may already exist with different columns — ensure each column is present
+  const [cols]: any = await conn.execute("SHOW COLUMNS FROM homeText");
+  const colNames: string[] = cols.map((c: any) => c.Field);
+
+  const colsToAdd: { name: string; def: string }[] = [
+    { name: "mn_keyWord", def: "VARCHAR(255) NOT NULL DEFAULT ''" },
+    { name: "en_keyWord", def: "VARCHAR(255) NOT NULL DEFAULT ''" },
+    { name: "mn_keyNote", def: "TEXT NOT NULL DEFAULT ''" },
+    { name: "en_keyNote", def: "TEXT NOT NULL DEFAULT ''" },
+    { name: "mn_slogan_text", def: "TEXT NOT NULL DEFAULT ''" },
+    { name: "en_slogan_text", def: "TEXT NOT NULL DEFAULT ''" },
+  ];
+
+  for (const col of colsToAdd) {
+    if (!colNames.includes(col.name)) {
+      await conn.execute(
+        `ALTER TABLE homeText ADD COLUMN \`${col.name}\` ${col.def}`,
+      );
+      console.log(`✅ migration: added homeText.${col.name}`);
+    }
+  }
+
+  console.log("✅ migration: homeText table ensured");
 }
