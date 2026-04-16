@@ -249,7 +249,6 @@ export default function CreateNews() {
         },
         body: JSON.stringify({
           ...formData,
-          authorId: 1, // Demo - бодитоор current user-аас авна
         }),
       });
 
@@ -296,7 +295,6 @@ export default function CreateNews() {
         },
         body: JSON.stringify({
           ...draftData,
-          authorId: 1,
         }),
       });
 

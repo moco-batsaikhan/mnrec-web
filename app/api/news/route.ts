@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import pool from "@/lib/database";
+import { getUserFromRequest } from "@/lib/auth";
 
 interface News {
   id: number;
@@ -179,12 +180,20 @@ export async function POST(request: NextRequest) {
   try {
     console.log("📝 NEWS CREATE API - Starting...");
 
+    // Cookie-оос нэвтэрсэн хэрэглэгчийг авах
+    const currentUser = await getUserFromRequest(request);
+    if (!currentUser) {
+      return NextResponse.json(
+        { message: "Нэвтрэх шаардлагатай" },
+        { status: 401 }
+      );
+    }
+
     const body = await request.json();
     console.log("📝 Received data:", {
       title: body.title,
       hasContent: !!body.content,
       hasSummary: !!body.summary,
-      authorId: body.authorId,
       status: body.status,
       tags: body.tags,
     });
@@ -200,19 +209,17 @@ export async function POST(request: NextRequest) {
       en_content,
       en_summary,
       status = "draft",
-  category = "news",
+      category = "news",
       tags = [],
-      authorId,
       featuredImage,
     } = body;
 
     // Validation
-    if (!title || !content || !summary || !authorId) {
+    if (!title || !content || !summary) {
       console.error("❌ Validation failed:", {
         title: !!title,
         content: !!content,
         summary: !!summary,
-        authorId: !!authorId,
       });
       connection.release();
       return NextResponse.json(
@@ -221,23 +228,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Author байгаа эсэхийг шалгах
-    console.log("🔍 Checking author with ID:", authorId);
-    const [authorResult] = await connection.execute(
-      "SELECT name FROM users WHERE id = ?",
-      [authorId]
-    );
-
-    if ((authorResult as any).length === 0) {
-      console.error("❌ Author not found:", authorId);
-      connection.release();
-      return NextResponse.json(
-        { message: "Зохиогч олдсонгүй" },
-        { status: 404 }
-      );
-    }
-
-    const authorName = (authorResult as any)[0].name;
+    const authorId = currentUser.id;
+    const authorName = currentUser.name;
+    console.log("✅ Author from cookie:", authorName, "id:", authorId);
     console.log("✅ Author found:", authorName);
 
     // Slug үүсгэх (title-ээс)
